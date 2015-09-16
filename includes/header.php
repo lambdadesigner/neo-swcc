@@ -84,14 +84,13 @@ $url = basename($_SERVER['REQUEST_URI']);
 						</li>
 							<!-- Notifications: style can be found in dropdown.less -->
 							<li class="dropdown notifications-menu">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdsown" id="bells">
+								<a class="dropdown-toggle" data-toggle="dropdsown" id="bells" style="cursor:pointer">
 									<i class="fa fa-bell-o"></i>
 									<?php 
 										$noti_sql = "SELECT * FROM AllNotifications";
 										$noti_result = sqlsrv_query( $conn, $noti_sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));																					
 									?>
-									<span class="label label-warning">
-									<?php $idd = 0;
+									<span class="label label-warning"><?php $idd = 0;
 										while($noti_row = sqlsrv_fetch_array($noti_result))
 										{
 											$not_arr = explode(',',$noti_row['To']);
@@ -100,16 +99,15 @@ $url = basename($_SERVER['REQUEST_URI']);
 												$idd++;
 											}
 										}
-										echo $idd;
-									?>
-									</span>
+										//echo $idd;
+									?></span>
 								</a>
 								<ul class="dropdown-menu" id="alertdrop">
 									<li class="header">You have <?php echo $idd;?> notifications</li>
 									<li>
 										<!-- inner menu: contains the actual data -->
 										<ul class="menu">											
-											<?php 
+											<?php $idssa = 1;
 												$noti_sql1 = "SELECT * FROM AllNotifications";
 												$noti_result1 = sqlsrv_query( $conn, $noti_sql1 ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));													
 												while($noti_row1 = sqlsrv_fetch_array($noti_result1))
@@ -118,11 +116,12 @@ $url = basename($_SERVER['REQUEST_URI']);
 													if(in_array($_SESSION['StudentID'],$not_arr1))
 													{?>												
 														<li>
-															<a href="#">																
+															<a data-toggle="modal" data-target="#myModal<?php echo $idssa;?>" style="cursor:pointer">																
 																<?php echo $noti_row1['Subject'];?>  <small class="pull-right" data-toggle="tooltip" data-placement="left" title="<?php echo $noti_row1['SentBy'];?>"><i class="fa fa-user-secret"></i> </small>
 															</a>
 														</li>
 													<?php }
+													$idssa++;
 												}
 											?>
 										</ul>
@@ -424,27 +423,45 @@ $url = basename($_SERVER['REQUEST_URI']);
 		  <?php }?>
 
 		  	<!-- Notifications Modal -->
-		  	<div class="modal fade" id="myModal" role="dialog">
-				<div class="modal-dialog">
-				 <div class="modal-header">
-					  <button type="button" class="close" data-dismiss="modal">&times;</button>
-					  <h4 class="modal-title">Class Room Booking</h4>
-					</div>
-				  <!-- Modal content-->
-				  <div class="modal-content">					
-					<div class="modal-body">
-						<div class="col-md-12 classroombooking">
-							<div class="row">								
-								<div class="col-md-5">								
+		  	<?php $idde = 1;
+				$noti_sql3 = "SELECT * FROM AllNotifications";
+				$noti_result3 = sqlsrv_query( $conn, $noti_sql3 ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));																					
+
+				while($noti_row3 = sqlsrv_fetch_array($noti_result3))
+				{
+					$not_arr3 = explode(',',$noti_row3['To']);
+					if(in_array($_SESSION['StudentID'],$not_arr3))
+					{?>												
+						<div class="modal fade" id="myModal<?php echo $idde;?>" role="dialog">
+							<div class="modal-dialog">
+							 	<div class="modal-header" style="background-color:#fff;">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+								  	<h4 class="modal-title"><?php echo $noti_row3['Subject']?></h4>
 								</div>
-							</div>					  
-						</div>						
-				    </div>	
-				    <div class="modal-footer">						  
-					</div>			  
-				  </div>
-				</div>
-			</div>
+							  	<!-- Modal content-->
+							  	<div class="modal-content">					
+									<div class="modal-body">
+										<!-- <div class="col-md-12">
+											<div class="row">								
+												<div class="col-md-5"> -->
+													From <?php echo $noti_row3['SentBy'];?>	<br><br>
+													Message:<span class="pull-right"><?php $vals21=strtotime($noti_row3['SentOn']); echo date("j M Y G:i a",$vals21);?></span><br>
+													<?php echo $noti_row3['Message']?>						
+												<!-- </div>
+											</div>					  
+										</div> -->																
+								    </div>	
+							 	    <div class="modal-footer">	
+							 	    	<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>					  
+								    </div>			  
+							  	</div>
+							</div>
+						</div>
+					<?php }
+					$idde++;
+				}				
+			?>
+
 	
 		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 		<script type="text/javascript">		
