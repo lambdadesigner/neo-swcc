@@ -2,7 +2,7 @@
 ob_start();
 session_start();
 error_reporting(0);
-include('database.php');
+include('../includes/database.php');
 include ('../library.php'); // include the library to get the session values
 $url = basename($_SERVER['REQUEST_URI']);
 ?>
@@ -28,6 +28,7 @@ $url = basename($_SERVER['REQUEST_URI']);
 		<link href="../assets/dist/css/services.css" rel="stylesheet" type="text/css" />
 
 		<link href="https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+		<link href="../assets/dist/css/Universal.css" rel="stylesheet" type="text/css" />
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -65,9 +66,9 @@ $url = basename($_SERVER['REQUEST_URI']);
 					<div class="navbar-custom-menu">
 						<ul class="nav navbar-nav">
 						<li>
-							<!--<div class="dropdown">
+							<div class="dropdown">
 								<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-									Select Language
+									<?php if($_SESSION['language']=="en"){?>English<?php }elseif($_SESSION['language']=="ar"){?>Arabic<?php }else{?>Select Language<?php } ?>
 									<span class="caret"></span>
 								</button>
 								 
@@ -75,12 +76,12 @@ $url = basename($_SERVER['REQUEST_URI']);
 									<li <?php if($_GET['lang']=="en"){?>selected="selected"<?php } ?>><a href="?lang=en">English</a></li>
 									<li><a href="?lang=ar">Arabic</a></li>
 								</ul>
-							</div>-->
-							 <select onChange="window.location = '?lang='+this.value+''" >
+							</div>
+							 <?php /*?><select onChange="window.location = '?lang='+this.value+''" >
 						      <option value="" selected="selected" disabled="disabled">Select language</option>
 						      <option value="en" <?php if ($_GET['lang']==en) echo 'selected="selected"';?>>English</option>
 						      <option value="ar" <?php if ($_GET['lang']==ar) echo 'selected="selected"';?>>Arabic</option>
-						    </select> 
+						    </select><?php */?>
 						</li>
 							<!-- Notifications: style can be found in dropdown.less -->
 							<li class="dropdown notifications-menu">
@@ -107,22 +108,24 @@ $url = basename($_SERVER['REQUEST_URI']);
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdowns" id="userpanel">
 									<img src="../dist/img/user2-160x160.jpg" class="user-image img-circle" alt="User Image" />
-									<span class="hidden-xs"><?php echo $_SESSION['StudentName_en']?></span>
+									<span class="hidden-xs"><?php echo $_SESSION['InstructorName']?></span>
 								</a>
 								<ul class="dropdown-menu" id="panelshow">
 									<!-- User image -->
 									<li class="user-header">
 										<img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
 										<p>
-											Mohammed Sameer
-											<small>Member since Nov. 2012</small>
+											
+											<?php 
+									echo $_SESSION['InstructorName']?>
 										</p>
 									</li>
+									<!-- Menu Body -->
 									
 									<!-- Menu Footer-->
 									<li class="user-footer">
 										<div class="pull-left">
-											<a href="#" class="btn btn-default btn-flat">Profile</a>
+											<a href="INSprofile" class="btn btn-default btn-flat">Profile</a>
 										</div>
 										<div class="pull-right">
 											<a href="../logout.php" class="btn btn-default btn-flat">Sign out</a>
@@ -148,45 +151,41 @@ $url = basename($_SERVER['REQUEST_URI']);
 					<!-- sidebar menu: : style can be found in sidebar.less -->
 					<ul class="sidebar-menu">
 						 <!-- <li class="header">MAIN NAVIGATION</li> -->
-						<li <?php if($url=="ITDdashboard"){?>class="active"<?php } ?>>
-							<a href="INSdashboard">
+						<li <?php if($url=="index"){?>class="active"<?php } ?>>
+							<a href="index">
 								<i class="fa fa-dashboard"></i> <span><?php echo $lang["dashboard"];?></span>
 							</a>
 						</li>
-						<li <?php if($url=="ITDprofile"){?>class="active"<?php } ?>>
-							<a href="ITDprofile">
+						<li <?php if($url=="INSprofile"){?>class="active"<?php } ?>>
+							<a href="INSprofile">
 								<i class="fa fa-user"></i> <span><?php echo $lang["profile"];?></span>
 							</a>
 						</li>
 						<li <?php if($url=="Class Room Timings"){?>class="active"<?php } ?>>
 							<a href="INSclasstimings">
-								<i class="fa fa-file-text-o"></i> <span>Class Timings<?php //echo $lang["marks"];?></span>
+								<i class="fa fa-file-text-o"></i> <span>Class Timings<?php //echo $lang["Class Room Booking Status"];?></span>
 							</a>
 						</li>
 						<li <?php if($url=="INSclassbookstatus"){?>class="active"<?php } ?>>
 							<a href="INSclassbookstatus">
-								<i class="fa fa-list-ul"></i> <span>Class Room Booking Status<?php //echo $lang["schedules"];?></span>
+								<i class="fa fa-list-ul"></i> <span>Class Room Booking Status</span>
 							</a>
 						</li>
 						<li <?php if($url=="AuditoriumBookingStatus"){?>class="active"<?php } ?>>
 							<a href="AuditoriumBookingStatus">
-								<i class="fa fa-check-square-o"></i> <span>Auditorium Booking Status<?php //echo $lang["attendance"];?></span>
+								<i class="fa fa-check-square-o"></i> <span>Auditorium Booking Status</span>
 							</a>
 						</li>
 						
 						<li>
-							<a href="#teachers">
-								<i class="fa fa-users"></i> <span>Teachers<?php //echo $lang["teachers"];?></span>
+							<a href="teachers">
+								<i class="fa fa-users"></i> <span><?php echo $lang["teachers"];?></span>
 							</a>
 						</li>
-						<?php /*?><li <?php if($url=="todos"){?>class="active"<?php } ?>>
-							<a href="todos">
-								<i class="fa fa-th-list"></i> <span><?php echo $lang["todo's"];?></span>
-							</a>
-						</li><?php */?>
+						
 						<li <?php if($url=="Allprograms"){?>class="active"<?php } ?>>
 							<a href="Allprograms">
-								<i class="fa fa-pencil-square-o"></i> <span> All Programs<?php //echo $lang["examinations"];?></span>
+								<i class="fa fa-pencil-square-o"></i> <span> All Programs<?php echo $lang["examinations"];?></span>
 							</a>
 						</li>
 						
@@ -194,8 +193,7 @@ $url = basename($_SERVER['REQUEST_URI']);
 				</section>
 				<!-- /.sidebar -->
 			</aside>
-		  		  
-		  <?php }?>
+		  <?php } ?>
 		
 		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 		<script type="text/javascript">		

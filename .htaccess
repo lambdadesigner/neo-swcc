@@ -1,0 +1,10 @@
+RewriteEngine on   
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^(.*)$ login.php?/$1 [L]
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+RewriteRule ^dashboard/([a-zA-Z0-9_-]+)$ dashboard.php?lang=$1
+Options All -Indexes
+
+#errorDocument 403 http://localhost:8081/SwccUniversity/marks.php

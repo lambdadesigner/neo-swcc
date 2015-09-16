@@ -108,12 +108,7 @@ $url = basename($_SERVER['REQUEST_URI']);
 									<li class="header">You have <?php echo $idd;?> notifications</li>
 									<li>
 										<!-- inner menu: contains the actual data -->
-										<ul class="menu">
-											<li>
-												<a href="#">
-													<i class="fa fa-users text-aqua"></i>5 new members joined today
-												</a>
-											</li>
+										<ul class="menu">											
 											<?php 
 												$noti_sql1 = "SELECT * FROM AllNotifications";
 												$noti_result1 = sqlsrv_query( $conn, $noti_sql1 ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));													
@@ -123,15 +118,13 @@ $url = basename($_SERVER['REQUEST_URI']);
 													if(in_array($_SESSION['StudentID'],$not_arr1))
 													{?>												
 														<li>
-															<a href="#">
-																<i class="fa fa-users text-aqua"></i>5 new members joined today
+															<a href="#">																
+																<?php echo $noti_row1['Subject'];?>  <small class="pull-right" data-toggle="tooltip" data-placement="left" title="<?php echo $noti_row1['SentBy'];?>"><i class="fa fa-user-secret"></i> </small>
 															</a>
 														</li>
 													<?php }
 												}
 											?>
-
-
 										</ul>
 									</li>
 									<li class="footer"><a href="#">View all</a></li>
@@ -429,6 +422,29 @@ $url = basename($_SERVER['REQUEST_URI']);
 			</aside>
 				  
 		  <?php }?>
+
+		  	<!-- Notifications Modal -->
+		  	<div class="modal fade" id="myModal" role="dialog">
+				<div class="modal-dialog">
+				 <div class="modal-header">
+					  <button type="button" class="close" data-dismiss="modal">&times;</button>
+					  <h4 class="modal-title">Class Room Booking</h4>
+					</div>
+				  <!-- Modal content-->
+				  <div class="modal-content">					
+					<div class="modal-body">
+						<div class="col-md-12 classroombooking">
+							<div class="row">								
+								<div class="col-md-5">								
+								</div>
+							</div>					  
+						</div>						
+				    </div>	
+				    <div class="modal-footer">						  
+					</div>			  
+				  </div>
+				</div>
+			</div>
 	
 		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 		<script type="text/javascript">		
