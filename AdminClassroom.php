@@ -89,42 +89,38 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 										  <div class="modal-content">
 										   
 											<form name="classbooking" action="INSSclassbookstatus.php" method="POST">
-											<div class="modal-body">
-											<div class="col-md-12 classroombooking">
-												<div class="row">
-													<div class="col-md-7 row">
-														<div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
-											    <input class="form-control inputpickertext" type="text" />
-											    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-											</div>
-													</div>
-													<div class="col-md-5">
-														<select name="classroom col-md-6 col-sm-6" id="classroom" style="display:none;">
-															<?php
-																$sql_classroom = "SELECT DISTINCT ClassNum FROM ClassroomBookingStatus";
-																$result_sql_classroom = sqlsrv_query( $conn, $sql_classroom ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
-																while($row = sqlsrv_fetch_array($result_sql_classroom) ){?>
-																<option value="<?php echo $row['ClassNum']; ?>"><?php echo $row['ClassNum']; ?></option>
-															<?php }?>
-														</select>
-													</div><br>
-													<div class="">
-														<input maxlength="100" type="text" id="bookedby" required name="bookedby" class="form-control" placeholder="Booked By" />													
-													</div>
-													<div class="">
+												<div class="modal-body">
+													<div class="col-md-12 classroombooking">
+														<div class="row">
+															<div class="col-md-7 row">
+																<div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
+																    <input class="form-control inputpickertext" type="text" />
+																    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+																</div>
+															</div>
+															<div class="col-md-5">
+																<select name="classroom col-md-6 col-sm-6" id="classroom" style="display:none;">
+																	<?php
+																		$sql_classroom = "SELECT DISTINCT ClassNum FROM ClassroomBookingStatus";
+																		$result_sql_classroom = sqlsrv_query( $conn, $sql_classroom ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+																		while($row = sqlsrv_fetch_array($result_sql_classroom) ){?>
+																		<option value="<?php echo $row['ClassNum']; ?>"><?php echo $row['ClassNum']; ?></option>
+																	<?php }?>
+																</select>
+															</div><br>
+															<div class="">
+																<input maxlength="100" type="text" id="bookedby" required name="bookedby" class="form-control" placeholder="Booked By" />													
+															</div>
+															<div class="">
 
-														<input maxlength="100" type="text" id="OccString" required="required" name="OccString" class="form-control" placeholder="Occ String" />
-													</div>
+																<input maxlength="100" type="text" id="OccString" required="required" name="OccString" class="form-control" placeholder="Occ String" />
+															</div>
+														</div>
+													</div>												  
 												</div>
-											</div>
-											
-											
-											
-											  
-											</div>
-											<div class="modal-footer">
-											  <input type="submit" id="classroomsave" class="btn btn-default" name="submit" data-dismiss="modal" value="Save">
-											</div>
+												<div class="modal-footer">
+											  		<input type="submit" id="classroomsave" class="btn btn-default" name="submit" data-dismiss="modal" value="Save">
+												</div>
 											</form>
 										  </div>
 										  

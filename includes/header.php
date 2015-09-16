@@ -241,6 +241,11 @@ $url = basename($_SERVER['REQUEST_URI']);
 								<!-- <li><a href="#fakelink"><i class="fa fa-circle-o"></i> Certificates</a></li> -->
 							</ul>
 						</li>
+						<li <?php if($url=="Housing"){?>class="active"<?php } ?>>
+							<a href="Housing">
+								<i class="fa fa-pencil-square-o"></i> <span><?php echo $lang["Housing"];?></span>
+							</a>
+						</li>
 					</ul>
 				</section>
 				<!-- /.sidebar -->
