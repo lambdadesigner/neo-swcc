@@ -1,0 +1,66 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic);
+* {
+  font-family: Roboto;
+}
+
+.content h1 {
+  font-family: Roboto;
+  font-weight: 500;
+  text-align: center;
+  line-height: 40px;
+}
+
+#chart {
+  width: 450px;
+  height: 450px;
+  position: relative;
+  margin: 0 auto;
+}
+
+svg#donut-chart {
+  display: block;
+  margin: 0 auto;
+}
+
+text.inner-circle {
+  font-weight: 400;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.arc {
+  cursor: pointer;
+}
+.arc:hover {
+  opacity: .85;
+}
+.arc text {
+  font-weight: 300;
+  font-size: 11px;
+  color: #fff;
+}
+
+.legend {
+  font-size: 12px;
+}
+
+rect {
+  stroke-width: 2;
+}
+
+.tooltip {
+  background: #eee;
+  box-shadow: 0 0 5px #999999;
+  color: #333;
+  display: none;
+  font-size: 12px;
+  left: 0px;
+  padding: 10px;
+  position: absolute;
+  text-align: center;
+  top: 110px;
+  width: 80px;
+  z-index: 10;
+  font-family: roboto;
+  line-height: 14px;
+}

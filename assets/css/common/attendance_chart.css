@@ -1,0 +1,9 @@
+.l-chart {
+  padding: 20px;
+  background: #252329;
+}
+
+.aspect-ratio {
+  height: 0;
+  padding-bottom: 50%; /* 495h / 990w : The Intended dimensions */
+}

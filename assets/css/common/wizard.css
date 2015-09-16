@@ -1,0 +1,75 @@
+.medical-leave .stepwizard-step p {
+    margin-top: 10px;
+}
+
+.medical-leave .stepwizard-row {
+    display: table-row;
+}
+
+.medical-leave .stepwizard {
+    display: table;
+    width: 100%;
+    position: relative;
+}
+
+.medical-leave .stepwizard-step button[disabled] {
+    opacity: 1 !important;
+    filter: alpha(opacity=100) !important;
+}
+
+.medical-leave .stepwizard-row:before {
+    top: 14px;
+    bottom: 0;
+    position: absolute;
+    content: "  ";
+    width: 100%;
+    height: 0px; /*gives the line at the background of Wizard Steps. Note: dont exceed more than 1px;*/
+    background-color: #111;
+    z-order: 0;
+
+}
+
+.medical-leave .stepwizard-step {
+    display: table-cell;
+    text-align: center;
+    position: relative;
+}
+
+.medical-leave .btn-circle {
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 0px; /*15px*/
+}
+
+.full-width{
+  width: 100%;
+  padding: 8px;
+  border-color: #ccc; 
+}
+
+
+
+.wizard .panel{
+
+}
+
+
+.wizard .panel .panel-heading{
+  background: transparent;
+}
+
+
+.wizard p{
+  font-size: 14px;
+  color: #232323;
+}
+
+/*.medical-leave .stepwizard-step p {
+  margin-top: -25px;
+  margin-left: 90px;
+  color: white;
+}*/

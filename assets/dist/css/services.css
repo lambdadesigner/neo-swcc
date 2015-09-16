@@ -1,0 +1,96 @@
+.BoldText{
+		font-weight: bolder;
+	}
+	.swccformbg{
+	background: url(../img/watermarklogo.png) no-repeat transparent;
+	background-position: bottom right;
+	min-height: 500px;
+ }
+ section.swccformbg{
+	padding: 20px;
+	border: 1px solid #f0f0f0;
+	/*min-height: 100%;*/
+ }
+ .swccformbg header{
+	display: table;
+	margin: 0 auto;
+ }
+ .swccformbg .tables, .swccformbg .tables tr, .swccformbg .tables tr td{
+	border: 1px solid #ccc;
+	padding: 10px;
+	color: #555;
+ }
+.swccformbg td table{
+	margin: -10px;
+}
+.swccformbg td .table, .swccformbg td .table tr, .swccformbg td .table tr td{
+	border: 0px !important;
+}		
+.swccformbg td table tr td:first-child{
+	border-right: 1px solid #ccc !important;
+}	
+/*.swccformbg td table tr td:last-child{
+	border-right: 1px solid #ccc !important;
+}*/
+.swccformbg td .table tr td:nth-child(3){
+	border-left: 1px solid #ccc !important;
+}
+.swccformbg td .table.thirdtable tr td:nth-child(3){
+	border-left: 1px solid #ccc !important;
+	border-right: 1px solid #ccc !important;
+}
+.swccformbg td .table.thirdtable{
+	margin-left: 0px !important;
+	border-right: 1px solid #ccc !important;
+	border-left: 1px solid #ccc !important;
+}
+.swccformbg td .table.thirdtable tr:first-child{
+	border-bottom: 1px solid #ccc !important;
+}
+.swccformbg footer table{
+	margin-top: 150px;
+}
+.swccformbg footer table td{
+	border-bottom: 2px dashed #000;
+	text-align: left;	
+	padding-left: 20px;
+}
+.second-table{
+	margin-top: 20px;
+}
+.fullwidth{
+	width: 100%;
+}
+.borderbottom{
+	border-bottom: 1px solid #ccc;
+	margin-left: -10px;
+	/*padding: 10px;*/
+	margin-right: -10px;
+}
+.borderbottom:last-child{
+	border-bottom: transparent;
+}
+.borderbottom p{
+	padding: 10px;
+}
+.fourboxes div:last-child{
+	margin-bottom: -11px;
+}
+.fourboxes div:first-child{
+	margin-top: -11px;
+}
+.nopadding{
+	padding: 0 !important;
+}
+.margintop{
+	padding-top: 110px !important;
+}
+p#MSignature, p#MJobTitle, p#IssueDateM, p#MSignature {
+    margin-top: -25px;
+    margin-right: 40px;
+}
+input[type="submit"] {
+    background-color: #00A65A;
+    color: white;
+    font-size: 19px;
+}

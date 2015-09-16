@@ -1,0 +1,169 @@
+/*.dashboard .panel{
+
+}
+.dashboard .panel-default{
+	border: 0px;
+}
+.dashboard .panel .panel-heading{
+	background: white;
+	padding: 25px;
+}
+.dashboard .panel .panel-body{
+	background: white;
+	padding: 25px;
+}
+.dashboard .navbar .nav{
+	position: absolute;
+}*/
+.panel .panel-body, .panel .panel-heading {
+	/*padding: 25px;*/
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form, .navbar-inverse{
+	background-color: #2b3643;
+}
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {
+  color: #fff;
+  background-color: #1caf9a;
+}
+
+select{
+	padding: 5px;
+}
+
+.panel .panel-heading .panel-title{
+	font-size: 22px !important;
+}
+/*panels*/
+.panel{
+	/*padding-left: 15px;
+	padding-right: 15px;*/
+}
+.panel-black{
+	background: #252329;	
+}
+.panel-black .panel-heading{
+	background: #252329 !important;	
+	border-bottom: 1px solid #aaa;
+}
+.panel-black .panel-heading .panel-title{
+	color: #a8a8aa;
+	font-weight: bold;
+	font-size: 22px;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.panel-black .panel-body{
+	background: #252329 !important;	
+}
+.panel-black select{
+	width: 75px;
+	padding: 3px;
+	line-height: 1;
+	border: 0;
+	border-radius: 5px;
+	background: url(../images/br_down.png) no-repeat right #a8a8aa;
+	-webkit-appearance: none;
+	background-position-x: 50px;
+	color: black;
+}
+.panel-black .months{
+	width: 120px;
+	padding: 3px;
+	line-height: 1;
+	border: 0;
+	border-radius: 5px;
+	background: url(../images/br_down.png) no-repeat right #a8a8aa;
+	-webkit-appearance: none;
+	background-position-x: 100px;
+}
+.panel-blue{
+
+}
+.panel-red{
+
+}
+
+.panel-green{
+
+}
+.panel-purple{
+
+}
+
+.panel .panel-heading small{
+	text-transform: none;
+	font-size: 13px;
+	letter-spacing: 0;
+	color: #9eacb4;
+	padding-left: 5px;
+}
+.panel-blue .panel-heading{
+	border-bottom: 1px solid #ccc;
+
+}
+.panel-red .panel-heading{
+	border-bottom: 1px solid #ccc;
+}
+
+.panel-green .panel-heading{
+	border-bottom: 1px solid #ccc;
+}
+.panel-purple .panel-heading{
+	border-bottom: 1px solid #ccc;
+}
+
+
+.panel-blue .panel-heading .panel-title{
+	color: #4884b8;
+	background: white;
+	font-weight: bold;
+	font-size: 16px;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+.panel-red .panel-heading .panel-title{
+	color: #e04a49;
+	background: white;
+	font-weight: bold;
+	font-size: 16px;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.panel-green .panel-heading .panel-title{
+	color: #3ea7a0;
+	background: white;
+	font-weight: bold;
+	font-size: 16px;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+.panel-purple .panel-heading .panel-title{
+	color: #7c699f;
+	background: white;
+	font-weight: bold;
+	font-size: 16px;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+
+.taskpanel .label{
+	float: right;
+	padding: 6px;
+	font-size: 12px;
+}
+
+
+
+/*List Items*/
+.list-group-item {
+  border: none;
+  border-bottom: 1px dashed #eee;
+  margin: 1px 0;
+}
+
+.img-circle{
+	border-radius: 50% !important;
+}

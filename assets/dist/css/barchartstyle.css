@@ -1,0 +1,129 @@
+#skills span {
+	/*top: -35px;
+	left: 2%;
+	position: relative;
+	font-size: 1.4em;
+	font-weight: bolder;
+	font-family: monospace;
+	color: #fff;*/
+}
+#skills span {
+    top: -26px;
+    left: 1%;
+    letter-spacing: 0.2em;
+    font-size: 14px;
+    text-transform: uppercase;
+    float: left;
+    color: white;
+    position: relative;
+}
+progress {
+  margin-top: 1px;
+    background-color: #ccc;
+    border: 0;
+    height: 2.5em;
+    width: 80%;
+    position: relative;
+    left: 0;
+    display: block;
+    /*border: 1px solid;*/
+    /*z-index: -1;*/
+}
+
+progress::-webkit-progress-bar {
+	background-color: #ccc;	
+}
+
+progress::-webkit-progress-value {
+	background-color: #ff9824;
+}
+
+progress::-moz-progress-bar {
+	background-color: #fcc689;
+}
+
+.zero progress::-webkit-progress-value , .zero .marks{
+	background: -webkit-linear-gradient(left, #f6d100 , #fae206); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(left, #f6d100, #fae206); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(left, #f6d100, #fae206); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to left, #f6d100, #fae206); /* Standard syntax */
+  background: #b5c444;
+}
+.one progress::-webkit-progress-value , .one .marks{
+	background: -webkit-linear-gradient(left, #e5020b , #982b3e); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(left, #e5020b, #982b3e); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(left, #e5020b, #982b3e); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to left, #e5020b, #982b3e); /* Standard syntax */
+  background: #f656a0;
+}
+.two progress::-webkit-progress-value , .two .marks {
+	background: -webkit-linear-gradient(left, #f2d106, #c36d22); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(left, #f2d106, #c36d22); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(left, #f2d106, #c36d22); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to left, #f2d106, #c36d22); /* Standard syntax */
+  background: #3393be;
+}
+.three progress::-webkit-progress-value , .three .marks{
+	background: -webkit-linear-gradient(left, #aec900 , #4b9107); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(left, #aec900, #4b9107); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(left, #aec900, #4b9107); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to left, #aec900 , #4b9107); /* Standard syntax */
+  background: #f56a71;
+}
+.four progress::-webkit-progress-value , .four .marks{
+	background: -webkit-linear-gradient(left, #75c6c0, #30b9cc); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(left, #75c6c0, #30b9cc); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(left, #75c6c0, #30b9cc); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to left, #75c6c0, #30b9cc); /* Standard syntax */
+  background: #fcb644;
+}
+.five progress::-webkit-progress-value , .five .marks{
+	background: -webkit-linear-gradient(left, #0396a8, #0b686d); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(left, #0396a8, #0b686d); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(left, #0396a8, #0b686d); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to left, #0396a8, #0b686d); /* Standard syntax */
+  background: #50bbb7;
+}
+.six progress::-webkit-progress-value , .six .marks{
+	background: -webkit-linear-gradient(left, #e3e3e3 , #cbcbcb); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(left, #e3e3e3, #cbcbcb); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(left, #e3e3e3, #cbcbcb); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to left, #e3e3e3 , #cbcbcb); /* Standard syntax */
+  background: #f656a0;
+}
+.seven progress::-webkit-progress-value .seven .marks{
+	background: -webkit-linear-gradient(left, #399333, #02623d); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(left, #399333, #02623d); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(left, #399333, #02623d); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to left, #399333 , #02623d); /* Standard syntax */
+  background: #b5c444;
+}
+.eight progress::-webkit-progress-value , .eight .marks{
+	background: -webkit-linear-gradient(left, # , #); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(left, #, #); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(left, #, #); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to left, # , #); /* Standard syntax */
+  background: #77c2ae;
+}
+.nine progress::-webkit-progress-value , .nine .marks{
+	background: -webkit-linear-gradient(left, # , #); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(left, #, #); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(left, #, #); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to left, # , #); /* Standard syntax */
+  background: #cf5758;
+}
+.ten progress::-webkit-progress-value , .ten .marks{
+	background: -webkit-linear-gradient(left, # , #); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(left, #, #); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(left, #, #); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to left, # , #); /* Standard syntax */
+  background: #e85949;
+}
+
+.marks.pull-right{
+   /* background: #f9f9f9;
+    border: 1px solid #f0f0f0;*/
+    padding: 7px;
+    color: white !important;
+    margin: -36px 35px;
+}
