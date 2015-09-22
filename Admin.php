@@ -1182,25 +1182,25 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 									<!-- <input type="email" class="form-control" name="emailto" placeholder="Email to:" /> -->
 									<div class=" col-md-6">
 										<div class="roundedOne">
-									      <input type="checkbox" value="None" id="RegStudent" name="check" />
+									      <input type="checkbox" id="RegStudent" name="RegStudent" />
 									      <label for="RegStudent"></label><div class="checkbox-text">All Reg. Students</div>
 									    </div>
 									</div>
 									<div class=" col-md-6">
 								    <div class="roundedOne">
-									      <input type="checkbox" value="None" id="ScStudent" name="check" />
+									      <input type="checkbox" id="ScStudent" name="ScStudent" />
 									      <label for="ScStudent"></label><div class="checkbox-text">All Reg. Students</div>
 									    </div>
 									</div>
 								    <div class=" col-md-6">
 								    <div class="roundedOne">
-									      <input type="checkbox" value="None" id="RegInstuctors" name="check" />
+									      <input type="checkbox" id="RegInstuctors" name="RegInstuctors" />
 									      <label for="RegInstuctors"></label><div class="checkbox-text">All Reg. Students</div>
 									    </div>
 									</div>
 								    <div class=" col-md-6">
 								    <div class="roundedOne">
-									      <input type="checkbox" value="None" id="ItdInstructor" name="check" />
+									      <input type="checkbox" id="ItdInstructor" name="ItdInstructor" />
 									      <label for="ItdInstructor"></label><div class="checkbox-text">All Reg. Students</div>
 									    </div>
 								    </div>
@@ -1328,7 +1328,7 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 	            </div>
 	          </div><!-- /.nav-tabs-custom -->
 
-		<script src="assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+		<!--<script src="assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>-->
     <!-- jQuery UI 1.11.4 -->
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
