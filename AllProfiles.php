@@ -145,8 +145,8 @@ $Instresult = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQL
 		<script src="assets/plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
 		<!-- Bootstrap 3.3.2 JS -->
 		<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-		<!-- Swcc App -->
-		<script src="dist/js/app.min.js" type="text/javascript"></script>
+		<!-- Swcc App 
+		<script src="dist/js/app.min.js" type="text/javascript"></script>-->
 		<!-- Swcc for demo purposes -->
 			<script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
 		<!-- Page level javascript -->
@@ -202,5 +202,6 @@ $Instresult = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQL
 			    } );
 			} );
 		</script>
-	</body>
-</html>
+<?php
+	include('Admin_files/includes/footer.php');
+?>
