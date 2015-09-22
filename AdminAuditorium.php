@@ -47,7 +47,8 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 										<div class="pull-right">
 											<!-- <button class="btn btn-xs btn-filter"><span class="glyphicon glyphicon-filter filterbutton"></span> Filter</button> -->
 										</div>
-									</div>
+										<div id="myElem" class="alert alert-success" role="alert" style="display:none;" align="center">Auditorium Booked</div>
+									</div>									
 									<table class="table table-striped" id="auditorium">
 										<thead>
 											<tr class="filters" style="display:none">
@@ -101,8 +102,7 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 											    <input class="form-control" type="text" id="BookingDate"  />
 											    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 											</div>
-									      </div>
-										  <input type="text" id="BookedBy" name="BookedBy" value="" required="required" class="form-control" placeholder="Booked By" >
+									      </div>										  
 										  <input class="form-control" id="single-input1" value="" placeholder="Start Time" name="StartTime">
 										  <input class="form-control" id="single-input2" value="" placeholder="End Time" name="EndTime">
 									      <div class="modal-footer">
@@ -125,7 +125,6 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 				</div>
 				<strong>Copyright &copy; 2014-2015 <a href="#">SWCC Dashboard</a>.</strong> All rights reserved.
 			</footer>
-
 			
 			<div class="control-sidebar-bg"></div>
 		</div><!-- ./wrapper -->
@@ -228,18 +227,24 @@ $('#check-minutes').click(function(e){
             .clockpicker('toggleView', 'minutes');
 });
 
+$( document ).ready(function() {		
+	$('#BookingDate').focus(function(){		
+	    $('.datepicker-orient-top').css('z-index','10000');
+	});
+});
+
 </script>
 
 	<script type="text/javascript" src="assets/dist/js/bootstrap-clockpicker.min.js"></script>			
+	<link href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
 	<script src="assets/dist/js/datepicker.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-				$('#BookAuditorium').click(function(){
+				$('#BookAuditorium').click(function(){				
 					
-					alert('sdafasdf	');
 					var AuditoriumNum = $('#AuditoriumNum').val();
 					var BookingDate   = $('#BookingDate').val();
-					var BookedBy      = $('#BookedBy').val();
+					var BookedBy      = "Admin";
 					var singleinput1 = $('#single-input1').val();
 					var singleinput2 = $('#single-input2').val();
 					
@@ -248,7 +253,9 @@ $('#check-minutes').click(function(e){
 					   url: "instructors/auditoriumbooking.php",
 					   data: {"AuditoriumNum": AuditoriumNum, "BookingDate": BookingDate, "BookedBy": BookedBy, "singleinput1": singleinput1,"singleinput2": singleinput2},
 					   success: function(msg){
-						 alert( "Data Saved: " + msg ); //Anything you want
+						 //alert( "Data Saved: " + msg ); //Anything you want
+						$("#myElem").show();
+						setTimeout(function() { $("#myElem").hide(); }, 3000);
 					   }
 					 });
 				

@@ -861,7 +861,7 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 					</script>
 					<script src='http://assets.codepen.io/assets/common/stopExecutionOnTimeout.js?t=1'></script>
 					<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
-					<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+					<!--<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>-->
 					<script>
 					/*var $currentPopover = null;
 					  $(document).on('shown.bs.popover', function (ev) {
@@ -1328,7 +1328,7 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 	            </div>
 	          </div><!-- /.nav-tabs-custom -->
 
-		<!--<script src="assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>-->
+		<script src="assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
