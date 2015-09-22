@@ -1,0 +1,161 @@
+ /*Import CSS*/
+ @import url(http://fonts.googleapis.com/css?family=Open+Sans);
+ @import url(http://fonts.googleapis.com/css?family=Raleway);
+
+.todo-list > li {
+  border-radius: 2px;
+  padding: 14px;
+  background: transparent;
+  margin-bottom: 0px;
+  border-left: 1px solid transparent;
+  color: #444;
+  border-bottom: 1px solid #37B3B3;
+  cursor: pointer;
+}
+.todo-list > li:hover {
+  background: #4DDCDC ;
+}
+.tasks tr td{
+  padding: 12px !important;
+}
+
+/*.direct-chat-messages {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+  padding: 10px;
+  height: 390px;
+  overflow: auto;
+}
+.direct-chat-contacts {
+  -webkit-transform: translate(101%, 0);
+  -ms-transform: translate(101%, 0);
+  -o-transform: translate(101%, 0);
+  transform: translate(101%, 0);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 390px;
+  width: 100%;
+  background: #fff;
+  color: #fff;
+  overflow: auto;
+}*/
+
+
+.panel-heading, h1, h2, h3, h4, h5 {
+    font-family: 'Raleway', sans-serif !important;
+    color: #555;
+}
+.BorderBottom{
+  border-bottom: 1px solid #666;
+  padding-bottom: 10px;
+}
+
+.flightform{
+  border-bottom: 1px solid #666;
+  padding-bottom: 25px;
+  display: inline-block;
+  width: 100%;
+}
+.flightform input{
+  border: 0px !important;
+  border-bottom: 1px solid #ccc !important;
+  padding: 10px;
+  width: 60%;
+  margin-top: 10px;
+}
+.flightform input:focus{
+  border-bottom: 2px solid green !important;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.BorderRight{
+  border-right: 1px solid #ccc;
+  background: #ffffff;
+  margin-left: 0;
+}
+
+
+/*Custom CSS*/
+
+.select {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  font-size: 16px;
+  color: #222d32;
+  width: 220px;
+  height: 40px;
+}
+
+.select-styled {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  padding: 8px 15px;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  border: 1px solid #ccc;
+}
+.select-styled:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border: 7px solid transparent;
+  border-color: #ccc transparent transparent transparent;
+  position: absolute;
+  top: 16px;
+  right: 10px;
+}
+.select-styled:hover {
+  background-color: #f0f0f0;
+}
+.select-styled:active, .select-styled.active {
+  background-color: #fff;
+}
+.select-styled:active:after, .select-styled.active:after {
+  top: 9px;
+  border-color: transparent transparent #222d32 transparent;
+}
+
+.select-options {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: #fff;
+}
+.select-options li {
+  margin: 0;
+  padding: 12px 0;
+  text-indent: 15px;
+  border-top: 1px solid #222d32;
+  -moz-transition: all 0.15s ease-in;
+  -o-transition: all 0.15s ease-in;
+  -webkit-transition: all 0.15s ease-in;
+  transition: all 0.15s ease-in;
+}
+.select-options li:hover {
+  color: #222d32;
+  background: #f0f0f0;
+}
+.select-options li[rel="hide"] {
+  display: none;
+}

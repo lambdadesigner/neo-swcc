@@ -851,6 +851,11 @@ div.dataTables_wrapper {
 }
 a.paginate_button.current {
     background: linear-gradient(to bottom,#FF565C 0%, #FF565C 100%) !important;
+    color:#fff !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current
+{
+  color:#fff !important;
 }
 .next{
   background-color: #3C8DBC;
