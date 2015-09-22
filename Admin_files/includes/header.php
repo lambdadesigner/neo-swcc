@@ -174,11 +174,11 @@ $url = basename($_SERVER['REQUEST_URI']);
 						</li>
 						<li class="treeview <?php if($url=="AdminAuditorium" || $url=="AdminClassroom"){?>active<?php } ?>">
 							<a href="#">
-								<i class="fa fa-bars"></i> <span>Booking Status</span> <i class="fa fa-angle-left pull-right"></i>
+								<i class="fa fa-bars"></i> <span><?php echo $lang['Booking Status'];?></span> <i class="fa fa-angle-left pull-right"></i>
 							</a>
 							<ul class="treeview-menu">
-								<li <?php if($url=="AdminAuditorium"){?>class="active"<?php } ?>><a href="AdminAuditorium"><i class="fa fa-university"></i> Auditorium Status</a></li>
-								<li <?php if($url=="AdminClassroom"){?>class="active"<?php } ?>><a href="AdminClassroom"><i class="fa fa-leaf"></i> Classroom Status</a></li>
+								<li <?php if($url=="AdminAuditorium"){?>class="active"<?php } ?>><a href="AdminAuditorium"><i class="fa fa-university"></i><?php echo $lang['Auditorium Booking Status']?></a></li>
+								<li <?php if($url=="AdminClassroom"){?>class="active"<?php } ?>><a href="AdminClassroom"><i class="fa fa-leaf"></i><?php echo $lang['Class Room Booking Status'] ?></a></li>
 							</ul>
 						</li>
 						<li <?php if($url=="AdminSchedules"){?>class="active"<?php } ?>>

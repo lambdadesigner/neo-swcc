@@ -31,12 +31,12 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 		        <!-- Content Header (Page header) -->
 		        <section class="content-header">
 		          <h1>
-		            Dashboard
-		            <small>Control panel</small>
+		            <?php echo $lang["dashboard"];?>
+		            <!-- <small>Control panel</small> -->
 		          </h1>
 		          <ol class="breadcrumb">
-		            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		            <li class="active">Dashboard</li>
+		            <li><a href="#"><i class="fa fa-dashboard"></i> <?php echo $lang["Home"];?></a></li>
+		            <li class="active"><?php echo $lang["dashboard"];?></li>
 		          </ol>
 		        </section>
 
@@ -861,7 +861,7 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 					</script>
 					<script src='http://assets.codepen.io/assets/common/stopExecutionOnTimeout.js?t=1'></script>
 					<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
-					<!--<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>-->
+					<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
 					<script>
 					/*var $currentPopover = null;
 					  $(document).on('shown.bs.popover', function (ev) {
