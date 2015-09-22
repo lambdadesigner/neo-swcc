@@ -26,8 +26,8 @@
     <script src="assets/plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
     <!-- FastClick -->
     <script src="assets/plugins/fastclick/fastclick.min.js" type="text/javascript"></script>
-    <!-- Swcc 
-    <script src="assets/dist/js/app.js" type="text/javascript"></script>-->
+    <!-- Swcc -->
+    <script src="assets/dist/js/app.js" type="text/javascript"></script>
     <!-- dashboard -->
     <script src="assets/dist/js/pages/dashboard.js" type="text/javascript"></script>
     <!-- AdminLTE for demo purposes -->

@@ -149,8 +149,8 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 			<div class="control-sidebar-bg"></div>
 		</div><!-- ./wrapper -->
 	
-		<!-- Swcc App -->
-		<script src="assets/dist/js/app.min.js" type="text/javascript"></script>
+		<!-- Swcc App 
+		<script src="assets/dist/js/app.min.js" type="text/javascript"></script>-->
 		<!-- Swcc for demo purposes -->
 		<script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
 		<!-- Page level javascript -->
