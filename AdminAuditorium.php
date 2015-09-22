@@ -59,7 +59,7 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 												<th><input type="text" class="form-control" placeholder="End Time" disabled></th>
 												
 											</tr>
-											<tr class="filters1">
+											<tr class="filters1" style="background-color:#1CAF9A;">
 												<th>S.No</th>
 												<th>Auditorium Number</th>
 												<th>Booking Date</th>

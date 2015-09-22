@@ -47,7 +47,7 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 												
 											</tr>
 
-											<tr class="filters1" >
+											<tr class="filters1" style="background-color:#1CAF9A;">
 												<th>S.No</th>
 												<th>Class Num</th>
 												<th>Booked Date</th>
@@ -76,7 +76,7 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 									<div class="container">
 									 
 									  <!-- Trigger the modal with a button -->
-									  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Class Room Booking</button>
+									  <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Class Room Booking</button> -->
 
 									  <!-- Modal -->
 									  <div class="modal fade" id="myModal" role="dialog">
