@@ -857,6 +857,6 @@ a.paginate_button.current {
 {
   color:#fff !important;
 }
-.next{
+.next, .previous{
   background-color: #3C8DBC;
 }
