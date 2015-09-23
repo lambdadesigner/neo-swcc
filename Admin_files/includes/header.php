@@ -191,14 +191,24 @@ $url = basename($_SERVER['REQUEST_URI']);
 								<i class="fa fa-pencil-square-o"></i> <span><?php echo $lang["examinations"];?></span>
 							</a>
 						</li>
-						<li class="treeview <?php if($url=="AdminModuleCategory" || $url=="AdminModules" || $url=="AdminItdModule"){?>active<?php } ?>">
+						<li class="treeview <?php if(false !== strpos($url,AdminModuleCategory) || false !== strpos($url,AdminModules) || false !== strpos($url,AdminItdModule)){?>active<?php } ?>">
 							<a href="#">
-								<i class="fa fa-bars"></i> <span>Modules</span> <i class="fa fa-angle-left pull-right"></i>
+								<i class="fa fa-table"></i> <span>Modules</span> <i class="fa fa-angle-left pull-right"></i>
 							</a>
 							<ul class="treeview-menu">
-								<li <?php if($url=="AdminModuleCategory"){?>class="active"<?php } ?>><a href="AdminModuleCategory"><i class="fa fa-university"></i>Modules Category</a></li>
-								<li <?php if($url=="AdminModules"){?>class="active"<?php } ?>><a href="AdminModules"><i class="fa fa-university"></i>Regular Modules</a></li>
-								<li <?php if($url=="AdminItdModule"){?>class="active"<?php } ?>><a href="AdminItdModule"><i class="fa fa-leaf"></i>ITD Modules</a></li>
+								<li <?php if(false !== strpos($url,AdminModuleCategory)){?>class="active"<?php } ?>><a href="AdminModuleCategory"><i class="fa fa-pencil"></i>Modules Category</a></li>
+								<li <?php if(false !== strpos($url,AdminModules)){?>class="active"<?php } ?>><a href="AdminModules"><i class="fa fa-tasks"></i>Regular Modules</a></li>
+								<li <?php if(false !== strpos($url,AdminItdModule)){?>class="active"<?php } ?>><a href="AdminItdModule"><i class="fa fa-tasks"></i>ITD Modules</a></li>
+							</ul>
+						</li>
+						<li class="treeview <?php if($url=="AdminAuditorium" || $url=="AdminClassroom"){?>active<?php } ?>">
+							<a href="#">
+								<i class="fa fa-bars"></i> <span>Marks</span> <i class="fa fa-angle-left pull-right"></i>
+							</a>
+							<ul class="treeview-menu">
+								<li <?php if($url=="AdminMarks"){?>class="active"<?php } ?>><a href="AdminMarks"><i class="fa fa-university"></i>Marks</a></li>
+								<li <?php if($url=="AdminSCMarks"){?>class="active"<?php } ?>><a href="AdminSCMarks"><i class="fa fa-university"></i>ShortTerm Course Marks</a></li>
+								<li <?php if($url==""){?>class="active"<?php } ?>><a href="AdminItdModule"><i class="fa fa-leaf"></i>Marks Courses</a></li>
 							</ul>
 						</li>						
 					</ul>
