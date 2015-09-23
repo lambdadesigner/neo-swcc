@@ -191,6 +191,16 @@ $url = basename($_SERVER['REQUEST_URI']);
 								<i class="fa fa-pencil-square-o"></i> <span><?php echo $lang["examinations"];?></span>
 							</a>
 						</li>
+						<li class="treeview <?php if($url=="AdminModuleCategory" || $url=="AdminModules" || $url=="AdminItdModule"){?>active<?php } ?>">
+							<a href="#">
+								<i class="fa fa-bars"></i> <span>Modules</span> <i class="fa fa-angle-left pull-right"></i>
+							</a>
+							<ul class="treeview-menu">
+								<li <?php if($url=="AdminModuleCategory"){?>class="active"<?php } ?>><a href="AdminModuleCategory"><i class="fa fa-university"></i>Modules Category</a></li>
+								<li <?php if($url=="AdminModules"){?>class="active"<?php } ?>><a href="AdminModules"><i class="fa fa-university"></i>Regular Modules</a></li>
+								<li <?php if($url=="AdminItdModule"){?>class="active"<?php } ?>><a href="AdminItdModule"><i class="fa fa-leaf"></i>ITD Modules</a></li>
+							</ul>
+						</li>						
 					</ul>
 				</section>
 				<!-- /.sidebar -->
