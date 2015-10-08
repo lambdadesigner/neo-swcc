@@ -58,51 +58,118 @@ if(isset($_POST['update'])){
 						<div class="panel-body">
 							<div class="row">
 								<div class="panel filterable">
-									<div class="panel-heading">
-										<h3 class="panel-title text-red"><i class="fa fa-pencil fa-lg"></i> Marks</h3>
-										
-										
-										
-									</div>
 									<?php
 										$sql = "SELECT * FROM MARKS WHERE TestID ='$TestID' AND StudentID ='$StudentID'";
 										$result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
 										$row = sqlsrv_fetch_array($result);
 									?>
-									<!-- Content Here-->
-									<form  action="" method="POST">
-									<div class="col-md-8">
-									<label class="control-label">Test ID </label>
-									<input maxlength="100" type="text" required="required"  name="TestID" id="TestID" class="form-control" placeholder="Enter Test ID" value="<?php echo $TestID ;?>"  />
+
+									<!-- Add Marks Start -->
+									<div class="row">
+										<div class="col-md-6 col-md-offset-3">
+											<div class="modals box box-default" id="myModalss">														  
+											    <div class="modal-content">
+											      	<div class="modal-header">									        
+											        	<h3 class="modal-title text-red" id="myModalLabel"><i class="fa fa-pencil fa-lg"></i> Edit Marks</h3>
+											      	</div><br>
+													<div class="row">
+														<div class="col-md-3 text-right">
+															Test ID*
+														</div>
+														<div class="col-md-8">															
+															<input maxlength="100" type="text" required="required"  name="TestID" id="TestID" class="form-control" placeholder="Enter Test ID" value="<?php echo $TestID ;?>"  />
+														</div>
+													</div><br>
+											      	<div class="row">
+														<div class="col-md-3 text-right">
+															Student ID*
+														</div>
+														<div class="col-md-8">									
+															<input maxlength="100" type="text" required="required"  name="StudentID" id="StudentID" class="form-control" placeholder="Enter Student ID" value="<?php echo $StudentID ;?>"  />
+														</div>
+													</div><br>
+													<div class="row">
+														<div class="col-md-3 text-right">
+															Marks*
+														</div>
+														<div class="col-md-8">															
+															<input maxlength="100" type="text" required="required"  name="Marks" id="Marks" class="form-control" placeholder="Enter Marks" value="<?php echo $row['Marks'];?>"  />
+														</div>
+													</div><br>
+													<div class="row">
+														<div class="col-md-3 text-right">
+															User ID*
+														</div>
+														<div class="col-md-8">										
+															<input maxlength="100" type="text" required="required"  name="UserID" id="UserID" class="form-control" placeholder="Enter User ID" value="<?php echo $row['UserID'];?>"  />
+														</div>
+													</div><br>
+													<div class="row">
+														<div class="col-md-3 text-right">
+															Instuctor ID*
+														</div>
+														<div class="col-md-8">
+															<input maxlength="100" type="text" required="required"  name="InstructorID" id="InstructorID" class="form-control" placeholder="Enter Instructor ID" value="<?php echo $row['InstructorID'];?>"  />
+														</div>
+													</div>
+													<div class="modal-footer">
+														<input type="submit" name="update" id="update" value="Update" class="btn btn-success btn-lg pull-right">
+													</div>
+											    </div>
+											</div>
+										</div>
 									</div>
-									
-									<div class="col-md-8">
-									<label class="control-label">Student ID</label>
-									<input maxlength="100" type="text" required="required"  name="StudentID" id="StudentID" class="form-control" placeholder="Enter Student ID" value="<?php echo $StudentID ;?>"  />
-									</div>
-									
-									<div class="col-md-8">
-									<label class="control-label">Marks</label>
-									<input maxlength="100" type="text" required="required"  name="Marks" id="Marks" class="form-control" placeholder="Enter Marks" value="<?php echo $row['Marks'];?>"  />
-									</div>
-									
-									<div class="col-md-8">
-									<label class="control-label">User ID</label>
-									<input maxlength="100" type="text" required="required"  name="UserID" id="UserID" class="form-control" placeholder="Enter User ID" value="<?php echo $row['UserID'];?>"  />
-									</div>
-									
-									<div class="col-md-8">
-									<label class="control-label">Instructor ID</label>
-									<input maxlength="100" type="text" required="required"  name="InstructorID" id="InstructorID" class="form-control" placeholder="Enter Instructor ID" value="<?php echo $row['InstructorID'];?>"  />
-									</div>
-									
-									<div class="col-md-8">
-																														
-									<input type="submit" name="update" id="update" value="Update" class="btn btn-success btn-lg pull-right">						
-									</div>
-									
-									</form>
-									<!-- End Content Here-->
+									<!-- End AddMarks -->
+
+
+
+
+
+
+									<?php /*?>
+										<div class="panel-heading">
+											<h3 class="panel-title text-red"><i class="fa fa-pencil fa-lg"></i> Marks</h3>
+										</div>
+										<?php
+											$sql = "SELECT * FROM MARKS WHERE TestID ='$TestID' AND StudentID ='$StudentID'";
+											$result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+											$row = sqlsrv_fetch_array($result);
+										?>
+										<!-- Content Here-->
+										<form  action="" method="POST">
+										<div class="col-md-8">
+										<label class="control-label">Test ID </label>
+										<input maxlength="100" type="text" required="required"  name="TestID" id="TestID" class="form-control" placeholder="Enter Test ID" value="<?php echo $TestID ;?>"  />
+										</div>
+										
+										<div class="col-md-8">
+										<label class="control-label">Student ID</label>
+										<input maxlength="100" type="text" required="required"  name="StudentID" id="StudentID" class="form-control" placeholder="Enter Student ID" value="<?php echo $StudentID ;?>"  />
+										</div>
+										
+										<div class="col-md-8">
+										<label class="control-label">Marks</label>
+										<input maxlength="100" type="text" required="required"  name="Marks" id="Marks" class="form-control" placeholder="Enter Marks" value="<?php echo $row['Marks'];?>"  />
+										</div>
+										
+										<div class="col-md-8">
+										<label class="control-label">User ID</label>
+										<input maxlength="100" type="text" required="required"  name="UserID" id="UserID" class="form-control" placeholder="Enter User ID" value="<?php echo $row['UserID'];?>"  />
+										</div>
+										
+										<div class="col-md-8">
+										<label class="control-label">Instructor ID</label>
+										<input maxlength="100" type="text" required="required"  name="InstructorID" id="InstructorID" class="form-control" placeholder="Enter Instructor ID" value="<?php echo $row['InstructorID'];?>"  />
+										</div>
+										
+										<div class="col-md-8">
+																															
+										<input type="submit" name="update" id="update" value="Update" class="btn btn-success btn-lg pull-right">						
+										</div>
+										
+										</form>
+										<!-- End Content Here-->
+									<?php */?>
 								</div>
 							</div>
 						</div>

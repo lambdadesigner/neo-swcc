@@ -12,7 +12,7 @@ include('../includes/database.php');
  if($row_count > 0){
 	 echo "Exam Already Added";
  }else{
-	 echo $sql = "INSERT INTO Tests (TestID,ModuleID,CycleID,MaxMarks,TestName) VALUES('".$testId."','".$module."','".$CycleId."','".$MaxMarks."','".$testName."')"; exit;
+	 echo $sql = "INSERT INTO Tests (TestID,ModuleID,CycleID,MaxMarks,TestName) VALUES('".$testId."','".$module."','".$CycleId."','".$MaxMarks."','".$testName."')"; //exit;
      $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
 	 echo "Examination Added successfully";
  }

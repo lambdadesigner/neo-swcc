@@ -22,7 +22,7 @@ if($_POST['ModuleType']=="Modules")
 
 if($_POST['ModuleType']=="ItdModules")
 {	
-	$Itd_sqls = "INSERT INTO ITD_Modules(ModuleID,ModuleName,ModuleCode,ModuleWeight,ModuleCreditHours,IsOrientation,IsOpenDay) VALUES('".$_POST['ModuleId']."','".$_POST['ModuleName']."','".$_POST['ModuleCode']."','".$_POST['ModuleWeight']."','".$_POST['ModuleCreditHours']."','".$_POST['IsOrientation']."','".$_POST['IsOpenDay']."')";
+	echo $Itd_sqls = "INSERT INTO ITD_Modules(ModuleName,ModuleCode,ModuleColor,ModuleWeight,ModuleCreditHours,IsOrientation,IsOpenDay) VALUES('".$_POST['ModuleName']."','".$_POST['ModuleCode']."','".$_POST['ModuleColor']."','".$_POST['ModuleWeight']."','".$_POST['ModuleCreditHours']."','".$_POST['IsOrientation']."','".$_POST['IsOpenDay']."')"; //exit;
 	$Itd_result = sqlsrv_query( $conn, $Itd_sqls ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
 
 	header('location:AdminItdModule?err=success');

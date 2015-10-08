@@ -62,51 +62,58 @@ if($_GET['action']=="delete")
 										<?php } ?>
 										<div class="pull-right">
 											<!-- <button class="btn btn-xs btn-filter"><span class="glyphicon glyphicon-filter filterbutton"></span> Filter</button> -->
-											<button type="button" class="btn btn-primary" id="justs">
-		  										<span id="addd">Add</span><span id="vie" style="display:none">View</span> Holiday
+											<button type="button" class="btn btn-default" id="justs">
+		  										<span id="addd"><i class="fa fa-plus"></i> Add</span><span id="vie" style="display:none"><i class="fa fa-eye"></i> View</span> Holiday
 											</button>											
 										</div>
 										<div id="myElem" class="alert alert-success" role="alert" style="display:none;" align="center">Holiday Category</div>	
-									</div>									
-									<table class="table table-striped" id="Holidays">
-										<thead>
-											<!-- <tr class="filters" style="display:none">
-												<th><input type="text" class="form-control" placeholder="Auditorium Number" disabled></th>
-												<th><input type="text" class="form-control" placeholder="Booking Date" disabled></th>
-												<th><input type="text" class="form-control" placeholder="Booked By" disabled></th>
-												<th><input type="text" class="form-control" placeholder="Start Time" disabled></th>
-												<th><input type="text" class="form-control" placeholder="End Time" disabled></th>
-												
-											</tr> -->
-											<tr class="filters1" style="background-color:#3C8DBC;">
-												<th>S.No</th>
-												<th>Holiday ID</th>
-												<th>Holiday Name</th>
-												<th>Start Date</th>
-												<th>End Date</th>
-												<th>Is Teacher Holiday</th>
-												<th>Is Annual Holiday</th>
-												<th>Edit</th>
-												<th>Delete</th>												
-											</tr>
-										</thead>
-										<tbody>
-											<?php $jk=1; while($Holiday_row = sqlsrv_fetch_array($Holidays_result)){ ?>
-												<tr>
-													<td><?php echo $jk;?></td>
-													<td><?php echo $Holiday_row['HolidayID']?></td>
-													<td><?php echo $Holiday_row['HolidayName']?></td>
-													<td><?php echo date_format($Holiday_row['FromDate'],"Y-m-d"); ?></td>
-													<td><?php echo date_format($Holiday_row['ToDate'],"Y-m-d"); ?></td>
-													<td><?php echo $Holiday_row['IsTeacherHoliday']; ?></td>
-													<td><?php echo $Holiday_row['IsAnnualHoliday']; ?></td>
-													<!-- <td><a data-toggle="modal" data-target="#myModal<?php echo $jk;?>" style="cursor:pointer">Edit</a> </td> -->
-													<td><a href="Holidays?action=Edit&Holidayid=<?php echo $Holiday_row['HolidayID'];?>" style="cursor:pointer">Edit</a> </td>
-													<td><a onClick="var q = confirm('Are you sure you want to delete selected record?'); if (q) { window.location = 'Holidays?action=delete&Holidayid=<?php echo $Holiday_row['HolidayID'];?>'; return false;}" style="cursor:pointer">Delete</a> </td>
+									</div>	<br>		
+
+									<div class="panel-body border">						
+										<table class="table table-striped" id="Holidays">
+											<thead>
+												<tr class="filters">
+													<th>S.No</th>
+													<th><input type="text" class="form-control" placeholder="Holiday ID" ></th>
+													<th><input type="text" class="form-control" placeholder="Holiday Name" ></th>
+													<th><input type="text" class="form-control" placeholder="Start Date" ></th>
+													<th><input type="text" class="form-control" placeholder="End Date" ></th>
+													<th><input type="text" class="form-control" placeholder="Is Teacher Holiday" ></th>
+													<th><input type="text" class="form-control" placeholder="Is Annual Holiday" ></th>
+													<th>Edit</th>
+													<th>Delete</th>
 												</tr>
-											<?php $jk++; }?>																						
-										</tbody>
-									</table>
+												<!-- <tr class="filters1" style="background-color:#3C8DBC;">
+													<th>S.No</th>
+													<th>Holiday ID</th>
+													<th>Holiday Name</th>
+													<th>Start Date</th>
+													<th>End Date</th>
+													<th>Is Teacher Holiday</th>
+													<th>Is Annual Holiday</th>
+													<th>Edit</th>
+													<th>Delete</th>												
+												</tr> -->
+											</thead>
+											<tbody>
+												<?php $jk=1; while($Holiday_row = sqlsrv_fetch_array($Holidays_result)){ ?>
+													<tr>
+														<td><?php echo $jk;?></td>
+														<td><?php echo $Holiday_row['HolidayID']?></td>
+														<td><?php echo $Holiday_row['HolidayName']?></td>
+														<td><?php echo date_format($Holiday_row['FromDate'],"Y-m-d"); ?></td>
+														<td><?php echo date_format($Holiday_row['ToDate'],"Y-m-d"); ?></td>
+														<td><?php echo $Holiday_row['IsTeacherHoliday']; ?></td>
+														<td><?php echo $Holiday_row['IsAnnualHoliday']; ?></td>
+														<!-- <td><a data-toggle="modal" data-target="#myModal<?php echo $jk;?>" style="cursor:pointer">Edit</a> </td> -->
+														<td><a href="Holidays?action=Edit&Holidayid=<?php echo $Holiday_row['HolidayID'];?>" style="cursor:pointer">Edit</a> </td>
+														<td><a onClick="var q = confirm('Are you sure you want to delete selected record?'); if (q) { window.location = 'Holidays?action=delete&Holidayid=<?php echo $Holiday_row['HolidayID'];?>'; return false;}" style="cursor:pointer">Delete</a> </td>
+													</tr>
+												<?php $jk++; }?>																						
+											</tbody>
+										</table>
+									</div>
+
 									<style type="text/css">									
 									.col-md-3.text-right{
 										padding-top: 18px;
@@ -156,7 +163,7 @@ if($_GET['action']=="delete")
 															Select Holiday For Instructor
 														</div>
 														<div class="col-md-8 styled-select">															
-															<select id="IsTeach" name="IsTeach" style="width:500px;">
+															<select id="IsTeach" name="IsTeach" style="width:100%;">
 																<option value="">Select Holiday For Instructor </option>
 																<option value="1">Yes</option>
 																<option value="0">No</option>
@@ -168,7 +175,7 @@ if($_GET['action']=="delete")
 															Select Annual Holiday
 														</div>
 														<div class="col-md-8 styled-select">															
-															<select id="IsAnnual" name="IsAnnual" style="width:500px;">
+															<select id="IsAnnual" name="IsAnnual" style="width:100%;">
 																<option value="">Select Annual Holiday</option>
 																<option value="1">Yes</option>
 																<option value="0">No</option>
@@ -176,7 +183,7 @@ if($_GET['action']=="delete")
 														</div>
 													</div><br>
 													<div class="modal-footer">
-													<button type="submit" class="btn btn-primary"  data-dismiss="modal" id="AddCategory">Submit</button>
+													<button type="submit" class="btn btn-default"  data-dismiss="modal" id="AddCategory">Submit</button>
 													</div>
 											    </div>
 											  <!-- </div> -->
@@ -222,7 +229,7 @@ if($_GET['action']=="delete")
 									<div class="panel-heading">										
 										<div class="pull-right">
 											<!-- <button class="btn btn-xs btn-filter"><span class="glyphicon glyphicon-filter filterbutton"></span> Filter</button> -->
-											<a href="Holidays" class="btn btn-primary">View</span> Holiday</a>											
+											<a href="Holidays" class="btn btn-default"><i class="fa fa-eye"></i> View</span> Holiday</a>											
 										</div>
 										<div id="myElem" class="alert alert-success" role="alert" style="display:none;" align="center">Holiday Category</div>	
 									</div>	
@@ -253,7 +260,7 @@ if($_GET['action']=="delete")
 														<div class="col-md-8">															
 															<input type="text" id="StartDate" name="StartDate" placeholder="Start Date" class="input inputpickertext" data-toggle="tooltip" data-placement="right" title="Start Date" required style="width:100%;" value="<?php echo date_format($Holiday1_row['FromDate'],"Y-m-d");?>">
 														</div>
-													</div>
+													</div><br>
 													<div class="row">
 														<div class="col-md-3 text-right">
 															End Date<i class="fa fa-star text-danger"></i>
@@ -267,7 +274,7 @@ if($_GET['action']=="delete")
 															Select Holiday For Instructor
 														</div>
 														<div class="col-md-8 styled-select">															
-															<select id="IsTeach" name="IsTeach" style="width:500px;">
+															<select id="IsTeach" name="IsTeach" style="width:100%;">
 																<option value="">Select Holiday For Instructor </option>
 																<option value="1">Yes</option>
 																<option value="0">No</option>
@@ -282,13 +289,13 @@ if($_GET['action']=="delete")
 								                            }		
 															</script>
 														</div>
-													</div>
+													</div><br>
 													<div class="row">
 														<div class="col-md-3 text-right">
 															Select Annual Holiday
 														</div>
 														<div class="col-md-8 styled-select">															
-															<select id="IsAnnual" name="IsAnnual" style="width:500px;">
+															<select id="IsAnnual" name="IsAnnual" style="width:100%;">
 																<option value="">Select Annual Holiday</option>
 																<option value="1">Yes</option>
 																<option value="0">No</option>
@@ -305,7 +312,7 @@ if($_GET['action']=="delete")
 														</div>
 													</div><br>
 													<div class="modal-footer">
-													<button type="submit" class="btn btn-primary"  data-dismiss="modal" id="AddCategory">Submit</button>
+													<button type="submit" class="btn btn-default"  data-dismiss="modal" id="AddCategory">Submit</button>
 													</div>
 											    </div>
 											  <!-- </div> -->
@@ -397,7 +404,7 @@ if($_GET['action']=="delete")
 								</div>															
 						    </div>	
 					 	    <div class="modal-footer">				 	    	
-					 	    	<button type="submit" class="btn btn-primary" id="EditHoliday">Update</button>
+					 	    	<button type="submit" class="btn btn-default" id="EditHoliday">Update</button>
 						    </div>			  
 						</form>
 				  	</div>

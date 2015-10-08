@@ -113,7 +113,7 @@ if($_GET['action']=="delete" && $_GET['Instructorid']!="")
 																	<td><?php echo $row['Mobile']?></td>
 																	<!-- <td><a data-toggle="modal" data-target="#myModal<?php echo $ii;?>" style="cursor:pointer">Edit</a> </td> -->
 																	<td><a href="AllProfiles?action=Edit&prof=Student&Mdl=<?php echo $row['StudentID'];?>" style="cursor:pointer">Edit</a> </td>
-																	<td><a  onClick="var q = confirm('Are you sure you want to delete selected record?'); if (q) { window.location = 'AllProfiles?action=delete&Studentid=<?php echo $row['StudentID'];?>'; return false;}" style="cursor:pointer">Delete</a> </td>
+																	<td><a  onClick="var q = confirm('Are you sure you want to delete selected record?'); if (q) { window.location = 'AllProfilesInst?action=delete&Studentid=<?php echo $row['StudentID'];?>'; return false;}" style="cursor:pointer">Delete</a> </td>
 																</tr>
 															<?php $ii++; }?>
 															</tbody>
@@ -123,14 +123,17 @@ if($_GET['action']=="delete" && $_GET['Instructorid']!="")
 			                                        <div role="tabpanel" class="tab-pane active" id="PInstructor">
 			                                        	<table class="table table-striped" id="marks1">
 															<thead>
-																<tr class="filters" style="display:none;">
-																	<th><input type="text" class="form-control" placeholder="Instructor ID" disabled></th>
-																	<th><input type="text" class="form-control" placeholder="Instructor Name" disabled></th>
-																	<th><input type="text" class="form-control" placeholder="Employee Id" disabled></th>
-																	<th><input type="text" class="form-control" placeholder="Form Id" disabled></th>
-																	<th><input type="text" class="form-control" placeholder="Process" disabled></th>													
+																<tr class="filters">
+																	<th>S.No</th>
+																	<th><input type="text" class="form-control" placeholder="Instructor ID" ></th>
+																	<th><input type="text" class="form-control" placeholder="Instructor Name" ></th>
+																	<th><input type="text" class="form-control" placeholder="Employee Id" ></th>
+																	<th><input type="text" class="form-control" placeholder="Form Id" ></th>
+																	<th><input type="text" class="form-control" placeholder="Process" ></th>	
+																	<th>Edit</th>
+																	<th>Delete</th>												
 																</tr>
-																<tr>
+																<!-- <tr style="display:none;">
 																	<th>S.No</th>
 																	<th>Instructor ID</th>
 																	<th>Instructor Name</th>
@@ -139,7 +142,7 @@ if($_GET['action']=="delete" && $_GET['Instructorid']!="")
 																	<th>Process</th>
 																	<th>Edit</th>
 																	<th>Delete</th>
-																</tr>
+																</tr> -->
 															</thead>
 															<tbody>
 																<?php $ij =1; while($Inst_row = sqlsrv_fetch_array($Instresult)){ ?>
@@ -151,7 +154,7 @@ if($_GET['action']=="delete" && $_GET['Instructorid']!="")
 																		<td><?php echo $Inst_row['FormID']?></td>
 																		<td><?php echo $Inst_row['processID']?></td>
 																		<td><a href="AllProfilesInst?action=Edit&prof=Instructor&Mdl=<?php echo $Inst_row['InstructorID'];?>" style="cursor:pointer">Edit</a> </td>
-																		<td><a onClick="var q = confirm('Are you sure you want to delete selected record?'); if (q) { window.location = 'AllProfiles?action=delete&Instructorid=<?php echo $Inst_row['InstructorID'];?>'; return false;}" style="cursor:pointer">Delete</a> </td>
+																		<td><a onClick="var q = confirm('Are you sure you want to delete selected record?'); if (q) { window.location = 'AllProfilesInst?action=delete&Instructorid=<?php echo $Inst_row['InstructorID'];?>'; return false;}" style="cursor:pointer">Delete</a> </td>
 																	</tr>
 																<?php $ij++; }?>
 															</tbody>
@@ -170,6 +173,24 @@ if($_GET['action']=="delete" && $_GET['Instructorid']!="")
 											}
 											.datepicker{z-index:1151 !important;}
 											</style>
+											<?php
+												if(isset($_POST['AddInstructor'])){
+												  $InstructorID = $_POST['InstructorID'];	
+												  $EmployeeID = $_POST['EmployeeID'];
+												  $InstructorName = $_POST['InstructorName'];
+												  $FormID = $_POST['FormID'];
+												  $processID = $_POST['processID'];
+												  $Abr = $_POST['Abr'];
+												
+												$sql = "INSERT INTO Instructors (InstructorID,EmployeeID,InstructorName,FormID,processID,Abr)VALUES('".$InstructorID."','".$EmployeeID."','".$InstructorName."','".$FormID."','".$processID."','".$Abr."')";
+												$result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+												header('Location:AllProfilesInst');				  
+						  
+												}
+											
+											?>
+											
+											
 											<div class="panel-body">
 												<form name="AddInstructor" method="post" action="">
 													<!-- Modal -->
@@ -184,117 +205,64 @@ if($_GET['action']=="delete" && $_GET['Instructorid']!="")
 															      	<input type="hidden" name="scenario" id="scenario" value="addProfiles">													      	
 																	<div class="row">
 																		<div class="col-md-3 text-right">
-																			Student Id<i class="fa fa-star text-danger"></i>
+																			Instructor ID<i class="fa fa-star text-danger"></i>
 																		</div>
 																		<div class="col-md-8">															
-																			<input type="text" id="StudentId" name="StudentId" placeholder="Student Id" class="input" data-toggle="tooltip" data-placement="right" title="Student Id" required style="width:100%;">
+																			<input type="text" id="InstructorID" name="InstructorID" placeholder="Instructor ID" class="input" data-toggle="tooltip" data-placement="right" title="Instructor ID" required style="width:100%;">
 																		</div>
 																	</div>
 															      	<div class="row">
 																		<div class="col-md-3 text-right">
-																			First Name<i class="fa fa-star text-danger"></i>
+																			Employee ID<i class="fa fa-star text-danger"></i>
 																		</div>
 																		<div class="col-md-8">															
-																			<input type="text" id="FirstNameE" name="FirstNameE" placeholder="First Name En" class="input" data-toggle="tooltip" data-placement="right" title="First Name" required style="width:100%;">
-																			<input type="text" id="FirstNameA" name="FirstNameA" placeholder="First Name Ar" class="input" data-toggle="tooltip" data-placement="right" title="First Name" style="width:100%;">
+																			<input type="text" id="EmployeeID" name="EmployeeID" placeholder="Employee ID" class="input" data-toggle="tooltip" data-placement="right" title="Employee ID" style="width:100%;" value="" required>
+																			
 																		</div>
 																	</div>
 																	<div class="row">
 																		<div class="col-md-3 text-right">
-																			Second Name<i class="fa fa-star text-danger"></i>
+																			Instructor Name<i class="fa fa-star text-danger"></i>
 																		</div>
 																		<div class="col-md-8">															
-																			<input type="text" id="SecondNameE" name="SecondNameE" placeholder="Second Name En" class="input" data-toggle="tooltip" data-placement="right" title="Second Name" required style="width:100%;">
-																			<input type="text" id="SecondNameA" name="SecondNameA" placeholder="Second Name Ar" class="input" data-toggle="tooltip" data-placement="right" title="Second Name" style="width:100%;">
+																			<input type="text" id="InstructorName" name="InstructorName" placeholder="Instructor Name" class="input" data-toggle="tooltip" data-placement="right" title="Instructor Name" style="width:100%;" value="" required>
+																			
 																		</div>
 																	</div>
 																	<div class="row">
 																		<div class="col-md-3 text-right">
-																			Third Name<i class="fa fa-star text-danger"></i>
+																			Form ID<i class="fa fa-star text-danger"></i>
 																		</div>
 																		<div class="col-md-8">															
-																			<input type="text" id="ThirdNameE" name="ThirdNameE" placeholder="Third Name En" class="input" data-toggle="tooltip" data-placement="right" title="Third Name" required style="width:100%;">
-																			<input type="text" id="ThirdNameA" name="ThirdNameA" placeholder="Third Name Ar" class="input" data-toggle="tooltip" data-placement="right" title="Third Name" style="width:100%;">
+																			<input type="text" id="FormID" name="FormID" placeholder="Form ID" class="input" data-toggle="tooltip" data-placement="right" title="Form ID" style="width:100%;" value="" required>
+																			
 																		</div>
 																	</div>
 																	<div class="row">
 																		<div class="col-md-3 text-right">
-																			Last Name<i class="fa fa-star text-danger"></i>
+																			Process ID<i class="fa fa-star text-danger"></i>
 																		</div>
 																		<div class="col-md-8">															
-																			<input type="text" id="LastNameE" name="LastNameE" placeholder="Last Name En" class="input" data-toggle="tooltip" data-placement="right" title="Last Name" required style="width:100%;">
-																			<input type="text" id="LastNameA" name="LastNameA" placeholder="Last Name Ar" class="input" data-toggle="tooltip" data-placement="right" title="Last Name" style="width:100%;">
+																			<input type="number" id="processID" name="processID" placeholder="Process ID " class="input" data-toggle="tooltip" data-placement="right" title="Process ID (Enter Numbers)" style="width:100%;" value="" required >
+																			
 																		</div>
 																	</div>
 																	<div class="row">
 																		<div class="col-md-3 text-right">
-																			Student Name<i class="fa fa-star text-danger"></i>
+																			Abr<i class="fa fa-star text-danger"></i>
 																		</div>
 																		<div class="col-md-8">															
-																			<input type="text" id="StudentNameE" name="StudentNameE" placeholder="Student Name En" class="input" data-toggle="tooltip" data-placement="right" title="Student Name" required style="width:100%;">
-																			<input type="text" id="StudentNameA" name="StudentNameA" placeholder="Student Name Ar" class="input" data-toggle="tooltip" data-placement="right" title="Student Name" required style="width:100%;">
+																			<input type="text" id="Abr" name="Abr" placeholder="Abr" class="input" data-toggle="tooltip" data-placement="right" title="Abr" required style="width:100%;" value="">
+																			
 																		</div>
 																	</div><br>
-																	<div class="row">
-																		<div class="col-md-3 text-right">
-																			Student Group<i class="fa fa-star text-danger"></i>
-																		</div>
-																		<div class="col-md-8 styled-select">
-																			<?php 
-																			$Groupsql = "select * from SGroup";
-																			$Grpresult = sqlsrv_query( $conn, $Groupsql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET )); ?>					
-																			<select name="SGroupName" id="SGroupName" style="width:500px;">
-																				<option value="">Select Group Name</option>
-																				<?php while($group_row = sqlsrv_fetch_array($Grpresult)){?>
-																					<option value="<?php echo $group_row['GroupID'];?>"><?php echo $group_row['GroupName'];?></option>
-																				<?php } ?>
-																			</select>
-																		</div>
-																	</div>														
-																	<div class="row">
-																		<div class="col-md-3 text-right">
-																			Nationality<i class="fa fa-star text-danger"></i>
-																		</div>
-																		<div class="col-md-8">															
-																			<input type="text" id="NationalId" name="NationalId" placeholder="Enter National Id" class="input inputpickertext" data-toggle="tooltip" data-placement="right" title="Enter National Id" required style="width:100%;">
-																		</div>
-																	</div>
-																	<div class="row">
-																		<div class="col-md-3 text-right">
-																			Issued On<i class="fa fa-star text-danger"></i>
-																		</div>
-																		<div class="col-md-8">															
-																			<input type="text" id="Issuedate" name="Issuedate" placeholder="Issue Date" class="input inputpickertext" data-toggle="tooltip" data-placement="right" title="Issue Date" readonly required style="width:100%;">
-																		</div>
-																	</div>
-																	<div class="row">
-																		<div class="col-md-3 text-right">
-																			Birth Place<i class="fa fa-star text-danger"></i>
-																		</div>
-																		<div class="col-md-8">															
-																			<input type="text" id="BirthPlace" name="BirthPlace" placeholder="Enter Birth Place" class="input inputpickertext" data-toggle="tooltip" data-placement="right" title="Enter Birth Place" required style="width:100%;">
-																		</div>
-																	</div>
-																	<div class="row">
-																		<div class="col-md-3 text-right">
-																			Date Of Birth<i class="fa fa-star text-danger"></i>
-																		</div>
-																		<div class="col-md-8">															
-																			<input type="text" id="BirthDate" name="BirthDate" placeholder="Birth Date" class="input inputpickertext" data-toggle="tooltip" data-placement="right" title="Birth Date" readonly required style="width:100%;">
-																		</div>
-																	</div>
-																	<div class="row">
-																		<div class="col-md-3 text-right">
-																			Mobile<i class="fa fa-star text-danger"></i>
-																		</div>
-																		<div class="col-md-8">															
-																			<input type="text" id="Mobile" name="Mobile" placeholder="Enter Mobile No" class="input inputpickertext" data-toggle="tooltip" data-placement="right" title="" style="width:100%;">
-																		</div>
-																	</div><br>
-																	<br>
+																	
+																	
 																	<div class="modal-footer">
-																		<button type="submit" class="btn btn-default"  data-dismiss="modal" id="AddCategory">Submit</button>
+																		<input type="submit" class="btn btn-default"  data-dismiss="modal" id="AddInstructor" name="AddInstructor">
 																	</div>
+
+																	
 															    </div>
 															  <!-- </div> -->
 															</div>

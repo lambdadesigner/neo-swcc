@@ -10,8 +10,15 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 
 if($_GET['action']=="delete")
 {	
-	$delsql = "DELETE FROM AuditoriumBookingStatus WHERE AuditoriumNum='".$_GET['Auditid']."'";
+	$delsql = "DELETE FROM AuditoriumBookingStatus WHERE AuditoriumNum='".$_GET['Auditid']."' AND BookingDate='".$_GET['date']."'";
 	$delsql_result = sqlsrv_query( $conn, $delsql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+	header('location:AdminAuditorium');
+}
+
+if($_POST['scenario']=="editAdmAuditorium")
+{
+	echo $updatesql = "UPDATE AuditoriumBookingStatus SET AuditoriumNum='".$_POST['AuditoriumNum']."',BookingDate='".$_POST['BookingDate']."',BookedBy='".$_POST['BookedBy']."',StartTime='".$_POST['StartTime']."',EndTime='".$_POST['EndTime']."' WHERE AuditoriumNum='".$_GET['ModId']."' AND BookingDate='".$_GET['date']."'"; //exit;
+	$updatesql_result = sqlsrv_query( $conn, $updatesql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
 	header('location:AdminAuditorium');
 }
 ?>
@@ -97,9 +104,9 @@ if($_GET['action']=="delete")
 														<td><?php $StartTime = date_format($row['StartTime'], 'H:i:s'); echo $StartTime; ?></td>
 														<td><?php $EndTime = date_format($row['EndTime'], 'H:i:s'); echo $EndTime; ?></td>
 
-														<td><a href="AdminAuditorium?action=Edit&ModId=<?php echo $row['AuditoriumNum'];?>" style="cursor:pointer"> <i class="fa fa-edit fa-lg" data-toggle="tooltip" data-placement="top" title="Click to edit"></i></a> </td>
+														<td><a href="AdminAuditorium?action=Edit&ModId=<?php echo $row['AuditoriumNum'];?>&date=<?php echo date_format($row['BookingDate'],"Y-m-d");?>" style="cursor:pointer"> <i class="fa fa-edit fa-lg" data-toggle="tooltip" data-placement="top" title="Click to edit"></i></a> </td>
 														
-														<td><a onClick="var q = confirm('Are you sure you want to delete selected record?'); if (q) { window.location = 'AdminAuditorium?action=delete&Auditid=<?php echo $row['AuditoriumNum'];?>'; return false;}" style="cursor:pointer"><i class="fa fa-close text-danger"></i></a> </td>
+														<td><a onClick="var q = confirm('Are you sure you want to delete selected record?'); if (q) { window.location = 'AdminAuditorium?action=delete&Auditid=<?php echo $row['AuditoriumNum'];?>&date=<?php echo date_format($row['BookingDate'],"Y-m-d");?>'; return false;}" style="cursor:pointer"><i class="fa fa-close text-danger"></i></a> </td>
 													</tr>
 												<?php $jk++; }?>
 												</tbody>
@@ -116,13 +123,12 @@ if($_GET['action']=="delete")
 													<div class="row">
 														<div class="panel filterable">
 															<div class="panel-heading">											
-																<a href="AdminAuditorium" class="btn btn-primary pull-right"> Back</a>
-																<h3 class="panel-title text-default"><i class="fa fa-pencil fa-lg"></i> Edit Auditorium
+																<a href="AdminAuditorium" class="btn btn-default pull-right"> Back</a>
+																<h3 class="panel-title text-default">
 																	<!-- <div class="pull-right">
 																		<button class="btn btn-xs btn-filter"><span class="glyphicon glyphicon-filter filterbutton"></span> Filter</button>
 																	</div> -->
-																</h3>
-																<hr>
+																</h3><br>
 															</div>																			
 
 															<!-- Add / Edit Student Instructor -->
@@ -148,135 +154,60 @@ if($_GET['action']=="delete")
 															</style>
 
 															<?php
-																$editStudsql = "SELECT * from Schdule WHERE ModuleID='".$_GET['ModId']."'";
-																$editStudresult = sqlsrv_query( $conn, $editStudsql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
-																$EditStud_row = sqlsrv_fetch_array($editStudresult)?>
+																$editAuditsql = "SELECT * from AuditoriumBookingStatus WHERE AuditoriumNum='".$_GET['ModId']."' AND BookingDate='".$_GET['date']."'";
+																$editAuditresult = sqlsrv_query( $conn, $editAuditsql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+																$EditAudit_row = sqlsrv_fetch_array($editAuditresult);?>
 															<div class="modals" id="mySchedules">
-															  	<form name="scheduleAdd" method="post" action="AddSchedule.php">
+															  	<form name="editAuditorium" method="post">
 																    <div class="modal-content col-md-6 col-md-offset-3">
 																      	<div class="modal-header">									        
-																        	<h3 class="modal-title" id="myModalLabel">Edit Schedule</h3>
-																      	</div><br>
-																      	<input type="hidden" name="scenario" id="scenario" value="editAdmSchedule">										      	
+																        	<h3 class="modal-title" id="myModalLabel"><i class="fa fa-pencil fa-lg"></i> Edit Auditorium</h3>
+																      	</div>
+																      	<br>
+																      	<input type="hidden" name="scenario" id="scenario" value="editAdmAuditorium">										      	
 																		<div class="row">
 																			<div class="col-md-3 text-right">
-																				Module Id<i class="fa fa-star text-danger"></i>
+																				Auditorium No.<i class="fa fa-star text-danger"></i>
 																			</div>
 																			<div class="col-md-8">															
-																				<input type="text" id="ModuleId" name="ModuleId" placeholder="Module Id" class="input" data-toggle="tooltip" data-placement="right" title="Module Id" required style="width:100%;" value="<?php echo $EditStud_row['ModuleID'];?>">
+																				<input type="text" id="AuditoriumNum" name="AuditoriumNum" required="required" class="form-control" placeholder="Auditorium Number" value="<?php echo $EditAudit_row['AuditoriumNum']?>" >
 																			</div>
-																		</div>
+																		</div><br>
 																      	<div class="row">
 																			<div class="col-md-3 text-right">
-																				Schedule Date<i class="fa fa-star text-danger"></i>
+																				Booking Date<i class="fa fa-star text-danger"></i>
 																			</div>
-																			<div class="col-md-8">															
-																				<input type="text" id="ScheDate" name="ScheDate" placeholder="Schedule Date" class="input" data-toggle="tooltip" data-placement="right" title="Schedule Date" required style="width:100%;" onchange="showDay(this.value);"
-																				value="<?php echo date_format($EditStud_row['Date'],"Y-m-d");?>">														
-																			</div>
-																		</div>
-																		<div class="row">
-																			<div class="col-md-3 text-right">
-																				Day<i class="fa fa-star text-danger"></i>
-																			</div>
-																			<div class="col-md-8">															
-																				<input type="text" id="ScheDay" name="ScheDay" placeholder="Schedule Day" class="input inputpickertext" data-toggle="tooltip" data-placement="right" title="Schedule Day" readonly required style="width:100%;" value="<?php echo $EditStud_row['Day'];?>">	
+																			<div class="col-md-8">			
+																				<input class="form-control inputpickertext" type="text" id="BookingDate" name="BookingDate" placeholder="Booked Date" value="<?php echo date_format($EditAudit_row['BookingDate'],"Y-m-d");?>"/>
 																			</div>
 																		</div><br>
-																		<div class="row">
-																			<div class="col-md-3 text-right">
-																				Session Id<i class="fa fa-star text-danger"></i>
-																			</div>
-																			<div class="col-md-8 styled-select">										
-																				<select name="SchesessionId" id="SchesessionId" style="width:515px;">
-																					<option value="">Select Session ID</option>
-																					<option value="1">1</option>
-																					<option value="2">2</option>
-																					<option value="3">3</option>
-																					<option value="4">4</option>
-																					<option value="5">5</option>
-																					<option value="6">6</option>
-																				</select>				
-																				<script type="text/javascript">
-																				for(var i=0;i<document.getElementById('SchesessionId').length;i++)
-													                            {
-													            					if(document.getElementById('SchesessionId').options[i].value=="<?php echo $EditStud_row['SessionID'] ?>")
-													            					{
-													            						document.getElementById('SchesessionId').options[i].selected=true;
-													            					}
-													                            }		
-																				</script>
-																			</div>
-																		</div><br>
-																		<div class="row">
-																			<div class="col-md-3 text-right">
-																				Instuctor<i class="fa fa-star text-danger"></i>
-																			</div>
-																			<div class="col-md-8 styled-select">
-																				<?php 
-																					$Instsql = "SELECT * FROM Instructors";
-																					$Instresult = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));?>
-																				<select name="InstrucId" id="InstrucId" style="width:515px;">
-																					<option value="">Select Instructor Name</option>
-																					<?php while($group_row = sqlsrv_fetch_array($Instresult)){?>
-																						<option value="<?php echo $group_row['InstructorID'];?>"><?php echo $group_row['InstructorName'];?></option>
-																					<?php } ?>
-																				</select>
-																				<script type="text/javascript">
-																				for(var i=0;i<document.getElementById('InstrucId').length;i++)
-													                            {
-													            					if(document.getElementById('InstrucId').options[i].value=="<?php echo $EditStud_row['InstructorID'] ?>")
-													            					{
-													            						document.getElementById('InstrucId').options[i].selected=true;
-													            					}
-													                            }		
-																				</script>
-																			</div>
-																		</div><br>
-																		<div class="row">
-																			<div class="col-md-3 text-right">
-																				Group Id<i class="fa fa-star text-danger"></i>
-																			</div>
-																			<div class="col-md-8 styled-select">
-																				<?php 
-																					$grpIdsql = "SELECT * FROM SGroup";
-																					$grpIdresult = sqlsrv_query( $conn, $grpIdsql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));?>
-																				<select name="SGroupId" id="SGroupId" style="width:515px;">
-																					<option value="">Select Group Name</option>
-																					<?php while($groupId_row = sqlsrv_fetch_array($grpIdresult)){?>
-																						<option value="<?php echo $groupId_row['GroupID'];?>"><?php echo $groupId_row['GroupName'];?></option>
-																					<?php } ?>
-																				</select>
-																				<script type="text/javascript">
-																				for(var i=0;i<document.getElementById('SGroupId').length;i++)
-													                            {
-													            					if(document.getElementById('SGroupId').options[i].value=="<?php echo $EditStud_row['GroupID'] ?>")
-													            					{
-													            						document.getElementById('SGroupId').options[i].selected=true;
-													            					}
-													                            }		
-																				</script>
-																			</div>
-																		</div>	
 																		<div class="row">
 																			<div class="col-md-3 text-right">
 																				Start Time<i class="fa fa-star text-danger"></i>
 																			</div>
 																			<div class="col-md-8">															
-																				<input type="text" id="startTime" name="startTime" placeholder="Start Time" class="input inputpickertext" data-toggle="tooltip" data-placement="right"title="Start Time" readonly required style="width:100%;" value="<?php //echo $EditStud_row['StartTime'];?>">
+																				  <input class="form-control" id="single-input1" placeholder="Start Time" name="StartTime" value="<?php echo date_format($EditAudit_row['StartTime'],'H:i:s');?>">
 																			</div>
-																		</div>
+																		</div><br>
 																		<div class="row">
 																			<div class="col-md-3 text-right">
 																				End Time<i class="fa fa-star text-danger"></i>
 																			</div>
-																			<div class="col-md-8">															
-																				<input type="text" id="endTime" name="endTime" placeholder="End Time" class="input inputpickertext" data-toggle="tooltip" data-placement="right" title="End Time" readonly required style="width:100%;" value="<?php //echo $EditStud_row['EndTime'];?>">
+																			<div class="col-md-8">		
+																				  <input class="form-control" id="single-input2" placeholder="End Time" name="EndTime" value="<?php echo date_format($EditAudit_row['EndTime'],'H:i:s');?>">			
+																			</div>
+																		</div><br>
+																		<div class="row">
+																			<div class="col-md-3 text-right">
+																				Booked By<i class="fa fa-star text-danger"></i>
+																			</div>
+																			<div class="col-md-8">
+																				  <input class="form-control" id="single-input2" placeholder="Booked By" name="BookedBy" value="<?php echo $EditAudit_row['BookedBy'];?>">			
 																			</div>
 																		</div><br>
 																		<br>
 																		<div class="modal-footer">
-																			<button type="submit" class="btn btn-primary"  data-dismiss="modal" id="AddCategory">Submit</button>
+																			<button type="submit" class="btn btn-default"  data-dismiss="modal" id="AddCategory">Submit</button>
 																		</div>
 																    </div>
 																</form>
@@ -389,10 +320,10 @@ if($_GET['action']=="delete")
 			    } );
 			} );
 			$(function () {
-				  $("#datepicker").datepicker({ 
+				  $("#BookingDate").datepicker({ 
 				        autoclose: true, 
 				        todayHighlight: true
-				  }).datepicker('update', new Date());;
+				  }).datepicker('', new Date());;
 				});
 			
 			

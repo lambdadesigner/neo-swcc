@@ -276,7 +276,7 @@ if($_GET['action']=="delete")
 								<div class="row">
 									<div class="panel filterable">
 										<div class="panel-heading">											
-											<a href="AdminSchedules" class="btn btn-primary pull-right">View Schedules</a>
+											<a href="AdminSchedules" class="btn btn-default pull-right">View Schedules</a>
 											<h3 class="panel-title text-default"><i class="fa fa-pencil fa-lg"></i> Edit Schedules
 												<!-- <div class="pull-right">
 													<button class="btn btn-xs btn-filter"><span class="glyphicon glyphicon-filter filterbutton"></span> Filter</button>
@@ -436,7 +436,7 @@ if($_GET['action']=="delete")
 													</div><br>
 													<br>
 													<div class="modal-footer">
-														<button type="submit" class="btn btn-primary"  data-dismiss="modal" id="AddCategory">Submit</button>
+														<button type="submit" class="btn btn-default"  data-dismiss="modal" id="AddCategory">Submit</button>
 													</div>
 											    </div>
 											</form>
@@ -587,7 +587,7 @@ if($_GET['action']=="delete")
 								</div><br>
 								<br>
 								<div class="modal-footer">
-									<button type="submit" class="btn btn-primary"  data-dismiss="modal" id="AddCategory">Submit</button>
+									<button type="submit" class="btn btn-default"  data-dismiss="modal" id="AddCategory">Submit</button>
 								</div>		  
 							</form>
 					  	</div>

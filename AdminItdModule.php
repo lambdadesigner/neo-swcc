@@ -7,19 +7,52 @@ if($_SESSION['AdminId']==''){
 }
 $ItdModules_sql = "SELECT * FROM ITD_Modules";
 $ItdModules_result = sqlsrv_query( $conn, $ItdModules_sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+
+if($_GET['action']=="delete")
+{	
+	echo $delsql = "DELETE FROM ITD_Modules WHERE ModuleID='".$_GET['ModId']."'"; //exit;
+	$delsql_result = sqlsrv_query( $conn, $delsql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+	header('location:AdminItdModule');
+}
+
+if($_POST['scenario']=="editAdmItdModules")
+{
+	echo $updatesql = "UPDATE ITD_Modules SET ModuleName='".$_POST['ModuleName']."',ModuleCode='".$_POST['ModuleCode']."',ModuleWeight='".$_POST['ModuleWeight']."',ModuleCreditHours='".$_POST['ModuleCreditHours']."',ModuleColor='".$_POST['ModuleColor']."',IsOrientation='".$_POST['IsOrientation']."',IsOpenDay='".$_POST['IsOpenDay']."' WHERE ModuleID='".$_GET['ModId']."'"; 
+	$updatesql_result = sqlsrv_query( $conn, $updatesql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+
+	header('location:AdminItdModule');
+}
 ?>
 			<style>
-				.filterbutton {
-					float: right;
-					margin-top: 3px;
-					padding-left: 10px;
-				}
-				button.btn-filter {
-					padding: 5px 10px;
-					font-size: 15px;
-					background: #1caf9a;
-					color: white;
-				}
+			.filterbutton {
+				float: right;
+				margin-top: 3px;
+				padding-left: 10px;
+			}
+			button.btn-filter {
+				padding: 5px 10px;
+				font-size: 15px;
+				background: #1caf9a;
+				color: white;
+			}
+			.col-md-3.text-right{
+				padding-top: 18px;
+			}
+			.text-danger.fa.fa-star{
+				font-size: 7px;										
+			}
+			.datepicker{z-index:1151 !important;}
+			ul.select-options {
+				min-height: 240px;
+			}
+			.styled-select select {
+				color:#ffffff;
+			    background: #12C3AA;
+			    padding: 10px;										    
+			    font-size: 16px;
+			    line-height: 1;
+			    border: 0;
+			}
 			</style>
 			<link rel="stylesheet" type="text/css" href="assets/dist/css/bootstrap-clockpicker.min.css">
 			<!-- Content Wrapper. Contains page content -->
@@ -41,99 +74,286 @@ $ItdModules_result = sqlsrv_query( $conn, $ItdModules_sql ,array(), array( "Scro
 					<div class="panel">
 						<div class="panel-body">
 							<div class="row">
-								<div class="panel filterable">									
-									<div class="panel-heading">
-										<!-- <h3 class="panel-title">Users</h3> -->
-										<?php if($_GET['err']=="success"){?>
-											<span style="text-align:center" class="alert alert-success" id="succesd">
-												Module Successfully Added....
-											</span>
-											<script type="text/javascript">
-												setTimeout(function() { $("#succesd").fadeOut("slow"); }, 5000);
-											</script>
-										<?php } ?>
-										<div class="pull-right">
-											<!-- <button class="btn btn-xs btn-filter"><span class="glyphicon glyphicon-filter filterbutton"></span> Filter</button> -->
-											<button type="button" class="btn btn-primary" id="justs">
-		  										<span id="addd">Add</span><span id="vie" style="display:none">View</span> Module
-											</button>											
-										</div>
-										<div id="myElem" class="alert alert-success" role="alert" style="display:none;" align="center">Modules Category</div>	
-									</div>									
-									<table class="table table-striped" id="ItdModules">
-										<thead>
-											<!-- <tr class="filters" style="display:none">
-												<th><input type="text" class="form-control" placeholder="Auditorium Number" disabled></th>
-												<th><input type="text" class="form-control" placeholder="Booking Date" disabled></th>
-												<th><input type="text" class="form-control" placeholder="Booked By" disabled></th>
-												<th><input type="text" class="form-control" placeholder="Start Time" disabled></th>
-												<th><input type="text" class="form-control" placeholder="End Time" disabled></th>
-												
-											</tr> -->
-											<tr class="filters1" style="background-color:#3C8DBC;">
-												<th>S.No</th>
-												<th>Module ID</th>
-												<th>Module Name</th>
-												<th>Module Code</th>
-												<th>Module Weight</th>
-												<th>Module CreditHours</th>
-												<th>Is Orientation</th>
-												<th>Is OpenDay</th>
-											</tr>
-										</thead>
-										<tbody>
-											<?php $jk=1; while($ItdModules_row = sqlsrv_fetch_array($ItdModules_result)){ ?>
-												<tr>
-													<td><?php echo $jk;?></td>
-													<td><?php echo $ItdModules_row['ModuleID']?></td>
-													<td><?php echo $ItdModules_row['ModuleName']?></td>
-													<td><?php echo $ItdModules_row['ModuleCode']; ?></td>
-													<td><?php echo $ItdModules_row['ModuleWeight']; ?></td>
-													<td><?php echo $ItdModules_row['ModuleCreditHours']; ?></td>													
-													<td><?php echo $ItdModules_row['IsOrientation']; ?></td>
-													<td><?php echo $ItdModules_row['IsOpenDay']; ?></td>
-												</tr>
-											<?php $jk++; }?>																						
-										</tbody>
-									</table>
-
-									<div class="panel-body">
-										<form name="moduleCategory" method="post" action="AdmModulesSection.php">
-											<!-- Modal -->
-											<div class="modals" id="myModalss" style="display:none;"><br>
-											  <!-- <div class="modal-dialog" role="document"> -->
-											    <div class="modal-content">
-											      <div class="modal-header">									        
-											        <h3 class="modal-title" id="myModalLabel">ITD Modules</h3>
-											      </div>
-											      <input type="hidden" id="ModuleType" name="ModuleType" value="ItdModules">
-												  <span style="color:red">* </span>
-												  <input type="text" id="ModuleId" name="ModuleId" required="required" class="form-control" placeholder="Module Id" >					
-												  <span style="color:red">* </span>
-												  <input type="text" id="ModuleName" name="ModuleName" required="required" class="form-control" placeholder="Module Name" >				  
-												  <input type="text" id="ModuleCode" name="ModuleCode" class="form-control" placeholder="Module Code" >
-												  <span style="color:red">* </span>
-												  <input type="text" id="ModuleWeight" name="ModuleWeight" required="required" class="form-control" placeholder="Module Weight" >
-												  <span style="color:red">* </span>
-												  <input type="text" id="ModuleCreditHours" name="ModuleCreditHours" required="required" class="form-control" placeholder="Module Credit Hours" >
-												  <select id="IsOrientation" name="IsOrientation" >
-												  	<option value="">Select Orientation</option>
-												  	<option value="1">Yes</option>
-												  	<option value="0">No</option>
-												  </select><br>
-												  <select id="IsOpenDay" name="IsOpenDay" >
-												  	<option value="">Select Open</option>
-												  	<option value="1">Yes</option>
-												  	<option value="0">No</option>
-												  </select>
-												  
-											      <div class="modal-footer">
-											        <button type="submit" class="btn btn-primary"  data-dismiss="modal" id="AddCategory">Submit</button>
-											      </div>
-											    </div>
-											  <!-- </div> -->
+								<div class="panel filterable">	
+									<!-- Showing Classrooms -->
+									<?php if($_GET['action']=="" && $_GET['ModId']==""){?>								
+										<div class="panel-heading">
+											<!-- <h3 class="panel-title">Users</h3> -->
+											<?php if($_GET['err']=="success"){?>
+												<span style="text-align:center" class="alert alert-success" id="succesd">
+													Module Successfully Added....
+												</span>
+												<script type="text/javascript">
+													setTimeout(function() { $("#succesd").fadeOut("slow"); }, 5000);
+												</script>
+											<?php } ?>
+											<div class="pull-right">
+												<!-- <button class="btn btn-xs btn-filter"><span class="glyphicon glyphicon-filter filterbutton"></span> Filter</button> -->
+												<button type="button" class="btn btn-default" id="justs">
+			  										<span id="addd">Add</span><span id="vie" style="display:none">View</span> Module
+												</button>											
 											</div>
-										</form>
+											<div id="myElem" class="alert alert-success" role="alert" style="display:none;" align="center">Modules Category</div>	
+										</div>	<br>
+
+										<div class="tab-content panel-body border" id="ItdModulesRows">									
+											<table class="table table-striped" id="ItdModules">
+												<thead>
+													<tr class="filters">
+														<th>S.No</th>
+														<th><input type="text" class="form-control" placeholder="Module ID" ></th>
+														<th><input type="text" class="form-control" placeholder="Module Name" ></th>
+														<th><input type="text" class="form-control" placeholder="Module Code" ></th>
+														<th><input type="text" class="form-control" placeholder="Module Weight" ></th>
+														<th><input type="text" class="form-control" placeholder="Module CreditHours" ></th>
+														<th><input type="text" class="form-control" placeholder="Is Orientation" ></th>
+														<th><input type="text" class="form-control" placeholder="Is OpenDay" ></th>
+														<th>Edit</th>
+														<th>Delete</th>
+													</tr>
+													<!-- <tr class="filters1" style="background-color:#3C8DBC;">
+														<th>S.No</th>
+														<th>Module ID</th>
+														<th>Module Name</th>
+														<th>Module Code</th>
+														<th>Module Weight</th>
+														<th>Module CreditHours</th>
+														<th>Is Orientation</th>
+														<th>Is OpenDay</th>
+													</tr> -->
+												</thead>
+												<tbody>
+													<?php $jk=1; while($ItdModules_row = sqlsrv_fetch_array($ItdModules_result)){ ?>
+														<tr>
+															<td><?php echo $jk;?></td>
+															<td><?php echo $ItdModules_row['ModuleID']?></td>
+															<td><?php echo $ItdModules_row['ModuleName']?></td>
+															<td><?php echo $ItdModules_row['ModuleCode']; ?></td>
+															<td><?php echo $ItdModules_row['ModuleWeight']; ?></td>
+															<td><?php echo $ItdModules_row['ModuleCreditHours']; ?></td>													
+															<td><?php echo $ItdModules_row['IsOrientation']; ?></td>
+															<td><?php echo $ItdModules_row['IsOpenDay']; ?></td>
+															<td><a href="AdminItdModule?action=Edit&ModId=<?php echo $ItdModules_row['ModuleID'];?>" style="cursor:pointer"><i class="fa fa-edit fa-lg" data-toggle="tooltip" data-placement="top" title="Click to edit"></i></a></td>
+																	
+															<td><a onClick="var q = confirm('Are you sure you want to delete selected record?'); if (q) { window.location = 'AdminItdModule?action=delete&ModId=<?php echo $ItdModules_row['ModuleID'];?>'; return false;}" style="cursor:pointer"><i class="fa fa-close text-danger"></i></a> </td>	
+														</tr>
+													<?php $jk++; }?>																						
+												</tbody>
+											</table>
+										</div>
+
+										<div class="row">
+												<div class="col-md-6 col-md-offset-3">
+													<div class="modals box box-default" id="myModalss" style="display:none;">
+													  <!-- <div class="modal-dialog" role="document"> -->
+													  	<form name="scheduleAdd" method="post" action="AdmModulesSection.php">
+														    <div class="modal-content">
+														      	<div class="modal-header">									        
+														        	<h3 class="modal-title" id="myModalLabel">Add Itd Module</h3>
+														      	</div><br>
+														      	<input type="hidden" id="ModuleType" name="ModuleType" value="ItdModules">
+														      	<div class="row">
+																	<div class="col-md-3 text-right">
+																		Module Name<i class="fa fa-star text-danger"></i>
+																	</div>
+																	<div class="col-md-8">															
+																		<input type="text" id="ModuleName" name="ModuleName" required="required" class="form-control" placeholder="Module Name" >				  												
+																	</div>
+																</div><br>
+																<div class="row">
+																	<div class="col-md-3 text-right">
+																		Module Code<i class="fa fa-star text-danger"></i>
+																	</div>
+																	<div class="col-md-8">															
+																		<input type="text" id="ModuleCode" name="ModuleCode" class="form-control" placeholder="Module Code" >
+																	</div>
+																</div><br>
+																<div class="row">
+																	<div class="col-md-3 text-right">
+																		Module Color<i class="fa fa-star text-danger"></i>
+																	</div>
+																	<div class="col-md-8">								
+																		<input type="text" id="ModuleColor" name="ModuleColor" required="required" class="form-control" placeholder="Module Color" >
+																	</div>
+																</div><br>
+																<div class="row">
+																	<div class="col-md-3 text-right">
+																		Module Weight<i class="fa fa-star text-danger"></i>
+																	</div>
+																	<div class="col-md-8">				
+																		<input type="text" id="ModuleWeight" name="ModuleWeight" required="required" class="form-control" placeholder="Module Weight" >
+																	</div>
+																</div><br>
+																<div class="row">
+																	<div class="col-md-3 text-right">
+																		Orientation <i class="fa fa-star text-danger"></i>
+																	</div>
+																	<div class="col-md-8 styled-select">
+																		<select id="IsOrientation" name="IsOrientation" style="width:100%;">
+																		  	<option value="">Select Orientation</option>
+																		  	<option value="1">Yes</option>
+																		  	<option value="0">No</option>
+																		</select>
+																	</div>
+																</div><br>																
+																<div class="row">
+																	<div class="col-md-3 text-right">
+																		Is Open Days<i class="fa fa-star text-danger"></i>
+																	</div>
+																	<div class="col-md-8 styled-select">															
+																		<select id="IsOpenDay" name="IsOpenDay" style="width:100%;" >
+																		  	<option value="">Select Open</option>
+																		  	<option value="1">Yes</option>
+																		  	<option value="0">No</option>
+																		</select>
+																	</div>
+																</div><br>
+																<div class="row">
+																	<div class="col-md-3 text-right">
+																		Credit Hours<i class="fa fa-star text-danger"></i>
+																	</div>
+																	<div class="col-md-8">
+																		<input type="text" id="ModuleCreditHours" name="ModuleCreditHours" required="required" class="form-control" placeholder="Module Credit Hours" >
+																	</div>
+																</div>
+																<br>
+																<div class="modal-footer">
+																	<button type="submit" class="btn btn-default"  data-dismiss="modal" id="AddCategory">Submit</button>
+																</div>
+														    </div>
+														</form>
+													  <!-- </div> -->
+													</div>
+												</div>
+											</div>
+										<?php } ?>
+										<!-- End Showing ITD Modules -->
+
+										<!-- Edit Itd Modules -->
+										<?php if($_GET['action']=="Edit" && $_GET['ModId']!=""){?>
+											<section class="content">
+												<div class="panel">
+													<div class="panel-body">
+														<div class="row">
+															<div class="panel filterable">
+																<div class="panel-heading">											
+																	<a href="AdminClassroom" class="btn btn-default pull-right"> Back</a>
+																	<h3 class="panel-title text-default">
+																		<!-- <div class="pull-right">
+																			<button class="btn btn-xs btn-filter"><span class="glyphicon glyphicon-filter filterbutton"></span> Filter</button>
+																		</div> -->
+																	</h3><br>
+																</div>
+
+																<?php
+																	$editItdModsql = "SELECT * from ITD_Modules WHERE ModuleID='".$_GET['ModId']."'";
+																	$editItdModresult = sqlsrv_query( $conn, $editItdModsql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+																	$EditItdMod_row = sqlsrv_fetch_array($editItdModresult);?>
+																<div class="modals" id="mySchedules">
+																  	<form name="editAuditorium" method="post">
+																	    <div class="modal-content col-md-6 col-md-offset-3">
+																	      	<div class="modal-header">									        
+																	        	<h3 class="modal-title" id="myModalLabel"><i class="fa fa-pencil fa-lg"></i> Edit Itd Modules</h3>
+																	      	</div>
+																	      	<br>
+																	      	<input type="hidden" name="scenario" id="scenario" value="editAdmItdModules">										      	
+																			<div class="row">
+																				<div class="col-md-3 text-right">
+																					Module Name<i class="fa fa-star text-danger"></i>
+																				</div>
+																				<div class="col-md-8">															
+																					<input type="text" id="ModuleName" name="ModuleName" required="required" class="form-control" placeholder="Module Name" value="<?php echo $EditItdMod_row['ModuleName'];?>" >				  												
+																				</div>
+																			</div><br>
+																			<div class="row">
+																				<div class="col-md-3 text-right">
+																					Module Code<i class="fa fa-star text-danger"></i>
+																				</div>
+																				<div class="col-md-8">															
+																					<input type="text" id="ModuleCode" name="ModuleCode" class="form-control" placeholder="Module Code" value="<?php echo $EditItdMod_row['ModuleCode'];?>" >
+																				</div>
+																			</div><br>
+																			<div class="row">
+																				<div class="col-md-3 text-right">
+																					Module Color<i class="fa fa-star text-danger"></i>
+																				</div>
+																				<div class="col-md-8">								
+																					<input type="text" id="ModuleColor" name="ModuleColor" required="required" class="form-control" placeholder="Module Color" value="<?php echo $EditItdMod_row['ModuleColor'];?>" >
+																				</div>
+																			</div><br>
+																			<div class="row">
+																				<div class="col-md-3 text-right">
+																					Module Weight<i class="fa fa-star text-danger"></i>
+																				</div>
+																				<div class="col-md-8">				
+																					<input type="text" id="ModuleWeight" name="ModuleWeight" required="required" class="form-control" placeholder="Module Weight" value="<?php echo $EditItdMod_row['ModuleWeight'];?>" >
+																				</div>
+																			</div><br>
+																			<div class="row">
+																				<div class="col-md-3 text-right">
+																					Orientation <i class="fa fa-star text-danger"></i>
+																				</div>
+																				<div class="col-md-8 styled-select">
+																					<select id="IsOrientation" name="IsOrientation" style="width:100%;">
+																					  	<option value="">Select Orientation</option>
+																					  	<option value="1">Yes</option>
+																					  	<option value="0">No</option>
+																					</select>
+																					<script type="text/javascript">
+																					for(var i=0;i<document.getElementById('IsOrientation').length;i++)
+														                            {
+														            					if(document.getElementById('IsOrientation').options[i].value=="<?php echo $EditItdMod_row['IsOrientation'] ?>")
+														            					{
+														            						document.getElementById('IsOrientation').options[i].selected=true;
+														            					}
+														                            }		
+																					</script>
+																				</div>
+																			</div><br>																
+																			<div class="row">
+																				<div class="col-md-3 text-right">
+																					Is Open Days<i class="fa fa-star text-danger"></i>
+																				</div>
+																				<div class="col-md-8 styled-select">															
+																					<select id="IsOpenDay" name="IsOpenDay" style="width:100%;" >
+																					  	<option value="">Select Open</option>
+																					  	<option value="1">Yes</option>
+																					  	<option value="0">No</option>
+																					</select>
+																					<script type="text/javascript">
+																					for(var i=0;i<document.getElementById('IsOpenDay').length;i++)
+														                            {
+														            					if(document.getElementById('IsOpenDay').options[i].value=="<?php echo $EditItdMod_row['IsOpenDay'] ?>")
+														            					{
+														            						document.getElementById('IsOpenDay').options[i].selected=true;
+														            					}
+														                            }		
+																					</script>
+																				</div>
+																			</div><br>
+																			<div class="row">
+																				<div class="col-md-3 text-right">
+																					Credit Hours<i class="fa fa-star text-danger"></i>
+																				</div>
+																				<div class="col-md-8">
+																					<input type="text" id="ModuleCreditHours" name="ModuleCreditHours" required="required" class="form-control" placeholder="Module Credit Hours" value="<?php echo $EditItdMod_row['ModuleCreditHours'];?>" >
+																				</div>
+																			</div>
+																			<br>
+																			<div class="modal-footer">
+																				<button type="submit" class="btn btn-default"  data-dismiss="modal" id="AddCategory">Submit</button>
+																			</div>
+																	    </div>
+																	</form>
+																</div>	
+															</div>
+														</div>
+													</div>
+												</div>
+											</section><!-- /.content -->
+										<?php } ?>
+
+
 									</div>
 								</div>
 							</div>

@@ -876,99 +876,99 @@ table.dataTable thead th, table.dataTable thead td {
 
 .styled-select select {
   color:#ffffff;
-    background: #12C3AA;
-    padding: 10px;                        
-    font-size: 16px;
-    line-height: 1;
-    border: 0;
+	background: #12C3AA;
+	padding: 10px;                        
+	font-size: 16px;
+	line-height: 1;
+	border: 0;
 }
 .border table {
-    border: 1px solid #ccc;
-    margin-bottom: 20px;
+	border: 1px solid #ccc;
+	margin-bottom: 20px;
 } 
 .dataTable tr td{
   border: 1px solid #f9f9f9;
 }
 
 table {
-    *border-collapse: collapse; /* IE7 and lower */
-    border-spacing: 0;
-    width: 100%;    
+	*border-collapse: collapse; /* IE7 and lower */
+	border-spacing: 0;
+	width: 100%;    
 }
 
 .border table {
-    border: solid #ccc 1px !important;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
-    -webkit-box-shadow: 0 1px 1px #ccc; 
-    -moz-box-shadow: 0 1px 1px #ccc; 
-    box-shadow: 0 1px 1px #ccc;         
+	border: solid #ccc 1px !important;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	-webkit-box-shadow: 0 1px 1px #ccc; 
+	-moz-box-shadow: 0 1px 1px #ccc; 
+	box-shadow: 0 1px 1px #ccc;         
 }
 
 .border table tr:hover {
-    background: #fbf8e9;
-    -o-transition: all 0.1s ease-in-out;
-    -webkit-transition: all 0.1s ease-in-out;
-    -moz-transition: all 0.1s ease-in-out;
-    -ms-transition: all 0.1s ease-in-out;
-    transition: all 0.1s ease-in-out;     
+	background: #fbf8e9;
+	-o-transition: all 0.1s ease-in-out;
+	-webkit-transition: all 0.1s ease-in-out;
+	-moz-transition: all 0.1s ease-in-out;
+	-ms-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;     
 }    
-    
+	
 .border table td, .border table th {
-    border-left: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-    padding: 10px;
-    text-align: left;    
+	border-left: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+	padding: 10px;
+	text-align: left;    
 }
 
 .border table th {
-    background-color: #dce9f9;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#ebf3fc), to(#dce9f9));
-    background-image: -webkit-linear-gradient(top, #ebf3fc, #dce9f9);
-    background-image:    -moz-linear-gradient(top, #ebf3fc, #dce9f9);
-    background-image:     -ms-linear-gradient(top, #ebf3fc, #dce9f9);
-    background-image:      -o-linear-gradient(top, #ebf3fc, #dce9f9);
-    background-image:         linear-gradient(top, #ebf3fc, #dce9f9);
-    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset; 
-    -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;  
-    box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;        
-    border-top: none;
-    text-shadow: 0 1px 0 rgba(255,255,255,.5); 
+	background-color: #dce9f9;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#ebf3fc), to(#dce9f9));
+	background-image: -webkit-linear-gradient(top, #ebf3fc, #dce9f9);
+	background-image:    -moz-linear-gradient(top, #ebf3fc, #dce9f9);
+	background-image:     -ms-linear-gradient(top, #ebf3fc, #dce9f9);
+	background-image:      -o-linear-gradient(top, #ebf3fc, #dce9f9);
+	background-image:         linear-gradient(top, #ebf3fc, #dce9f9);
+	-webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset; 
+	-moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;  
+	box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;        
+	border-top: none;
+	text-shadow: 0 1px 0 rgba(255,255,255,.5); 
 }
 
 .border table td:first-child, .border table th:first-child {
-    border-left: none;
+	border-left: none;
 }
 
 .border table th:first-child {
-    -moz-border-radius: 6px 0 0 0;
-    -webkit-border-radius: 6px 0 0 0;
-    border-radius: 6px 0 0 0;
+	-moz-border-radius: 6px 0 0 0;
+	-webkit-border-radius: 6px 0 0 0;
+	border-radius: 6px 0 0 0;
 }
 
 .border table th:last-child {
-    -moz-border-radius: 0 6px 0 0;
-    -webkit-border-radius: 0 6px 0 0;
-    border-radius: 0 6px 0 0;
+	-moz-border-radius: 0 6px 0 0;
+	-webkit-border-radius: 0 6px 0 0;
+	border-radius: 0 6px 0 0;
 }
 
 .border table th:only-child{
-    -moz-border-radius: 6px 6px 0 0;
-    -webkit-border-radius: 6px 6px 0 0;
-    border-radius: 6px 6px 0 0;
+	-moz-border-radius: 6px 6px 0 0;
+	-webkit-border-radius: 6px 6px 0 0;
+	border-radius: 6px 6px 0 0;
 }
 
 .border table tr:last-child td:first-child {
-    -moz-border-radius: 0 0 0 6px;
-    -webkit-border-radius: 0 0 0 6px;
-    border-radius: 0 0 0 6px;
+	-moz-border-radius: 0 0 0 6px;
+	-webkit-border-radius: 0 0 0 6px;
+	border-radius: 0 0 0 6px;
 }
 
 .border table tr:last-child td:last-child {
-    -moz-border-radius: 0 0 6px 0;
-    -webkit-border-radius: 0 0 6px 0;
-    border-radius: 0 0 6px 0;
+	-moz-border-radius: 0 0 6px 0;
+	-webkit-border-radius: 0 0 6px 0;
+	border-radius: 0 0 6px 0;
 }
 /*Complaint Box Admin*/
 .complaintAdmin .formgroup div.text{
@@ -976,6 +976,18 @@ table {
 }
 .complaintAdmin .formgroup{
   clear: both;
+}
+.complaintAdmin .box-heading .panel:hover {
+	background: #fff;  
+}
+.complaintAdmin .panel h4.panel-title {
+	font-weight: 400;
+	font-size: 15px !important;
+	color: #93a2a9;
+	font-family: 'open-sans';
+}
+.complaintAdmin .panel:hover{
+  background: #f5f5f5;
 }
 
 .complaintAdmin .formgroup label{
@@ -1026,6 +1038,112 @@ table {
 .complaintData .low{
   border-left:5px solid #ffd201;
 }
+.complaints{
+
+}
+.upper{
+	text-transform: uppercase !important;
+}
+.complaints .panel-title {
+	color: #5b9bd1;
+	font-size: 15px !important;
+	font-family: "Open Sans", sans-serif !important;
+	font-weight: 700;
+}
+.complaints .btn.focus, .complaints .btn:focus, .complaints .btn:hover {
+	background-color: #8895a9;	
+    color: #fff;
+    text-decoration: none;
+}
+.complaints .btn{
+	/*color: white;*/
+	margin-right: 5px;
+	border-radius: 15px !important;
+	padding: 4px 7px
+}
+.complaints .btn-sort{
+	background-color: #8895a9;
+	color: white;
+	margin-right: 5px;
+	border-radius: 15px !important;
+	padding: 4px 7px;
+}
+.complaintsorting{
+	margin-top: -10px;
+}
 
 
 
+.notifications{
+
+}
+.notifications .box{
+  /*border: 1px solid #ccc;*/
+  display: inline-block;
+  width: 100%;
+  padding: 20px;
+}
+.notifications .box h2{
+  color: #8a8d8e;
+  font-size: 30px;
+  margin: 0;
+}
+.notifications .box .fa{
+  font-size: 30px;
+  color: #ccc;
+  float: right;
+}
+.notifications .box .value{
+  font-size: 18px;
+  font-weight: 400;
+  color: #666;
+}
+
+.notifications .box small{
+  font-size: 12px;
+  font-weight: bold;
+  color: #7d9bc0;
+}
+.notifications .progress {
+	height: 4px !important;
+	margin: 5px 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.col-md-6.sparkcontent {
+    margin-left: -25px;
+    margin-top: -5px;
+}
+.sparkline h3{
+	margin: -5px;
+	font-family: "Open Sans", sans-serif !important;
+	font-weight: 500;
+	color: #555
+
+}
+.nomargin{
+	margin:0; 
+}

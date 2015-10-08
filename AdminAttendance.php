@@ -13,7 +13,27 @@ $Instsql = "SELECT * FROM Instructors";
 $Instresult = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
 $Insresults = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
 ?>
-						
+			<!-- Add / Edit Student Instructor -->
+			<style type="text/css">									
+			.col-md-3.text-right{
+				padding-top: 18px;
+			}
+			.text-danger.fa.fa-star{
+				font-size: 7px;										
+			}
+			.datepicker{z-index:1151 !important;}
+			ul.select-options {
+				min-height: 240px;
+			}
+			.styled-select select {
+				color:#ffffff;
+			    background: #12C3AA;
+			    padding: 10px;										    
+			    font-size: 16px;
+			    line-height: 1;
+			    border: 0;
+			}
+			</style>
 			<!-- Content Wrapper. Contains page content -->
 			<div class="content-wrapper">
 				<!-- Content Header (Page header) -->
@@ -45,23 +65,24 @@ $Insresults = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQL
 		                                    <ul class="nav nav-tabs" role="tablist">
 		                                        <li role="presentation" class="active"><a href="#RStudent" aria-controls="home" role="tab" data-toggle="tab">Student</a></li>
 												<li role="presentation" ><a href="#SStudent" aria-controls="home" role="tab" data-toggle="tab">Dedicate Student</a></li>
-		                                        <li role="presentation"><a href="#PInstructor" aria-controls="profile" role="tab" data-toggle="tab">Instructor</a></li>			                                        
+		                                        <li role="presentation"><a href="#PInstructor" aria-controls="profile" role="tab" data-toggle="tab">Instructor</a></li>
 		                                    </ul>
 		                                    <!-- Tab panes -->
 		                                    <div class="tab-content">
 		                                        <div role="tabpanel" class="tab-pane active" id="RStudent"><br>
-		                                        	<div class="col-md-7">
-		                                        		<!-- <input type="text" name="StudeName" id="StudeName" placeholder="Student Name"> -->
-			                                        	<!-- <select name="StudentName" id="StudentName">
+		                                        	<div class="col-md-7 styled-select">
+		                                        		<!-- <input type="text" name="Stu
+		                                        		deName" id="StudeName" placeholder="Student Name"> -->
+			                                        	<select name="StudentName" id="StudentName">
 					                                		<option value="">Select Student Name</option>
 					                                		<?php while($Sturow = sqlsrv_fetch_array($Sturesult)){ ?>
 					                                			<option value="<?php echo $Sturow['StudentID'];?>"><?php echo $Sturow['StudentName_en'];?></option>
 					                                		<?php } ?>
-					                                	</select> -->
-					                                	<input type="text" name="AbsentDate" id="AbsentDate" placeholder="From Date" readonly >
-					                                	<input type="text" name="EndDate" id="EndDate" placeholder="To Date" readonly >
-					                                	<button type="button" class="btn btn-primary" name="submit" id="submit">Search</button>
-					                                </div><button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">Add Attendance</button><br><br><br>
+					                                	</select>
+					                                	<input type="text" name="AbsentDate" id="AbsentDate" class="inputpickertext" placeholder="From Date" readonly >
+					                                	<input type="text" name="EndDate" id="EndDate" class="inputpickertext" placeholder="To Date" readonly >
+					                                	<button type="button" class="btn btn-default" name="submit" id="submit">Search</button>
+					                                </div><button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i> Add Attendance</button><br><br><br>
 													
 
 					                                <div class="col-md-12" id="marked"></div>
@@ -106,7 +127,7 @@ $Insresults = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQL
 		                                        </div>
 												<!--Short Term course Students -->
 												<div role="tabpanel" class="tab-pane" id="SStudent"><br>
-		                                        	<div class="col-md-7">
+		                                        	<div class="col-md-7 styled-select">
 			                                        	<select name="ScStudentName" id="ScStudentName">
 					                                		<option value="">Select Student Name</option>
 					                                		<?php
@@ -126,8 +147,8 @@ $Insresults = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQL
 														    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 														</div>
 					                                
-					                                	<button type="button" class="btn btn-primary" name="submit" id="Scsubmit">Search</button>
-					                                </div><button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal2">Add Attendance</button><br><br><br>
+					                                	<button type="button" class="btn btn-default" name="submit" id="Scsubmit">Search</button>
+					                                </div><button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#myModal2"><i class="fa fa-plus"></i> Add Attendance</button><br><br><br>
 													
 
 					                                <div class="col-md-12" id="Scmarked"></div>
@@ -172,16 +193,16 @@ $Insresults = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQL
 		                                        </div>
 												<!--End Short Term course Students -->
 		                                        <div role="tabpanel" class="tab-pane" id="PInstructor"><br>		                                        	
-				                                	<div class="col-md-7">
+				                                	<div class="col-md-12 styled-select">
 			                                        	<select name="InstructorName" id="InstructorName">
 					                                		<option value="">Select Instructor Name</option>
 					                                		<?php while($Insrow = sqlsrv_fetch_array($Insresults)){ ?>
 					                                			<option value="<?php echo $Insrow['InstructorID'];?>"><?php echo $Insrow['InstructorName'];?></option>
 					                                		<?php } ?>
 					                                	</select>
-					                                	<input type="text" name="InstAbsDate" id="InstAbsDate" placeholder="From Date" readonly >
-					                                	<input type="text" name="InstEndDate" id="InstEndDate" placeholder="To Date" readonly >
-					                                	<button type="button" class="btn btn-primary" name="submit" id="Inssubmit">Search</button><button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal1">Add Attendance</button>
+					                                	<input type="text" name="InstAbsDate" id="InstAbsDate" class="inputpickertext" placeholder="From Date" readonly >
+					                                	<input type="text" name="InstEndDate" id="InstEndDate" class="inputpickertext" placeholder="To Date" readonly >
+					                                	<button type="button" class="btn btn-default" name="submit" id="Inssubmit">Search</button><button type="button" class="btn btn-default pull-right" data-toggle="modal" data-target="#myModal1"><i class="fa fa-plus"></i> Add Attendance</button>
 					                                </div><br><br><br>
 
 					                                <div class="col-md-12" id="Instmarked"></div>
@@ -222,7 +243,7 @@ $Insresults = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQL
 												<!-- Modal -->
 												<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 												  <div class="modal-dialog" role="document">
-													<div class="modal-content">
+													<div class="modal-content styled-select">
 													  <div class="modal-header">
 														<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 														<h4 class="modal-title" id="myModalLabel"> Attendance</h4>
@@ -248,7 +269,7 @@ $Insresults = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQL
 													  
 													  <div class="modal-footer">
 														<!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-														<button type="button" class="btn btn-primary"  data-dismiss="modal" id="saveStuAtt">Save Attendance</button>
+														<button type="button" class="btn btn-default"  data-dismiss="modal" id="saveStuAtt">Save Attendance</button>
 													  </div>
 													</div>
 												  </div>
@@ -260,7 +281,7 @@ $Insresults = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQL
 												<!-- Modal -->
 												<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 												  <div class="modal-dialog" role="document">
-													<div class="modal-content">
+													<div class="modal-content styled-select">
 													  <div class="modal-header">
 														<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 														<h4 class="modal-title" id="myModalLabel">Instructors Attendance</h4>
@@ -297,7 +318,7 @@ $Insresults = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQL
 													  
 													  <div class="modal-footer">
 														<!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-														<button type="button" class="btn btn-primary"  data-dismiss="modal" id="saveIntAtt">Save Attendance</button>
+														<button type="button" class="btn btn-default"  data-dismiss="modal" id="saveIntAtt">Save Attendance</button>
 													  </div>
 													</div>
 												  </div>
@@ -350,7 +371,7 @@ $Insresults = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQL
 													  
 													  <div class="modal-footer">
 														<!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-														<button type="button" class="btn btn-primary"  data-dismiss="modal" id="saveScAtt">Save Attendance</button>
+														<button type="button" class="btn btn-default"  data-dismiss="modal" id="saveScAtt">Save Attendance</button>
 													  </div>
 													</div>
 												  </div>
@@ -841,43 +862,42 @@ $Insresults = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQL
 .datepicker{z-index:1151 !important;}
 </style>
 
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script>
-  $(function() {
-    var availableTags = [<?php while($Sturow = sqlsrv_fetch_array($Sturesult)){ ?>
-    	<?php echo '"';echo $Sturow['StudentName_en'];echo '"'; echo ","; } ?>
-      "ActionScript",
-      "AppleScript",
-      "Asp",
-      "BASIC",
-      "C",
-      "C++",
-      "Clojure",
-      "COBOL",
-      "ColdFusion",
-      "Erlang",
-      "Fortran",
-      "Groovy",
-      "Haskell",
-      "Java",
-      "JavaScript",
-      "Lisp",
-      "Perl",
-      "PHP",
-      "Python",
-      "Ruby",
-      "Scala",
-      "Scheme"
-    ];
-    $( "#StudeName" ).autocomplete({
-      source: availableTags
-    });
-  });
-  </script>
-
 <?php
 	include('Admin_files/includes/footer.php');
 ?>
+	<!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	<script>
+	$(function() {
+	var availableTags = [<?php while($Sturow = sqlsrv_fetch_array($Sturesult)){ ?>
+		<?php echo '"';echo $Sturow['StudentName_en'];echo '"'; echo ","; } ?>
+	  "ActionScript",
+	  "AppleScript",
+	  "Asp",
+	  "BASIC",
+	  "C",
+	  "C++",
+	  "Clojure",
+	  "COBOL",
+	  "ColdFusion",
+	  "Erlang",
+	  "Fortran",
+	  "Groovy",
+	  "Haskell",
+	  "Java",
+	  "JavaScript",
+	  "Lisp",
+	  "Perl",
+	  "PHP",
+	  "Python",
+	  "Ruby",
+	  "Scala",
+	  "Scheme"
+	];
+	$( "#StudeName" ).autocomplete({
+	  source: availableTags
+	});
+	});
+	</script>-->

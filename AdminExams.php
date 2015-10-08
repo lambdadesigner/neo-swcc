@@ -3,7 +3,42 @@ include('Admin_files/includes/header.php');
 $StudentID = $_SESSION['StudentID'];
 $sql = "SELECT Distinct (Module.ModuleName),Tests.TestID,Tests.TestName,Tests.TestType,Tests.TestWeight,Tests.MaxMarks FROM Tests INNER JOIN Module ON Module.ModuleID=Tests.ModuleID";
 $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+
+if($_POST['scenario']=="editAdmExamss")
+{
+	echo $updatesql = "UPDATE Tests SET TestID='".$_POST['TestID']."',ModuleID='".$_POST['ModuleName']."',CycleID='".$_POST['CycleId']."',TestType='".$_POST['TestType']."',TestWeight='".$_POST['TestWeight']."',MaxMarks='".$_POST['MaxMarks']."',TestName='".$_POST['TestName']."' WHERE TestID='".$_GET['ModId']."'"; //exit;
+	$updatesql_result = sqlsrv_query( $conn, $updatesql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+	header('location:AdminExams');
+}
+
+if($_GET['action']=="delete")
+{	
+	echo $delsql = "DELETE FROM Tests WHERE TestID='".$_GET['Testid']."'"; //exit;
+	$delsql_result = sqlsrv_query( $conn, $delsql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+	header('location:AdminExams');
+}
 ?>
+			<!-- Add / Edit Student Instructor -->
+			<style type="text/css">									
+			.col-md-3.text-right{
+				padding-top: 18px;
+			}
+			.text-danger.fa.fa-star{
+				font-size: 7px;										
+			}
+			.datepicker{z-index:1151 !important;}
+			ul.select-options {
+				min-height: 240px;
+			}
+			.styled-select select {
+				color:#ffffff;
+			    background: #12C3AA;
+			    padding: 10px;										    
+			    font-size: 16px;
+			    line-height: 1;
+			    border: 0;
+			}
+			</style>
 
 			<!-- Content Wrapper. Contains page content -->
 			<div class="content-wrapper">
@@ -25,45 +60,162 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 						<div class="panel-body border">
 							<div class="row">
 								<div class="panel filterable">
-									<div class="panel-heading">
-										<h3 class="panel-title text-red"><i class="fa fa-pencil fa-lg"></i> Examinations
-											<div class="pull-right">
-												<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">
-													<span class="glyphicon glyphicon-plus"></span> Add
-												</button>
+									<!-- Showing Classrooms -->
+									<?php if($_GET['action']=="" && $_GET['ModId']==""){?>
+										<div class="panel-heading">
+											<h3 class="panel-title text-red"><i class="fa fa-pencil fa-lg"></i> Examinations
+												<div class="pull-right">
+													<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal1">
+														<span class="glyphicon glyphicon-plus"></span> Add
+													</button>
+												</div>
+											</h3>
+											<hr>
+										</div>
+										<div class="panel-body border">
+											<table class="table table-striped" id="examinations">
+												<thead>												
+													<tr class="filters1">
+														<th><span>S.No</span></th>
+														<th><input type="text" class="form-control" placeholder="Module Name" ></th>
+														<th><input type="text" class="form-control" placeholder="Test Id" ></th>
+														<th><input type="text" class="form-control" placeholder="Test Name" ></th>
+														<th><input type="text" class="form-control" placeholder="Test Type" ></th>
+														<th><input type="text" class="form-control" placeholder="Test Weight" ></th>	
+														<th><input type="text" class="form-control" placeholder="Max Marks" ></th>	
+														<th>Edit</th>
+														<th>Delete</th>	
+													</tr>
+												</thead>
+												<tbody>
+												<?php $jj=1; while($row = sqlsrv_fetch_array($result)){ ?>
+													<tr>
+														<td><?php echo $jj;?></td>
+														<td><?php echo $row['ModuleName']?></td>
+														<td><?php echo $row['TestID']?></td>
+														<td><?php echo $row['TestName']?></td>
+														<td><?php echo $row['TestType']?></td>
+														<td><?php echo $row['TestWeight']?></td>
+														<td><?php echo $row['MaxMarks']?></td>	
+														<td><a href="AdminExams?action=Edit&ModId=<?php echo $row['TestID'];?>" style="cursor:pointer"><i class="fa fa-edit fa-lg" data-toggle="tooltip" data-placement="top" title="Click to edit"></i></a></td>
+																
+														<td><a onClick="var q = confirm('Are you sure you want to delete selected record?'); if (q) { window.location = 'AdminExams?action=delete&Testid=<?php echo $row['TestID'];?>'; return false;}" style="cursor:pointer"><i class="fa fa-close text-danger"></i></a> </td>												
+													</tr>
+												<?php $jj++; }?>												
+													
+												</tbody>
+											</table>
+										</div>
+									<?php } ?>
+									<!-- End Showing Examinations -->
+
+									<!-- Edit Examinations -->
+									<?php if($_GET['action']=="Edit" && $_GET['ModId']!=""){?>
+										<section class="content">
+											<div class="panel">
+												<div class="row">
+													<div class="panel filterable">
+														<div class="panel-heading">											
+															<a href="AdminExams" class="btn btn-default pull-right" style="margin-top:-21px;"><i class="fa fa-arrow-left"></i> Back</a>
+														</div>			
+														<?php
+															$editExamsql = "SELECT * from Tests WHERE TestID='".$_GET['ModId']."'";
+															$editExamresult = sqlsrv_query( $conn, $editExamsql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+															$EditExam_row = sqlsrv_fetch_array($editExamresult)?>
+														<div class="modals" id="mySchedules">
+														  	<form name="scheduleAdd" method="post">
+															    <div class="modal-content col-md-6 col-md-offset-3">
+															      	<div class="modal-header">									        
+															        	<h3 class="modal-title" id="myModalLabel">Edit Examinations</h3>
+															      	</div><br>
+															      	<input type="hidden" name="scenario" id="scenario" value="editAdmExamss">										      	
+																	<div class="row">
+																		<div class="col-md-3 text-right">
+																			Test Id
+																		</div>
+																		<div class="col-md-8">															
+																			<input type="text" id="TestID" name="TestID" placeholder="Test Id" class="input" data-toggle="tooltip" data-placement="right" title="Test Id" required style="width:100%;" value="<?php echo $EditExam_row['TestID'];?>">
+																		</div>
+																	</div>
+																	<div class="row">
+																		<div class="col-md-3 text-right">
+																			Test Name
+																		</div>
+																		<div class="col-md-8">															
+																			<input type="text" id="TestName" name="TestName" placeholder="Test Name" class="input" data-toggle="tooltip" data-placement="right" title="Test Name" required style="width:100%;" value="<?php echo $EditExam_row['TestName'];?>">
+																		</div>
+																	</div><br>
+																	<div class="row">
+																		<div class="col-md-3 text-right">
+																			Module Name
+																		</div>
+																		<div class="col-md-8 styled-select">
+																			<?php 
+																			$ModuleN_sql = "SELECT Distinct ModuleID,ModuleName FROM Module";
+																			$ModuleN_result = sqlsrv_query( $conn, $ModuleN_sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));?>										
+																			<select name="ModuleName" id="ModuleName" style="width:580px;">
+																				<option value="">Select Module Name</option>
+																				<?php while($ModN_row = sqlsrv_fetch_array($ModuleN_result)){?>
+																		  	  		<option value="<?php echo $ModN_row['ModuleID'];?>"><?php echo $ModN_row['ModuleName'];?></option>
+																			  	<?php } ?>
+																			</select>				
+																			<script type="text/javascript">
+																			for(var i=0;i<document.getElementById('ModuleName').length;i++)
+												                            {
+												            					if(document.getElementById('ModuleName').options[i].value=="<?php echo $EditExam_row['ModuleID'] ?>")
+												            					{
+												            						document.getElementById('ModuleName').options[i].selected=true;
+												            					}
+												                            }		
+																			</script>
+																		</div>
+																	</div>
+															      	<div class="row">
+																		<div class="col-md-3 text-right">
+																			Cycle Id
+																		</div>
+																		<div class="col-md-8">															
+																			<input type="text" id="CycleId" name="CycleId" placeholder="Cycle Id" class="input" data-toggle="tooltip" data-placement="right" title="Cycle Id" required style="width:100%;" value="<?php echo $EditExam_row['CycleID'];?>">
+																		</div>
+																	</div>
+																	<div class="row">
+																		<div class="col-md-3 text-right">
+																			Test Type
+																		</div>
+																		<div class="col-md-8">															
+																			<input type="text" id="TestType" name="TestType" placeholder="Test Type" class="input" data-toggle="tooltip" data-placement="right" title="Test Type" required style="width:100%;" value="<?php echo $EditExam_row['TestType'];?>">	
+																		</div>
+																	</div><br>				
+																	<div class="row">
+																		<div class="col-md-3 text-right">
+																			Test Weight
+																		</div>
+																		<div class="col-md-8">															
+																			<input type="text" id="TestWeight" name="TestWeight" placeholder="Test Weight" class="input inputpickertext" data-toggle="tooltip" data-placement="right"title="Test Weight" required style="width:100%;" value="<?php echo $EditExam_row['TestWeight'];?>">
+																		</div>
+																	</div>
+																	<div class="row">
+																		<div class="col-md-3 text-right">
+																			Max Marks
+																		</div>
+																		<div class="col-md-8">															
+																			<input type="text" id="MaxMarks" name="MaxMarks" placeholder="Max Marks" class="input inputpickertext" data-toggle="tooltip" data-placement="right" title="Max Marks" required style="width:100%;" value="<?php echo $EditExam_row['MaxMarks'];?>">
+																		</div>
+																	</div><br>
+																	<br>
+																	<div class="modal-footer">
+																		<button type="submit" class="btn btn-default"  data-dismiss="modal" id="AddCategory">Submit</button>
+																	</div>
+															    </div>
+															</form>
+														</div>
+													</div>
+												</div>
 											</div>
-										</h3>
-										<hr>
-									</div>
-									<div class="panel-body border">
-										<table class="table table-striped" id="examinations">
-											<thead>												
-												<tr class="filters1">
-													<th><span>S.No</span></th>
-													<th><span>Module Name</span></th>
-													<th><span>Test Id</span></th>
-													<th><span>Test Name</span></th>
-													<th><span>Test Type</span></th>
-													<th><span>Test Weight</span></th>
-													<th><span>Max Marks</span></th>												
-												</tr>
-											</thead>
-											<tbody>
-											<?php $jj=1; while($row = sqlsrv_fetch_array($result)){ ?>
-												<tr>
-													<td><?php echo $jj;?></td>
-													<td><?php echo $row['ModuleName']?></td>
-													<td><?php echo $row['TestID']?></td>
-													<td><?php echo $row['TestName']?></td>
-													<td><?php echo $row['TestType']?></td>
-													<td><?php echo $row['TestWeight']?></td>
-													<td><?php echo $row['MaxMarks']?></td>													
-												</tr>
-											<?php $jj++; }?>												
-												
-											</tbody>
-										</table>
-									</div>
+										</section><!-- /.content -->
+									<?php } ?>
+									<!-- End Edit Examinations -->
+
 
 									<!-- Add Modal -->
 									<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -79,18 +231,20 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 											    <?php 
 												  $Module_sql = "SELECT Distinct ModuleID,ModuleName FROM Module";
 												  $Module_result = sqlsrv_query( $conn, $Module_sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));?>
-											  	<select style="width:570px;" id="module">
-											  		<option value="">Select Module Name</option>
-											  		<?php while($Mod_row = sqlsrv_fetch_array($Module_result)){?>
-											  	  		<option value="<?php echo $Mod_row['ModuleID'];?>"><?php echo $Mod_row['ModuleName'];?></option>
-												  	<?php } ?>
-												</select>									      
+												<div class="styled-select">
+												  	<select style="width:570px;" id="module">
+												  		<option value="">Select Module Name</option>
+												  		<?php while($Mod_row = sqlsrv_fetch_array($Module_result)){?>
+												  	  		<option value="<?php echo $Mod_row['ModuleID'];?>"><?php echo $Mod_row['ModuleName'];?></option>
+													  	<?php } ?>
+													</select>
+												</div>									      
 												<input type="text" id="testName" name="testName" required="required" class="form-control" placeholder="Test Name" >
 												<input type="text" id="CycleId" name="CycleId" required="required" class="form-control" placeholder="Cycle Id (e.g only Numbers)" >
 												<input type="text" id="MaxMarks" name="MaxMarks" required="required" class="form-control" placeholder="Maximum Marks" >
 										      	<div class="modal-footer">
 										        	<!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-										        	<button type="button" class="btn btn-primary"  data-dismiss="modal" id="AddExamination">Add Examinations</button>
+										        	<button type="button" class="btn btn-default"  data-dismiss="modal" id="AddExamination">Add Examinations</button>
 										      	</div>
 										      	<span id="errmsg"></span>
 										    </div>

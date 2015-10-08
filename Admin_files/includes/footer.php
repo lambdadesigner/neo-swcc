@@ -42,10 +42,11 @@
     <!-- <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script> -->
     <script src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.2/underscore-min.js'></script>
     <!--<script type="text/javascript" src="assets/dist/js/donut.js"></script>-->
-    <link href="assets/dist/css/Universal.css" rel="stylesheet" type="text/css" />    
+    
     <?php 
         //if(false !== strpos($url1,AdminSchedules) || false !== strpos($url1,AllProfiles) || false !== strpos($url1,Holidays) || false !== strpos($url1,AdminAttendance)){?>
     <?php //} else { ?>
+        <link href="assets/dist/css/Universal.css" rel="stylesheet" type="text/css" />    
         <script src="assets/dist/js/Universal.js"></script>
     <?php //} ?>
 	</body>

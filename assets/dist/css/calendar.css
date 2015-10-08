@@ -7,7 +7,7 @@
 .calendar-table {
 	margin: 0 auto;
 	width: 94%;
-	margin-top:-36px;
+	/*margin-top:-36px;*/
 }
 .selected {
 	background-color: #fff;
@@ -169,7 +169,7 @@ tr td.calendar-month {
 	.calendar-table.table.table-condensed.table-tight tr td {
 	    /*width: 80px;*/
 	    height: 52px;
-	    padding-top: 16px;
+	    /*padding-top: 16px;*/
 	}
  .absent {
 	padding: 5px 10px;
@@ -186,3 +186,25 @@ th.c-name {
 
 
 
+.calendar-table.table.table-condensed.table-tight{
+	border: 1px solid #ccc;
+	border-radius: 6px !important;
+}
+.calendar-table.table.table-condensed.table-tight thead:first-child{
+	height: 20px;
+}
+td.calendar-day {
+    border: 1px solid #ccc;
+}
+#HolCalendar .box-body{
+	margin-top: -30px;
+}
+#HolCalendar .col-md-3 li {
+    padding: 10px;
+    /*border: 1px solid #ccc;*/
+    border-bottom: 1px solid #ccc;
+    list-style: decimal;
+}
+#HolCalendar .col-md-3 li:before {
+	/*content: '> ';*/
+}

@@ -249,5 +249,3 @@ $url = basename($_SERVER['REQUEST_URI']);
 	        	}
 	    	});
 		</script>
-		<link href="assets/dist/css/Universal.css" rel="stylesheet" type="text/css" />    
-		<script src="assets/dist/js/Universal.js"></script>

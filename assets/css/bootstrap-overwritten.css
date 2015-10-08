@@ -31,7 +31,8 @@ select{
 }
 
 .panel .panel-heading .panel-title{
-	font-size: 22px !important;
+	font-size: 15px !important;
+	padding-top: 15px;
 }
 /*panels*/
 .panel{

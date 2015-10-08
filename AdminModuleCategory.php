@@ -60,41 +60,46 @@ $Module_result = sqlsrv_query( $conn, $Module_sql ,array(), array( "Scrollable" 
 											</button>											
 										</div>
 										<div id="myElem" class="alert alert-success" role="alert" style="display:none;" align="center">Modules Category</div>										
-									</div>									
-									<table class="table table-striped" id="auditorium">
-										<thead>
-											<!-- <tr class="filters" style="display:none">
-												<th><input type="text" class="form-control" placeholder="Auditorium Number" disabled></th>
-												<th><input type="text" class="form-control" placeholder="Booking Date" disabled></th>
-												<th><input type="text" class="form-control" placeholder="Booked By" disabled></th>
-												<th><input type="text" class="form-control" placeholder="Start Time" disabled></th>
-												<th><input type="text" class="form-control" placeholder="End Time" disabled></th>												
-											</tr> -->
-											<tr class="filters1" style="background-color:#39cccc;">
-												<th>S.No</th>
-												<th>Category ID</th>
-												<th>Category Name</th>
-												<th>Hierarchy ID</th>
-												<th>Cycle ID</th>
-												<th>Stage</th>
-												<th></th>										
-											</tr>
-										</thead>
-										<tbody>
-											<?php $jk=1; while($Module_row = sqlsrv_fetch_array($Module_result)){ ?>
-												<tr>
-													<td><?php echo $jk;?></td>
-													<td><?php echo $Module_row['MCID']?></td>
-													<td><?php echo $Module_row['MCName']?></td>
-													<td><?php echo $Module_row['HierarachyID']; ?></td>
-												
-													<td><?php echo $Module_row['CycleID']?></td>
-													<td><?php echo $Module_row['Stage']; ?></td>
-													 <td><a href="AdminModuleCategory?action=Edit&MCID=<?php echo $Module_row['MCID'];?>" style="cursor:pointer"> <i class="fa fa-edit"></i></a></td>
+									</div>				
+
+									<div class="panel-body border">					
+										<table class="table table-striped" id="auditorium">
+											<thead>
+												<tr class="filters">
+													<th>S.No</th>
+													<th><input type="text" class="form-control" placeholder="Category ID" ></th>
+													<th><input type="text" class="form-control" placeholder="Category Name" ></th>
+													<th><input type="text" class="form-control" placeholder="Hierarchy ID" ></th>
+													<th><input type="text" class="form-control" placeholder="Cycle ID" ></th>
+													<th><input type="text" class="form-control" placeholder="Stage" ></th>												
+													<th></th>
 												</tr>
-											<?php $jk++; }?>																						
-										</tbody>
-									</table>
+												<!-- <tr class="filters1" style="background-color:#39cccc;">
+													<th>S.No</th>
+													<th>Category ID</th>
+													<th>Category Name</th>
+													<th>Hierarchy ID</th>
+													<th>Cycle ID</th>
+													<th>Stage</th>
+													<th></th>										
+												</tr> -->
+											</thead>
+											<tbody>
+												<?php $jk=1; while($Module_row = sqlsrv_fetch_array($Module_result)){ ?>
+													<tr>
+														<td><?php echo $jk;?></td>
+														<td><?php echo $Module_row['MCID']?></td>
+														<td><?php echo $Module_row['MCName']?></td>
+														<td><?php echo $Module_row['HierarachyID']; ?></td>
+													
+														<td><?php echo $Module_row['CycleID']?></td>
+														<td><?php echo $Module_row['Stage']; ?></td>
+														<td><a href="AdminModuleCategory?action=Edit&MCID=<?php echo $Module_row['MCID'];?>" style="cursor:pointer"> <i class="fa fa-edit"data-toggle="tooltip" data-placement="top" title="Click to edit"></i></a></td>
+													</tr>
+												<?php $jk++; }?>																						
+											</tbody>
+										</table>
+									</div>
 
 									<div class="panel-body col-md-6 col-md-offset-3">
 										<form name="moduleCategory" method="post" action="AdmModulesSection.php">
@@ -138,8 +143,10 @@ $Module_result = sqlsrv_query( $conn, $Module_sql ,array(), array( "Scrollable" 
 								$CycleID= $_POST['CycleID'];
 								$Stage= $_POST['Stage'];
 								
-							$sql="UPDATE Module_Category SET MCID='".$MCID."',MCName='".$MCName."',HierarachyID='".$HierarachyID."',CycleID='".$CycleID."',Stage='".$Stage."'";	
+							echo $sql="UPDATE Module_Category SET MCID='".$MCID."',MCName='".$MCName."',HierarachyID='".$HierarachyID."',CycleID='".$CycleID."',Stage='".$Stage."' WHERE MCID='".$MCID."'";	
 							$Module_result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+
+							header('location:AdminModuleCategory');
 						}
 					
 					
