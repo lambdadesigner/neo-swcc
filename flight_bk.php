@@ -6,10 +6,19 @@ $StudentID  =  $_SESSION['StudentID'];
 
 ?>
 	<!-- Page level CSS -->
-		<!--<link href="css/signature-pad.css" rel="stylesheet">-->
-		 <!--<link href="css/jquery.signaturepad.css" rel="stylesheet">-->
+		<!--<link href="assets/dist/css/signature-pad.css" rel="stylesheet">-->
+		<!--<link href="assets/dist/css/jquery.signaturepad.css" rel="stylesheet">-->
+		<script src="js/signature.js"></script>
 		<link rel="stylesheet" type="text/css" href="assets/css/common/wizard.css">
-		<link rel="stylesheet" type="text/css" href="css/services.css">
+		<link rel="stylesheet" type="text/css" href="assets/dist/css/services.css">
+		
+		<style>
+		canvas
+		{
+			border: 1px solid #000;
+		}
+		</style>
+
 		<div class="content-wrapper">
 
 			<div class="container-fluid">
@@ -122,7 +131,17 @@ $StudentID  =  $_SESSION['StudentID'];
 															<div class="col-md-6 pull-right">
 																<label class="control-label">Signature</label>
 																
-																<input type="file" name="uploadedfile" id="fileToUpload">	
+																<!-- <input type="file" name="uploadedfile" id="fileToUpload">	 -->
+																<div id="canvas">
+																	Canvas is not supported.
+																</div>
+
+																<script>
+																	signatureCapture();
+																</script>
+																<input type="hidden" name="sig_image" id="sig_image"/>																
+																<button type="button" onclick="signatureSave()">Save Signature</button>
+																<button type="button" onclick="signatureClear()">Clear Signature</button>
 																		
 															</div>
 														</div>
@@ -171,7 +190,7 @@ $StudentID  =  $_SESSION['StudentID'];
 
 																<strong>	Beneficiary Name</strong> : <span id="namediv"></span><br/>
 
-																	<strong>Signature</strong>               : <span id="signdiv"></span><br />
+																	<strong>Signature</strong>               : <!-- <span id="signdiv"></span> --><img id="saveSignature" alt="please Save Your Signature"/><br />
 														</div>
 														<div class="col-md-3 pull-left">
 															<button class="btn btn-success btn-lg pull-left">Menu</button>
@@ -208,13 +227,12 @@ $StudentID  =  $_SESSION['StudentID'];
 				</div>
 				<strong>Copyright &copy; 2014-2015 <a href="#SWCC">SWCC Dashboard</a>.</strong> All rights reserved.
 			</footer>
-			<script src="js/todataurl.js"></script>
-            <script src="js/signature.js"></script>
+            
 	<!-- jQuery 2.1.4 -->
 	<script src="assets/plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
 	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-	<!-- Swcc App -->
-	<script src="assets/dist/js/app.min.js" type="text/javascript"></script>
+	<!-- Swcc App 
+	<script src="assets/dist/js/app.min.js" type="text/javascript"></script>-->
 
 	<script type="text/javascript">
 		$("#menu-toggle").click(function(e) {
@@ -253,9 +271,8 @@ $StudentID  =  $_SESSION['StudentID'];
 	}
 	btn.closest('.number-spinner').find('input').val(newVal);
 });
-	</script>
-	<script src="js/signature_pad.js"></script>
-  <script src="js/app.js"></script>
+	</script>	
+  	<script src="assets/dist/js/app.js"></script>
 	
 	<!-- For Date Checkin n Checkout -->
 	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>	

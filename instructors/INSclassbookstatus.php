@@ -1,6 +1,7 @@
 <?php
 include('includes/header.php');
 $InstructorID = $_SESSION['InstructorID'];
+$InstructorName = $_SESSION['InstructorName'];
 if($_SESSION['InstructorID']==''){	
 	 header("Location: ../index"); 
 }
@@ -28,12 +29,12 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 				<!-- Content Header (Page header) -->
 				<section class="content-header">
 					<h1>
-						Class Room Booking Status
+						<?php echo $lang['Class Room Booking Status'];       ?>
 						<small></small>
 					</h1>
 					<ol class="breadcrumb">
-						<li><a href="#"><i class="fa fa-dashboard text-red"></i> Home</a></li>
-						<li><a href="#"><i class="fa fa-user text-red"></i> Profile</a></li>
+						<li><a href="#"><i class="fa fa-dashboard text-red"></i> <?php echo $lang['Home'];?></a></li>
+						<li><a href="#"><i class="fa fa-user text-red"></i> <?php echo $lang['Class Room Booking Status'];?></a></li>
 					</ol>
 				</section>
 
@@ -49,7 +50,7 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 											<!-- <button class="btn btn-xs btn-filter"><span class="glyphicon glyphicon-filter filterbutton"></span> Filter</button> -->
 										</div>
 									</div>
-									<div id="myElem" class="alert alert-success" role="alert"  style="display:none">Auditorium Booked</div>
+									<div id="myElem" class="alert alert-success" role="alert"  style="display:none"></div>
 									<table class="table table-striped" id="classroom">
 										<thead>
 											<tr class="filters" style="display:none">
@@ -62,11 +63,11 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 											</tr>
 
 											<tr class="filters1" >
-												<th>Class Num</th>
-												<th>Booked Date</th>
-												<th>Booked By</th>
-												<th>Occupancy</th>
-												<th>OccString</th>
+												<th><?php echo $lang['Class Num'];?></th>
+												<th><?php echo $lang['Booked Date'];?></th>
+												<th><?php echo $lang['Booked By'];?></th>
+												<th><?php echo $lang['Occupancy'];?></th>
+												<th><?php echo $lang['Occupancy String'];?></th>
 												
 											</tr>
 
@@ -103,18 +104,19 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 										  <!-- Modal content-->
 										  <div class="modal-content">
 										   
-											<form name="classbooking" action="INSSclassbookstatus.php" method="POST">
+											<form name="classbooking" method="POST">
 											<div class="modal-body">
 											<div class="col-md-12 classroombooking">
 												<div class="row">
 													<div class="col-md-7 row">
 														<div id="datepicker" class="input-group date" data-date-format="yyyy-mm-dd">
-														    <input class="form-control inputpickertext" type="text" />
+														    <input class="form-control inputpickertext" type="text" id="BookDate"/>
 														    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 														</div>
 													</div>
 													<div class="col-md-5">
-														<select name="classroom col-md-6 col-sm-6" id="classroom" style="display:none;">
+														<select name="classroom col-md-6 col-sm-6" id="classroom" >
+														<option>Select Class Room</option>
 															<?php
 																$sql_classroom = "SELECT DISTINCT ClassNum FROM ClassroomBookingStatus";
 																$result_sql_classroom = sqlsrv_query( $conn, $sql_classroom ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
@@ -124,7 +126,7 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 														</select>
 													</div><br>
 													<div class="">
-														<input maxlength="100" type="text" id="bookedby" required name="bookedby" class="form-control" placeholder="Booked By" />													
+														<input maxlength="100" type="hidden" id="bookedby" required name="bookedby" class="form-control" placeholder="Booked By" value="<?php echo $InstructorName; ?>" />													
 													</div>
 													<div class="">
 
@@ -171,11 +173,11 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 	
 
 		<!-- jQuery 2.1.4 -->
-		<script src="../plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
+		<script src="../assets/plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
 		<!-- Bootstrap 3.3.2 JS -->
-		<script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="../assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 		<!-- Swcc App -->
-		<script src="../dist/js/app.min.js" type="text/javascript"></script>
+		<script src="../assets/dist/js/app.min.js" type="text/javascript"></script>
 		<!-- Swcc for demo purposes -->
 		<script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
 		<!-- Page level javascript -->
@@ -260,6 +262,7 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 				var BookDate = $('#BookDate').val();
 				var bookedby = $('#bookedby').val();
 				var OccString = $('#OccString').val();
+				
 				
 				$.ajax({
 				   type: "GET",

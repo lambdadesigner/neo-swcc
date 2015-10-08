@@ -1,5 +1,5 @@
 <?php 
-include('../includes/ITDheader.php');
+include('includes/ITDheader.php');
 //print_r($_SESSION);
 $InstructorID = $_SESSION['InstructorID'];
 
@@ -49,7 +49,7 @@ if($_SESSION['InstructorID']==''){
 								<hr>
 								<div class="panel-body">
 									<div class="profile-body">
-										<img src="assets/images/sample-student.png" class="img-circle">
+										<img src="../assets/images/sample-student.png" class="img-circle">
 										<div class="clearfix"></div>
 										<h2 class="title" data-toggle="tooltip" data-placement="top" title="Student Name"> <?php  echo $row['StudentName_en'];?></h2>
 										<h4 class="student-id" data-toggle="tooltip" data-placement="top" title="Student ID"></h4>
@@ -275,11 +275,11 @@ if($_SESSION['InstructorID']==''){
 		</div><!-- ./wrapper -->
 
 		<!-- jQuery 2.1.4 -->
-		<script src="assets/plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
+		<script src="../assets/plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
 		<!-- Bootstrap 3.3.2 JS -->
-		<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="../assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 		<!-- Swcc App -->
-		<script src="dist/js/app.min.js" type="text/javascript"></script>
+		<script src="../dist/js/app.min.js" type="text/javascript"></script>
 		<!-- Swcc for demo purposes -->
 	</body>
 </html>

@@ -21,8 +21,8 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 
 				<!-- Main content -->
 				<section class="content">
-					<div class="panel">
-						<div class="panel-body">
+					<div class="panel box box-info">
+						<div class="panel-body border">
 							<div class="row">
 								<div class="panel filterable">
 									<div class="panel-heading">
@@ -35,7 +35,7 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 										</h3>
 										<hr>
 									</div>
-									<div class="panel-body">
+									<div class="panel-body border">
 										<table class="table table-striped" id="examinations">
 											<thead>												
 												<tr class="filters1">
@@ -121,9 +121,9 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 		<!-- jQuery 2.1.4 
 		<script src="assets/plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>-->
 		<!-- Bootstrap 3.3.2 JS 
-		<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>-->
+		<script src="assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>-->
 		<!-- Swcc App 
-		<script src="dist/js/app.min.js" type="text/javascript"></script>-->
+		<script src="assets/dist/js/app.min.js" type="text/javascript"></script>-->
 		<!-- Swcc for demo purposes -->
 		<script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
 		<!-- Page level javascript -->

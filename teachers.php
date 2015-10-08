@@ -53,7 +53,7 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 										  <div class="box-body no-padding">										  
 										  <?php //while($row = sqlsrv_fetch_array($result)){ ?>
 											<!-- <li>
-											  <img src="dist/img/user1-128x128.jpg" alt="User Image" class="img-circle" width="128" height="128" />
+											  <img src="assets/dist/img/user1-128x128.jpg" alt="User Image" class="img-circle" width="128" height="128" />
 											  <a class="users-list-name" href="#"><?php echo $row['InstructorName']?></a>
 											  <span class="users-list-date"><?php echo $row['InstructorEmail']?></span>
 											</li> -->
@@ -174,7 +174,7 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 																	<h3 class="box-title"> Mohammed Zakhir Hussain</h3>
 																</div>
 																<div class="panel-body">
-																	<img src="dist/img/user1-128x128.jpg" alt="User Image" class="img-circle" width="128" height="128" />
+																	<img src="assets/dist/img/user1-128x128.jpg" alt="User Image" class="img-circle" width="128" height="128" />
 																	<table class="table-responsive">
 																		<tr>
 																			<td> ID</td>
@@ -246,9 +246,9 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 		<!-- jQuery 2.1.4 -->
 		<script src="assets/plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
 		<!-- Bootstrap 3.3.2 JS -->
-		<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 		<!-- Swcc App -->
-		<script src="dist/js/app.min.js" type="text/javascript"></script>
+		<script src="assets/dist/js/app.min.js" type="text/javascript"></script>
 		<!-- Swcc for demo purposes -->
 		<script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
 		<!-- Page level javascript -->

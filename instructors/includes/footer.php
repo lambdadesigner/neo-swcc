@@ -3,7 +3,10 @@
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.3/jquery.slimscroll.min.js"></script>
 
 	<!-- New Scripts-Captain -->
-	<script src="../assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <?php if(basename($_SERVER['REQUEST_URI']) != "index" || basename($_SERVER['REQUEST_URI']) != "index?lang=en" || basename($_SERVER['REQUEST_URI']) != "index?lang=ar"){?>
+    <?php } else {?>
+	   <script src="../assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <?php } ?>
     <!-- Morris.js charts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="../assets/plugins/morris/morris.min.js" type="text/javascript"></script>

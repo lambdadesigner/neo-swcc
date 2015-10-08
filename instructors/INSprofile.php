@@ -18,12 +18,12 @@ if($_SESSION['InstructorID']==''){
 				<!-- Content Header (Page header) -->
 				<section class="content-header">
 					<h1>
-						Profile
+						<?php echo $lang['profile'];?>
 						<small></small>
 					</h1>
 					<ol class="breadcrumb">
-						<li><a href="#"><i class="fa fa-dashboard text-red"></i> Home</a></li>
-						<li><a href="#"><i class="fa fa-user text-red"></i> Profile</a></li>
+						<li><a href="#"><i class="fa fa-dashboard text-red"></i><?php echo $lang['Home']?> </a></li>
+						<li><a href="#"><i class="fa fa-user text-red"></i> <?php echo $lang['profile'];?></a></li>
 					</ol>
 				</section>
 					<?php 
@@ -58,19 +58,19 @@ if($_SESSION['InstructorID']==''){
 										<hr>
 										<table class="table-responsive">
 											<tr>
-												<td>Employee ID:</td>
+												<td><?php echo $lang['Employee ID']?>:</td>
 												<td><?php  echo $row['EmployeeID'];?></td>
 											</tr>
 											<tr>
-												<td>Instructor Name:</td>
+												<td><?php echo $lang['Instructor Name']?>:</td>
 												<td><?php  echo $row['InstructorName'];?></td>
 											</tr>
 											<tr>
-												<td>Form ID:</td>
+												<td><?php echo $lang['Form ID'] ?>:</td>
 												<td><?php  echo $row['FormID'];?></td>
 											</tr>
 											<tr>
-												<td>Process ID:</td>
+												<td><?php echo $lang['Process ID']?>:</td>
 												<td><?php  echo $row['processID'];?></td>
 											</tr>
 											<tr>
@@ -266,11 +266,11 @@ if($_SESSION['InstructorID']==''){
 		</div><!-- ./wrapper -->
 
 		<!-- jQuery 2.1.4 -->
-		<script src="assets/plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
+		<script src="../assets/plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
 		<!-- Bootstrap 3.3.2 JS -->
-		<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="../assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 		<!-- Swcc App -->
-		<script src="dist/js/app.min.js" type="text/javascript"></script>
+		<script src="../assets/dist/js/app.min.js" type="text/javascript"></script>
 		<!-- Swcc for demo purposes -->
 
 <?php include('includes/footer.php') ?>

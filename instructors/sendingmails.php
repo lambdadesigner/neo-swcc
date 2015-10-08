@@ -26,6 +26,40 @@ if($_POST['ScStudent']=="on")
     }
 }
 
+if($_POST['Maths']=="on")
+{
+    $ScStu_query = "SELECT EmpID FROM SCStudent";
+    $ScStu_result = sqlsrv_query( $conn, $ScStu_query ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET )); 
+
+    while($ScStu_data = sqlsrv_fetch_array($ScStu_result)){
+        $ScIds = $ScStu_data['EmpID'];
+        $ssd .= $ScIds.',';
+    }
+}
+
+if($_POST['English']=="on")
+{
+    $ScStu_query = "SELECT EmpID FROM SCStudent";
+    $ScStu_result = sqlsrv_query( $conn, $ScStu_query ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET )); 
+
+    while($ScStu_data = sqlsrv_fetch_array($ScStu_result)){
+        $ScIds = $ScStu_data['EmpID'];
+        $ssd .= $ScIds.',';
+    }
+}
+
+if($_POST['HR']=="on")
+{
+    $ScStu_query = "SELECT EmpID FROM SCStudent";
+    $ScStu_result = sqlsrv_query( $conn, $ScStu_query ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET )); 
+
+    while($ScStu_data = sqlsrv_fetch_array($ScStu_result)){
+        $ScIds = $ScStu_data['EmpID'];
+        $ssd .= $ScIds.',';
+    }
+}
+
+
 
 
 $sqls = "INSERT INTO AllNotifications([To],Subject,Message,SentBy,SentOn) VALUES('".$ssd."','".$_POST['subject']."','".strip_tags($_POST['message'])."','".$_POST['adminID']."','".$currtime."')";

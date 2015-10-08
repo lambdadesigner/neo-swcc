@@ -14,7 +14,7 @@ $url = basename($_SERVER['REQUEST_URI']);
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 		<!-- Bootstrap 3.3.4 -->
-		<link href="../bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+		<link href="../assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 		<!-- Font Awesome Icons -->
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 		<!-- Ionicons -->
@@ -24,7 +24,7 @@ $url = basename($_SERVER['REQUEST_URI']);
 		<!-- Swcc Skins. Choose a skin from the css/skins
 				 folder instead of downloading all of them to reduce the load. -->
 		<link href="../assets/dist/css/skins/_all-skins.css" rel="stylesheet" type="text/css" />
-		<link href="../dist/custom/custom.css" rel="stylesheet" type="text/css" />
+		<link href="../assets/dist/custom/custom.css" rel="stylesheet" type="text/css" />
 		<link href="../assets/dist/css/services.css" rel="stylesheet" type="text/css" />
 
 		<link href="https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
@@ -106,13 +106,13 @@ $url = basename($_SERVER['REQUEST_URI']);
 							<!-- User Account: style can be found in dropdown.less -->
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdowns" id="userpanel">
-									<img src="../dist/img/user2-160x160.jpg" class="user-image img-circle" alt="User Image" />
+									<img src="../assets/dist/img/user2-160x160.jpg" class="user-image img-circle" alt="User Image" />
 									<span class="hidden-xs"><?php echo $_SESSION['StudentName_en']?></span>
 								</a>
 								<ul class="dropdown-menu" id="panelshow">
 									<!-- User image -->
 									<li class="user-header">
-										<img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+										<img src="../assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
 										<p>
 											Mohammed Sameer
 											<small>Member since Nov. 2012</small>

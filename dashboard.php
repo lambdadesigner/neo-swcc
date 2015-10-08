@@ -625,7 +625,7 @@ $studentId = $_SESSION['StudentID'];
 			                            <span class="direct-chat-name pull-left"><?php while($user1_name = sqlsrv_fetch_array($user1result)){ echo $user1_name['StudentName_en']; } ?></span>
 			                            <span class="direct-chat-timestamp pull-right"><?php $vals=strtotime($chat_data['Sent']); echo date("j M Y G:i a",$vals);?></span>
 			                          </div><!-- /.direct-chat-info -->
-			                          <img class="direct-chat-img img-circle" class="img-cir" src="dist/img/user1-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+			                          <img class="direct-chat-img img-circle" class="img-cir" src="assets/dist/img/user1-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
 			                          <div class="direct-chat-text">
 			                            <?php echo $chat_data['Message'];?>
 			                          </div><!-- /.direct-chat-text -->
@@ -639,7 +639,7 @@ $studentId = $_SESSION['StudentID'];
 			                            <span class="direct-chat-name pull-right"><?php echo $_SESSION['StudentName_en'];?></span>
 			                            <span class="direct-chat-timestamp pull-left"><?php $vals=strtotime($chat_data['Sent']); echo date("j M Y G:i a",$vals);?></span>
 			                          </div><!-- /.direct-chat-info -->
-			                          <img class="direct-chat-img img-circle" src="dist/img/user3-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+			                          <img class="direct-chat-img img-circle" src="assets/dist/img/user3-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
 			                          <div class="direct-chat-text">
 			                            <?php echo $chat_data['Message'];?>
 			                          </div><!-- /.direct-chat-text -->
@@ -666,7 +666,7 @@ $studentId = $_SESSION['StudentID'];
 			                         while($all_users = sqlsrv_fetch_array($users_result)){
 			                        ?>
 			                          <li>			                            
-			                            <img class="contacts-list-img img-circle" src="dist/img/user7-128x128.jpg" />
+			                            <img class="contacts-list-img img-circle" src="assets/dist/img/user7-128x128.jpg" />
 			                            <div class="contacts-list-info">
 			                                <span class="contacts-list-name" onclick="chat_user(<?php echo $all_users['StudentID'];?>)" data-widget="chat-pane-toggle" style="cursor:pointer">
 			                                  <?php echo $all_users['StudentName_en'];?>
@@ -761,12 +761,12 @@ $studentId = $_SESSION['StudentID'];
 								  
 								  <?php //while($row = sqlsrv_fetch_array($result)){ ?>
 			                        <!-- <li>
-			                          <img src="dist/img/user1-128x128.jpg" alt="User Image" class="img-circle" width="128" height="128" />
+			                          <img src="assets/dist/img/user1-128x128.jpg" alt="User Image" class="img-circle" width="128" height="128" />
 			                          <a class="users-list-name" href="#"><?php echo $row['InstructorName']?></a>
 			                          <span class="users-list-date"><?php echo $row['InstructorEmail']?></span>
 			                        </li> -->
 			                        <li>
-			                          <img src="dist/img/user1-128x128.jpg" alt="User Image" class="img-circle" width="128" height="128" />
+			                          <img src="assets/dist/img/user1-128x128.jpg" alt="User Image" class="img-circle" width="128" height="128" />
 			                          <a class="users-list-name" href="#">Mohammed</a>
 			                          <span class="users-list-date">test@test.com</span>
 			                        </li>
@@ -974,7 +974,6 @@ $studentId = $_SESSION['StudentID'];
 										  </td>
 										  <td><span href="#fakelink"><?php  if($row['IsPublished'] == 0){ echo 'Not Published';}else{ echo 'Published'; }?></span></td>
 										</tr>
-
 										<?php } ?>
 									  </tbody>
 									</table>
@@ -989,8 +988,6 @@ $studentId = $_SESSION['StudentID'];
 					</div>
 				</section><!-- /.content -->
 			</div><!-- /.content-wrapper -->
-
-			
 
 			<footer class="main-footer">
 				<div class="pull-right hidden-xs">
@@ -1007,23 +1004,23 @@ $studentId = $_SESSION['StudentID'];
 		<!-- jQuery 2.1.4 -->
 		<script src="assets/plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
 		<!-- Bootstrap 3.3.2 JS -->
-		<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 		<!-- SlimScroll -->
 		<script src="assets/plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
 		<!-- FastClick -->
 		<script src="assets/plugins/fastclick/fastclick.min.js" type="text/javascript"></script>
 		<!-- Swcc App -->
-		<script src="dist/js/app.min.js" type="text/javascript"></script>
+		<script src="assets/dist/js/app.min.js" type="text/javascript"></script>
 		<!-- Swcc for demo purposes -->
 		<!-- ChartJS 1.0.1 -->
 	<script src="assets/plugins/chartjs/Chart.min.js" type="text/javascript"></script>
 
 	<!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js" type="text/javascript"></script>
+    <script src="assets/dist/js/demo.js" type="text/javascript"></script>
 
 
     
-		<script src="dist/js/demo.js" type="text/javascript"></script>
+		<!--<script src="assets/dist/js/demo.js" type="text/javascript"></script>-->
 		<script type="text/javascript">
 		$(document).on('ready', function(){
 			$(".todo-list").todolist({

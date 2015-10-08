@@ -13,7 +13,7 @@ $studentId = $_SESSION['StudentID'];
 				<!-- Content Header (Page header) -->
 				<section class="content-header">
 					<h1>
-						Dashboard
+						<?php echo $lang["dashboard"];?>
 						<small></small>
 					</h1>
 					<ol class="breadcrumb">
@@ -30,8 +30,8 @@ $studentId = $_SESSION['StudentID'];
 							<div class="attendance-chart">
 								<div class="box box-danger">
 									<div class="box-header with-border">
-									  <h3 class="box-title">Monthly Recap Report</h3>
-									  <div class="box-tools pull-right">
+									  <h3 class="box-title">Attendance Report Of <small> <?php echo $_SESSION['StudentName_en']?></small></h3>
+									  <!-- <div class="box-tools pull-right">
 										<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 										<div class="btn-group">
 										  <button class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown"><i class="fa fa-wrench"></i></button>
@@ -44,7 +44,7 @@ $studentId = $_SESSION['StudentID'];
 										  </ul>
 										</div>
 										<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-									  </div>
+									  </div> -->
 									</div><!-- /.box-header -->
 									<div class="box-body gradient-blue">
 									  <div class="row">
@@ -108,7 +108,7 @@ $studentId = $_SESSION['StudentID'];
 				<link rel="stylesheet" type="text/css" href="assets/dist/css/calendar.css">
 				<div class="clearfix"></div>
 					<div class="box-header with-border">
-					  <h3 class="box-title">Monthly Attendance Report </h3><i class="fa fa-calendar text-red pull-right"></i> 
+					  <h3 class="box-title">Monthly Attendance Report <small> <?php echo $_SESSION['StudentName_en']?></small></h3><i class="fa fa-calendar text-red pull-right"></i> 
 					  <!-- <div class="box-tools pull-right">
 						<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 						<div class="btn-group">
@@ -637,7 +637,7 @@ $studentId = $_SESSION['StudentID'];
 			                            <span class="direct-chat-name pull-left"><?php while($user1_name = sqlsrv_fetch_array($user1result)){ echo $user1_name['StudentName_en']; } ?></span>
 			                            <span class="direct-chat-timestamp pull-right"><?php $vals=strtotime($chat_data['Sent']); echo date("j M Y G:i a",$vals);?></span>
 			                          </div><!-- /.direct-chat-info -->
-			                          <img class="direct-chat-img img-circle" class="img-cir" src="dist/img/user1-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+			                          <img class="direct-chat-img img-circle" class="img-cir" src="assets/dist/img/user1-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
 			                          <div class="direct-chat-text">
 			                            <?php echo $chat_data['Message'];?>
 			                          </div><!-- /.direct-chat-text -->
@@ -651,7 +651,7 @@ $studentId = $_SESSION['StudentID'];
 			                            <span class="direct-chat-name pull-right"><?php echo $_SESSION['StudentName_en'];?></span>
 			                            <span class="direct-chat-timestamp pull-left"><?php $vals=strtotime($chat_data['Sent']); echo date("j M Y G:i a",$vals);?></span>
 			                          </div><!-- /.direct-chat-info -->
-			                          <img class="direct-chat-img img-circle" src="dist/img/user3-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+			                          <img class="direct-chat-img img-circle" src="assets/dist/img/user3-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
 			                          <div class="direct-chat-text">
 			                            <?php echo $chat_data['Message'];?>
 			                          </div><!-- /.direct-chat-text -->
@@ -678,7 +678,7 @@ $studentId = $_SESSION['StudentID'];
 			                         while($all_users = sqlsrv_fetch_array($users_result)){
 			                        ?>
 			                          <li>			                            
-			                            <img class="contacts-list-img img-circle" src="dist/img/user7-128x128.jpg" />
+			                            <img class="contacts-list-img img-circle" src="assets/dist/img/user7-128x128.jpg" />
 			                            <div class="contacts-list-info">
 			                                <span class="contacts-list-name" onclick="chat_user(<?php echo $all_users['StudentID'];?>)" data-widget="chat-pane-toggle" style="cursor:pointer">
 			                                  <?php echo $all_users['StudentName_en'];?>
@@ -715,7 +715,7 @@ $studentId = $_SESSION['StudentID'];
 							<div class="marks-chart">
 								<div class="box box-success">
 									<div class="box-header with-border">
-									  <h3 class="box-title">Marks</h3><i class="fa fa-bar-chart text-green pull-right"></i>
+									  <h3 class="box-title">Marks <small> <?php echo $_SESSION['StudentName_en']?></small></h3><i class="fa fa-bar-chart text-green pull-right"></i>
 									  <div class="box-tools pull-right">
 										<!-- <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 										<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> -->
@@ -769,9 +769,9 @@ $studentId = $_SESSION['StudentID'];
 								?>
 			                  <div class="box box-danger">
 			                    <div class="box-header with-border">
-			                      <h3 class="box-title">Instructors</h3>
+			                      <h3 class="box-title">Instructors </h3>
 			                      <div class="box-tools pull-right">
-			                        <span class="label label-danger"><?php echo $row_count;?> Members</span>
+			                        <!-- <span class="label label-danger"><?php echo $row_count;?> Members</span> -->
 			                        <i class="fa fa-users pull-right text-red"></i>
 			                        <!-- <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 			                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> -->
@@ -783,12 +783,12 @@ $studentId = $_SESSION['StudentID'];
 								  
 								  <?php //while($row = sqlsrv_fetch_array($result)){ ?>
 			                        <!-- <li>
-			                          <img src="dist/img/user1-128x128.jpg" alt="User Image" class="img-circle" width="128" height="128" />
+			                          <img src="assets/dist/img/user1-128x128.jpg" alt="User Image" class="img-circle" width="128" height="128" />
 			                          <a class="users-list-name" href="#"><?php echo $row['InstructorName']?></a>
 			                          <span class="users-list-date"><?php echo $row['InstructorEmail']?></span>
 			                        </li> -->
 			                        <li>
-			                          <img src="dist/img/user1-128x128.jpg" alt="User Image" class="img-circle" width="128" height="128" />
+			                          <img src="assets/dist/img/user1-128x128.jpg" alt="User Image" class="img-circle" width="128" height="128" />
 			                          <a class="users-list-name" href="#">Mohammed</a>
 			                          <span class="users-list-date">test@test.com</span>
 			                        </li>
@@ -842,7 +842,7 @@ $studentId = $_SESSION['StudentID'];
 						<div class="col-md-12">
 							 <div class="box box-info">
 								<div class="box-header with-border">
-								  <h3 class="box-title">Programs</h3>
+								  <h3 class="box-title">Programs for <small> <?php echo $_SESSION['StudentName_en']?></small></h3>
 								  <i class="fa fa-tasks pull-right text-info"></i>
 								  <!-- <div class="box-tools pull-right">
 									<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
@@ -876,106 +876,7 @@ $studentId = $_SESSION['StudentID'];
 											$result = sqlsrv_query( $conn, $querys ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
 											$row_count = sqlsrv_num_rows($result);
 												while($row = sqlsrv_fetch_array($result)){?>
-										<tr>
-										  <td><a href="#fakelink"><?php echo $row['ProgramID']?></a></td>
-										  <td><span class="text-warning"><?php echo $row['ProgramName']?></span></td>
-										  <td><span class="text-disabled"><?php echo $row['ParentProgram']?></span>
-										  <td><span class="text-default"><?php echo $row['HourPerDay']?></span></td>
-										  <td><span href="#fakelink"><?php echo $row['NumberOfBreaks']?></span></td>
-										  <td><span class="text-danger"><?php echo $row['BreakDuration']?>Mins</span></td>
-										  <td><span class="text-info"> <?php  $startDate = date_format($row['StartDate'], 'Y-m-d'); echo $startDate;?> </span></td>
-										  <td><span class="text-danger"><?php  $endDate = date_format($row['EndDate'], 'Y-m-d'); echo $endDate;?></span></td>
-										  <td><span class="text-disabled"><?php echo $row['ClassDuration']?></span>
-										  <td><?php if($row['OffDay_Sun']==1){ echo '<span class="text-success">S,</span>';}else { echo '<span class="text-danger">S,</span>';} ?>
-											  <?php if($row['OffDay_Mon']==1){ echo '<span class="text-success">M,</span>';}else { echo '<span class="text-danger">M,</span>';} ?>
-											  <?php if($row['OffDay_Tue']==1){ echo '<span class="text-success">T,</span>';}else { echo '<span class="text-danger">T,</span>';} ?>
-											  <?php if($row['OffDay_Wed']==1){ echo '<span class="text-success">W,</span>';}else { echo '<span class="text-danger">W,</span>';} ?>
-											  <?php if($row['OffDay_Thu']==1){ echo '<span class="text-success">Th,</span>';}else { echo '<span class="text-danger">Th,</span>';} ?>
-											  <?php if($row['OffDay_Fri']==1){ echo '<span class="text-success">F,</span>';}else { echo '<span class="text-danger">F,</span>';} ?>
-											  <?php if($row['OffDay_Sat']==1){ echo '<span class="text-success">S</span>';}else { echo '<span class="text-danger">S</span>';} ?>
-										  </td>
-										  <td><span href="#fakelink"><?php  if($row['IsPublished'] == 0){ echo 'Not Published';}else{ echo 'Published'; }?></span></td>
-										</tr>
-										<tr>
-										  <td><a href="#fakelink"><?php echo $row['ProgramID']?></a></td>
-										  <td><span class="text-warning"><?php echo $row['ProgramName']?></span></td>
-										  <td><span class="text-disabled"><?php echo $row['ParentProgram']?></span>
-										  <td><span class="text-default"><?php echo $row['HourPerDay']?></span></td>
-										  <td><span href="#fakelink"><?php echo $row['NumberOfBreaks']?></span></td>
-										  <td><span class="text-danger"><?php echo $row['BreakDuration']?>Mins</span></td>
-										  <td><span class="text-info"> <?php  $startDate = date_format($row['StartDate'], 'Y-m-d'); echo $startDate;?> </span></td>
-										  <td><span class="text-danger"><?php  $endDate = date_format($row['EndDate'], 'Y-m-d'); echo $endDate;?></span></td>
-										  <td><span class="text-disabled"><?php echo $row['ClassDuration']?></span>
-										  <td><?php if($row['OffDay_Sun']==1){ echo '<span class="text-success">S,</span>';}else { echo '<span class="text-danger">S,</span>';} ?>
-											  <?php if($row['OffDay_Mon']==1){ echo '<span class="text-success">M,</span>';}else { echo '<span class="text-danger">M,</span>';} ?>
-											  <?php if($row['OffDay_Tue']==1){ echo '<span class="text-success">T,</span>';}else { echo '<span class="text-danger">T,</span>';} ?>
-											  <?php if($row['OffDay_Wed']==1){ echo '<span class="text-success">W,</span>';}else { echo '<span class="text-danger">W,</span>';} ?>
-											  <?php if($row['OffDay_Thu']==1){ echo '<span class="text-success">Th,</span>';}else { echo '<span class="text-danger">Th,</span>';} ?>
-											  <?php if($row['OffDay_Fri']==1){ echo '<span class="text-success">F,</span>';}else { echo '<span class="text-danger">F,</span>';} ?>
-											  <?php if($row['OffDay_Sat']==1){ echo '<span class="text-success">S</span>';}else { echo '<span class="text-danger">S</span>';} ?>
-										  </td>
-										  <td><span href="#fakelink"><?php  if($row['IsPublished'] == 0){ echo 'Not Published';}else{ echo 'Published'; }?></span></td>
-										</tr>
-										<tr>
-										  <td><a href="#fakelink"><?php echo $row['ProgramID']?></a></td>
-										  <td><span class="text-warning"><?php echo $row['ProgramName']?></span></td>
-										  <td><span class="text-disabled"><?php echo $row['ParentProgram']?></span>
-										  <td><span class="text-default"><?php echo $row['HourPerDay']?></span></td>
-										  <td><span href="#fakelink"><?php echo $row['NumberOfBreaks']?></span></td>
-										  <td><span class="text-danger"><?php echo $row['BreakDuration']?>Mins</span></td>
-										  <td><span class="text-info"> <?php  $startDate = date_format($row['StartDate'], 'Y-m-d'); echo $startDate;?> </span></td>
-										  <td><span class="text-danger"><?php  $endDate = date_format($row['EndDate'], 'Y-m-d'); echo $endDate;?></span></td>
-										  <td><span class="text-disabled"><?php echo $row['ClassDuration']?></span>
-										  <td><?php if($row['OffDay_Sun']==1){ echo '<span class="text-success">S,</span>';}else { echo '<span class="text-danger">S,</span>';} ?>
-											  <?php if($row['OffDay_Mon']==1){ echo '<span class="text-success">M,</span>';}else { echo '<span class="text-danger">M,</span>';} ?>
-											  <?php if($row['OffDay_Tue']==1){ echo '<span class="text-success">T,</span>';}else { echo '<span class="text-danger">T,</span>';} ?>
-											  <?php if($row['OffDay_Wed']==1){ echo '<span class="text-success">W,</span>';}else { echo '<span class="text-danger">W,</span>';} ?>
-											  <?php if($row['OffDay_Thu']==1){ echo '<span class="text-success">Th,</span>';}else { echo '<span class="text-danger">Th,</span>';} ?>
-											  <?php if($row['OffDay_Fri']==1){ echo '<span class="text-success">F,</span>';}else { echo '<span class="text-danger">F,</span>';} ?>
-											  <?php if($row['OffDay_Sat']==1){ echo '<span class="text-success">S</span>';}else { echo '<span class="text-danger">S</span>';} ?>
-										  </td>
-										  <td><span href="#fakelink"><?php  if($row['IsPublished'] == 0){ echo 'Not Published';}else{ echo 'Published'; }?></span></td>
-										</tr>
-										<tr>
-										  <td><a href="#fakelink"><?php echo $row['ProgramID']?></a></td>
-										  <td><span class="text-warning"><?php echo $row['ProgramName']?></span></td>
-										  <td><span class="text-disabled"><?php echo $row['ParentProgram']?></span>
-										  <td><span class="text-default"><?php echo $row['HourPerDay']?></span></td>
-										  <td><span href="#fakelink"><?php echo $row['NumberOfBreaks']?></span></td>
-										  <td><span class="text-danger"><?php echo $row['BreakDuration']?>Mins</span></td>
-										  <td><span class="text-info"> <?php  $startDate = date_format($row['StartDate'], 'Y-m-d'); echo $startDate;?> </span></td>
-										  <td><span class="text-danger"><?php  $endDate = date_format($row['EndDate'], 'Y-m-d'); echo $endDate;?></span></td>
-										  <td><span class="text-disabled"><?php echo $row['ClassDuration']?></span>
-										  <td><?php if($row['OffDay_Sun']==1){ echo '<span class="text-success">S,</span>';}else { echo '<span class="text-danger">S,</span>';} ?>
-											  <?php if($row['OffDay_Mon']==1){ echo '<span class="text-success">M,</span>';}else { echo '<span class="text-danger">M,</span>';} ?>
-											  <?php if($row['OffDay_Tue']==1){ echo '<span class="text-success">T,</span>';}else { echo '<span class="text-danger">T,</span>';} ?>
-											  <?php if($row['OffDay_Wed']==1){ echo '<span class="text-success">W,</span>';}else { echo '<span class="text-danger">W,</span>';} ?>
-											  <?php if($row['OffDay_Thu']==1){ echo '<span class="text-success">Th,</span>';}else { echo '<span class="text-danger">Th,</span>';} ?>
-											  <?php if($row['OffDay_Fri']==1){ echo '<span class="text-success">F,</span>';}else { echo '<span class="text-danger">F,</span>';} ?>
-											  <?php if($row['OffDay_Sat']==1){ echo '<span class="text-success">S</span>';}else { echo '<span class="text-danger">S</span>';} ?>
-										  </td>
-										  <td><span href="#fakelink"><?php  if($row['IsPublished'] == 0){ echo 'Not Published';}else{ echo 'Published'; }?></span></td>
-										</tr>
-										<tr>
-										  <td><a href="#fakelink"><?php echo $row['ProgramID']?></a></td>
-										  <td><span class="text-warning"><?php echo $row['ProgramName']?></span></td>
-										  <td><span class="text-disabled"><?php echo $row['ParentProgram']?></span>
-										  <td><span class="text-default"><?php echo $row['HourPerDay']?></span></td>
-										  <td><span href="#fakelink"><?php echo $row['NumberOfBreaks']?></span></td>
-										  <td><span class="text-danger"><?php echo $row['BreakDuration']?>Mins</span></td>
-										  <td><span class="text-info"> <?php  $startDate = date_format($row['StartDate'], 'Y-m-d'); echo $startDate;?> </span></td>
-										  <td><span class="text-danger"><?php  $endDate = date_format($row['EndDate'], 'Y-m-d'); echo $endDate;?></span></td>
-										  <td><span class="text-disabled"><?php echo $row['ClassDuration']?></span>
-										  <td><?php if($row['OffDay_Sun']==1){ echo '<span class="text-success">S,</span>';}else { echo '<span class="text-danger">S,</span>';} ?>
-											  <?php if($row['OffDay_Mon']==1){ echo '<span class="text-success">M,</span>';}else { echo '<span class="text-danger">M,</span>';} ?>
-											  <?php if($row['OffDay_Tue']==1){ echo '<span class="text-success">T,</span>';}else { echo '<span class="text-danger">T,</span>';} ?>
-											  <?php if($row['OffDay_Wed']==1){ echo '<span class="text-success">W,</span>';}else { echo '<span class="text-danger">W,</span>';} ?>
-											  <?php if($row['OffDay_Thu']==1){ echo '<span class="text-success">Th,</span>';}else { echo '<span class="text-danger">Th,</span>';} ?>
-											  <?php if($row['OffDay_Fri']==1){ echo '<span class="text-success">F,</span>';}else { echo '<span class="text-danger">F,</span>';} ?>
-											  <?php if($row['OffDay_Sat']==1){ echo '<span class="text-success">S</span>';}else { echo '<span class="text-danger">S</span>';} ?>
-										  </td>
-										  <td><span href="#fakelink"><?php  if($row['IsPublished'] == 0){ echo 'Not Published';}else{ echo 'Published'; }?></span></td>
-										</tr>
+										
 										<tr>
 										  <td><a href="#fakelink"><?php echo $row['ProgramID']?></a></td>
 										  <td><span class="text-warning"><?php echo $row['ProgramName']?></span></td>
@@ -1003,13 +904,123 @@ $studentId = $_SESSION['StudentID'];
 								  </div><!-- /.table-responsive -->
 								</div><!-- /.box-body -->
 								<div class="box-footer clearfix">
-								  <!-- <a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a> -->
-								  <a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-right">View All Programs</a>
+								  <!-- <a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
+								  <a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-right">View All Programs</a> -->
 								</div><!-- /.box-footer -->
 							  </div><!-- /.box -->
 						</div>
 					</div>
-				</section><!-- /.content -->
+					<?php
+						if(isset($_POST['submit'])){
+							$studentId = $_SESSION['StudentID'];
+							$name = $_SESSION['StudentName_en'];
+							//$subject = $_POST['subject'];
+							$Department = $_POST['Department'];
+							$Priority = $_POST['Priority'];
+							$message = $_POST['message'];
+							$Status = 'Pending';
+							$today = date("Y-m-d"); 
+
+							 $sql = "INSERT INTO Complaints(Message,Complain_By,Complain_By_Name,priority,Department,Complain_on,Status) VALUES('".$message."','".$studentId."','".$name."','".$Priority."','".$Department."','".$today."','".$Status."')";
+							$result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+
+						}
+
+					?>
+					
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="panel box box-warning">
+								<div class="panel-heading">
+									<h3 class="panel-title"> Complaint Box</h3>
+								</div>
+								<form class="form-horizontal" id="complains" action="" method="POST">
+									<div class="panel-body">
+										
+												  <?php
+												  $sql_Complaints_building="SELECT BuildingNo,Section,RoomNo FROM BachelorAcc where Candidate_1 ='".$_SESSION['StudentID']."' OR Candidate_2 ='".$_SESSION['StudentID']."' OR Candidate_2 ='".$_SESSION['StudentID']."'";
+												$result_Complaints_building = sqlsrv_query( $conn, $sql_Complaints_building ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+												$Complaints_room = sqlsrv_fetch_array($result_Complaints_building);
+												//echo $Complaints_room['BuildingNo'];
+												//echo $Complaints_room['Section'];
+												//echo $Complaints_room['RoomNo'];
+												?>
+											<div class="form-group">
+												<label for="inputEmail3" class="col-sm-2 control-label">Complaint Name</label>
+												<div class="col-sm-10">
+													<input type="text" name="name" id="name" class="form-control" placeholder="Full Name" value="<?php echo $_SESSION['StudentName_en'];?>" disabled>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="inputEmail3" class="col-sm-2 control-label"></label>
+												<div class="col-sm-3">
+													<input type="text" name="name" id="name" class="form-control" placeholder="Full Name" value="<?php echo 'Building No : '.$Complaints_room['BuildingNo']?>" disabled>
+												</div>
+												<div class="col-sm-3">
+													<input type="text" name="name" id="name" class="form-control" placeholder="Full Name" value="<?php echo 'Block No : '.$Complaints_room['Section'];?>" disabled>
+												</div>
+												<div class="col-sm-3">
+													<input type="text" name="name" id="name" class="form-control" placeholder="Full Name" value="<?php echo 'Room No : '.$Complaints_room['RoomNo'];?>" disabled>
+												</div>
+											</div>
+											
+											<!--<div class="form-group">
+												<label for="inputEmail3" class="col-sm-2 control-label">Subject</label>
+												<div class="col-sm-10">
+													<input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
+												</div>
+											</div>-->
+											<div class="row">
+												<div class="col-md-5 col-md-offset-1">
+													<div class="form-group">
+														<label for="inputEmail3" class="col-sm-2 control-label">Department</label>
+														<div class="col-sm-10 col-sm-offset-1" style="margin-left:0px;">
+															<div class="col-sm-1"></div>
+															<select class="form-control" id="Department" name="Department" required>
+																<option>Select Department</option>
+																<option>Food</option>
+																<option>Building</option>
+																<option>Bathroom</option>
+																<option>Other</option>
+															</select>											
+														</div>
+													</div>
+												</div>
+												<div class="col-md-5 col-md-offset-1">
+													<div class="form-group">
+														<label for="inputEmail3" class="col-sm-2 control-label">Priority</label>
+														<div class="col-sm-9 col-sm-offset-1">
+															<select class="form-control" id="Priority" name="Priority" required>
+																<option>Select Priority</option>
+																<option value="Low">Low</option>
+																<option value="Medium">Medium</option>
+																<option value="High">High</option>
+															</select>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="inputEmail3" class="col-sm-2 control-label">Complaint</label>
+												<div class="col-sm-10">
+													<textarea class="textarea col-md-12" name="message" id="message" placeholder="Type your Complaint here" style="height:200px; border:1px solid #ccc; border-radius:5px !important; padding:15px; font-size:16px; letter-spacing:1px;" rows="20" cols="90" required></textarea>
+												</div>
+											</div>
+											
+									</div>
+									<div class="panel-footer">
+										<div class="form-group">
+											<div class="col-sm-offset-2 col-sm-10">
+												<input type="submit" class="btn btn-lg btn-warning pull-right" value="Submit" name="submit">
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					</section><!-- /.content -->
 			</div><!-- /.content-wrapper -->
 
 			
@@ -1021,6 +1032,7 @@ $studentId = $_SESSION['StudentID'];
 				<strong>Copyright &copy; 2014-2015 <a href="#fakelink"> SWCC Student Dashboard</a>.</strong> All rights reserved.
 			</footer>
 			
+			
 			<!-- Add the sidebar's background. This div must be placed
 					 immediately after the control sidebar -->
 			<div class="control-sidebar-bg"></div>
@@ -1029,23 +1041,23 @@ $studentId = $_SESSION['StudentID'];
 		<!-- jQuery 2.1.4 -->
 		<script src="assets/plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
 		<!-- Bootstrap 3.3.2 JS 
-		<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>-->
+		<script src="assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>-->
 		<!-- SlimScroll -->
 		<script src="assets/plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
 		<!-- FastClick -->
 		<script src="assets/plugins/fastclick/fastclick.min.js" type="text/javascript"></script>
 		<!-- Swcc App -->
-		<script src="dist/js/app.min.js" type="text/javascript"></script>
+		<script src="assets/dist/js/app.min.js" type="text/javascript"></script>
 		<!-- Swcc for demo purposes -->
 		<!-- ChartJS 1.0.1 -->
 	<script src="assets/plugins/chartjs/Chart.min.js" type="text/javascript"></script>
 
 	<!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js" type="text/javascript"></script>
+    <script src="assets/dist/js/demo.js" type="text/javascript"></script>
 
 
     
-		<script src="dist/js/demo.js" type="text/javascript"></script>
+		<!--<script src="assets/dist/js/demo.js" type="text/javascript"></script>-->
 		<script type="text/javascript">
 		$(document).on('ready', function(){
 			$(".todo-list").todolist({
@@ -1061,27 +1073,27 @@ $studentId = $_SESSION['StudentID'];
   var salesChart = new Chart(salesChartCanvas);
 
   var salesChartData = {
-	labels: ["January", "February", "March", "April", "May", "June", "July"],
+	labels: ["January", "February", "March", "April", "May", "June", "July", "August" , "Spetember" , "October" , "November" , "December" ],
 	datasets: [
 	  {
-		label: "Electronics",
+		label: "Total Days",
 		fillColor: "rgba(180, 191, 81, 0.5)",
 		strokeColor: "rgba(130,160,30,1)",
-		pointColor: "rgb(210, 214, 222)",
+		pointColor: "rgba(180, 191, 81, 0.5)",
 		pointStrokeColor: "#c1c7d1",
 		pointHighlightFill: "#fff",
 		pointHighlightStroke: "rgb(220,220,220)",
-		data: [65, 79, 60, 71, 56, 55, 65]
+		data: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 	  },
 	  {
-		label: "Digital Goods",
+		label: "Present Days",
 		fillColor: "rgba(250,80,160,0.4)",
 		strokeColor: "rgba(160,30,90,1)",
-		pointColor: "#3b8bba",
+		pointColor: "rgba(250,80,160,0.4)",
 		pointStrokeColor: "rgba(60,141,188,1)",
 		pointHighlightFill: "#fff",
 		pointHighlightStroke: "rgba(60,141,188,1)",
-		data: [60, 78, 55, 59, 60, 67, 70]
+		data: [22, 25, 20, 18, 24, 22, 15, 18, 25, 24, 5, 10]
 	  }
 	]
   };
@@ -1291,6 +1303,7 @@ $studentId = $_SESSION['StudentID'];
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<!-- Marks Chart Animation JS -->
 		<script src="assets/dist/js/barchart.js"></script>
 		<script src="assets/dist/js/slimscroll.js"></script>
 		<?php 

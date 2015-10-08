@@ -8,7 +8,7 @@ $AdminUserName = $_SESSION['AdminUserName'];
   $UserID=$_GET['UserID'];
   $InstructorID = $_GET['InstructorID'];
   
-  echo $sql = "INSERT INTO Marks (TestID,StudentID,Marks,UserID,InstructorID,EnteredBy) VALUES('".$TestID."','".$StudentID."','".$Marks."','".$UserID."','".$InstructorID."','".$AdminId."')";
+   $sql = "INSERT INTO Marks (TestID,StudentID,Marks,UserID,InstructorID,EnteredBy) VALUES('".$TestID."','".$StudentID."','".$Marks."','".$UserID."','".$InstructorID."','".$AdminId."')";
      $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
 
 ?>

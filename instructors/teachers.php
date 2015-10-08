@@ -5,7 +5,7 @@ $sql = "SELECT Distinct (Module.ModuleName),Tests.TestID,Tests.TestName,Tests.Te
 $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
 ?>
 	<!-- Page Level CSS -->
-		<link rel="stylesheet" type="text/css" href="assets/dist/css/teachers.css">
+		<link rel="stylesheet" type="text/css" href="../assets/dist/css/teachers.css">
 			<style>
 				.filterbutton {
 					float: right;
@@ -25,7 +25,7 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 				<!-- Content Header (Page header) -->
 				<section class="content-header">
 					<h1>
-						Teachers
+						Instructors
 						<small></small>
 					</h1>
 					<ol class="breadcrumb">
@@ -53,7 +53,7 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 										  <div class="box-body no-padding">										  
 										  <?php //while($row = sqlsrv_fetch_array($result)){ ?>
 											<!-- <li>
-											  <img src="dist/img/user1-128x128.jpg" alt="User Image" class="img-circle" width="128" height="128" />
+											  <img src="../assets/dist/img/user1-128x128.jpg" alt="User Image" class="img-circle" width="128" height="128" />
 											  <a class="users-list-name" href="#"><?php echo $row['InstructorName']?></a>
 											  <span class="users-list-date"><?php echo $row['InstructorEmail']?></span>
 											</li> -->
@@ -168,54 +168,7 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 															</div>
 														</div>
 											 <?php } ?>
-														<div class="col-md-6">
-															<div class="box box-info">
-																<div class="box-heading">
-																	<h3 class="box-title"> Mohammed Zakhir Hussain</h3>
-																</div>
-																<div class="panel-body">
-																	<img src="dist/img/user1-128x128.jpg" alt="User Image" class="img-circle" width="128" height="128" />
-																	<table class="table-responsive">
-																		<tr>
-																			<td> ID</td>
-																			<td>10001511</td>
-																		</tr>
-																		<tr>
-																			<td>  Name</td>
-																			<td>Mohammed Zakhir Husain</td>
-																		</tr>
-																		<tr>
-																			<td> Special Course</td>
-																			<td>Some Course</td>
-																		</tr>
-																		<tr>
-																			<td>Email</td>
-																			<td>mohammed@sahik.com</td>
-																		</tr>
-																		<tr>
-																			<td>Phone</td>
-																			<td>9995545744121</td>
-																		</tr>
-																		<tr>
-																			<td>Mobile</td>
-																			<td>9956111457556</td>
-																		</tr>
-																		<tr>
-																			<td>Address 1</td>
-																			<td>Malkah Kukaut,<br>
-																				112, Hyhs, Saudi
-																			</td>
-																		</tr>
-																		<tr>
-																			<td>Address 1</td>
-																			<td>Malkah Kukaut,<br>
-																				112, Hyhs, Saudi
-																			</td>
-																		</tr>
-																	</table>
-																</div>
-															</div>
-														</div>
+													
 													</div>
 												</div>
 											</div>
@@ -244,11 +197,11 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 		</div><!-- ./wrapper -->
 
 		<!-- jQuery 2.1.4 -->
-		<script src="assets/plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
+		<script src="../assets/plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
 		<!-- Bootstrap 3.3.2 JS -->
-		<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="../assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 		<!-- Swcc App -->
-		<script src="dist/js/app.min.js" type="text/javascript"></script>
+		<script src="../assets/dist/js/app.min.js" type="text/javascript"></script>
 		<!-- Swcc for demo purposes -->
 		<script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
 		<!-- Page level javascript -->

@@ -535,7 +535,7 @@ $InstructorID = $_SESSION['InstructorID'];
 			                            <span class="direct-chat-name pull-left">Alexander Pierce</span>
 			                            <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
 			                          </div><!-- /.direct-chat-info -->
-			                          <img class="direct-chat-img" class="img-cir" src="../dist/img/user1-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+			                          <img class="direct-chat-img" class="img-cir" src="../assets/dist/img/user1-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
 			                          <div class="direct-chat-text">
 			                            Is this template really for free? That's unbelievable!
 			                          </div><!-- /.direct-chat-text -->
@@ -547,7 +547,7 @@ $InstructorID = $_SESSION['InstructorID'];
 			                            <span class="direct-chat-name pull-right">Sarah Bullock</span>
 			                            <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
 			                          </div><!-- /.direct-chat-info -->
-			                          <img class="direct-chat-img" src="../dist/img/user3-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+			                          <img class="direct-chat-img" src="../assets/dist/img/user3-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
 			                          <div class="direct-chat-text">
 			                            You better believe it!
 			                          </div><!-- /.direct-chat-text -->
@@ -559,7 +559,7 @@ $InstructorID = $_SESSION['InstructorID'];
 			                            <span class="direct-chat-name pull-left">Alexander Pierce</span>
 			                            <span class="direct-chat-timestamp pull-right">23 Jan 5:37 pm</span>
 			                          </div><!-- /.direct-chat-info -->
-			                          <img class="direct-chat-img" src="../dist/img/user1-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+			                          <img class="direct-chat-img" src="../assets/dist/img/user1-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
 			                          <div class="direct-chat-text">
 			                            Working with AdminLTE on a great new app! Wanna join?
 			                          </div><!-- /.direct-chat-text -->
@@ -569,7 +569,7 @@ $InstructorID = $_SESSION['InstructorID'];
 			                            <span class="direct-chat-name pull-right">Sarah Bullock</span>
 			                            <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
 			                          </div><!-- /.direct-chat-info -->
-			                          <img class="direct-chat-img" src="../dist/img/user3-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+			                          <img class="direct-chat-img" src="../assets/dist/img/user3-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
 			                          <div class="direct-chat-text">
 			                            You better believe it!
 			                          </div><!-- /.direct-chat-text -->
@@ -581,7 +581,7 @@ $InstructorID = $_SESSION['InstructorID'];
 			                            <span class="direct-chat-name pull-left">Alexander Pierce</span>
 			                            <span class="direct-chat-timestamp pull-right">23 Jan 5:37 pm</span>
 			                          </div><!-- /.direct-chat-info -->
-			                          <img class="direct-chat-img" src="../dist/img/user1-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+			                          <img class="direct-chat-img" src="../assets/dist/img/user1-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
 			                          <div class="direct-chat-text">
 			                            Working with AdminLTE on a great new app! Wanna join?
 			                          </div><!-- /.direct-chat-text -->
@@ -591,7 +591,7 @@ $InstructorID = $_SESSION['InstructorID'];
 			                            <span class="direct-chat-name pull-right">Sarah Bullock</span>
 			                            <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
 			                          </div><!-- /.direct-chat-info -->
-			                          <img class="direct-chat-img" src="../dist/img/user3-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+			                          <img class="direct-chat-img" src="../assets/dist/img/user3-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
 			                          <div class="direct-chat-text">
 			                            You better believe it!
 			                          </div><!-- /.direct-chat-text -->
@@ -603,7 +603,7 @@ $InstructorID = $_SESSION['InstructorID'];
 			                            <span class="direct-chat-name pull-left">Alexander Pierce</span>
 			                            <span class="direct-chat-timestamp pull-right">23 Jan 5:37 pm</span>
 			                          </div><!-- /.direct-chat-info -->
-			                          <img class="direct-chat-img" src="../dist/img/user1-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+			                          <img class="direct-chat-img" src="../assets/dist/img/user1-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
 			                          <div class="direct-chat-text">
 			                            Working with AdminLTE on a great new app! Wanna join?
 			                          </div><!-- /.direct-chat-text -->
@@ -613,7 +613,7 @@ $InstructorID = $_SESSION['InstructorID'];
 			                            <span class="direct-chat-name pull-right">Sarah Bullock</span>
 			                            <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
 			                          </div><!-- /.direct-chat-info -->
-			                          <img class="direct-chat-img" src="../dist/img/user3-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+			                          <img class="direct-chat-img" src="../assets/dist/img/user3-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
 			                          <div class="direct-chat-text">
 			                            You better believe it!
 			                          </div><!-- /.direct-chat-text -->
@@ -625,7 +625,7 @@ $InstructorID = $_SESSION['InstructorID'];
 			                            <span class="direct-chat-name pull-left">Alexander Pierce</span>
 			                            <span class="direct-chat-timestamp pull-right">23 Jan 5:37 pm</span>
 			                          </div><!-- /.direct-chat-info -->
-			                          <img class="direct-chat-img" src="../dist/img/user1-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+			                          <img class="direct-chat-img" src="../assets/dist/img/user1-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
 			                          <div class="direct-chat-text">
 			                            Working with AdminLTE on a great new app! Wanna join?
 			                          </div><!-- /.direct-chat-text -->
@@ -637,7 +637,7 @@ $InstructorID = $_SESSION['InstructorID'];
 			                            <span class="direct-chat-name pull-right">Sarah Bullock</span>
 			                            <span class="direct-chat-timestamp pull-left">23 Jan 6:10 pm</span>
 			                          </div><!-- /.direct-chat-info -->
-			                          <img class="direct-chat-img" src="../dist/img/user3-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+			                          <img class="direct-chat-img" src="../assets/dist/img/user3-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
 			                          <div class="direct-chat-text">
 			                            I would love to.
 			                          </div><!-- /.direct-chat-text -->
@@ -650,7 +650,7 @@ $InstructorID = $_SESSION['InstructorID'];
 			                        <ul class="contacts-list">
 			                          <li>
 			                            <a href="#">
-			                              <img class="contacts-list-img" src="../dist/img/user1-128x128.jpg" />
+			                              <img class="contacts-list-img" src="../assets/dist/img/user1-128x128.jpg" />
 			                              <div class="contacts-list-info">
 			                                <span class="contacts-list-name">
 			                                  Count Dracula
@@ -662,7 +662,7 @@ $InstructorID = $_SESSION['InstructorID'];
 			                          </li><!-- End Contact Item -->
 			                          <li>
 			                            <a href="#">
-			                              <img class="contacts-list-img" src="../dist/img/user1-128x128.jpg" />
+			                              <img class="contacts-list-img" src="../assets/dist/img/user1-128x128.jpg" />
 			                              <div class="contacts-list-info">
 			                                <span class="contacts-list-name">
 			                                  Count Dracula
@@ -674,7 +674,7 @@ $InstructorID = $_SESSION['InstructorID'];
 			                          </li><!-- End Contact Item -->
 			                          <li>
 			                            <a href="#">
-			                              <img class="contacts-list-img" src="../dist/img/user1-128x128.jpg" />
+			                              <img class="contacts-list-img" src="../assets/dist/img/user1-128x128.jpg" />
 			                              <div class="contacts-list-info">
 			                                <span class="contacts-list-name">
 			                                  Count Dracula
@@ -686,7 +686,7 @@ $InstructorID = $_SESSION['InstructorID'];
 			                          </li><!-- End Contact Item -->
 			                          <li>
 			                            <a href="#">
-			                              <img class="contacts-list-img" src="../dist/img/user1-128x128.jpg" />
+			                              <img class="contacts-list-img" src="../assets/dist/img/user1-128x128.jpg" />
 			                              <div class="contacts-list-info">
 			                                <span class="contacts-list-name">
 			                                  Count Dracula
@@ -698,7 +698,7 @@ $InstructorID = $_SESSION['InstructorID'];
 			                          </li><!-- End Contact Item -->
 			                          <li>
 			                            <a href="#">
-			                              <img class="contacts-list-img" src="..dist/img/user7-128x128.jpg" />
+			                              <img class="contacts-list-img" src="../assets/dist/img/user7-128x128.jpg" />
 			                              <div class="contacts-list-info">
 			                                <span class="contacts-list-name">
 			                                  Sarah Doe
@@ -710,7 +710,7 @@ $InstructorID = $_SESSION['InstructorID'];
 			                          </li><!-- End Contact Item -->
 			                          <li>
 			                            <a href="#">
-			                              <img class="contacts-list-img" src="..dist/img/user3-128x128.jpg" />
+			                              <img class="contacts-list-img" src="../assets/dist/img/user3-128x128.jpg" />
 			                              <div class="contacts-list-info">
 			                                <span class="contacts-list-name">
 			                                  Nadia Jolie
@@ -722,7 +722,7 @@ $InstructorID = $_SESSION['InstructorID'];
 			                          </li><!-- End Contact Item -->
 			                          <li>
 			                            <a href="#">
-			                              <img class="contacts-list-img" src="..dist/img/user5-128x128.jpg" />
+			                              <img class="contacts-list-img" src="../assets/dist/img/user5-128x128.jpg" />
 			                              <div class="contacts-list-info">
 			                                <span class="contacts-list-name">
 			                                  Nora S. Vans
@@ -734,7 +734,7 @@ $InstructorID = $_SESSION['InstructorID'];
 			                          </li><!-- End Contact Item -->
 			                          <li>
 			                            <a href="#">
-			                              <img class="contacts-list-img" src="dist/img/user6-128x128.jpg" />
+			                              <img class="contacts-list-img" src="../assets/dist/img/user6-128x128.jpg" />
 			                              <div class="contacts-list-info">
 			                                <span class="contacts-list-name">
 			                                  John K.
@@ -746,7 +746,7 @@ $InstructorID = $_SESSION['InstructorID'];
 			                          </li><!-- End Contact Item -->
 			                          <li>
 			                            <a href="#">
-			                              <img class="contacts-list-img" src="../dist/img/user8-128x128.jpg" />
+			                              <img class="contacts-list-img" src="../assets/dist/img/user8-128x128.jpg" />
 			                              <div class="contacts-list-info">
 			                                <span class="contacts-list-name">
 			                                  Kenneth M.
@@ -811,7 +811,7 @@ $InstructorID = $_SESSION['InstructorID'];
 			                      <ul class="users-list clearfix">
 								  <?php while($row = sqlsrv_fetch_array($result)){ ?>
 			                        <li>
-			                          <img src="../dist/img/user1-128x128.jpg" alt="User Image" class="img-circle" />
+			                          <img src="../assets/dist/img/user1-128x128.jpg" alt="User Image" class="img-circle" />
 			                          <a class="users-list-name" href="#"><?php echo $row['InstructorName']?></a>
 			                          <span class="users-list-date"><?php echo $row['InstructorEmail']?></span>
 			                        </li>
@@ -918,23 +918,23 @@ $InstructorID = $_SESSION['InstructorID'];
 		</div><!-- ./wrapper -->
 		
 		<!-- jQuery 2.1.4 -->
-		<script src="../plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
+		<script src="../assets/plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
 		<!-- Bootstrap 3.3.2 JS -->
-		<script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="../assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 		<!-- SlimScroll -->
-		<script src="../plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+		<script src="../assets/plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
 		<!-- FastClick -->
-		<script src="../plugins/fastclick/fastclick.min.js" type="text/javascript"></script>
+		<script src="../assets/plugins/fastclick/fastclick.min.js" type="text/javascript"></script>
 		<!-- Swcc App -->
-		<script src="../dist/js/app.min.js" type="text/javascript"></script>
+		<script src="../assets/dist/js/app.min.js" type="text/javascript"></script>
 		<!-- Swcc for demo purposes -->
 		<!-- ChartJS 1.0.1 -->
-	<script src="../plugins/chartjs/Chart.min.js" type="text/javascript"></script>
+	<script src="../assets/plugins/chartjs/Chart.min.js" type="text/javascript"></script>
 
 	<!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js" type="text/javascript"></script>
+    <script src="../assets/dist/js/demo.js" type="text/javascript"></script>
     
-		<script src="dist/js/demo.js" type="text/javascript"></script>
+		<!--<script src="assets/dist/js/demo.js" type="text/javascript"></script>-->
 		<script type="text/javascript">
 		$(document).on('ready', function(){
 			$(".todo-list").todolist({

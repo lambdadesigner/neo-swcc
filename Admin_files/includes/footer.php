@@ -1,11 +1,12 @@
-		
+<?php $url1 = basename($_SERVER['REQUEST_URI']);?>
         <!-- Bootstrap Overwritten CSS -->
 		<link href="assets/css/bootstrap-overwritten.css" rel="stylesheet" type="text/css" />
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.3/jquery.slimscroll.min.js"></script>
 
 	<!-- New Scripts-Captain -->
-    <?php if(basename($_SERVER['REQUEST_URI']) != "Admin"){?>
-	   <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <?php if(basename($_SERVER['REQUEST_URI']) == "Admin" || basename($_SERVER['REQUEST_URI']) == "Admin?lang=en" || basename($_SERVER['REQUEST_URI']) == "Admin?lang=ar"){?>
+    <?php } else { ?>
+	   <script src="assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <?php } ?>
     <!-- Morris.js charts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
@@ -42,6 +43,10 @@
     <script src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.2/underscore-min.js'></script>
     <!--<script type="text/javascript" src="assets/dist/js/donut.js"></script>-->
     <link href="assets/dist/css/Universal.css" rel="stylesheet" type="text/css" />    
-    <script src="assets/dist/js/Universal.js"></script>
+    <?php 
+        //if(false !== strpos($url1,AdminSchedules) || false !== strpos($url1,AllProfiles) || false !== strpos($url1,Holidays) || false !== strpos($url1,AdminAttendance)){?>
+    <?php //} else { ?>
+        <script src="assets/dist/js/Universal.js"></script>
+    <?php //} ?>
 	</body>
 </html>

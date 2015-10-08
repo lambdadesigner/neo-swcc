@@ -1,6 +1,7 @@
 <?php
 include('includes/header.php');
 $InstructorID = $_SESSION['InstructorID'];
+echo $InstructorName = $_SESSION['InstructorName'];
 
 if($_SESSION['InstructorID']==''){	
 	 header("Location: ../index"); 
@@ -27,12 +28,12 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 				<!-- Content Header (Page header) -->
 				<section class="content-header">
 					<h1>
-						Auditorium Booking Status
+						<?php echo $lang['Auditorium Booking Status']?>
 						<small></small>
 					</h1>
 					<ol class="breadcrumb">
-						<li><a href="#"><i class="fa fa-dashboard text-red"></i> Home</a></li>
-						<li><a href="#"><i class="fa fa-user text-red"></i> Profile</a></li>
+						<li><a href="#"><i class="fa fa-dashboard text-red"></i><?php echo $lang['Home'];?></a></li>
+						<li><a href="#"><i class="fa fa-user text-red"></i><?php echo $lang['Auditorium Booking Status']?></a></li>
 					</ol>
 				</section>
 
@@ -60,11 +61,11 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 												
 											</tr>
 											<tr class="filters1">
-												<th>Auditorium Number</th>
-												<th>Booking Date</th>
-												<th>Booked By</th>
-												<th>Start Time</th>
-												<th>End Time</th>
+												<th><?php echo $lang['Auditorium Number']?></th>
+												<th><?php echo $lang['Booking Date']?></th>
+												<th><?php echo $lang['Booked By']?></th>
+												<th><?php echo $lang['Start Time']?></th>
+												<th><?php echo $lang['End Time']?></th>
 												
 											</tr>
 										</thead>
@@ -101,7 +102,7 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 											    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 											</div>
 									      </div>
-										  <input type="text" id="BookedBy" name="BookedBy" value="" required="required" class="form-control" placeholder="Booked By" >
+										  <input type="hidden" id="BookedBy" name="BookedBy"  required="required" class="form-control" placeholder="Booked By" value="<?php echo $InstructorName;?>" >
 										  <input class="form-control" id="single-input1" value="" placeholder="Start Time" name="StartTime">
 										  <input class="form-control" id="single-input2" value="" placeholder="End Time" name="EndTime">
 									      <div class="modal-footer">
@@ -130,11 +131,11 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 		</div><!-- ./wrapper -->
 
 		<!-- jQuery 2.1.4 -->
-		<script src="../plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
+		<script src="../assets/plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
 		<!-- Bootstrap 3.3.2 JS -->
-		<script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="../assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 		<!-- Swcc App -->
-		<script src="../dist/js/app.min.js" type="text/javascript"></script>
+		<script src="../assets/dist/js/app.min.js" type="text/javascript"></script>
 		<!-- Swcc for demo purposes -->
 		<script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
 		<!-- Page level javascript -->
@@ -235,6 +236,11 @@ $('#check-minutes').click(function(e){
             .clockpicker('toggleView', 'minutes');
 });
 
+$('#datepicker').click(function(){
+	
+    $('.datepicker-orient-top').css('z-index','10000');
+});
+
 </script>
 
 <script type="text/javascript" src="../assets/dist/js/bootstrap-clockpicker.min.js"></script>
@@ -251,7 +257,7 @@ $('#check-minutes').click(function(e){
 						var BookedBy      = $('#BookedBy').val();
 						var singleinput1 = $('#single-input1').val();
 						var singleinput2 = $('#single-input2').val();
-						
+						alert(BookedBy);
 						$.ajax({
 						   type: "GET",
 						   url: "../instructors/auditoriumbooking.php",
@@ -273,5 +279,5 @@ $('#check-minutes').click(function(e){
 	</body>
 </html>
 <?php 
-	include("../includes/footer.php")
+	include("includes/footer.php")
 ?>

@@ -4,18 +4,7 @@ $InstructorID = $_SESSION['InstructorID'];
 if($_SESSION['InstructorID']==''){	
 	 header("Location: ../index"); 
 }
-// if($_SESSION['AdminId']==''){	
-// 	 header("Location: index"); 
-// }
-//TestID.Marks,Marks.Marks,ModuleID.Tests,TestWeight.Test,MaxMarks.Test,TestName.Test,ModuleName.Module
 $sql= "select * from Schdule";
-/*$sql = "SELECT *
-FROM Marks
-INNER JOIN Tests
-ON Marks.TestID=Tests.TestID
-INNER JOIN Module
-ON Tests.ModuleID=Module.ModuleID
-WHERE Marks.StudentID = $StudentID";*/
 $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
 ?>
 <!-- Morris chart -->
@@ -33,8 +22,8 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 		        <!-- Content Header (Page header) -->
 		        <section class="content-header">
 		          <h1>
-		            Dashboard
-		            <small>Control panel</small>
+		             Instructor Dashboard
+		            
 		          </h1>
 		          <ol class="breadcrumb">
 		            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -113,7 +102,7 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 		            		</div>
 		            		<div class="pandl-body row">
 		            			<div class="SelectInstructorDiv col-md-12">
-									<input type="text" name="Insusers" id="Insusers" placeholder="Enter Instructor ID" />
+									<input type="text" name="Insusers" id="Insusers" placeholder="Enter StudentID" />
 		            				<select id="clicking">
 		            					<option value="" disabled selected>Select Year</option>
 		            					<option value="2015">2015</option>
@@ -620,7 +609,8 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 		                  <!--<button class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>-->
 		                </div>
 		              </div><!-- /.box -->
-
+						
+                        
 		              <!-- quick email widget -->
 
 		            </section><!-- /.Left col -->
@@ -634,7 +624,7 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 		              <div class="box box-solid"> <!-- bg-green-gradient -->
 		                <div class="box-header">
 		                  <i class="fa fa-calendar"></i>
-		                  <h4 class="box-title">Calendar</h3>
+		                  <h4 class="box-title"> Hollyday Calendar</h3>
 		                  <!-- tools box -->
 		                  <div class="pull-right box-tools">
 		                    <!-- button with a dropdown -->
@@ -665,7 +655,31 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 						  </div>
 						</div>		                
 		              </div><!-- /.box -->
-
+						<select name="status" id="status">
+						<option value="Pending">Pending</option>
+						<option value="Working">Working</option>
+						<option value="Completed">Completed</option>
+						</select>
+						<script>
+						$("#status").change(function() {
+							//get the selected value
+							var Status = this.value;
+							var Complain_By = $("#Complain_By").val();
+								alert(Status);
+							//make the ajax call
+							$.ajax({
+								
+								url: "Admin_files/Admin_Attendance.php",
+								type: "GET",
+								data: {"Status": Status, "Complain_By": Complain_By,"Candi":"ComplaintStatus"},
+								success: function() {
+									console.log("Data sent!");
+								}
+							});
+						});
+						</script>
+						
+						
 		            <script type="text/tmpl" id="tmpl">
 					  {{ 
 					  var date = date || new Date(),
@@ -819,7 +833,7 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 					</script>
 					<script src='http://assets.codepen.io/assets/common/stopExecutionOnTimeout.js?t=1'></script>
 					<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
-					<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+				<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
 					<script>
 					/*var $currentPopover = null;
 					  $(document).on('shown.bs.popover', function (ev) {
@@ -833,7 +847,9 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 					    if ($currentPopover && ($currentPopover.get(0) == $target.get(0))) {
 					      $currentPopover = null;
 					    }
-					  });*/
+
+
+						});*/
 
 
 					//quicktmpl is a simple template language I threw together a while ago; it is not remotely secure to xss and probably has plenty of bugs that I haven't considered, but it basically works
@@ -1138,8 +1154,12 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 							<div class="box-body">							
 								<div class="form-group">
 									<!-- <input type="email" class="form-control" name="emailto" placeholder="Email to:" /> -->
-									<input type="checkbox" id="RegStudent" name="RegStudent">All Reg. Students
-									<input type="checkbox" id="ScStudent" name="ScStudent">All Short Course Students							
+									<input type="checkbox" id="RegStudent" name="RegStudent" >All Reg. Students
+									<input type="checkbox" id="ScStudent" name="ScStudent" >All Short Course Students
+									<input type="checkbox" id="Maths" name="Maths">Maths
+									<input type="checkbox" id="English" name="English">English
+									<input type="checkbox" id="HR" name="HR">HR	
+
 								</div>
 								<div class="form-group">
 									<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" />
@@ -1155,7 +1175,63 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 						</form>
 					</div>
 		            <!-- /.box -->
-
+                    
+                    <!--Class Room Booking-->
+                      
+		            <?php /*?><div class="box box-info">
+						<div class="box-header">
+							<i class="fa fa-envelope"></i>
+							<h3 class="box-title">Class Room Booking</h3>
+							<!-- tools box -->
+							<div class="pull-right box-tools">
+								<!-- <button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button> -->
+							</div><!-- /. tools -->
+                            <div class="SelectInstructorDiv col-md-12">
+									<input type="text" name="classnumber" id="classnumber" placeholder="Enter Class Number" />
+		            				<div class="col-md-7 row">
+														<div id="datepicker" class="input-group date" data-date-format="yyyy-mm-dd">
+														    <input class="form-control inputpickertext" type="text" id="BookedDate"/>
+														    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+														</div>
+													</div>
+		            				<button name="cSearch" id="cSearch" class="btn bg-green">Search</button>
+		            			</div>
+                                <div id="classResult"></div>
+                                <?php
+																																																																							    								 $sql = "SELECT TOP 10 * FROM ClassroomBookingStatus ORDER BY BookedDate DESC";
+																																																																						 									$result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+																																																																						 									while($row = sqlsrv_fetch_array($result) ){?>
+                                                                                                                                                                                                                                           
+                                    <li>
+				                      <!-- drag handle -->
+				                      <span class="handle">
+				                        <i class="fa fa-ellipsis-v"></i>
+				                        <i class="fa fa-ellipsis-v"></i>
+				                      </span>
+				                      <!-- checkbox -->
+				                      <!--<input type="checkbox" value="" name="" />-->
+				                      <!-- todo text -->
+				                      <span class="text">Class room number <small class="label label-info"> <?php $row['ClassNum']?></small>&nbsp Booked By <small class="label label-warning">   <?php $row['BookedBy']?> </small></span>
+				                      <!-- Emphasis label -->
+				                      <small class="label label-danger"><i class="fa fa-clock-o"></i> Full</small>
+				                      <!-- General tools such as edit or delete-->
+				                      <div class="tools">
+				                        <i class="fa fa-edit"></i>
+				                        <i class="fa fa-trash-o"></i>
+				                      </div>
+				                    </li>                                                                                                                                                                                                                                                        						
+									<?php }?>
+                  
+                                
+						</div>
+						
+					</div><?php */?>
+		                               
+                    
+					<!--End Class Room Booking-->
+                    <!--Auditorium Booking-->
+                    	
+                    <!--End Auditorium Booking-->
 		            <div class="modal fade" id="myModal">
 					  <div class="modal-dialog" role="document">
 					    <div class="modal-content" style="background-color:#18D4E4; border-radius:10px;">
@@ -1194,7 +1270,7 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 		<!-- jQuery 2.1.4
 		<script src="assets/plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script> -->
 		<!-- Bootstrap 3.3.2 JS 
-		<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>-->
+		<script src="assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>-->
 		<!-- Swcc App 
 		<script src="dist/js/app.min.js" type="text/javascript"></script>-->
 		<!-- Swcc for demo purposes -->
@@ -1317,7 +1393,49 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
     	//var data="2014";
     	//$("#donut-chart").load("ddonut.php?year=2014",{'name':data});
     });
+	
+	    $('#cSearch').click(function(){
+    	var classnumber = $('#classnumber').val();
+    	var BookedDate = $('#BookedDate').val();
+		   	
+    	if(classnumber == "")
+    	{
+    		alert('Please Enter Class Number');
+    		$('#classnumber').focus();
+    		return false;
+    	}
+    	else
+    	{
+    		$.ajax({
+		      url: '../instructors/SearchClassRoom.php',		      
+		      type: "GET",
+		      data:{"classnumber":classnumber,"BookedDate":BookedDate},		      		      
+		      success: function(data1) {
+		      	if(data == "Empty")
+		      	{		      		
+		      		alert('No Data');
+					 //$('#myModal').modal('show');
+		      	}
+		      	else
+		      	{     alert(data1);
+		        	 $('#classResult').html(data1);		       	
+		        }
+		      }
+		    })
+		    return false;
+		}
+		return true;
+    	//var data="2014";
+    	//$("#donut-chart").load("ddonut.php?year=2014",{'name':data});
+    });
+	
+	
+	
+	
     </script>
+	
+	
+	
 <?php
 include('includes/footer.php');
 

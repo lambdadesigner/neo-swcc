@@ -27,7 +27,7 @@ if($_GET['insert']=="add")
 		    <span class="direct-chat-name pull-left"><?php while($Iusers_name = sqlsrv_fetch_array($Iusersresult)){ echo $Iusers_name['StudentName_en']; } ?></span>
 		    <span class="direct-chat-timestamp pull-right"><?php $vals=strtotime($Ichat_data['Sent']); echo date("j M Y G:i a",$vals);?></span>
 		  </div><!-- /.direct-chat-info -->
-		  <img class="direct-chat-img img-circle" class="img-cir" src="dist/img/user1-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+		  <img class="direct-chat-img img-circle" class="img-cir" src="assets/dist/img/user1-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
 		  <div class="direct-chat-text">
 		    <?php echo $Ichat_data['Message'];?>
 		  </div><!-- /.direct-chat-text -->
@@ -41,7 +41,7 @@ if($_GET['insert']=="add")
 		    <span class="direct-chat-name pull-right"><?php echo $_SESSION['StudentName_en'];?></span>
 		    <span class="direct-chat-timestamp pull-left"><?php $vals=strtotime($Ichat_data['Sent']); echo date("j M Y G:i a",$vals);?></span>
 		  </div><!-- /.direct-chat-info -->
-		  <img class="direct-chat-img img-circle" src="dist/img/user3-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+		  <img class="direct-chat-img img-circle" src="assets/dist/img/user3-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
 		  <div class="direct-chat-text">
 		    <?php echo $Ichat_data['Message'];?>
 		  </div><!-- /.direct-chat-text -->
@@ -75,7 +75,7 @@ if($_GET['process']=="data")
 		    <span class="direct-chat-name pull-left"><?php while($users_name = sqlsrv_fetch_array($usersresult)){ echo $users_name['StudentName_en']; } ?></span>
 		    <span class="direct-chat-timestamp pull-right"><?php $vals=strtotime($userchat_data['Sent']); echo date("j M Y G:i a",$vals);?></span>
 		  </div><!-- /.direct-chat-info -->
-		  <img class="direct-chat-img img-circle" class="img-cir" src="dist/img/user1-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+		  <img class="direct-chat-img img-circle" class="img-cir" src="assets/dist/img/user1-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
 		  <div class="direct-chat-text">
 		    <?php echo $userchat_data['Message'];?>
 		  </div><!-- /.direct-chat-text -->
@@ -89,7 +89,7 @@ if($_GET['process']=="data")
 		    <span class="direct-chat-name pull-right"><?php echo $_SESSION['StudentName_en'];?></span>
 		    <span class="direct-chat-timestamp pull-left"><?php $vals=strtotime($userchat_data['Sent']); echo date("j M Y G:i a",$vals);?></span>
 		  </div><!-- /.direct-chat-info -->
-		  <img class="direct-chat-img img-circle" src="dist/img/user3-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+		  <img class="direct-chat-img img-circle" src="assets/dist/img/user3-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
 		  <div class="direct-chat-text">
 		    <?php echo $userchat_data['Message'];?>
 		  </div><!-- /.direct-chat-text -->

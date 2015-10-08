@@ -11,12 +11,12 @@ $StudentID  =  $_SESSION['StudentID'];
 				<!-- Content Header (Page header) -->
 				<section class="content-header">
 					<h1>
-						Services
+						<?php echo $lang["services"];?>
 						<!-- <small></small> -->
 					</h1>
 					<ol class="breadcrumb">
-						<li><a href="#"><i class="fa fa-dashboard text-red"></i> Home</a></li>
-						<li><a href="#"><i class="fa fa-user text-red"></i> Profile</a></li>
+						<li><a href="dashboard_c"><i class="fa fa-dashboard text-red"></i> <?php echo $lang["Home"];?></a></li>
+						<li><a href=""><i class="fa fa-user text-red"></i> <?php echo $lang["services"];?></a></li>
 					</ol>
 				</section>
 
@@ -64,14 +64,14 @@ $StudentID  =  $_SESSION['StudentID'];
 							<div class="row">
 								<div class="col-md-6 BorderRight">
 									<div class="panel-heading rightborder">
-										<h2 class=""><i class="fa fa-plane text-green"> </i> Flight Discounts</h2>
+										<h2 class=""><i class="fa fa-plane text-green"> </i> <?php echo $lang["flight discount"];?></h2>
 									</div>
 									<?php 
 										$sql = "SELECT StudentInfo.NationalID,StudentInfo.DoB,StudentInfo.StudentName_en,StudentInfo.StudentID,StudentInfo.Issuedate,StudentJobInfo.JobTitle FROM StudentInfo JOIN StudentJobInfo ON StudentJobInfo.StudentID = StudentInfo.StudentID WHERE StudentInfo.StudentID = $StudentID";
 										$result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
 										$row = sqlsrv_fetch_array($result)?>
 									<div class="panel-body">
-										<h4 class="BorderBottom">Flight discount form</h4>
+										<h4 class="BorderBottom"><?php echo $lang["Flight discount form"];?></h4>
 										<form class="flightform" action="<?php if($_REQUEST['lang']=="ar"){?>PDF/flightpdf_ar.php<?php }else{ ?>PDF/flightpdf.php<?php } ?>" method="post">
 											<input type="text" placeholder="NationalID, " id="NationalId" name="NationalId" class="input" autofocus  data-toggle="tooltip" data-placement="right" title="NationalID, eg: 1091983948" value="<?php echo $row['NationalID']?>">
 											<input maxlength="100" type="text" required="required" id="IssueDate" name="IssueDate" class="form-control" placeholder="Enter Issue Date" value="<?php echo $row['Issuedate']?>" />
@@ -94,7 +94,7 @@ $StudentID  =  $_SESSION['StudentID'];
 											<input type="text" placeholder="Signature" required="required" data-toggle="tooltip" data-placement="right" id="FSignature" name="FSignature" title="Provide Signature" value="<?php //echo $row['Salary']?>">
 											<input type="text" placeholder="The manager in charge name" required="required" data-toggle="tooltip" data-placement="right" id="FIncharge" name="FIncharge" title="Provide The manager in charge name" value="<?php //echo $row['HardshipAllowance']?>">
 											<input type="text" placeholder="Job Title" data-toggle="tooltip" required="required" data-placement="right" id="FJobTitle" name="FJobTitle" title="Provide Job Title" value="<?php echo $row['JobTitle']?>">
-												<input type="submit" name="submit" value="Generate PDF">
+												<input type="submit" name="submit" value="<?php echo $lang["Generate"];?> PDF">
 										</form>
 										<p class="p">
 											
@@ -284,9 +284,9 @@ $StudentID  =  $_SESSION['StudentID'];
 		<!-- jQuery 2.1.4 -->
 		<script src="assets/plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
 		<!-- Bootstrap 3.3.2 JS -->
-		<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 		<!-- Swcc App -->
-		<script src="dist/js/app.min.js" type="text/javascript"></script>
+		<script src="assets/dist/js/app.min.js" type="text/javascript"></script>
 		<!-- Swcc for demo purposes -->
 		<script>
 			$( "#NationalId" )

@@ -117,12 +117,12 @@ g.on('mouseout', function(d) {
 
 g.on('mousemove', function(d) {
    console.log(radius);
- tooltip.style('top', (d3.event.pageY)/1.5 + 'px')
+ tooltip.style('top', (d3.event.pageY)/3 + 'px')
     .style('left', (d3.event.offsetX) + 'px');
 });
 
 // setup a legend
-var legendRectSize = 18;
+var legendRectSize = 20;
 var legendSpacing = 4;
 
 var legend = svg.selectAll('.legend')
@@ -147,3 +147,4 @@ legend.append('text')
   .attr('x', legendRectSize + legendSpacing)
   .attr('y', legendRectSize - legendSpacing)
   .text(function(d,i) { return seedData[i].label + ' (' + seedData[i].value +')'; });
+

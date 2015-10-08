@@ -31,15 +31,16 @@ $Module_result = sqlsrv_query( $conn, $Module_sql ,array(), array( "Scrollable" 
 						<small></small>
 					</h1>
 					<ol class="breadcrumb">
-						<li><a href="#"><i class="fa fa-dashboard text-red"></i> Home</a></li>
-						<li><a href="#"><i class="fa fa-user text-red"></i> Profile</a></li>
+						<li><a href="#"><i class="fa fa-dashboard text-default"></i> Home</a></li>
+						<li><a href="#"><i class="fa fa-user text-default"></i> Profile</a></li>
 					</ol>
 				</section>
 
 				<!-- Main content -->
+				<?php if($_GET['action']=="" && $_GET['MCID']==""){?>
 				<section class="content">
 					<div class="panel">
-						<div class="panel-body">
+						<div class="panel-body border">
 							<div class="row">
 								<div class="panel filterable">									
 									<div class="panel-heading">
@@ -54,7 +55,7 @@ $Module_result = sqlsrv_query( $conn, $Module_sql ,array(), array( "Scrollable" 
 										<?php } ?>
 										<div class="pull-right">
 											<!-- <button class="btn btn-xs btn-filter"><span class="glyphicon glyphicon-filter filterbutton"></span> Filter</button> -->
-											<button type="button" class="btn btn-primary" id="justs">
+											<button type="button" class="btn btn-default" id="justs">
 		  										<span id="addd">Add</span><span id="vie" style="display:none">View</span> Category
 											</button>											
 										</div>
@@ -76,7 +77,7 @@ $Module_result = sqlsrv_query( $conn, $Module_sql ,array(), array( "Scrollable" 
 												<th>Hierarchy ID</th>
 												<th>Cycle ID</th>
 												<th>Stage</th>
-												<!-- <th>Category Name Ar</th> -->												
+												<th></th>										
 											</tr>
 										</thead>
 										<tbody>
@@ -89,13 +90,13 @@ $Module_result = sqlsrv_query( $conn, $Module_sql ,array(), array( "Scrollable" 
 												
 													<td><?php echo $Module_row['CycleID']?></td>
 													<td><?php echo $Module_row['Stage']; ?></td>
-													<!-- <td><?php echo $Module_row['MCNameA']; ?></td> -->
+													 <td><a href="AdminModuleCategory?action=Edit&MCID=<?php echo $Module_row['MCID'];?>" style="cursor:pointer"> <i class="fa fa-edit"></i></a></td>
 												</tr>
 											<?php $jk++; }?>																						
 										</tbody>
 									</table>
 
-									<div class="panel-body">
+									<div class="panel-body col-md-6 col-md-offset-3">
 										<form name="moduleCategory" method="post" action="AdmModulesSection.php">
 											<!-- Modal -->
 											<div class="modals" id="myModalss" style="display:none;"><br>
@@ -112,7 +113,7 @@ $Module_result = sqlsrv_query( $conn, $Module_sql ,array(), array( "Scrollable" 
 												  <input type="text" id="HeirarchyId" name="HeirarchyId" class="form-control" placeholder="Hierarchy Id" >
 												  <input type="text" id="stage" name="stage" class="form-control" placeholder="Stage" >										  
 											      <div class="modal-footer">
-											        <button type="submit" class="btn btn-primary"  data-dismiss="modal" id="AddCategory">Submit</button>
+											        <button type="submit" class="btn btn-default"  data-dismiss="modal" id="AddCategory">Submit</button>
 											      </div>
 											    </div>
 											  <!-- </div> -->
@@ -124,6 +125,134 @@ $Module_result = sqlsrv_query( $conn, $Module_sql ,array(), array( "Scrollable" 
 						</div>
 					</div>
 				</section><!-- /.content -->
+				<?php } ?>
+				
+				<!-- Edit Schedulesss Start -->
+				<?php if($_GET['action']=="Edit" && $_GET['MCID']!=""){
+						
+						if(isset($_POST['updatemodule'])){
+							
+								$MCID= $_POST['MCID'];
+								$MCName= $_POST['MCName'];
+								$HierarachyID= $_POST['HierarachyID'];
+								$CycleID= $_POST['CycleID'];
+								$Stage= $_POST['Stage'];
+								
+							$sql="UPDATE Module_Category SET MCID='".$MCID."',MCName='".$MCName."',HierarachyID='".$HierarachyID."',CycleID='".$CycleID."',Stage='".$Stage."'";	
+							$Module_result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+						}
+					
+					
+					?>
+					<section class="content">
+						<div class="panel">
+							<div class="panel-body">
+								<div class="row">
+									<div class="panel filterable">
+										<div class="panel-heading">											
+											<a href="AdminModuleCategory" class="btn btn-default pull-right">View Module Categories </a>
+											<h3 class="panel-title text-default"><i class="fa fa-pencil fa-lg"></i> Edit Module Categories 
+												<!-- <div class="pull-right">
+													<button class="btn btn-xs btn-filter"><span class="glyphicon glyphicon-filter filterbutton"></span> Filter</button>
+												</div> -->
+											</h3>
+											<hr>
+										</div>																			
+
+										<!-- Add / Edit Student Instructor -->
+										<style type="text/css">									
+										.col-md-3.text-right{
+											padding-top: 18px;
+										}
+										.text-danger.fa.fa-star{
+											font-size: 7px;										
+										}
+										.datepicker{z-index:1151 !important;}
+										ul.select-options {
+											min-height: 240px;
+										}
+										.styled-select select {
+											color:#ffffff;
+										    background: #12C3AA;
+										    padding: 10px;										    
+										    font-size: 16px;
+										    line-height: 1;
+										    border: 0;
+										}
+										</style>
+
+										<?php
+											$editStudsql = "SELECT * from Module_Category WHERE MCID='".$_GET['MCID']."'";
+											$editStudresult = sqlsrv_query( $conn, $editStudsql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+											$EditStud_row = sqlsrv_fetch_array($editStudresult)?>
+										<div class="modals" id="module">
+										  	<form name="updatemodule" method="POST" action="">
+											    <div class="modal-content col-md-6 col-md-offset-3">
+											      	<div class="modal-header">									        
+											        	<h3 class="modal-title" id="myModalLabel">Edit ModuleCategory</h3>
+											      	</div><br>
+											      	<input type="hidden" name="scenario" id="scenario" value="editAdmSchedule">										      	
+													<div class="row">
+														<div class="col-md-3 text-right">
+															MCID<i class="fa fa-star text-danger"></i>
+														</div>
+														<div class="col-md-8">															
+															<input type="text" id="MCID" name="MCID" placeholder="MCID" class="input" data-toggle="tooltip" data-placement="right" title="MCID" required style="width:100%;" value="<?php echo $EditStud_row['MCID'];?>">
+														</div>
+													</div>
+											      	<div class="row">
+														<div class="col-md-3 text-right">
+															MCName<i class="fa fa-star text-danger"></i>
+														</div>
+														<div class="col-md-8">															
+															<input type="text" id="MCName" name="MCName" placeholder="MCName" class="input" data-toggle="tooltip" data-placement="right" title="MCName" required style="width:100%;" value="<?php echo $EditStud_row['MCName'];?>">
+														</div>
+													</div>
+													
+													<div class="row">
+														<div class="col-md-3 text-right">
+															HierarachyID<i class="fa fa-star text-danger"></i>
+														</div>
+														<div class="col-md-8">															
+															<input type="text" id="HierarachyID" name="HierarachyID" placeholder="HierarachyID" class="input" data-toggle="tooltip" data-placement="right" title="HierarachyID" required style="width:100%;" value="<?php echo $EditStud_row['HierarachyID'];?>">
+														</div>
+													</div>
+													
+													<div class="row">
+														<div class="col-md-3 text-right">
+															CycleID<i class="fa fa-star text-danger"></i>
+														</div>
+														<div class="col-md-8">															
+															<input type="text" id="CycleID" name="CycleID" placeholder="CycleID" class="input" data-toggle="tooltip" data-placement="right" title="CycleID" required style="width:100%;" value="<?php echo $EditStud_row['CycleID'];?>">
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-3 text-right">
+															Stage<i class="fa fa-star text-danger"></i>
+														</div>
+														<div class="col-md-8">															
+															<input type="text" id="Stage" name="Stage" placeholder="Stage" class="input" data-toggle="tooltip" data-placement="right" title="Stage" required style="width:100%;" value="<?php echo $EditStud_row['Stage'];?>">
+														</div>
+													</div>
+													<br>
+													<div class="modal-footer">
+														<input type="submit" class="btn btn-default"  data-dismiss="modal" id="updatemodule" name="updatemodule">
+													</div>
+											    </div>
+											</form>
+										</div>	
+									</div>
+								</div>
+							</div>
+						</div>
+					</section><!-- /.content -->
+				<?php } ?>
+				<!-- Edit Schedulesss End -->
+
+				
+				
+				
+				
 			</div><!-- /.content-wrapper -->
 
 			<footer class="main-footer">

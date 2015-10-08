@@ -14,11 +14,11 @@ if(@$_SESSION['EmpID']=='' && @$_SESSION['EmpID'] ==''){
 				<!-- Content Header (Page header) -->
 				<section class="content-header">
 					<h1>
-						Dashboard
+						<?php echo $lang["dashboard"];?>
 						<small></small>
 					</h1>
 					<ol class="breadcrumb">
-						<li><a href="dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+						<li><a href="dashboard"><i class="fa fa-dashboard"></i><?php echo $lang["Home"];?> </a></li>
 					</ol>
 				</section>
 
@@ -31,7 +31,7 @@ if(@$_SESSION['EmpID']=='' && @$_SESSION['EmpID'] ==''){
 							<div class="attendance-chart">
 								<div class="box box-danger">
 									<div class="box-header with-border">
-									  <h3 class="box-title">Monthly Recap Report</h3>
+									  <h3 class="box-title">Monthly Attendance Report</h3>
 									  <div class="box-tools pull-right">
 										<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 										<div class="btn-group">
@@ -640,7 +640,7 @@ if(@$_SESSION['EmpID']=='' && @$_SESSION['EmpID'] ==''){
 			                            <span class="direct-chat-name pull-left"><?php while($user1_name = sqlsrv_fetch_array($user1result)){ echo $user1_name['StudentName_en']; } ?></span>
 			                            <span class="direct-chat-timestamp pull-right"><?php $vals=strtotime($chat_data['Sent']); echo date("j M Y G:i a",$vals);?></span>
 			                          </div><!-- /.direct-chat-info -->
-			                          <img class="direct-chat-img img-circle" class="img-cir" src="dist/img/user1-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+			                          <img class="direct-chat-img img-circle" class="img-cir" src="assets/dist/img/user1-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
 			                          <div class="direct-chat-text">
 			                            <?php echo $chat_data['Message'];?>
 			                          </div><!-- /.direct-chat-text -->
@@ -654,7 +654,7 @@ if(@$_SESSION['EmpID']=='' && @$_SESSION['EmpID'] ==''){
 			                            <span class="direct-chat-name pull-right"><?php echo $_SESSION['StudentName_en'];?></span>
 			                            <span class="direct-chat-timestamp pull-left"><?php $vals=strtotime($chat_data['Sent']); echo date("j M Y G:i a",$vals);?></span>
 			                          </div><!-- /.direct-chat-info -->
-			                          <img class="direct-chat-img img-circle" src="dist/img/user3-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
+			                          <img class="direct-chat-img img-circle" src="assets/dist/img/user3-128x128.jpg" alt="message user image" /><!-- /.direct-chat-img -->
 			                          <div class="direct-chat-text">
 			                            <?php echo $chat_data['Message'];?>
 			                          </div><!-- /.direct-chat-text -->
@@ -681,7 +681,7 @@ if(@$_SESSION['EmpID']=='' && @$_SESSION['EmpID'] ==''){
 			                         while($all_users = sqlsrv_fetch_array($users_result)){
 			                        ?>
 			                          <li>			                            
-			                            <img class="contacts-list-img img-circle" src="dist/img/user7-128x128.jpg" />
+			                            <img class="contacts-list-img img-circle" src="assets/dist/img/user7-128x128.jpg" />
 			                            <div class="contacts-list-info">
 			                                <span class="contacts-list-name" onclick="chat_user(<?php echo $all_users['StudentID'];?>)" data-widget="chat-pane-toggle" style="cursor:pointer">
 			                                  <?php echo $all_users['StudentName_en'];?>
@@ -718,7 +718,7 @@ if(@$_SESSION['EmpID']=='' && @$_SESSION['EmpID'] ==''){
 							<div class="marks-chart">
 								<div class="box box-success">
 									<div class="box-header with-border">
-									  <h3 class="box-title">Marks</h3><i class="fa fa-bar-chart text-green pull-right"></i>
+									  <h3 class="box-title"><?php echo $lang["Home"];?></h3><i class="fa fa-bar-chart text-green pull-right"></i>
 									  <div class="box-tools pull-right">
 										<!-- <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 										<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> -->
@@ -772,7 +772,7 @@ if(@$_SESSION['EmpID']=='' && @$_SESSION['EmpID'] ==''){
 								?>
 			                  <div class="box box-danger">
 			                    <div class="box-header with-border">
-			                      <h3 class="box-title">Instructors</h3>
+			                      <h3 class="box-title"><?php echo $lang['Instructors'];?></h3>
 			                      <div class="box-tools pull-right">
 			                        <span class="label label-danger"><?php echo $row_count;?> Members</span>
 			                        <i class="fa fa-users pull-right text-red"></i>
@@ -786,12 +786,12 @@ if(@$_SESSION['EmpID']=='' && @$_SESSION['EmpID'] ==''){
 								  
 								  <?php //while($row = sqlsrv_fetch_array($result)){ ?>
 			                        <!-- <li>
-			                          <img src="dist/img/user1-128x128.jpg" alt="User Image" class="img-circle" width="128" height="128" />
+			                          <img src="assets/dist/img/user1-128x128.jpg" alt="User Image" class="img-circle" width="128" height="128" />
 			                          <a class="users-list-name" href="#"><?php echo $row['InstructorName']?></a>
 			                          <span class="users-list-date"><?php echo $row['InstructorEmail']?></span>
 			                        </li> -->
 			                        <li>
-			                          <img src="dist/img/user1-128x128.jpg" alt="User Image" class="img-circle" width="128" height="128" />
+			                          <img src="assets/dist/img/user1-128x128.jpg" alt="User Image" class="img-circle" width="128" height="128" />
 			                          <a class="users-list-name" href="#">Mohammed</a>
 			                          <span class="users-list-date">test@test.com</span>
 			                        </li>
@@ -1032,23 +1032,23 @@ if(@$_SESSION['EmpID']=='' && @$_SESSION['EmpID'] ==''){
 		<!-- jQuery 2.1.4 -->
 		<script src="assets/plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
 		<!-- Bootstrap 3.3.2 JS -->
-		<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 		<!-- SlimScroll -->
 		<script src="assets/plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
 		<!-- FastClick -->
 		<script src="assets/plugins/fastclick/fastclick.min.js" type="text/javascript"></script>
 		<!-- Swcc App -->
-		<script src="dist/js/app.min.js" type="text/javascript"></script>
+		<script src="assets/dist/js/app.min.js" type="text/javascript"></script>
 		<!-- Swcc for demo purposes -->
 		<!-- ChartJS 1.0.1 -->
 	<script src="assets/plugins/chartjs/Chart.min.js" type="text/javascript"></script>
 
 	<!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js" type="text/javascript"></script>
+    <script src="assets/dist/js/demo.js" type="text/javascript"></script>
 
 
     
-		<script src="dist/js/demo.js" type="text/javascript"></script>
+		<!--<script src="assets/dist/js/demo.js" type="text/javascript"></script>-->
 		<script type="text/javascript">
 		$(document).on('ready', function(){
 			$(".todo-list").todolist({

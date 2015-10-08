@@ -28,12 +28,12 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 				<!-- Content Header (Page header) -->
 				<section class="content-header">
 					<h1>
-						Class Timings
+						<?php echo $lang['Class Timings'];?>
 						<small></small>
 					</h1>
 					<ol class="breadcrumb">
-						<li><a href="#"><i class="fa fa-dashboard text-red"></i> Home</a></li>
-						<li><a href="#"><i class="fa fa-user text-red"></i> Profile</a></li>
+						<li><a href="#"><i class="fa fa-dashboard text-red"></i> <?php echo $lang['Home'];?></a></li>
+						<li><a href="#"><i class="fa fa-user text-red"></i> <?php echo $lang['Class Timings'];?></a></li>
 					</ol>
 				</section>
 
@@ -61,12 +61,12 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 											</tr>
 											
 											<tr class="filters1">
-												<th>Session ID</th>
-												<th>Start Time</th>
-												<th>End Time</th>
-												<th>Group Id</th>
-												<th>Module ID</th>
-												<th>Class ID</th>
+												<th><?php echo $lang['Session ID'];?></th>
+												<th><?php echo $lang['Start Time'];?></th>
+												<th><?php echo $lang['End Time'];?></th>
+												<th><?php echo $lang['Group Id'];?></th>
+												<th><?php echo $lang['Module ID'];?></th>
+												<th><?php echo $lang['Module ID'];?></th>
 											</tr>
 											
 										</thead>
@@ -105,11 +105,11 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 		</div><!-- ./wrapper -->
 
 		<!-- jQuery 2.1.4 -->
-		<script src="../plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
+		<script src="../assets/plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
 		<!-- Bootstrap 3.3.2 JS -->
-		<script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="../assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 		<!-- Swcc App -->
-		<script src="../dist/js/app.min.js" type="text/javascript"></script>
+		<script src="../assets/dist/js/app.min.js" type="text/javascript"></script>
 		<!-- Swcc for demo purposes -->
 		<script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
 

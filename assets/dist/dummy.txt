@@ -1,0 +1,36 @@
+/****** Script for SelectTopNRows command from SSMS  ******/
+SELECT TOP 1000 [Subject]
+      ,[Message]
+      ,[Reply]
+      ,[Complain_By]
+      ,[Status]
+      ,[priority]
+      ,[Department]
+      ,[Complain_on]	
+  FROM [SWCC].[dbo].[Complaints]
+
+
+  $el.popover(
+  placement: 'top',
+  trigger: 'manual', 
+  html: true, 
+  content: @popoverContent, 
+  container: '#mycontainer',
+  template: '<div class="popover someclassname"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+)
+
+SELECT TOP 1000 [RoomIndex]
+      ,[BuildingNo]
+      ,[Section]
+      ,[RoomNo]
+      ,[capacity]
+      ,[Candidate_1]
+      ,[Candidate_1_FromDate]
+      ,[Candidate_1_ToDate]
+      ,[Candidate_2]
+      ,[Candidate_2_FromDate]
+      ,[Candidate_2_ToDate]
+      ,[Candidate_3]
+      ,[Candidate_3_FromDate]
+      ,[Candidate_3_ToDate]
+  FROM [SWCC].[dbo].[BachelorAcc]

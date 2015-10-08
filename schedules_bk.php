@@ -133,7 +133,7 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 		
 		
       </script>
-	  <script src="dist/js/app.min.js" type="text/javascript"></script>
+	  <script src="assets/dist/js/app.min.js" type="text/javascript"></script>
 	
       <style type="text/css">
       #calendar

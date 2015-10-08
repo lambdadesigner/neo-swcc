@@ -34,6 +34,7 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 										<!-- <h3 class="panel-title">Users</h3> -->
 										<div class="pull-right">
 											<!-- <button class="btn btn-xs btn-filter"><span class="glyphicon glyphicon-filter filterbutton"></span> Filter</button> -->
+									  		<button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">Class Room Booking</button>
 										</div>
 									</div>
 									<table class="table table-striped" id="classroom">
@@ -233,7 +234,7 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 				
 				$.ajax({
 				   type: "GET",
-				   url: "../instructors/classroombooking.php",
+				   url: "instructors/classroombooking.php",
 				   data: {"classroom": classroom, "BookDate": BookDate, "bookedby": bookedby, "OccString": OccString},
 				   success: function(msg){
 					// alert( "Data Saved: " + msg ); //Anything you want

@@ -14,7 +14,7 @@ $url = basename($_SERVER['REQUEST_URI']);
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 		<!-- Bootstrap 3.3.4 -->
-		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+		<link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 		<!-- Font Awesome Icons -->
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 		<!-- Ionicons -->
@@ -25,7 +25,7 @@ $url = basename($_SERVER['REQUEST_URI']);
 		<!-- Swcc Skins. Choose a skin from the css/skins
 				 folder instead of downloading all of them to reduce the load. -->
 		<link href="assets/dist/css/skins/_all-skins.css" rel="stylesheet" type="text/css" />
-		<link href="dist/custom/custom.css" rel="stylesheet" type="text/css" />
+		<link href="assets/dist/custom/custom.css" rel="stylesheet" type="text/css" />
 		<link href="assets/dist/css/services.css" rel="stylesheet" type="text/css" />		
 		<link href="https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 
@@ -39,7 +39,7 @@ $url = basename($_SERVER['REQUEST_URI']);
 		<![endif]-->
 	</head>
 
-	<body class="skin-blue sidebar-mini">
+	<body class="skin-blue sidebar-mini sidebar-collapse">
 		<!-- Site wrapper -->
 		<div class="wrapper">
 
@@ -63,22 +63,22 @@ $url = basename($_SERVER['REQUEST_URI']);
 					<div class="navbar-custom-menu">
 						<ul class="nav navbar-nav">
 						<li>
-							<div class="dropdown">
+							<!-- <div class="dropdown">
 								<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 									<?php if($_SESSION['language']=="en"){?>English<?php }elseif($_SESSION['language']=="ar"){?>Arabic<?php }else{?>Select Language<?php } ?>
 									<span class="caret"></span>
 								</button>
 								 
-								<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" onChange="window.location = '?lang='+this.value+''">
+								<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" onChange="loadUrl()">
 									<li><a href="?lang=en">English</a></li>
 									<li><a href="?lang=ar">Arabic</a></li>
 								</ul>
-							</div>
-							<!--  <select onChange="window.location = '?lang='+this.value+''" >
+							</div> -->
+							<select name="languag" id="languag" onChange="loadUrl(this.value)" >
 						      <option value="" selected="selected" disabled="disabled">Select language</option>
-						      <option value="en" <?php if ($_GET['lang']==en) echo 'selected="selected"';?>>English</option>
-						      <option value="ar" <?php if ($_GET['lang']==ar) echo 'selected="selected"';?>>Arabic</option>
-						    </select>  -->
+						      <option value="en" <?php if ($_SESSION['language']==en) echo 'selected="selected"';?>>English</option>
+						      <option value="ar" <?php if ($_SESSION['language']==ar) echo 'selected="selected"';?>>Arabic</option>
+						    </select>
 						</li>
 							<!-- Notifications: style can be found in dropdown.less -->
 							<li class="dropdown notifications-menu">
@@ -104,13 +104,13 @@ $url = basename($_SERVER['REQUEST_URI']);
 							<!-- User Account: style can be found in dropdown.less -->
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdowns" id="userpanel">
-									<img src="dist/img/user2-160x160.jpg" class="user-image img-circle" alt="User Image" />
+									<img src="assets/dist/img/user2-160x160.jpg" class="user-image img-circle" alt="User Image" />
 									<span class="hidden-xs"><?php echo $_SESSION['AdminUserName']?></span>
 								</a>
 								<ul class="dropdown-menu" id="panelshow">
 									<!-- User image -->
 									<li class="user-header">
-										<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+										<img src="assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
 										<p>
 											<?php echo $_SESSION['AdminUserName']?>
 											<small>Member since Nov. 2012</small>
@@ -167,21 +167,25 @@ $url = basename($_SERVER['REQUEST_URI']);
 								<i class="fa fa-user"></i> <span><?php echo $lang["profile"];?></span>
 							</a>
 						</li>
-						<li <?php if($url=="AllProfiles"){?>class="active"<?php } ?>>
-							<a href="AllProfiles">
-								<i class="fa fa-user"></i> <span><?php echo $lang["Instructors"]." "; echo $lang["profile"];?></span>
+						<li class="treeview <?php if(false !== strpos($url,AllProfiles)){?>active<?php } ?>">
+							<a href="#">
+								<i class="fa fa-user"></i> <span><?php echo $lang["profile"];?></span> <i class="fa fa-angle-left pull-right"></i>
 							</a>
+							<ul class="treeview-menu">								
+								<li class="active"><a href="AllProfiles"><i class="fa fa-user"></i><?php echo "Student "; echo $lang["profile"];?></a></li>
+								<li><a href="AllProfilesInst"><i class="fa fa-user"></i><?php echo $lang["Instructors"]." "; echo $lang["profile"];?></a></li>
+							</ul>
 						</li>
 						<li class="treeview <?php if($url=="AdminAuditorium" || $url=="AdminClassroom"){?>active<?php } ?>">
 							<a href="#">
 								<i class="fa fa-bars"></i> <span><?php echo $lang['Booking Status'];?></span> <i class="fa fa-angle-left pull-right"></i>
 							</a>
 							<ul class="treeview-menu">
-								<li <?php if($url=="AdminAuditorium"){?>class="active"<?php } ?>><a href="AdminAuditorium"><i class="fa fa-university"></i><?php echo $lang['Auditorium Booking Status']?></a></li>
-								<li <?php if($url=="AdminClassroom"){?>class="active"<?php } ?>><a href="AdminClassroom"><i class="fa fa-leaf"></i><?php echo $lang['Class Room Booking Status'] ?></a></li>
+								<li <?php if($url=="AdminAuditorium"){?>class="active"<?php } ?>><a href="AdminAuditorium"><i class="fa fa-university"></i><?php echo $lang['Auditorium Status']?></a></li>
+								<li <?php if($url=="AdminClassroom"){?>class="active"<?php } ?>><a href="AdminClassroom"><i class="fa fa-leaf"></i><?php echo $lang['Class Room Status'] ?></a></li>
 							</ul>
 						</li>
-						<li <?php if($url=="AdminSchedules"){?>class="active"<?php } ?>>
+						<li <?php if(false !== strpos($url,AdminSchedules)){?>class="active"<?php } ?>>
 							<a href="AdminSchedules">
 								<i class="fa fa-list-ul"></i> <span><?php echo $lang["schedules"];?></span>
 							</a>
@@ -193,24 +197,34 @@ $url = basename($_SERVER['REQUEST_URI']);
 						</li>
 						<li class="treeview <?php if(false !== strpos($url,AdminModuleCategory) || false !== strpos($url,AdminModules) || false !== strpos($url,AdminItdModule)){?>active<?php } ?>">
 							<a href="#">
-								<i class="fa fa-table"></i> <span>Modules</span> <i class="fa fa-angle-left pull-right"></i>
+								<i class="fa fa-table"></i> <span><?php echo $lang["Modules"];?></span> <i class="fa fa-angle-left pull-right"></i>
 							</a>
 							<ul class="treeview-menu">
-								<li <?php if(false !== strpos($url,AdminModuleCategory)){?>class="active"<?php } ?>><a href="AdminModuleCategory"><i class="fa fa-pencil"></i>Modules Category</a></li>
-								<li <?php if(false !== strpos($url,AdminModules)){?>class="active"<?php } ?>><a href="AdminModules"><i class="fa fa-tasks"></i>Regular Modules</a></li>
-								<li <?php if(false !== strpos($url,AdminItdModule)){?>class="active"<?php } ?>><a href="AdminItdModule"><i class="fa fa-tasks"></i>ITD Modules</a></li>
+								<li <?php if(false !== strpos($url,AdminModuleCategory)){?>class="active"<?php } ?>><a href="AdminModuleCategory"><i class="fa fa-pencil"></i><?php echo $lang["Modules Category"];?></a></li>
+								<li <?php if(false !== strpos($url,AdminModules)){?>class="active"<?php } ?>><a href="AdminModules"><i class="fa fa-tasks"></i><?php echo $lang["Regular Modules"];?></a></li>
+								<li <?php if(false !== strpos($url,AdminItdModule)){?>class="active"<?php } ?>><a href="AdminItdModule"><i class="fa fa-tasks"></i><?php echo $lang["ITD Modules"];?></a></li>
 							</ul>
 						</li>
-						<li class="treeview <?php if($url=="AdminAuditorium" || $url=="AdminClassroom"){?>active<?php } ?>">
+						<li class="treeview <?php if($url=="AdminMarks" || $url=="AdminSCMarks"){?>active<?php } ?>">
 							<a href="#">
-								<i class="fa fa-bars"></i> <span>Marks</span> <i class="fa fa-angle-left pull-right"></i>
+								<i class="fa fa-bars"></i> <span><?php echo $lang["marks"];?></span> <i class="fa fa-angle-left pull-right"></i>
 							</a>
 							<ul class="treeview-menu">
-								<li <?php if($url=="AdminMarks"){?>class="active"<?php } ?>><a href="AdminMarks"><i class="fa fa-university"></i>Marks</a></li>
-								<li <?php if($url=="AdminSCMarks"){?>class="active"<?php } ?>><a href="AdminSCMarks"><i class="fa fa-university"></i>ShortTerm Course Marks</a></li>
-								<li <?php if($url==""){?>class="active"<?php } ?>><a href="AdminItdModule"><i class="fa fa-leaf"></i>Marks Courses</a></li>
+								<li <?php if($url=="AdminMarks"){?>class="active"<?php } ?>><a href="AdminMarks"><i class="fa fa-university"></i><?php echo $lang["marks"];?></a></li>
+								<li <?php if($url=="AdminSCMarks"){?>class="active"<?php } ?>><a href="AdminSCMarks"><i class="fa fa-university"></i><?php echo $lang["Short Course Marks"];?></a></li>
+								<!--<li <?php if($url==""){?>class="active"<?php } ?>><a href="#"><i class="fa fa-leaf"></i>Marks Courses</a></li>-->
 							</ul>
-						</li>						
+						</li>		
+						<li <?php if($url=="AdminAttendance"){?>class="active"<?php } ?>>
+							<a href="AdminAttendance">
+								<i class="fa fa-pencil-square-o"></i> <span><?php echo $lang["attendance"];?></span>
+							</a>
+						</li>
+						<li <?php if(false !== strpos($url,Holidays)){?>class="active"<?php } ?>>
+							<a href="Holidays">
+								<i class="fa fa-pencil-square-o"></i> <span>Holidays</span>
+							</a>
+						</li>				
 					</ul>
 				</section>
 				<!-- /.sidebar -->

@@ -14,7 +14,7 @@ $url = basename($_SERVER['REQUEST_URI']);
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 		<!-- Bootstrap 3.3.4 -->
-		<link href="../bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+		<link href="../assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 		<!-- Font Awesome Icons -->
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 		<!-- Ionicons -->
@@ -24,7 +24,7 @@ $url = basename($_SERVER['REQUEST_URI']);
 		<!-- Swcc Skins. Choose a skin from the css/skins
 				 folder instead of downloading all of them to reduce the load. -->
 		<link href="../assets/dist/css/skins/_all-skins.css" rel="stylesheet" type="text/css" />
-		<link href="../dist/custom/custom.css" rel="stylesheet" type="text/css" />
+		<link href="../assets/dist/custom/custom.css" rel="stylesheet" type="text/css" />
 		<link href="../assets/dist/css/services.css" rel="stylesheet" type="text/css" />
 
 		<link href="https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
@@ -42,7 +42,7 @@ $url = basename($_SERVER['REQUEST_URI']);
 			if(@$_SESSION['InstructorID'] !=""){	
 	?>
 
-	<body class="skin-blue sidebar-mini">
+	<body class="skin-blue sidebar-mini sidebar-collapse">
 		<!-- Site wrapper -->
 		<div class="wrapper">
 
@@ -107,13 +107,13 @@ $url = basename($_SERVER['REQUEST_URI']);
 							<!-- User Account: style can be found in dropdown.less -->
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdowns" id="userpanel">
-									<img src="../dist/img/user2-160x160.jpg" class="user-image img-circle" alt="User Image" />
+									<img src="../assets/dist/img/user2-160x160.jpg" class="user-image img-circle" alt="User Image" />
 									<span class="hidden-xs"><?php echo $_SESSION['InstructorName']?></span>
 								</a>
 								<ul class="dropdown-menu" id="panelshow">
 									<!-- User image -->
 									<li class="user-header">
-										<img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+										<img src="../assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
 										<p>
 											
 											<?php 
@@ -152,40 +152,40 @@ $url = basename($_SERVER['REQUEST_URI']);
 					<ul class="sidebar-menu">
 						 <!-- <li class="header">MAIN NAVIGATION</li> -->
 						<li <?php if($url=="index"){?>class="active"<?php } ?>>
-							<a href="index">
+							<a href="ITDdashboard">
 								<i class="fa fa-dashboard"></i> <span><?php echo $lang["dashboard"];?></span>
 							</a>
 						</li>
-						<li <?php if($url=="INSprofile"){?>class="active"<?php } ?>>
-							<a href="INSprofile">
+						<li <?php if($url=="ITDprofile"){?>class="active"<?php } ?>>
+							<a href="ITDprofile">
 								<i class="fa fa-user"></i> <span><?php echo $lang["profile"];?></span>
 							</a>
 						</li>
-						<li <?php if($url=="Class Room Timings"){?>class="active"<?php } ?>>
-							<a href="INSclasstimings">
-								<i class="fa fa-file-text-o"></i> <span>Class Timings<?php //echo $lang["Class Room Booking Status"];?></span>
+						<li <?php if($url=="ITDclasstimings"){?>class="active"<?php } ?>>
+							<a href="ITDclasstimings">
+								<i class="fa fa-file-text-o"></i> <span><?php echo $lang["Class Timings"];?></span>
 							</a>
 						</li>
-						<li <?php if($url=="INSclassbookstatus"){?>class="active"<?php } ?>>
-							<a href="INSclassbookstatus">
-								<i class="fa fa-list-ul"></i> <span>Class Room Booking Status</span>
+						<li <?php if($url=="ITDclassbookstatus"){?>class="active"<?php } ?>>
+							<a href="ITDclassbookstatus">
+								<i class="fa fa-list-ul"></i> <span><?php echo $lang['Class Room Booking Status'] ?></span>
 							</a>
 						</li>
-						<li <?php if($url=="AuditoriumBookingStatus"){?>class="active"<?php } ?>>
-							<a href="AuditoriumBookingStatus">
-								<i class="fa fa-check-square-o"></i> <span>Auditorium Booking Status</span>
+						<li <?php if($url=="ITDAuditoriumBookingStatus"){?>class="active"<?php } ?>>
+							<a href="ITDAuditoriumBookingStatus">
+								<i class="fa fa-check-square-o"></i> <span><?php echo $lang['Auditorium Booking Status']?></span>
 							</a>
 						</li>
 						
 						<li>
-							<a href="teachers">
+							<a href="ITDteachers">
 								<i class="fa fa-users"></i> <span><?php echo $lang["teachers"];?></span>
 							</a>
 						</li>
 						
 						<li <?php if($url=="Allprograms"){?>class="active"<?php } ?>>
 							<a href="Allprograms">
-								<i class="fa fa-pencil-square-o"></i> <span> All Programs<?php echo $lang["examinations"];?></span>
+								<i class="fa fa-pencil-square-o"></i> <span> <?php echo $lang["All Programs"];?></span>
 							</a>
 						</li>
 						
