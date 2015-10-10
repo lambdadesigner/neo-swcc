@@ -13,7 +13,43 @@ $Instsql = "SELECT * FROM Instructors";
 $Instresult = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
 $Insresults = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
 ?>
-			<!-- Add / Edit Student Instructor -->
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>	
+	<script>
+	$(function() {
+	var availableTags = [<?php while($Sturow = sqlsrv_fetch_array($Sturesult)){ ?>
+		<?php echo '"';echo $Sturow['StudentName_en'];echo '"'; echo ","; } ?>
+	  "ActionScript",
+	  "AppleScript",
+	  "Asp",
+	  "BASIC",
+	  "C",
+	  "C++",
+	  "Clojure",
+	  "COBOL",
+	  "ColdFusion",
+	  "Erlang",
+	  "Fortran",
+	  "Groovy",
+	  "Haskell",
+	  "Java",
+	  "JavaScript",
+	  "Lisp",
+	  "Perl",
+	  "PHP",
+	  "Python",
+	  "Ruby",
+	  "Scala",
+	  "Scheme"
+	];
+	$( "#StudeName" ).autocomplete({
+	  source: availableTags
+	});
+	});
+	</script>
+				<!-- Add / Edit Student Instructor -->
 			<style type="text/css">									
 			.col-md-3.text-right{
 				padding-top: 18px;
@@ -70,9 +106,8 @@ $Insresults = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQL
 		                                    <!-- Tab panes -->
 		                                    <div class="tab-content">
 		                                        <div role="tabpanel" class="tab-pane active" id="RStudent"><br>
-		                                        	<div class="col-md-7 styled-select">
-		                                        		<!-- <input type="text" name="Stu
-		                                        		deName" id="StudeName" placeholder="Student Name"> -->
+		                                        	<div class="col-md-9 styled-select">
+		                                        		<input type="text" name="StudeName" id="StudeName" placeholder="Student Name"> &nbsp;&nbsp;
 			                                        	<select name="StudentName" id="StudentName">
 					                                		<option value="">Select Student Name</option>
 					                                		<?php while($Sturow = sqlsrv_fetch_array($Sturesult)){ ?>
@@ -865,39 +900,3 @@ $Insresults = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQL
 <?php
 	include('Admin_files/includes/footer.php');
 ?>
-	<!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-	<link rel="stylesheet" href="/resources/demos/style.css">
-	<script>
-	$(function() {
-	var availableTags = [<?php while($Sturow = sqlsrv_fetch_array($Sturesult)){ ?>
-		<?php echo '"';echo $Sturow['StudentName_en'];echo '"'; echo ","; } ?>
-	  "ActionScript",
-	  "AppleScript",
-	  "Asp",
-	  "BASIC",
-	  "C",
-	  "C++",
-	  "Clojure",
-	  "COBOL",
-	  "ColdFusion",
-	  "Erlang",
-	  "Fortran",
-	  "Groovy",
-	  "Haskell",
-	  "Java",
-	  "JavaScript",
-	  "Lisp",
-	  "Perl",
-	  "PHP",
-	  "Python",
-	  "Ruby",
-	  "Scala",
-	  "Scheme"
-	];
-	$( "#StudeName" ).autocomplete({
-	  source: availableTags
-	});
-	});
-	</script>-->

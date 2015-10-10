@@ -14,36 +14,39 @@ if($_GET['Candi']=="Student")
  $row_count = sqlsrv_num_rows($result);
 
  if($row_count > 0){?>
-    <table class="table table-striped" id="marks">
-      <thead>        
-        <tr style="background-color:#3C8DBC; color:#fff;">                                
-          <th>S.No</th>
-          <th>Student ID</th>
-          <th>Student Name</th>
-          <th>Absent On</th>
-          <th>Module ID</th>
-          <th>Module Name</th>
-          <th>Status</th>
-          <th>Reason</th>
-		  <th>Edit</th>	
-        </tr>
-      </thead>
-      <tbody>
-      <?php $ii =1;while($row = sqlsrv_fetch_array($result)){ ?>
-        <tr>
-          <td><?php echo $ii;?></td>
-          <td><?php echo $row['StudentID']?></td>
-          <td><?php echo $row['StudentName_en']?></td>
-          <td><?php echo date_format($row['DateAbsent'],"d-m-Y");?></td>
-          <td><?php echo $row['ModuleID']?></td>
-          <td><?php echo $row['ModuleName']?></td>
-          <td><?php echo $row['Status']?></td>          
-          <td><?php echo $row['Reason']?></td>
-		  <td><a href="AdminUpdateAttendance?action=Edit&stuID=<?php echo $row['StudentID'];?>" style="cursor:pointer"> <i class="fa fa-edit"></i></a></td> 	
-        </tr>
-      <?php $ii++; }?>
-      </tbody>
-    </table>
+
+    <div class="panel-body border"> 
+      <table class="table table-striped" id="marks">
+        <thead>        
+          <tr style="background-color:#3C8DBC; color:#fff;">                                
+            <th>S.No</th>
+            <th><input type="text" class="form-control" placeholder="Student ID" ></th>
+            <th><input type="text" class="form-control" placeholder="Student Name" ></th>
+            <th><input type="text" class="form-control" placeholder="Absent On" ></th>
+            <th><input type="text" class="form-control" placeholder="Module ID" ></th>
+            <th><input type="text" class="form-control" placeholder="Module Name" ></th>
+            <th><input type="text" class="form-control" placeholder="Status" ></th>
+            <th><input type="text" class="form-control" placeholder="Reason" ></th>
+  		      <th>Edit</th>	
+          </tr>
+        </thead>
+        <tbody>
+        <?php $ii =1;while($row = sqlsrv_fetch_array($result)){ ?>
+          <tr>
+            <td><?php echo $ii;?></td>
+            <td><?php echo $row['StudentID']?></td>
+            <td><?php echo $row['StudentName_en']?></td>
+            <td><?php echo date_format($row['DateAbsent'],"d-m-Y");?></td>
+            <td><?php echo $row['ModuleID']?></td>
+            <td><?php echo $row['ModuleName']?></td>
+            <td><?php echo $row['Status']?></td>          
+            <td><?php echo $row['Reason']?></td>
+  		  <td><a href="AdminUpdateAttendance?action=Edit&stuID=<?php echo $row['StudentID'];?>" style="cursor:pointer"> <i class="fa fa-edit"></i></a></td> 	
+          </tr>
+        <?php $ii++; }?>
+        </tbody>
+      </table>
+    </div>
 
  <?php }else{	?>
 
@@ -51,10 +54,10 @@ if($_GET['Candi']=="Student")
       <thead>        
         <tr style="background-color:#3C8DBC;">                                
           <th>S.No</th>
-          <th>Student ID</th>
-          <th>Absent On</th>
-          <th>Module</th>
-          <th>Status</th>          
+          <th><input type="text" class="form-control" placeholder="Student ID" ></th>
+          <th><input type="text" class="form-control" placeholder="Absent On" ></th>
+          <th><input type="text" class="form-control" placeholder="Module" ></th>
+          <th><input type="text" class="form-control" placeholder="Status" ></th>          
         </tr>
       </thead>
       <tbody>      
@@ -82,11 +85,11 @@ if($_GET['Candi']=="Instructor")
       <thead>        
         <tr style="background-color:#3C8DBC; color:#fff;">                                
           <th>S.No</th>
-          <th>Instructor ID</th>
-          <th>Instructor Name</th>
-          <th>Substitue Instructor ID</th>
-          <th>Substitue Instructor Name</th>
-          <th>Absent On</th>
+          <th><input type="text" class="form-control" placeholder="Instructor ID" ></th>
+          <th><input type="text" class="form-control" placeholder="Instructor Name" ></th>
+          <th><input type="text" class="form-control" placeholder="Substitue Instructor ID" ></th>
+          <th><input type="text" class="form-control" placeholder="Substitue Instructor Name" ></th>
+          <th><input type="text" class="form-control" placeholder="Absent On" ></th>
 		  <th>Edit</th>
         </tr>
       </thead>
@@ -116,10 +119,10 @@ if($_GET['Candi']=="Instructor")
       <thead>        
         <tr style="background-color:#3C8DBC;">                                
           <th>S.No</th>
-          <th>Student ID</th>
-          <th>Absent On</th>
-          <th>Module</th>
-          <th>Status</th>          
+          <th><input type="text" class="form-control" placeholder="Student ID" ></th>
+          <th><input type="text" class="form-control" placeholder="Absent On" ></th>
+          <th><input type="text" class="form-control" placeholder="Module" ></th>
+          <th><input type="text" class="form-control" placeholder="Status" ></th>          
         </tr>
       </thead>
       <tbody>      
@@ -173,12 +176,12 @@ if($_GET['Candi']=="ScStudent")
       <thead>        
         <tr style="background-color:#3C8DBC; color:#fff;">                                
           <th>S.No</th>
-          <th>Employee ID</th>
-          <th>Student ID</th>
-          <th>Attendance Date</th>
-          <th>Attendance Status</th>
-          <th>Reason</th>
-          <th>SCClass</th>
+          <th><input type="text" class="form-control" placeholder="Employee ID" ></th>
+          <th><input type="text" class="form-control" placeholder="Student ID" ></th>
+          <th><input type="text" class="form-control" placeholder="Attendance Date" ></th>
+          <th><input type="text" class="form-control" placeholder="Attendance Status" ></th>
+          <th><input type="text" class="form-control" placeholder="Reason" ></th>
+          <th><input type="text" class="form-control" placeholder="SCClass" ></th>
 		  <th>Edit</th>
                 
         </tr>
@@ -205,12 +208,12 @@ if($_GET['Candi']=="ScStudent")
       <thead>        
         <tr style="background-color:#3C8DBC;">                                
           <th>S.No</th>
-          <th>Employee ID</th>
-          <th>Student ID</th>
-          <th>Attendance Date</th>
-          <th>Attendance Status</th>
-          <th>Reason</th>
-          <th>SCClass</th>         
+          <th><input type="text" class="form-control" placeholder="Employee ID"></th>
+          <th><input type="text" class="form-control" placeholder="Student ID"></th>
+          <th><input type="text" class="form-control" placeholder="Attendance Date"></th>
+          <th><input type="text" class="form-control" placeholder="Attendance Status"></th>
+          <th><input type="text" class="form-control" placeholder="Reason"></th>
+          <th><input type="text" class="form-control" placeholder="SCClass"></th>         
         </tr>
       </thead>
       <tbody>      
@@ -253,13 +256,7 @@ $sql = "INSERT INTO SCAttendance (EmpID,SCID,AttendanceDate,AttendanceStatus,Rea
  $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));	
 	
 }
-if($_GET['Candi']=="ComplaintStatus"){
-$Status = $_GET['Status'];
-$Complain_By = $_GET['Complain_By'];	
-$sql = "UPDATE Complaints SET Status='".$Status."' WHERE Complain_By='".$Complain_By."'"; 
-$result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));		
-	
-}
+
 
 
 ?>

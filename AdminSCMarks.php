@@ -9,9 +9,9 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 
 if($_GET['action']=="delete")
 {	
-	$delsql = "DELETE FROM Schdule WHERE ModuleID='".$_GET['Moduleid']."'";
+	$delsql = "DELETE FROM SCMarks WHERE WHERE SCID='".$_GET['SCID']."' AND EmpID='".$_GET['EmpID']."'";
 	$delsql_result = sqlsrv_query( $conn, $delsql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
-	header('location:AdminSchedules');
+	header('location:AdminSCMarks');
 }
 ?>
 			<style>
@@ -254,7 +254,13 @@ if($_GET['action']=="delete")
 											</h3>
 											<hr>
 										</div>																			
-
+										<?php
+											if(isset($_POST['editMarks'])){
+											$sql="UPDATE SCMarks SET SCID ='".$_POST['SCID']."',EmpID ='".$_POST['EmpID']."',Attendance ='".$_POST['Attendance']."',Activities ='".$_POST['Activities']."',Participation ='".$_POST['Participation']."',Exam='".$_POST['Exam']."' WHERE SCID='".$_GET['SCID']."' AND EmpID='".$_GET['EmpID']."'";	
+											$result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+											header('location:AdminSCMarks')
+											}
+										?>
 										<!-- Add / Edit Student Instructor -->
 										<style type="text/css">									
 										.col-md-3.text-right{
@@ -282,7 +288,7 @@ if($_GET['action']=="delete")
 											$result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
 											$row = sqlsrv_fetch_array($result)?>
 										<div class="modals" id="mySchedules">
-										  	<form name="scheduleAdd" method="post" action="AddSchedule.php">
+										  	<form name="EditMarks" method="post" action="">
 											    <div class="modal-content col-md-6 col-md-offset-3">
 											      	<div class="modal-header">									        
 											        	<h3 class="modal-title" id="myModalLabel">Edit Marks</h3>
@@ -567,75 +573,7 @@ if($_GET['action']=="delete")
 			    });
 			});
 			
-			$(function () {
-				$("#ScheDate").datepicker({ 
-			        autoclose: true, 
-			        todayHighlight: true,
-			        format:'yyyy-mm-dd'
-				}).datepicker('', new Date());;
-			});
-
-			$(document).ready(function() {
-			    $('#schedules').DataTable( {
-			    } );
-
-			    $('#justs').click(function(){				
-				    $('#ScheduleRows').fadeToggle("slow","linear");				    
-				    $('#myModalss').fadeToggle("fast");
-				    $('#addd').toggle();
-				    $('#vie').toggle();
-				});
-
-
-				var input = $('#startTime').clockpicker({
-				    placement: 'bottom',
-				    align: 'left',
-				    autoclose: true,
-				    'default': 'now'
-				});
-
-				var input = $('#endTime').clockpicker({
-				    placement: 'bottom',
-				    align: 'left',
-				    autoclose: true,
-				    'default': 'now'
-				});
-			} );
-
-			function showDay(da)
-			{
-				var date = new Date(da).getDay();
-				if(date=="0")
-				{
-					var Wday = "Sunday";
-				}
-				if(date=="1")
-				{
-					var Wday = "Monday";
-				}
-				if(date=="2")
-				{
-					var Wday = "Tuesday";
-				}
-				if(date=="3")
-				{
-					var Wday = "Wednesday";
-				}
-				if(date=="4")
-				{
-					var Wday = "Thursday";
-				}
-				if(date=="5")
-				{
-					var Wday = "Friday";
-				}
-				if(date=="6")
-				{
-					var Wday = "Saturday";
-				}
-				//alert(Wday);
-			    document.getElementById("ScheDay").value = Wday;			    
-			}
+			
 		</script>
 
 

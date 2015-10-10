@@ -655,29 +655,8 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 						  </div>
 						</div>		                
 		              </div><!-- /.box -->
-						<select name="status" id="status">
-						<option value="Pending">Pending</option>
-						<option value="Working">Working</option>
-						<option value="Completed">Completed</option>
-						</select>
-						<script>
-						$("#status").change(function() {
-							//get the selected value
-							var Status = this.value;
-							var Complain_By = $("#Complain_By").val();
-								alert(Status);
-							//make the ajax call
-							$.ajax({
-								
-								url: "Admin_files/Admin_Attendance.php",
-								type: "GET",
-								data: {"Status": Status, "Complain_By": Complain_By,"Candi":"ComplaintStatus"},
-								success: function() {
-									console.log("Data sent!");
-								}
-							});
-						});
-						</script>
+						
+						
 						
 						
 		            <script type="text/tmpl" id="tmpl">

@@ -912,8 +912,19 @@ $studentId = $_SESSION['StudentID'];
 					</div>
 					<?php
 						if(isset($_POST['submit'])){
+
+							$Cousql = "SELECT * FROM Complaints";
+							$Couresult = sqlsrv_query( $conn, $Cousql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+							$CouValue = sqlsrv_num_rows($Couresult);
+							$RCouVal = $CouValue + 1;
+
+							$StCousql = "SELECT * FROM Complaints WHERE Complain_By=".$_SESSION['StudentID']."";
+							$StCouresult = sqlsrv_query( $conn, $StCousql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+							$StCouValue = sqlsrv_num_rows($StCouresult);
+
 							$studentId = $_SESSION['StudentID'];
 							$name = $_SESSION['StudentName_en'];
+							$complain_No = "ST-".$_SESSION['StudentID']."-CMP-".$StCouValue."-".$RCouVal; exit;
 							//$subject = $_POST['subject'];
 							$Department = $_POST['Department'];
 							$Priority = $_POST['Priority'];
@@ -921,7 +932,7 @@ $studentId = $_SESSION['StudentID'];
 							$Status = 'Pending';
 							$today = date("Y-m-d"); 
 
-							 $sql = "INSERT INTO Complaints(Message,Complain_By,Complain_By_Name,priority,Department,Complain_on,Status) VALUES('".$message."','".$studentId."','".$name."','".$Priority."','".$Department."','".$today."','".$Status."')";
+							$sql = "INSERT INTO Complaints(Message,Complain_By,Complain_By_Name,priority,Department,Complain_on,Status,Complaint_No) VALUES('".$message."','".$studentId."','".$name."','".$Priority."','".$Department."','".$today."','".$Status."','".$complain_No."')";
 							$result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
 
 						}
@@ -993,9 +1004,9 @@ $studentId = $_SESSION['StudentID'];
 														<div class="col-sm-9 col-sm-offset-1">
 															<select class="form-control" id="Priority" name="Priority" required>
 																<option>Select Priority</option>
-																<option value="Low">Low</option>
-																<option value="Medium">Medium</option>
-																<option value="High">High</option>
+																<option value="low">Low</option>
+																<option value="medium">Medium</option>
+																<option value="high">High</option>
 															</select>
 														</div>
 													</div>
