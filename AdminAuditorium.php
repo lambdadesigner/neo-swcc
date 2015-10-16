@@ -23,17 +23,42 @@ if($_POST['scenario']=="editAdmAuditorium")
 }
 ?>
 			<style>
-				.filterbutton {
-					float: right;
-					margin-top: 3px;
-					padding-left: 10px;
-				}
-				button.btn-filter {
-					padding: 5px 10px;
-					font-size: 15px;
-					background: #1caf9a;
-					color: white;
-				}
+			.filterbutton {
+				float: right;
+				margin-top: 3px;
+				padding-left: 10px;
+			}
+			button.btn-filter {
+				padding: 5px 10px;
+				font-size: 15px;
+				background: #1caf9a;
+				color: white;
+			}
+
+			/*Tables Design*/
+			table.dataTable.no-footer{
+			  border: 0px;
+			}
+
+			div.dataTables_filter,div.dataTables_length { 
+			  display: none !important;
+			}
+			table.dataTable thead th, table.dataTable thead td {
+			  border-bottom: 3px solid #d9d9d9 ;
+			}
+			.dataTable tr{
+			  background: #D9EDF7;			  
+			}
+			.dataTable tbody tr td{
+			  padding: 18px;
+			}
+			.border table {
+				border: 1px solid #ccc;
+				margin-bottom: 20px;
+			} 
+			.dataTable tr td{
+			  border: 1px solid #f9f9f9;
+			}
 			</style>
 			<link rel="stylesheet" type="text/css" href="assets/dist/css/bootstrap-clockpicker.min.css">
 			<!-- Content Wrapper. Contains page content -->
@@ -41,12 +66,12 @@ if($_POST['scenario']=="editAdmAuditorium")
 				<!-- Content Header (Page header) -->
 				<section class="content-header">
 					<h1>
-						Auditorium Booking Status
+						Auditorium Booking
 						<small></small>
 					</h1>
 					<ol class="breadcrumb">
-						<li><a href="#"><i class="fa fa-dashboard text-red"></i> Home</a></li>
-						<li><a href="#"><i class="fa fa-user text-red"></i> Profile</a></li>
+						<li><a href="Admin"><i class="fa fa-dashboard text-red"></i> Home</a></li>
+						<li><a href="#"><i class="fa fa-university"></i> Auditorium</a></li>
 					</ol>
 				</section>
 
@@ -58,6 +83,7 @@ if($_POST['scenario']=="editAdmAuditorium")
 								<div class="panel filterable">
 									<!-- Showing Auditoriums -->
 									<?php if($_GET['action']=="" && $_GET['ModId']==""){?>
+
 										<div class="panel-heading">
 											<!-- <h3 class="panel-title">Users</h3> -->
 											<div class="pull-right">
@@ -70,48 +96,68 @@ if($_POST['scenario']=="editAdmAuditorium")
 											<br><br>
 										</div>
 
-										<div class="tab-content panel-body border" id="auditoriumRows">																		
-											<table class="table table-striped" id="auditorium">
-												<thead>
-													<tr class="filters" style="">
-														<th>S.No</th>
-														<th><input type="text" class="form-control" placeholder="Auditorium Number" ></th>
-														<th><input type="text" class="form-control" placeholder="Booking Date" ></th>
-														<th><input type="text" class="form-control" placeholder="Booked By" ></th>
-														<th><input type="text" class="form-control" placeholder="Start Time" ></th>
-														<th><input type="text" class="form-control" placeholder="End Time"></th>
-														<th>Edit</th>
-														<th>Delete</th>
-													</tr>
-													<!-- <tr class="filters1" style="background-color:#1CAF9A;display:none;">
-														<th>S.No</th>
-														<th>Auditorium Number</th>
-														<th>Booking Date</th>
-														<th>Booked By</th>
-														<th>Start Time</th>
-														<th>End Time</th>	
-														<th>S.No</th>												
-													</tr> -->
-												</thead>
-												<tbody>
-												<?php $jk=1; while($row = sqlsrv_fetch_array($result)){ ?>
-													<tr>
-														<td><?php echo $jk;?></td>
-														<td><?php echo $row['AuditoriumNum']?></td>
-														<td><?php $BookingDate = date_format($row['BookingDate'], 'Y-m-d'); echo $BookingDate; ?></td>
-													
-														<td><?php echo $row['BookedBy']?></td>
-														<td><?php $StartTime = date_format($row['StartTime'], 'H:i:s'); echo $StartTime; ?></td>
-														<td><?php $EndTime = date_format($row['EndTime'], 'H:i:s'); echo $EndTime; ?></td>
+										<div class="panel-body sortabletable">
+											<div class="row">
+												<div class="filterable col-md-12">
 
-														<td><a href="AdminAuditorium?action=Edit&ModId=<?php echo $row['AuditoriumNum'];?>&date=<?php echo date_format($row['BookingDate'],"Y-m-d");?>" style="cursor:pointer"> <i class="fa fa-edit fa-lg" data-toggle="tooltip" data-placement="top" title="Click to edit"></i></a> </td>
-														
-														<td><a onClick="var q = confirm('Are you sure you want to delete selected record?'); if (q) { window.location = 'AdminAuditorium?action=delete&Auditid=<?php echo $row['AuditoriumNum'];?>&date=<?php echo date_format($row['BookingDate'],"Y-m-d");?>'; return false;}" style="cursor:pointer"><i class="fa fa-close text-danger"></i></a> </td>
-													</tr>
-												<?php $jk++; }?>
-												</tbody>
-											</table>
+													<div class="col-md-12">
+														<div class="panel panel-info">
+															<div class="panel-heading">
+																<h3 class="panel-title">Check Status </h3>
+															</div>
+															<div class="panel-body">
+
+																<div class="tab-content panel-body" id="auditoriumRows">																	
+																	<table class="table table-striped" id="auditorium">
+																		<thead>
+																			<tr class="filters" style="">
+																				<th>S.No</th>
+																				<th><input type="text" class="form-control" placeholder="Auditorium Number" ></th>
+																				<th><input type="text" class="form-control" placeholder="Booking Date" ></th>
+																				<th><input type="text" class="form-control" placeholder="Booked By" ></th>
+																				<th><input type="text" class="form-control" placeholder="Start Time" ></th>
+																				<th><input type="text" class="form-control" placeholder="End Time"></th>
+																				<th>Edit</th>
+																				<th>Delete</th>
+																			</tr>
+																			<!-- <tr class="filters1" style="background-color:#1CAF9A;display:none;">
+																				<th>S.No</th>
+																				<th>Auditorium Number</th>
+																				<th>Booking Date</th>
+																				<th>Booked By</th>
+																				<th>Start Time</th>
+																				<th>End Time</th>	
+																				<th>S.No</th>												
+																			</tr> -->
+																		</thead>
+																		<tbody>
+																		<?php $jk=1; while($row = sqlsrv_fetch_array($result)){ ?>
+																			<tr>
+																				<td><?php echo $jk;?></td>
+																				<td><?php echo $row['AuditoriumNum']?></td>
+																				<td><?php $BookingDate = date_format($row['BookingDate'], 'Y-m-d'); echo $BookingDate; ?></td>
+																			
+																				<td><?php echo $row['BookedBy']?></td>
+																				<td><?php $StartTime = date_format($row['StartTime'], 'H:i:s'); echo $StartTime; ?></td>
+																				<td><?php $EndTime = date_format($row['EndTime'], 'H:i:s'); echo $EndTime; ?></td>
+
+																				<td><a href="AdminAuditorium?action=Edit&ModId=<?php echo $row['AuditoriumNum'];?>&date=<?php echo date_format($row['BookingDate'],"Y-m-d");?>" style="cursor:pointer"> <i class="fa fa-edit fa-lg" data-toggle="tooltip" data-placement="top" title="Click to edit"></i></a> </td>
+																				
+																				<td><a onClick="var q = confirm('Are you sure you want to delete selected record?'); if (q) { window.location = 'AdminAuditorium?action=delete&Auditid=<?php echo $row['AuditoriumNum'];?>&date=<?php echo date_format($row['BookingDate'],"Y-m-d");?>'; return false;}" style="cursor:pointer"><i class="fa fa-close text-danger" data-toggle="tooltip" data-placement="top" title="Click to delete"></i></a> </td>
+																			</tr>
+																		<?php $jk++; }?>
+																		</tbody>
+																	</table>
+																</div>
+
+															</div>
+														</div>
+													</div>
+
+												</div>
+											</div>
 										</div>
+
 									<?php } ?>
 									<!-- End Showing Auditoriums -->
 
@@ -223,23 +269,24 @@ if($_POST['scenario']=="editAdmAuditorium")
 									<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 									  <div class="modal-dialog" role="document">
 									    <div class="modal-content">
-									      <div class="modal-header">
-									        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-									        <h4 class="modal-title" id="myModalLabel">Auditorium Booking</h4>
-									      </div>
-										  <input type="text" id="AuditoriumNum" name="AuditoriumNum" value="" required="required" class="form-control" placeholder="Auditorium Number" >
-									      <div class="modal-body">
-									        <div id="datepicker" class="input-group date" data-date-format="yyyy-mm-dd">
-											    <input class="form-control inputpickertext" type="text" id="BookingDate"  />
-											    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-											</div>
-									      </div>										  
-										  <input class="form-control" id="single-input1" value="" placeholder="Start Time" name="StartTime">
-										  <input class="form-control" id="single-input2" value="" placeholder="End Time" name="EndTime">
-									      <div class="modal-footer">
-									        <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-									        <button type="button" class="btn btn-default"  data-dismiss="modal" id="BookAuditorium">Book Auditorium</button>
-									      </div>
+									        <div class="modal-header">
+									        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									        	<h4 class="modal-title" id="myModalLabel">Auditorium Booking</h4>
+									        </div>											
+											<div class="modal-body">
+												<input type="text" id="AuditoriumNum" name="AuditoriumNum" value="" required="required" class="form-control" placeholder="Auditorium Number" ><br>
+												<div id="datepicker" class="input-group date" data-date-format="yyyy-mm-dd">
+													<input class="form-control inputpickertext" type="text" id="BookingDate" readonly />
+													<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+												</div><br>
+												<input class="form-control" id="single-input1" readonly placeholder="Start Time" name="StartTime"><br>
+												<input class="form-control" id="single-input2" readonly placeholder="End Time" name="EndTime">
+											</div>										  
+											
+									      	<div class="modal-footer">
+									        	<!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+									        	<button type="button" class="btn btn-default"  data-dismiss="modal" id="BookAuditorium">Book Auditorium</button>
+									      	</div>
 									    </div>
 									  </div>
 									</div>

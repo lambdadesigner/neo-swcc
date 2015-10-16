@@ -64,6 +64,18 @@ if(isset($_POST['update'])){
 										$row = sqlsrv_fetch_array($result);
 									?>
 
+									<div class="panel-heading">
+										<h3 class="panel-title text-red">
+											<div class="pull-right">
+												<a href="AdminMarks" class="btn btn-default" style="margin-top:-15px;border-radius:30px !important;">
+													<span><i class="fa fa-eye"></i> View All Records</span>
+												</a>
+											</div>
+										</h3>
+										<hr>
+									</div>
+
+								<form  action="" method="POST">
 									<!-- Add Marks Start -->
 									<div class="row">
 										<div class="col-md-6 col-md-offset-3">
@@ -113,13 +125,14 @@ if(isset($_POST['update'])){
 														</div>
 													</div>
 													<div class="modal-footer">
-														<input type="submit" name="update" id="update" value="Update" class="btn btn-success btn-lg pull-right">
+														<input type="submit" name="update" id="update" value="Update" class="btn btn-default btn-lg pull-right" style="Background-color:#F4F4F4; color:#000;" >
 													</div>
 											    </div>
 											</div>
 										</div>
 									</div>
 									<!-- End AddMarks -->
+								</form>
 
 
 

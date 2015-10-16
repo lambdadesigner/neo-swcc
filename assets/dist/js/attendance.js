@@ -23,29 +23,29 @@ var chart = AmCharts.makeChart("chartdiv", {
   "graphs": [ {
     "id": "g3",
     "valueAxis": "v1",
-    "lineColor": "#000",
-    "fillColors": "#52bedb",
+    "lineColor": "#1083ae",
+    "fillColors": "#1ea5d6",
     "fillAlphas": 1,
     "type": "column",
     "startEffect" : "elastic",
     "title": "Actual Sales",
     "valueField": "sales2",
     "clustered": false,
-    "columnWidth": 0.9,
+    "columnWidth": 0.8,
     <!-- "legendValueText": "$[[value]]M", -->
     "balloonText": "[[title]]<br/><b style='font-size: 130%'>$[[value]]M</b>"
   }, {
     "id": "g4",
     "valueAxis": "v1",
-    "lineColor": "#000",
-    "fillColors": "#9ddaeb",
+    "lineColor": "#285986",
+    "fillColors": "#285986",
     "fillAlphas": 2,
     "startEffect" : "elastic",
     "type": "column",
     "title": "Target Sales",
     "valueField": "sales1",
     "clustered": false,
-    "columnWidth": 0.7,
+    "columnWidth": 0.8,
    <!--  "legendValueText": "$[[value]]M", -->
     "balloonText": "[[title]]<br/><b style='font-size: 130%'>$[[value]]M</b>"
   }],

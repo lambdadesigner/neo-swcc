@@ -12,6 +12,8 @@ if($_GET['action']=="delete")
 {	
 	$delsql = "DELETE FROM ITD_Holidays WHERE HolidayID='".$_GET['Holidayid']."'";
 	$delsql_result = sqlsrv_query( $conn, $delsql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+
+	header('location:Holidays');
 }
 ?>
 			<style>
@@ -25,7 +27,14 @@ if($_GET['action']=="delete")
 					font-size: 15px;
 					background: #1caf9a;
 					color: white;
+				}				
+				.col-md-3.text-right{
+					padding-top: 18px;
 				}
+				.text-danger.fa.fa-star{
+					font-size: 7px;										
+				}
+				.datepicker{z-index:1151 !important;}									
 			</style>
 			<link rel="stylesheet" type="text/css" href="assets/dist/css/bootstrap-clockpicker.min.css">
 			<!-- Content Wrapper. Contains page content -->
@@ -37,14 +46,15 @@ if($_GET['action']=="delete")
 						<small></small>
 					</h1>
 					<ol class="breadcrumb">
-						<li><a href="#"><i class="fa fa-dashboard text-red"></i> Home</a></li>
-						<li><a href="#"><i class="fa fa-user text-red"></i> Profile</a></li>
+						<li><a href="Admin"><i class="fa fa-dashboard text-red"></i> Home</a></li>
+						<li><a href="#"><i class="fa fa-pencil-square-o"></i>Holidays</a></li>
 					</ol>
 				</section>
 
 			<!-- Main content -->
 			<!-- Holiday Show Panel -->
 			<?php if($_GET['action']=="" && $_GET['Holidayid']==""){?>
+
 				<section class="content">
 					<div class="panel">
 						<div class="panel-body">
@@ -62,134 +72,160 @@ if($_GET['action']=="delete")
 										<?php } ?>
 										<div class="pull-right">
 											<!-- <button class="btn btn-xs btn-filter"><span class="glyphicon glyphicon-filter filterbutton"></span> Filter</button> -->
-											<button type="button" class="btn btn-default" id="justs">
+											<!-- <button type="button" class="btn btn-default" id="justs">
 		  										<span id="addd"><i class="fa fa-plus"></i> Add</span><span id="vie" style="display:none"><i class="fa fa-eye"></i> View</span> Holiday
-											</button>											
+											</button> -->											
 										</div>
 										<div id="myElem" class="alert alert-success" role="alert" style="display:none;" align="center">Holiday Category</div>	
-									</div>	<br>		
+									</div>	<br>	
 
-									<div class="panel-body border">						
-										<table class="table table-striped" id="Holidays">
-											<thead>
-												<tr class="filters">
-													<th>S.No</th>
-													<th><input type="text" class="form-control" placeholder="Holiday ID" ></th>
-													<th><input type="text" class="form-control" placeholder="Holiday Name" ></th>
-													<th><input type="text" class="form-control" placeholder="Start Date" ></th>
-													<th><input type="text" class="form-control" placeholder="End Date" ></th>
-													<th><input type="text" class="form-control" placeholder="Is Teacher Holiday" ></th>
-													<th><input type="text" class="form-control" placeholder="Is Annual Holiday" ></th>
-													<th>Edit</th>
-													<th>Delete</th>
-												</tr>
-												<!-- <tr class="filters1" style="background-color:#3C8DBC;">
-													<th>S.No</th>
-													<th>Holiday ID</th>
-													<th>Holiday Name</th>
-													<th>Start Date</th>
-													<th>End Date</th>
-													<th>Is Teacher Holiday</th>
-													<th>Is Annual Holiday</th>
-													<th>Edit</th>
-													<th>Delete</th>												
-												</tr> -->
-											</thead>
-											<tbody>
-												<?php $jk=1; while($Holiday_row = sqlsrv_fetch_array($Holidays_result)){ ?>
-													<tr>
-														<td><?php echo $jk;?></td>
-														<td><?php echo $Holiday_row['HolidayID']?></td>
-														<td><?php echo $Holiday_row['HolidayName']?></td>
-														<td><?php echo date_format($Holiday_row['FromDate'],"Y-m-d"); ?></td>
-														<td><?php echo date_format($Holiday_row['ToDate'],"Y-m-d"); ?></td>
-														<td><?php echo $Holiday_row['IsTeacherHoliday']; ?></td>
-														<td><?php echo $Holiday_row['IsAnnualHoliday']; ?></td>
-														<!-- <td><a data-toggle="modal" data-target="#myModal<?php echo $jk;?>" style="cursor:pointer">Edit</a> </td> -->
-														<td><a href="Holidays?action=Edit&Holidayid=<?php echo $Holiday_row['HolidayID'];?>" style="cursor:pointer">Edit</a> </td>
-														<td><a onClick="var q = confirm('Are you sure you want to delete selected record?'); if (q) { window.location = 'Holidays?action=delete&Holidayid=<?php echo $Holiday_row['HolidayID'];?>'; return false;}" style="cursor:pointer">Delete</a> </td>
-													</tr>
-												<?php $jk++; }?>																						
-											</tbody>
-										</table>
-									</div>
+									<div class="panel-body sortabletable">
+										<div class="row">
+											<div class="filterable col-md-12">	
 
-									<style type="text/css">									
-									.col-md-3.text-right{
-										padding-top: 18px;
-									}
-									.text-danger.fa.fa-star{
-										font-size: 7px;										
-									}
-									.datepicker{z-index:1151 !important;}
-									</style>
+												<div class="" id="Categories"><!-- style="display:none;" -->
+													<div class="col-md-10 col-md-offset-1">
+														<div class="border" id="myModalss">														  
+														    <div class="modal-contents">
+														    	<div class="modal-header">									        
+														        	<h3 class="modal-title" id="myModalLabel">Add Holiday</h3>
+														      	</div><br>
 
-									<div class="panel-body">
-										<form name="AddHoliday" method="post" action="AdmHolidays.php">
-											<!-- Modal -->
-											<div class="modals" id="myModalss" style="display:none;"><br>
-											  <!-- <div class="modal-dialog" role="document"> -->
-											    <div class="modal-content col-md-6 col-md-offset-3">
-											      	<div class="modal-header">									        
-											        	<h3 class="modal-title" id="myModalLabel">Add Holiday</h3>
-											      	</div>
-											      	<input type="hidden" name="scenario" id="scenario" value="add">
-											      	<div class="row">
-														<div class="col-md-3 text-right">
-															Holiday Name<i class="fa fa-star text-danger"></i>
-														</div>
-														<div class="col-md-8">															
-															<input type="text" id="HolidayName" name="HolidayName" placeholder="Holiday Name" class="input" data-toggle="tooltip" data-placement="right" title="Holiday Name" required style="width:100%;">
+														      	<form name="AddHoliday" method="post" action="AdmHolidays.php">
+
+															      	<div class="row modal-body">
+																      	<div class="col-md-6">
+																			<input type="hidden" name="scenario" id="scenario" value="add">
+																			<div class="row">
+																				<div class="col-md-3 text-right">
+																					Holiday Name<i class="fa fa-star text-danger"></i>
+																				</div>
+																				<div class="col-md-8">															
+																					<input type="text" id="HolidayName" name="HolidayName" placeholder="Holiday Name" class="input" data-toggle="tooltip" data-placement="right" title="Holiday Name" required style="width:100%;">
+																				</div>
+																			</div><br>
+																			<div class="row">
+																				<div class="col-md-3 text-right">
+																					Start Date<i class="fa fa-star text-danger"></i>
+																				</div>
+																				<div class="col-md-8">															
+																					<input type="text" id="StartDate" name="StartDate" readonly placeholder="Start Date" class="input inputpickertext" data-toggle="tooltip" data-placement="right" title="Start Date" required style="width:100%;">
+																				</div>
+																			</div><br>
+																			<div class="row">
+																				<div class="col-md-3 text-right">
+																					Select Holiday For Instructor
+																				</div>
+																				<div class="col-md-8 styled-select">															
+																					<select id="IsTeach" name="IsTeach" style="width:100%;">
+																						<option value="">Select Holiday For Instructor </option>
+																						<option value="1">Yes</option>
+																						<option value="0">No</option>
+																					</select>
+																				</div>
+																			</div><br>																				
+																		</div>
+
+																		<div class="col-md-6">
+																			<div class="row">
+																				<div class="col-md-3 text-right">
+																					End Date<i class="fa fa-star text-danger"></i>
+																				</div>
+																				<div class="col-md-8">															
+																					<input type="text" id="EndDate" name="EndDate" readonly placeholder="End Date" class="input inputpickertext" data-toggle="tooltip" data-placement="right" title="End Date" style="width:100%;">
+																				</div>
+																			</div><br>
+																			<div class="row">
+																				<div class="col-md-3 text-right">
+																					Select Annual Holiday
+																				</div>
+																				<div class="col-md-8 styled-select">															
+																					<select id="IsAnnual" name="IsAnnual" style="width:100%;">
+																						<option value="">Select Annual Holiday</option>
+																						<option value="1">Yes</option>
+																						<option value="0">No</option>
+																					</select>
+																				</div>
+																			</div><br>
+																		</div>	  
+
+																		<div class="clearfix"></div>
+																		<div class="modal-footer">																				
+																			<button type="submit" class="btn btn-default"  data-dismiss="modal" id="AddCategory">Submit</button>
+																		</div>
+																    </div>
+
+																</form>
+
+														    </div>
 														</div>
 													</div>
-													<div class="row">
-														<div class="col-md-3 text-right">
-															Start Date<i class="fa fa-star text-danger"></i>
+												</div>
+
+												<div class="clearfix"></div>
+												<br>
+
+												<div class="col-md-12">
+													<div class="panel panel-info">
+														<div class="panel-heading">
+															<h3 class="panel-title">All Holidays </h3>
 														</div>
-														<div class="col-md-8">															
-															<input type="text" id="StartDate" name="StartDate" placeholder="Start Date" class="input inputpickertext" data-toggle="tooltip" data-placement="right" title="Start Date" required style="width:100%;">
+														<div class="panel-body">
+
+															<div class="tab-content panel-body">						
+																<table class="table table-striped" id="Holidays">
+																	<thead>
+																		<tr class="filters">
+																			<th>S.No</th>
+																			<th><input type="text" class="form-control" placeholder="Holiday ID" ></th>
+																			<th><input type="text" class="form-control" placeholder="Holiday Name" ></th>
+																			<th><input type="text" class="form-control" placeholder="Start Date" ></th>
+																			<th><input type="text" class="form-control" placeholder="End Date" ></th>
+																			<th><input type="text" class="form-control" placeholder="Is Teacher Holiday" ></th>
+																			<th><input type="text" class="form-control" placeholder="Is Annual Holiday" ></th>
+																			<th>Edit</th>
+																			<th>Delete</th>
+																		</tr>
+																		<!-- <tr class="filters1" style="background-color:#3C8DBC;">
+																			<th>S.No</th>
+																			<th>Holiday ID</th>
+																			<th>Holiday Name</th>
+																			<th>Start Date</th>
+																			<th>End Date</th>
+																			<th>Is Teacher Holiday</th>
+																			<th>Is Annual Holiday</th>
+																			<th>Edit</th>
+																			<th>Delete</th>												
+																		</tr> -->
+																	</thead>
+																	<tbody>
+																		<?php $jk=1; while($Holiday_row = sqlsrv_fetch_array($Holidays_result)){ ?>
+																			<tr>
+																				<td><?php echo $jk;?></td>
+																				<td><?php echo $Holiday_row['HolidayID']?></td>
+																				<td><?php echo $Holiday_row['HolidayName']?></td>
+																				<td><?php echo date_format($Holiday_row['FromDate'],"Y-m-d"); ?></td>
+																				<td><?php echo date_format($Holiday_row['ToDate'],"Y-m-d"); ?></td>
+																				<td><?php echo $Holiday_row['IsTeacherHoliday']; ?></td>
+																				<td><?php echo $Holiday_row['IsAnnualHoliday']; ?></td>
+																				<!-- <td><a data-toggle="modal" data-target="#myModal<?php echo $jk;?>" style="cursor:pointer">Edit</a> </td> -->
+																				<td><a href="Holidays?action=Edit&Holidayid=<?php echo $Holiday_row['HolidayID'];?>" style="cursor:pointer">Edit</a> </td>
+																				<td><a onClick="var q = confirm('Are you sure you want to delete selected record?'); if (q) { window.location = 'Holidays?action=delete&Holidayid=<?php echo $Holiday_row['HolidayID'];?>'; return false;}" style="cursor:pointer">Delete</a> </td>
+																			</tr>
+																		<?php $jk++; }?>																						
+																	</tbody>
+																</table>
+															</div>
+
 														</div>
 													</div>
-													<div class="row">
-														<div class="col-md-3 text-right">
-															End Date<i class="fa fa-star text-danger"></i>
-														</div>
-														<div class="col-md-8">															
-															<input type="text" id="EndDate" name="EndDate" placeholder="End Date" class="input inputpickertext" data-toggle="tooltip" data-placement="right" title="End Date" style="width:100%;">
-														</div>
-													</div><br>
-													<div class="row">
-														<div class="col-md-3 text-right">
-															Select Holiday For Instructor
-														</div>
-														<div class="col-md-8 styled-select">															
-															<select id="IsTeach" name="IsTeach" style="width:100%;">
-																<option value="">Select Holiday For Instructor </option>
-																<option value="1">Yes</option>
-																<option value="0">No</option>
-															</select>
-														</div>
-													</div>
-													<div class="row">
-														<div class="col-md-3 text-right">
-															Select Annual Holiday
-														</div>
-														<div class="col-md-8 styled-select">															
-															<select id="IsAnnual" name="IsAnnual" style="width:100%;">
-																<option value="">Select Annual Holiday</option>
-																<option value="1">Yes</option>
-																<option value="0">No</option>
-															</select>
-														</div>
-													</div><br>
-													<div class="modal-footer">
-													<button type="submit" class="btn btn-default"  data-dismiss="modal" id="AddCategory">Submit</button>
-													</div>
-											    </div>
-											  <!-- </div> -->
+												</div>
+
 											</div>
-										</form>
+										</div>
 									</div>
+
+									
 								</div>
 							</div>
 						</div>
@@ -218,6 +254,7 @@ if($_GET['action']=="delete")
 
 			<!-- Holidays Edit Panel Start -->
 			<?php if($_GET['action']=="Edit" && $_GET['Holidayid']!=""){
+
 				$holiday_sql1 = "SELECT * FROM ITD_Holidays WHERE HolidayID='".$_GET['Holidayid']."'";
 				$Holidays1_result = sqlsrv_query( $conn, $holiday_sql1 ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
 				$Holiday1_row = sqlsrv_fetch_array($Holidays1_result)?>
@@ -242,7 +279,7 @@ if($_GET['action']=="delete")
 											    <div class="modal-content col-md-6 col-md-offset-3">
 											      	<div class="modal-header">									        
 											        	<h3 class="modal-title" id="myModalLabel">Edit Holiday</h3>
-											      	</div>
+											      	</div><br>
 											      	<input type="hidden" name="scenario" id="scenario" value="edit">
 											      	<input type="hidden" name="HolidayId" id="HolidayId" value="<?php echo $Holiday1_row['HolidayID']?>">
 											      	<div class="row">
@@ -252,13 +289,13 @@ if($_GET['action']=="delete")
 														<div class="col-md-8">															
 															<input type="text" id="HolidayName" name="HolidayName" placeholder="Holiday Name" class="input" data-toggle="tooltip" data-placement="right" title="Holiday Name" required style="width:100%;" value="<?php echo $Holiday1_row['HolidayName'];?>">
 														</div>
-													</div>
+													</div><br>
 													<div class="row">
 														<div class="col-md-3 text-right">
 															Start Date<i class="fa fa-star text-danger"></i>
 														</div>
 														<div class="col-md-8">															
-															<input type="text" id="StartDate" name="StartDate" placeholder="Start Date" class="input inputpickertext" data-toggle="tooltip" data-placement="right" title="Start Date" required style="width:100%;" value="<?php echo date_format($Holiday1_row['FromDate'],"Y-m-d");?>">
+															<input type="text" id="StartDate" name="StartDate" placeholder="Start Date" readonly class="input inputpickertext" data-toggle="tooltip" data-placement="right" title="Start Date" required style="width:100%;" value="<?php echo date_format($Holiday1_row['FromDate'],"Y-m-d");?>">
 														</div>
 													</div><br>
 													<div class="row">
@@ -266,7 +303,7 @@ if($_GET['action']=="delete")
 															End Date<i class="fa fa-star text-danger"></i>
 														</div>
 														<div class="col-md-8">															
-															<input type="text" id="EndDate" name="EndDate" placeholder="End Date" class="input inputpickertext" data-toggle="tooltip" data-placement="right" title="End Date" style="width:100%;" value="<?php echo date_format($Holiday1_row['ToDate'],"Y-m-d");?>">
+															<input type="text" id="EndDate" name="EndDate" placeholder="End Date" readonly class="input inputpickertext" data-toggle="tooltip" data-placement="right" title="End Date" style="width:100%;" value="<?php echo date_format($Holiday1_row['ToDate'],"Y-m-d");?>">
 														</div>
 													</div><br>
 													<div class="row">

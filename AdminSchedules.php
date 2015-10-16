@@ -32,6 +32,17 @@ if($_GET['action']=="delete")
 				    line-height: 1;
 				    border: 0;
 				}
+								
+				.col-md-3.text-right{
+					padding-top: 18px;
+				}
+				.text-danger.fa.fa-star{
+					font-size: 7px;										
+				}
+				.datepicker{z-index:1151 !important;}
+				ul.select-options {
+					min-height: 240px;
+				}
 
 			</style>
 
@@ -40,24 +51,30 @@ if($_GET['action']=="delete")
 				<!-- Content Header (Page header) -->
 				<section class="content-header">
 					<h1>
-						<!-- Schedules -->
+						Schedules
 						<small></small>
 					</h1>
 					<ol class="breadcrumb">
-						<li><a href="#"><i class="fa fa-dashboard text-default"></i> Home</a></li>
-						<li><a href="#"><i class="fa fa-user text-default"></i> Profile</a></li>
+						<li><a href="Admin"><i class="fa fa-dashboard text-default"></i> Home</a></li>
+						<li><a href="#"><i class="fa fa-list-ul"></i> Schedule</a></li>
 					</ol>
 				</section>
 
 				<!-- Main content -->
 				<!-- Showing Schedules -->
 				<?php if($_GET['action']=="" && $_GET['ModId']==""){?>
+
 					<section class="content">
-						<div class="panel box box-default">
+						<div class="panel">
 							<div class="panel-body">
 								<div class="row">
 									<div class="panel filterable">
 										<div class="panel-heading">
+											<div class="note note-warning">
+												<p>
+													 Please try to re-size your browser window in order to see the tables in responsive mode.
+												</p>
+											</div>	
 											<?php if($_GET['err']=="success"){?>
 												<span style="text-align:center; margin-left:500px; position:absolute;height:44px;padding-top:10px;" class="alert alert-success" id="succesd">
 													Schedule Successfully Added....
@@ -67,195 +84,214 @@ if($_GET['action']=="delete")
 												</script>
 											<?php } ?>
 											
-												<button type="button" class="btn btn-default pull-right" id="justs">
+											<!-- <button type="button" class="btn btn-default pull-right" id="justs">
 		  										<span id="addd"><i class="fa fa-plus"></i> Add</span><span id="vie" style="display:none"><i class="fa fa-eye"></i> View</span> Schedules
-											</button>
-											<h3 class="panel-title text-default"><i class="fa fa-pencil fa-lg"></i> Schedules
-												<!-- <div class="pull-right">
+											</button> -->
+											<!-- <h3 class="panel-title text-default"><i class="fa fa-pencil fa-lg"></i> Schedules
+												<div class="pull-right">
 													<button class="btn btn-xs btn-filter"><span class="glyphicon glyphicon-filter filterbutton"></span> Filter</button>&nbsp;&nbsp;&nbsp;
-												</div> -->
-											</h3>
-											<br>
-										</div>
-										
-										<div class="tab-content panel-body border" id="ScheduleRows">									
-											<table class="table table-striped" id="schedules">
-												<thead>
-													<tr class="filters">
-														<th><!-- <input type="text" class="form-control" placeholder="S.No" > -->S.No</th>
-														<th><input type="text" class="form-control" placeholder="Module ID" ></th>
-														<th><input type="text" class="form-control" placeholder="Day" ></th>
-														<th><input type="text" class="form-control" placeholder="Date" ></th>
-														<th><input type="text" class="form-control" placeholder="Session ID" ></th>
-														<th><input type="text" class="form-control" placeholder="Instructor Id" ></th>
-														<th><input type="text" class="form-control" placeholder="Start Time" ></th>
-														<th><input type="text" class="form-control" placeholder="End Time" ></th>
-														<th></th>
-														<th></th>
-													</tr>
-													<!--<tr>
-														<th>S.No</th>
-														<th>Module ID</th>
-														<th>Day</th>
-														<th>Date</th>
-														<th>Session ID</th>
-														<th>Instructor Id</th>
-														<th>Start Time</th>
-														<th>End Time</th>
-														<th>Edit</th>
-														<th>Delete</th>
-													</tr>-->
-												</thead>
-												<tbody>
-												<?php $jkl = 1; while($row = sqlsrv_fetch_array($result)){																	
-												?>
-													<tr>
-														<td><?php echo $jkl;?></td>
-														<td><?php echo $row['ModuleID']?></td>
-														<td><?php echo $row['Day']?></td>
-														<?php 
-														 //$date = date('Y-m-d', strtotime($row['Date']));
-														 $date = date_format( $row['Date'], 'Y-m-d' );
-														?>
-														<td><?php echo $date; ?></td>
-														<td><?php echo $row['SessionID']?></td>
-														<td><?php echo $row['InstructorID']?></td>
-														<?php 
-														 $start = date_format( $row['StartTime'], 'H:i:s' );
-														?>
-														<td><?php echo $start?></td>
-														<?php 
-														  $end = date_format( $row['EndTime'], 'H:i:s' );
-														?>
-														<td><?php echo $end;?></td>
-														<!-- <td><a data-toggle="modal" data-target="#myModal<?php echo $jkl;?>" style="cursor:pointer">Edit</a> </td> -->
-														<td><a href="AdminSchedules?action=Edit&ModId=<?php echo $row['ModuleID'];?>" style="cursor:pointer"> <i class="fa fa-edit fa-lg" data-toggle="tooltip" data-placement="top" title="Click to edit"></i></a> </td>
-														<td><a onClick="var q = confirm('Are you sure you want to delete selected record?'); if (q) { window.location = 'AdminSchedules?action=delete&Moduleid=<?php echo $row['ModuleID'];?>'; return false;}" style="cursor:pointer"><i class="fa fa-close text-danger"></i></a> </td>
-													</tr>
-												<?php $jkl++; }?>											
-													
-												</tbody>
-											</table>
+												</div>
+											</h3> -->											
 										</div>
 
-										<!-- Add / Edit Student Instructor -->
-										<style type="text/css">									
-										.col-md-3.text-right{
-											padding-top: 18px;
-										}
-										.text-danger.fa.fa-star{
-											font-size: 7px;										
-										}
-										.datepicker{z-index:1151 !important;}
-										ul.select-options {
-											min-height: 240px;
-										}
-										</style>
-										<div class="row">
-											<div class="col-md-6 col-md-offset-3">
-												<div class="modals box box-default" id="myModalss" style="display:none;">
-												  <!-- <div class="modal-dialog" role="document"> -->
-												  	<form name="scheduleAdd" method="post" action="AddSchedule.php">
-													    <div class="modal-content">
-													      	<div class="modal-header">									        
-													        	<h3 class="modal-title" id="myModalLabel">Add Schedule</h3>
-													      	</div>
-													      	<input type="hidden" name="scenario" id="scenario" value="addAdmSchedule">										      	
-															<div class="row">
-																<div class="col-md-3 text-right">
-																	Module Id<i class="fa fa-star text-danger"></i>
-																</div>
-																<div class="col-md-8">															
-																	<input type="text" id="ModuleId" name="ModuleId" placeholder="Module Id" class="input" data-toggle="tooltip" data-placement="right" title="Module Id" required style="width:100%;">
+										
+										<div class="panel-body sortabletable">
+											<div class="row">
+												<div class="filterable col-md-12">
+
+
+													<div class="" id="Categories"><!-- style="display:none;" -->
+														<div class="col-md-10 col-md-offset-1">
+															<div class="border" id="myModalss">														  
+															    <div class="modal-contents">
+															      	<div class="modal-header">									        
+															        	<h3 class="modal-title" id="myModalLabel">Add Schedule</h3>
+															      	</div><br>  
+
+															      	<form name="scheduleAdd" method="post" action="AddSchedule.php">                                                              
+																      	<div class="row modal-body">
+																	      	<div class="col-md-6">
+																				<input type="hidden" name="scenario" id="scenario" value="addAdmSchedule">		
+																				<div class="row">
+																					<div class="col-md-3 text-right">
+																						Module Id<span style="color:red;">*</span>
+																					</div>
+																					<div class="col-md-8">															
+																						<input type="text" id="ModuleId" name="ModuleId" placeholder="Module Id" class="form-control" data-toggle="tooltip" data-placement="right" title="Module Id" required style="width:100%;">
+																					</div>
+																				</div><br>
+																				<div class="row">
+																					<div class="col-md-3 text-right">
+																						Schedule Date<span style="color:red;">*</span>
+																					</div>
+																					<div class="col-md-8">															
+																						<input type="text" id="ScheDate" name="ScheDate" placeholder="Schedule Date" class="form-control inputpickertext" data-toggle="tooltip" data-placement="right" title="Schedule Date" required style="width:100%;" onchange="showDay(this.value);">														
+																					</div>
+																				</div><br>
+																				<div class="row">
+																					<div class="col-md-3 text-right">
+																						Day<span style="color:red;">*</span>
+																					</div>
+																					<div class="col-md-8">															
+																						<input type="text" id="ScheDay" name="ScheDay" placeholder="Schedule Day" class="form-control" data-toggle="tooltip" data-placement="right" title="Schedule Day" readonly style="width:100%;">														
+																					</div>
+																				</div><br>
+																				<div class="row">
+																					<div class="col-md-3 text-right">
+																						Session Id<span style="color:red;">*</span>
+																					</div>
+																					<div class="col-md-8 styled-select">										
+																						<select name="SchesessionId" id="SchesessionId" style="width:100%;">
+																							<option value="">Select Session ID</option>
+																							<option value="1">1</option>
+																							<option value="2">2</option>
+																							<option value="3">3</option>
+																							<option value="4">4</option>
+																							<option value="5">5</option>
+																							<option value="6">6</option>
+																						</select>				
+																					</div>
+																				</div><br>																				
+																			</div>
+
+																			<div class="col-md-6">
+																				<div class="row">
+																					<div class="col-md-3 text-right">
+																						Instuctor<span style="color:red;">*</span>
+																					</div>
+																					<div class="col-md-8 styled-select">
+																						<?php 
+																							$Instsql = "SELECT * FROM Instructors";
+																							$Instresult = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));?>
+																						<select name="InstrucId" id="InstrucId" style="width:100%">
+																							<option value="">Select Instructor Name</option>
+																							<?php while($group_row = sqlsrv_fetch_array($Instresult)){?>
+																								<option value="<?php echo $group_row['InstructorID'];?>"><?php echo $group_row['InstructorName'];?></option>
+																							<?php } ?>
+																						</select>
+																					</div>
+																				</div><br>
+																				<div class="row">
+																					<div class="col-md-3 text-right">
+																						Start Time<span style="color:red;">*</span>
+																					</div>
+																					<div class="col-md-8">															
+																						<input type="text" id="startTime" name="startTime" placeholder="Start Time" class="form-control inputpickertext" data-toggle="tooltip" data-placement="right" title="Start Time" readonly required style="width:100%;">
+																					</div>
+																				</div><br>
+																				<div class="row">
+																					<div class="col-md-3 text-right">
+																						End Time<span style="color:red;">*</span>
+																					</div>
+																					<div class="col-md-8">															
+																						<input type="text" id="endTime" name="endTime" placeholder="End Time" class="form-control inputpickertext" data-toggle="tooltip" data-placement="right" title="End Time" readonly required style="width:100%;">
+																					</div>
+																				</div><br>
+																				<div class="row">
+																					<div class="col-md-3 text-right">
+																						Group Id<span style="color:red;">*</span>
+																					</div>
+																					<div class="col-md-8 styled-select">
+																						<?php 
+																							$grpIdsql = "SELECT * FROM SGroup";
+																							$grpIdresult = sqlsrv_query( $conn, $grpIdsql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));?>
+																						<select name="SGroupId" id="SGroupId" style="width:100%">
+																							<option value="">Select Group Name</option>
+																							<?php while($groupId_row = sqlsrv_fetch_array($grpIdresult)){?>
+																								<option value="<?php echo $groupId_row['GroupID'];?>"><?php echo $groupId_row['GroupName'];?></option>
+																							<?php } ?>
+																						</select>
+																					</div>
+																				</div><br>
+																			</div>	  
+
+																			<div class="clearfix"></div>
+																			<div class="modal-footer">																				
+																				<button type="submit" class="btn btn-default"  data-dismiss="modal" id="AddCategory">Submit</button>
+																			</div>
+																	    </div>
+
+																	</form>
+
 																</div>
 															</div>
-													      	<div class="row">
-																<div class="col-md-3 text-right">
-																	Schedule Date<i class="fa fa-star text-danger"></i>
-																</div>
-																<div class="col-md-8">															
-																	<input type="text" id="ScheDate" name="ScheDate" placeholder="Schedule Date" class="input" data-toggle="tooltip" data-placement="right" title="Schedule Date" required style="width:100%;" onchange="showDay(this.value);">														
-																</div>
+														</div>
+													</div>
+
+													<div class="clearfix"></div>
+													<br>
+
+													<div class="col-md-12">
+														<div class="panel panel-warning">
+															<div class="panel-heading">
+																<h3 class="panel-title">All Schedules </h3>
 															</div>
-															<div class="row">
-																<div class="col-md-3 text-right">
-																	Day<i class="fa fa-star text-danger"></i>
+															<div class="panel-body">
+											
+																<div class="tab-content panel-body" id="ScheduleRows">									
+																	<table class="table table-striped" id="schedules">
+																		<thead>
+																			<tr class="filters">
+																				<th><!-- <input type="text" class="form-control" placeholder="S.No" > -->S.No</th>
+																				<th><input type="text" class="form-control" placeholder="Module ID" ></th>
+																				<th><input type="text" class="form-control" placeholder="Day" ></th>
+																				<th><input type="text" class="form-control" placeholder="Date" ></th>
+																				<th><input type="text" class="form-control" placeholder="Session ID" ></th>
+																				<th><input type="text" class="form-control" placeholder="Instructor Id" ></th>
+																				<th><input type="text" class="form-control" placeholder="Start Time" ></th>
+																				<th><input type="text" class="form-control" placeholder="End Time" ></th>
+																				<th></th>
+																				<th></th>
+																			</tr>
+																			<!--<tr>
+																				<th>S.No</th>
+																				<th>Module ID</th>
+																				<th>Day</th>
+																				<th>Date</th>
+																				<th>Session ID</th>
+																				<th>Instructor Id</th>
+																				<th>Start Time</th>
+																				<th>End Time</th>
+																				<th>Edit</th>
+																				<th>Delete</th>
+																			</tr>-->
+																		</thead>
+																		<tbody>
+																		<?php $jkl = 1; while($row = sqlsrv_fetch_array($result)){																	
+																		?>
+																			<tr>
+																				<td><?php echo $jkl;?></td>
+																				<td><?php echo $row['ModuleID']?></td>
+																				<td><?php echo $row['Day']?></td>
+																				<?php 
+																				 //$date = date('Y-m-d', strtotime($row['Date']));
+																				 $date = date_format( $row['Date'], 'Y-m-d' );
+																				?>
+																				<td><?php echo $date; ?></td>
+																				<td><?php echo $row['SessionID']?></td>
+																				<td><?php echo $row['InstructorID']?></td>
+																				<?php 
+																				 $start = date_format( $row['StartTime'], 'H:i:s' );
+																				?>
+																				<td><?php echo $start?></td>
+																				<?php 
+																				  $end = date_format( $row['EndTime'], 'H:i:s' );
+																				?>
+																				<td><?php echo $end;?></td>
+																				<!-- <td><a data-toggle="modal" data-target="#myModal<?php echo $jkl;?>" style="cursor:pointer">Edit</a> </td> -->
+																				<td><a href="AdminSchedules?action=Edit&ModId=<?php echo $row['ModuleID'];?>" style="cursor:pointer"> <i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Click to edit"></i></a> </td>
+																				<td><a onClick="var q = confirm('Are you sure you want to delete selected record?'); if (q) { window.location = 'AdminSchedules?action=delete&Moduleid=<?php echo $row['ModuleID'];?>'; return false;}" style="cursor:pointer"><i class="fa fa-close text-danger" data-toggle="tooltip" data-placement="top" title="Click to delete"></i></a> </td>
+																			</tr>
+																		<?php $jkl++; }?>											
+																			
+																		</tbody>
+																	</table>
 																</div>
-																<div class="col-md-8">															
-																	<input type="text" id="ScheDay" name="ScheDay" placeholder="Schedule Day" class="input inputpickertext" data-toggle="tooltip" data-placement="right" title="Schedule Day" readonly required style="width:100%;">														
-																</div>
-															</div><br>
-															<div class="row">
-																<div class="col-md-3 text-right">
-																	Session Id<i class="fa fa-star text-danger"></i>
-																</div>
-																<div class="col-md-8 styled-select">										
-																	<select name="SchesessionId" id="SchesessionId" style="width:500px;">
-																		<option value="">Select Session ID</option>
-																		<option value="1">1</option>
-																		<option value="2">2</option>
-																		<option value="3">3</option>
-																		<option value="4">4</option>
-																		<option value="5">5</option>
-																		<option value="6">6</option>
-																	</select>				
-																</div>
-															</div><br>
-															<div class="row">
-																<div class="col-md-3 text-right">
-																	Instuctor<i class="fa fa-star text-danger"></i>
-																</div>
-																<div class="col-md-8 styled-select">
-																	<?php 
-																		$Instsql = "SELECT * FROM Instructors";
-																		$Instresult = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));?>
-																	<select name="InstrucId" id="InstrucId" style="width:500px;">
-																		<option value="">Select Instructor Name</option>
-																		<?php while($group_row = sqlsrv_fetch_array($Instresult)){?>
-																			<option value="<?php echo $group_row['InstructorID'];?>"><?php echo $group_row['InstructorName'];?></option>
-																		<?php } ?>
-																	</select>
-																</div>
-															</div><br>
-															<div class="row">
-																<div class="col-md-3 text-right">
-																	Group Id<i class="fa fa-star text-danger"></i>
-																</div>
-																<div class="col-md-8 styled-select">
-																	<?php 
-																		$grpIdsql = "SELECT * FROM SGroup";
-																		$grpIdresult = sqlsrv_query( $conn, $grpIdsql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));?>
-																	<select name="SGroupId" id="SGroupId" style="width:500px;">
-																		<option value="">Select Group Name</option>
-																		<?php while($groupId_row = sqlsrv_fetch_array($grpIdresult)){?>
-																			<option value="<?php echo $groupId_row['GroupID'];?>"><?php echo $groupId_row['GroupName'];?></option>
-																		<?php } ?>
-																	</select>
-																</div>
-															</div>	
-															<div class="row">
-																<div class="col-md-3 text-right">
-																	Start Time<i class="fa fa-star text-danger"></i>
-																</div>
-																<div class="col-md-8">															
-																	<input type="text" id="startTime" name="startTime" placeholder="Start Time" class="input inputpickertext" data-toggle="tooltip" data-placement="right" title="Start Time" readonly required style="width:100%;">
-																</div>
+
 															</div>
-															<div class="row">
-																<div class="col-md-3 text-right">
-																	End Time<i class="fa fa-star text-danger"></i>
-																</div>
-																<div class="col-md-8">															
-																	<input type="text" id="endTime" name="endTime" placeholder="End Time" class="input inputpickertext" data-toggle="tooltip" data-placement="right" title="End Time" readonly required style="width:100%;">
-																</div>
-															</div><br>
-															<br>
-															<div class="modal-footer">
-																<button type="submit" class="btn btn-default"  data-dismiss="modal" id="AddCategory">Submit</button>
-															</div>
-													    </div>
-													</form>
-												  <!-- </div> -->
+														</div>
+													</div>
+												
 												</div>
 											</div>
 										</div>
@@ -265,8 +301,11 @@ if($_GET['action']=="delete")
 							</div>
 						</div>
 					</section><!-- /.content -->
+
 				<?php } ?>
 				<!-- End Show Schedules -->
+
+
 				
 				<!-- Edit Schedulesss Start -->
 				<?php if($_GET['action']=="Edit" && $_GET['ModId']!=""){?>
@@ -282,7 +321,7 @@ if($_GET['action']=="delete")
 													<button class="btn btn-xs btn-filter"><span class="glyphicon glyphicon-filter filterbutton"></span> Filter</button>
 												</div> -->
 											</h3>
-											<hr>
+											<!-- <hr> -->
 										</div>																			
 
 										<!-- Add / Edit Student Instructor -->
@@ -297,14 +336,6 @@ if($_GET['action']=="delete")
 										ul.select-options {
 											min-height: 240px;
 										}
-										.styled-select select {
-											color:#ffffff;
-										    background: #12C3AA;
-										    padding: 10px;										    
-										    font-size: 16px;
-										    line-height: 1;
-										    border: 0;
-										}
 										</style>
 
 										<?php
@@ -314,9 +345,9 @@ if($_GET['action']=="delete")
 										<div class="modals" id="mySchedules">
 										  	<form name="scheduleAdd" method="post" action="AddSchedule.php">
 											    <div class="modal-content col-md-6 col-md-offset-3">
-											      	<div class="modal-header">									        
+											      	<!-- <div class="modal-header">									        
 											        	<h3 class="modal-title" id="myModalLabel">Edit Schedule</h3>
-											      	</div><br>
+											      	</div><br> -->
 											      	<input type="hidden" name="scenario" id="scenario" value="editAdmSchedule">										      	
 													<div class="row">
 														<div class="col-md-3 text-right">
@@ -325,16 +356,16 @@ if($_GET['action']=="delete")
 														<div class="col-md-8">															
 															<input type="text" id="ModuleId" name="ModuleId" placeholder="Module Id" class="input" data-toggle="tooltip" data-placement="right" title="Module Id" required style="width:100%;" value="<?php echo $EditStud_row['ModuleID'];?>">
 														</div>
-													</div>
+													</div><br>
 											      	<div class="row">
 														<div class="col-md-3 text-right">
 															Schedule Date<i class="fa fa-star text-danger"></i>
 														</div>
 														<div class="col-md-8">															
-															<input type="text" id="ScheDate" name="ScheDate" placeholder="Schedule Date" class="input" data-toggle="tooltip" data-placement="right" title="Schedule Date" required style="width:100%;" onchange="showDay(this.value);"
+															<input type="text" id="ScheDate" name="ScheDate" placeholder="Schedule Date" class="input inputpickertext" data-toggle="tooltip" data-placement="right" title="Schedule Date" readonly required style="width:100%;" onchange="showDay(this.value);"
 															value="<?php echo date_format($EditStud_row['Date'],"Y-m-d");?>">														
 														</div>
-													</div>
+													</div><br>
 													<div class="row">
 														<div class="col-md-3 text-right">
 															Day<i class="fa fa-star text-danger"></i>
@@ -417,7 +448,7 @@ if($_GET['action']=="delete")
 								                            }		
 															</script>
 														</div>
-													</div>	
+													</div>	<br>
 													<div class="row">
 														<div class="col-md-3 text-right">
 															Start Time<i class="fa fa-star text-danger"></i>
@@ -425,7 +456,7 @@ if($_GET['action']=="delete")
 														<div class="col-md-8">															
 															<input type="text" id="startTime" name="startTime" placeholder="Start Time" class="input inputpickertext" data-toggle="tooltip" data-placement="right"title="Start Time" readonly required style="width:100%;" value="<?php //echo $EditStud_row['StartTime'];?>">
 														</div>
-													</div>
+													</div><br>
 													<div class="row">
 														<div class="col-md-3 text-right">
 															End Time<i class="fa fa-star text-danger"></i>

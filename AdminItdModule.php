@@ -64,8 +64,8 @@ if($_POST['scenario']=="editAdmItdModules")
 						<small></small>
 					</h1>
 					<ol class="breadcrumb">
-						<li><a href="#"><i class="fa fa-dashboard text-red"></i> Home</a></li>
-						<li><a href="#"><i class="fa fa-user text-red"></i> Profile</a></li>
+						<li><a href="Admin"><i class="fa fa-dashboard text-red"></i> Home</a></li>
+						<li><a href="#"><i class="fa fa-tasks"></i> ITD Modules</a></li>
 					</ol>
 				</section>
 
@@ -96,51 +96,73 @@ if($_POST['scenario']=="editAdmItdModules")
 											<div id="myElem" class="alert alert-success" role="alert" style="display:none;" align="center">Modules Category</div>	
 										</div>	<br>
 
-										<div class="tab-content panel-body border" id="ItdModulesRows">									
-											<table class="table table-striped" id="ItdModules">
-												<thead>
-													<tr class="filters">
-														<th>S.No</th>
-														<th><input type="text" class="form-control" placeholder="Module ID" ></th>
-														<th><input type="text" class="form-control" placeholder="Module Name" ></th>
-														<th><input type="text" class="form-control" placeholder="Module Code" ></th>
-														<th><input type="text" class="form-control" placeholder="Module Weight" ></th>
-														<th><input type="text" class="form-control" placeholder="Module CreditHours" ></th>
-														<th><input type="text" class="form-control" placeholder="Is Orientation" ></th>
-														<th><input type="text" class="form-control" placeholder="Is OpenDay" ></th>
-														<th>Edit</th>
-														<th>Delete</th>
-													</tr>
-													<!-- <tr class="filters1" style="background-color:#3C8DBC;">
-														<th>S.No</th>
-														<th>Module ID</th>
-														<th>Module Name</th>
-														<th>Module Code</th>
-														<th>Module Weight</th>
-														<th>Module CreditHours</th>
-														<th>Is Orientation</th>
-														<th>Is OpenDay</th>
-													</tr> -->
-												</thead>
-												<tbody>
-													<?php $jk=1; while($ItdModules_row = sqlsrv_fetch_array($ItdModules_result)){ ?>
-														<tr>
-															<td><?php echo $jk;?></td>
-															<td><?php echo $ItdModules_row['ModuleID']?></td>
-															<td><?php echo $ItdModules_row['ModuleName']?></td>
-															<td><?php echo $ItdModules_row['ModuleCode']; ?></td>
-															<td><?php echo $ItdModules_row['ModuleWeight']; ?></td>
-															<td><?php echo $ItdModules_row['ModuleCreditHours']; ?></td>													
-															<td><?php echo $ItdModules_row['IsOrientation']; ?></td>
-															<td><?php echo $ItdModules_row['IsOpenDay']; ?></td>
-															<td><a href="AdminItdModule?action=Edit&ModId=<?php echo $ItdModules_row['ModuleID'];?>" style="cursor:pointer"><i class="fa fa-edit fa-lg" data-toggle="tooltip" data-placement="top" title="Click to edit"></i></a></td>
-																	
-															<td><a onClick="var q = confirm('Are you sure you want to delete selected record?'); if (q) { window.location = 'AdminItdModule?action=delete&ModId=<?php echo $ItdModules_row['ModuleID'];?>'; return false;}" style="cursor:pointer"><i class="fa fa-close text-danger"></i></a> </td>	
-														</tr>
-													<?php $jk++; }?>																						
-												</tbody>
-											</table>
+										<div class="sortabletable panel-body" id="ItdModulesRows">
+											<div class="row">
+												<div class="filterable col-md-12">	
+													<!-- Show Itd Modules -->
+													<div class="col-md-12">
+														<div class="panel panel-info">
+															<div class="panel-heading">
+																<h3 class="panel-title">Check Categories </h3>
+															</div>
+															<div class="panel-body">
+																<div class="tab-content panel-body" id="CategoriesRows">	
+
+																	<table class="table table-striped" id="ItdModules">
+																		<thead>
+																			<tr class="filters">
+																				<th>S.No</th>
+																				<th><input type="text" class="form-control" placeholder="Module ID" ></th>
+																				<th><input type="text" class="form-control" placeholder="Module Name" ></th>
+																				<th><input type="text" class="form-control" placeholder="Module Code" ></th>
+																				<th><input type="text" class="form-control" placeholder="Module Weight" ></th>
+																				<th><input type="text" class="form-control" placeholder="Module CreditHours" ></th>
+																				<th><input type="text" class="form-control" placeholder="Is Orientation" ></th>
+																				<th><input type="text" class="form-control" placeholder="Is OpenDay" ></th>
+																				<th></th>
+																				<th></th>
+																			</tr>
+																			<!-- <tr class="filters1" style="background-color:#3C8DBC;">
+																				<th>S.No</th>
+																				<th>Module ID</th>
+																				<th>Module Name</th>
+																				<th>Module Code</th>
+																				<th>Module Weight</th>
+																				<th>Module CreditHours</th>
+																				<th>Is Orientation</th>
+																				<th>Is OpenDay</th>
+																			</tr> -->
+																		</thead>
+																		<tbody>
+																			<?php $jk=1; while($ItdModules_row = sqlsrv_fetch_array($ItdModules_result)){ ?>
+																				<tr>
+																					<td><?php echo $jk;?></td>
+																					<td><?php echo $ItdModules_row['ModuleID']?></td>
+																					<td><?php echo $ItdModules_row['ModuleName']?></td>
+																					<td><?php echo $ItdModules_row['ModuleCode']; ?></td>
+																					<td><?php echo $ItdModules_row['ModuleWeight']; ?></td>
+																					<td><?php echo $ItdModules_row['ModuleCreditHours']; ?></td>													
+																					<td><?php echo $ItdModules_row['IsOrientation']; ?></td>
+																					<td><?php echo $ItdModules_row['IsOpenDay']; ?></td>
+																					<td><a href="AdminItdModule?action=Edit&ModId=<?php echo $ItdModules_row['ModuleID'];?>" style="cursor:pointer"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Click to edit"></i></a></td>
+																							
+																					<td><a onClick="var q = confirm('Are you sure you want to delete selected record?'); if (q) { window.location = 'AdminItdModule?action=delete&ModId=<?php echo $ItdModules_row['ModuleID'];?>'; return false;}" style="cursor:pointer"><i class="fa fa-close text-danger" data-toggle="tooltip" data-placement="top" title="Click to delete"></i></a> </td>	
+																				</tr>
+																			<?php $jk++; }?>																						
+																		</tbody>
+																	</table>
+
+																</div>
+															</div>
+														</div>
+													</div>
+													<!-- End Itd Modules -->
+												</div>
+											</div>
+
 										</div>
+
+
 
 										<div class="row">
 												<div class="col-md-6 col-md-offset-3">
@@ -478,7 +500,7 @@ $( document ).ready(function() {
 
 $( document ).ready(function() {		
 	$('#justs').click(function(){				
-	    $('#ItdModules_wrapper').fadeToggle("slow","linear");
+	    $('#ItdModulesRows').fadeToggle("slow","linear");
 	    $('#myModalss').fadeToggle("fast");
 	    $('#addd').toggle();
 	    $('#vie').toggle();

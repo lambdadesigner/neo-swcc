@@ -4,6 +4,8 @@ RewriteCond %{REQUEST_FILENAME} !-d
 #RewriteRule ^(.*)$ login.php?/$1 [L]
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
 
+RewriteRule ^([^\.]+)$ $1.php/instructors/ [NC,L]
+
 RewriteRule ^dashboard/([a-zA-Z0-9_-]+)$ dashboard.php?lang=$1
 Options All -Indexes
 

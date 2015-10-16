@@ -17,8 +17,8 @@ $StudentID = $_SESSION['StudentID'];
 						<small></small>
 					</h1>
 					<ol class="breadcrumb">
-						<li><a href="#"><i class="fa fa-dashboard text-red"></i> Home</a></li>
-						<li><a href="#"><i class="fa fa-user text-red"></i> Profile</a></li>
+						<li><a href="dashboard"><i class="fa fa-dashboard text-red"></i> Home</a></li>
+						<li><a href=""><i class="fa fa-user text-red"></i> Profile</a></li>
 					</ol>
 				</section>
 					<?php 

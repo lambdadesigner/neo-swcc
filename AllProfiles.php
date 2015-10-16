@@ -26,6 +26,38 @@ if($_GET['action']=="delete" && $_GET['Studentid']!="")
 // }
 
 ?>
+			<style>
+			/*Tables Design*/
+			table.dataTable.no-footer{
+			  border: 0px;
+			}
+
+			div.dataTables_filter,div.dataTables_length { 
+			  display: none !important;
+			}
+			table.dataTable thead th, table.dataTable thead td {
+			  border-bottom: 3px solid #d9d9d9 ;
+			}
+			.dataTable tr{
+			  background: #5AC6A2;			  
+			}
+			.dataTable tbody tr td{
+			  padding: 18px;
+			}
+			.border table {
+				border: 1px solid #ccc;
+				margin-bottom: 20px;
+			} 
+			.dataTable tr td{
+			  border: 1px solid #f9f9f9;
+			}
+			</style>
+
+			<script type="text/javascript">
+			/*$(window).load(function(){
+				$('.sorting').removeClass('sorting');
+			});*/
+			</script>
 			
 			<!-- Content Wrapper. Contains page content -->
 			<div class="content-wrapper">
@@ -36,8 +68,8 @@ if($_GET['action']=="delete" && $_GET['Studentid']!="")
 						<!-- <small></small> -->
 					</h1>
 					<ol class="breadcrumb">
-						<li><a href="#"><i class="fa fa-dashboard text-red"></i> Home</a></li>
-						<li><a href="#"><i class="fa fa-user text-red"></i> Profile</a></li>
+						<li><a href="Admin"><i class="fa fa-dashboard text-red"></i> Home</a></li>
+						<li><a href="#"><i class="fa fa-user text-red"></i> Profiles</a></li>
 					</ol>
 				</section>
 
@@ -63,7 +95,7 @@ if($_GET['action']=="delete" && $_GET['Studentid']!="")
 												<!-- <button class="btn btn-xs btn-filter"><span class="glyphicon glyphicon-filter filterbutton"></span> Filter</button> -->
 											</div>
 										</div>
-		                                <div class="panel-body border">
+		                                <div class="panel-body">
 	                                		<div class="card">
 	                                			<button type="button" class="btn btn-default pull-right" id="justs">
 			  										<span id="addd"><i class="fa fa-user-plus"></i> Add Student</span><span id="vie" style="display:none"><i class="fa fa-arrow-left"> Back</i></span>
@@ -71,7 +103,7 @@ if($_GET['action']=="delete" && $_GET['Studentid']!="")
 			                                    <ul class="nav nav-tabs" role="tablist">
 			                                        <!--<li role="presentation" class="active"><a href="AllProfiles" aria-controls="home" role="tab" data-toggle="tab">Student</a></li> #RStudent
 			                                        <li role="presentation"><a href="AllProfilesInst" aria-controls="profile" role="tab" data-toggle="tab">Instructor</a></li> #PInstructor -->		                                        
-			                                        <li role="presentation" class="active"><a href="AllProfiles" aria-controls="home">Student</a></li><!-- #RStudent -->
+			                                        <li role="presentation" class="active"><a aria-controls="home">Student</a></li><!-- #RStudent -->
 			                                        <li role="presentation"><a href="AllProfilesInst" aria-controls="profile">Instructor</a></li><!-- #PInstructor -->		
 			                                    </ul>		                                    
 			                                    <!-- Tab panes -->
@@ -88,8 +120,8 @@ if($_GET['action']=="delete" && $_GET['Studentid']!="")
 																	<th><input type="text" class="form-control" placeholder="Birth Place" ></th>
 																	<th><input type="text" class="form-control" placeholder="DOB" ></th>
 																	<th><input type="text" class="form-control" placeholder="Mobile" ></th>
-																	<th>Edit</th>
-																	<th>Delete</th>
+																	<th></th>
+																	<th></th>
 																</tr>
 																<!-- <tr style="display:none;">																
 																	<th>S.No</th>
@@ -116,8 +148,8 @@ if($_GET['action']=="delete" && $_GET['Studentid']!="")
 																	<td><?php echo $row['DoB']?></td>
 																	<td><?php echo $row['Mobile']?></td>
 																	<!-- <td><a data-toggle="modal" data-target="#myModal<?php echo $ii;?>" style="cursor:pointer">Edit</a> </td> -->
-																	<td><a href="AllProfiles?action=Edit&prof=Student&Mdl=<?php echo $row['StudentID'];?>" style="cursor:pointer"><i class="fa fa-edit fa-lg" data-toggle="tooltip" data-placement="top" title="Click to edit"></i></a> </td>
-																	<td><a  onClick="var q = confirm('Are you sure you want to delete selected record?'); if (q) { window.location = 'AllProfiles?action=delete&Studentid=<?php echo $row['StudentID'];?>'; return false;}" style="cursor:pointer"><i class="fa fa-close text-danger"></i></a> </td>
+																	<td><a href="AllProfiles?action=Edit&prof=Student&Mdl=<?php echo $row['StudentID'];?>" style="cursor:pointer"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Click to edit"></i></a> </td>
+																	<td><a  onClick="var q = confirm('Are you sure you want to delete selected record?'); if (q) { window.location = 'AllProfiles?action=delete&Studentid=<?php echo $row['StudentID'];?>'; return false;}" style="cursor:pointer"><i class="fa fa-close text-danger" data-toggle="tooltip" data-placement="top" title="Click to delete"></i></a> </td>
 																</tr>
 															<?php $ii++; }?>
 															</tbody>
@@ -184,7 +216,7 @@ if($_GET['action']=="delete" && $_GET['Studentid']!="")
 															    <div class="modal-content">
 															      	<div class="modal-header">									        
 															        	<h3 class="modal-title" id="myModalLabel">Add Student</h3>
-															      	</div>
+															      	</div><br>
 															      	<input type="hidden" name="scenario" id="scenario" value="addProfiles">													      	
 																	<div class="row">
 																		<div class="col-md-3 text-right">
@@ -193,7 +225,7 @@ if($_GET['action']=="delete" && $_GET['Studentid']!="")
 																		<div class="col-md-8">															
 																			<input type="text" id="StudentId" name="StudentId" placeholder="Student Id" class="input" data-toggle="tooltip" data-placement="right" title="Student Id" required style="width:100%;">
 																		</div>
-																	</div>
+																	</div><br>
 															      	<div class="row">
 																		<div class="col-md-3 text-right">
 																			First Name<i class="fa fa-star text-danger"></i>
@@ -202,7 +234,7 @@ if($_GET['action']=="delete" && $_GET['Studentid']!="")
 																			<input type="text" id="FirstNameE" name="FirstNameE" placeholder="First Name En" class="input" data-toggle="tooltip" data-placement="right" title="First Name" required style="width:100%;">
 																			<input type="text" id="FirstNameA" name="FirstNameA" placeholder="First Name Ar" class="input" data-toggle="tooltip" data-placement="right" title="First Name" style="width:100%;">
 																		</div>
-																	</div>
+																	</div><br>
 																	<div class="row">
 																		<div class="col-md-3 text-right">
 																			Second Name<i class="fa fa-star text-danger"></i>
@@ -211,7 +243,7 @@ if($_GET['action']=="delete" && $_GET['Studentid']!="")
 																			<input type="text" id="SecondNameE" name="SecondNameE" placeholder="Second Name En" class="input" data-toggle="tooltip" data-placement="right" title="Second Name" required style="width:100%;">
 																			<input type="text" id="SecondNameA" name="SecondNameA" placeholder="Second Name Ar" class="input" data-toggle="tooltip" data-placement="right" title="Second Name" style="width:100%;">
 																		</div>
-																	</div>
+																	</div><br>
 																	<div class="row">
 																		<div class="col-md-3 text-right">
 																			Third Name<i class="fa fa-star text-danger"></i>
@@ -220,7 +252,7 @@ if($_GET['action']=="delete" && $_GET['Studentid']!="")
 																			<input type="text" id="ThirdNameE" name="ThirdNameE" placeholder="Third Name En" class="input" data-toggle="tooltip" data-placement="right" title="Third Name" required style="width:100%;">
 																			<input type="text" id="ThirdNameA" name="ThirdNameA" placeholder="Third Name Ar" class="input" data-toggle="tooltip" data-placement="right" title="Third Name" style="width:100%;">
 																		</div>
-																	</div>
+																	</div><br>
 																	<div class="row">
 																		<div class="col-md-3 text-right">
 																			Last Name<i class="fa fa-star text-danger"></i>
@@ -229,7 +261,7 @@ if($_GET['action']=="delete" && $_GET['Studentid']!="")
 																			<input type="text" id="LastNameE" name="LastNameE" placeholder="Last Name En" class="input" data-toggle="tooltip" data-placement="right" title="Last Name" required style="width:100%;">
 																			<input type="text" id="LastNameA" name="LastNameA" placeholder="Last Name Ar" class="input" data-toggle="tooltip" data-placement="right" title="Last Name" style="width:100%;">
 																		</div>
-																	</div>
+																	</div><br>
 																	<div class="row">
 																		<div class="col-md-3 text-right">
 																			Student Name<i class="fa fa-star text-danger"></i>
@@ -254,7 +286,7 @@ if($_GET['action']=="delete" && $_GET['Studentid']!="")
 																				<?php } ?>
 																			</select>
 																		</div>
-																	</div>														
+																	</div>	<br>													
 																	<div class="row">
 																		<div class="col-md-3 text-right">
 																			Nationality<i class="fa fa-star text-danger"></i>
@@ -262,7 +294,7 @@ if($_GET['action']=="delete" && $_GET['Studentid']!="")
 																		<div class="col-md-8">															
 																			<input type="text" id="NationalId" name="NationalId" placeholder="Enter National Id" class="input inputpickertext" data-toggle="tooltip" data-placement="right" title="Enter National Id" required style="width:100%;">
 																		</div>
-																	</div>
+																	</div><br>
 																	<div class="row">
 																		<div class="col-md-3 text-right">
 																			Issued On<i class="fa fa-star text-danger"></i>
@@ -270,7 +302,7 @@ if($_GET['action']=="delete" && $_GET['Studentid']!="")
 																		<div class="col-md-8">															
 																			<input type="text" id="Issuedate" name="Issuedate" placeholder="Issue Date" class="input inputpickertext" data-toggle="tooltip" data-placement="right" title="Issue Date" readonly required style="width:100%;">
 																		</div>
-																	</div>
+																	</div><br>
 																	<div class="row">
 																		<div class="col-md-3 text-right">
 																			Birth Place<i class="fa fa-star text-danger"></i>
@@ -278,7 +310,7 @@ if($_GET['action']=="delete" && $_GET['Studentid']!="")
 																		<div class="col-md-8">															
 																			<input type="text" id="BirthPlace" name="BirthPlace" placeholder="Enter Birth Place" class="input inputpickertext" data-toggle="tooltip" data-placement="right" title="Enter Birth Place" required style="width:100%;">
 																		</div>
-																	</div>
+																	</div><br>
 																	<div class="row">
 																		<div class="col-md-3 text-right">
 																			Date Of Birth<i class="fa fa-star text-danger"></i>
@@ -286,7 +318,7 @@ if($_GET['action']=="delete" && $_GET['Studentid']!="")
 																		<div class="col-md-8">															
 																			<input type="text" id="BirthDate" name="BirthDate" placeholder="Birth Date" class="input inputpickertext" data-toggle="tooltip" data-placement="right" title="Birth Date" readonly required style="width:100%;">
 																		</div>
-																	</div>
+																	</div><br>
 																	<div class="row">
 																		<div class="col-md-3 text-right">
 																			Mobile<i class="fa fa-star text-danger"></i>

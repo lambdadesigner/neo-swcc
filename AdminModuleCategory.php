@@ -31,19 +31,25 @@ $Module_result = sqlsrv_query( $conn, $Module_sql ,array(), array( "Scrollable" 
 						<small></small>
 					</h1>
 					<ol class="breadcrumb">
-						<li><a href="#"><i class="fa fa-dashboard text-default"></i> Home</a></li>
-						<li><a href="#"><i class="fa fa-user text-default"></i> Profile</a></li>
+						<li><a href="Admin"><i class="fa fa-dashboard text-default"></i> Home</a></li>
+						<li><a href="#"><i class="fa fa-pencil"></i> Module Categories</a></li>
 					</ol>
 				</section>
 
 				<!-- Main content -->
 				<?php if($_GET['action']=="" && $_GET['MCID']==""){?>
+
 				<section class="content">
 					<div class="panel">
-						<div class="panel-body border">
+						<div class="panel-body">
 							<div class="row">
-								<div class="panel filterable">									
+								<div class="panel filterable">	
 									<div class="panel-heading">
+										<div class="note note-success">
+											<p>
+												 Please try to re-size your browser window in order to see the tables in responsive mode.
+											</p>
+										</div>									
 										<!-- <h3 class="panel-title">Users</h3> -->
 										<?php if($_GET['err']=="success"){?>
 											<span style="text-align:center" class="alert alert-success" id="succesd">
@@ -52,79 +58,130 @@ $Module_result = sqlsrv_query( $conn, $Module_sql ,array(), array( "Scrollable" 
 											<script type="text/javascript">
 												setTimeout(function() { $("#succesd").fadeOut("slow"); }, 5000);
 											</script>
-										<?php } ?>
-										<div class="pull-right">
-											<!-- <button class="btn btn-xs btn-filter"><span class="glyphicon glyphicon-filter filterbutton"></span> Filter</button> -->
-											<button type="button" class="btn btn-default" id="justs">
-		  										<span id="addd">Add</span><span id="vie" style="display:none">View</span> Category
-											</button>											
-										</div>
-										<div id="myElem" class="alert alert-success" role="alert" style="display:none;" align="center">Modules Category</div>										
-									</div>				
-
-									<div class="panel-body border">					
-										<table class="table table-striped" id="auditorium">
-											<thead>
-												<tr class="filters">
-													<th>S.No</th>
-													<th><input type="text" class="form-control" placeholder="Category ID" ></th>
-													<th><input type="text" class="form-control" placeholder="Category Name" ></th>
-													<th><input type="text" class="form-control" placeholder="Hierarchy ID" ></th>
-													<th><input type="text" class="form-control" placeholder="Cycle ID" ></th>
-													<th><input type="text" class="form-control" placeholder="Stage" ></th>												
-													<th></th>
-												</tr>
-												<!-- <tr class="filters1" style="background-color:#39cccc;">
-													<th>S.No</th>
-													<th>Category ID</th>
-													<th>Category Name</th>
-													<th>Hierarchy ID</th>
-													<th>Cycle ID</th>
-													<th>Stage</th>
-													<th></th>										
-												</tr> -->
-											</thead>
-											<tbody>
-												<?php $jk=1; while($Module_row = sqlsrv_fetch_array($Module_result)){ ?>
-													<tr>
-														<td><?php echo $jk;?></td>
-														<td><?php echo $Module_row['MCID']?></td>
-														<td><?php echo $Module_row['MCName']?></td>
-														<td><?php echo $Module_row['HierarachyID']; ?></td>
-													
-														<td><?php echo $Module_row['CycleID']?></td>
-														<td><?php echo $Module_row['Stage']; ?></td>
-														<td><a href="AdminModuleCategory?action=Edit&MCID=<?php echo $Module_row['MCID'];?>" style="cursor:pointer"> <i class="fa fa-edit"data-toggle="tooltip" data-placement="top" title="Click to edit"></i></a></td>
-													</tr>
-												<?php $jk++; }?>																						
-											</tbody>
-										</table>
+										<?php } ?>										
+										<div id="myElem" class="alert alert-success" role="alert" style="display:none;" align="center">Modules Category</div>								
 									</div>
 
-									<div class="panel-body col-md-6 col-md-offset-3">
-										<form name="moduleCategory" method="post" action="AdmModulesSection.php">
-											<!-- Modal -->
-											<div class="modals" id="myModalss" style="display:none;"><br>
-											  <!-- <div class="modal-dialog" role="document"> -->
-											    <div class="modal-content">
-											      <div class="modal-header">									        
-											        <h3 class="modal-title" id="myModalLabel">Category</h3>
-											      </div>
-											      <input type="hidden" id="ModuleType" name="ModuleType" value="Category">
-												  <span style="color:red">* </span>
-												  <input type="text" id="CategoryId" name="CategoryId" value="" required="required" class="form-control" placeholder="Category Id" >
-												  <span style="color:red">* </span>
-												  <input type="text" id="CategoryName" name="CategoryName" value="" required="required" class="form-control" placeholder="Category Name" >
-												  <input type="text" id="HeirarchyId" name="HeirarchyId" class="form-control" placeholder="Hierarchy Id" >
-												  <input type="text" id="stage" name="stage" class="form-control" placeholder="Stage" >										  
-											      <div class="modal-footer">
-											        <button type="submit" class="btn btn-default"  data-dismiss="modal" id="AddCategory">Submit</button>
-											      </div>
-											    </div>
-											  <!-- </div> -->
+									<div class="panel-body sortabletable">
+										<div class="row">
+											<div class="filterable col-md-12">
+
+
+												<form name="moduleCategory" method="post" action="AdmModulesSection.php">
+
+													<div class="" id="Categories"><!-- style="display:none;" -->
+														<div class="col-md-8 col-md-offset-2">
+															<div class="border" id="myModalss">														  
+															    <div class="modal-contents">
+															      	<div class="modal-header">									        
+															        	<h3 class="modal-title" id="myModalLabel">Add Category</h3>
+															      	</div><br>                                                                
+															      	<div class="row modal-body">
+																      	<div class="col-md-12">
+																			<input type="hidden" id="ModuleType" name="ModuleType" value="Category">
+																			<div class="row">
+																				<div class="col-md-3 text-right">
+																					Category Id<span style="color:red;">*</span>
+																				</div>
+																				<div class="col-md-8">															
+																					<input type="text" id="CategoryId" name="CategoryId" required="required" class="form-control" placeholder="Category Id" >
+																				</div>
+																			</div><br>
+																			<div class="row">
+																				<div class="col-md-3 text-right">
+																					Category Name<span style="color:red;">*</span>
+																				</div>
+																				<div class="col-md-8">															
+																					<input type="text" id="CategoryName" name="CategoryName" required="required" class="form-control" placeholder="Category Name" >
+																				</div>
+																			</div><br>
+
+																			<div class="row">
+																				<div class="col-md-3 text-right">
+																					Hierarchy Id<span style="color:red;">*</span>
+																				</div>
+																				<div class="col-md-8">															
+																					<input type="text" id="HeirarchyId" name="HeirarchyId" class="form-control" required="required" placeholder="Hierarchy Id" >
+																				</div>
+																			</div><br>
+																			<div class="row">
+																				<div class="col-md-3 text-right">
+																					Stage<span style="color:red;">*</span>
+																				</div>
+																				<div class="col-md-8">															
+																					<input type="text" id="stage" name="stage" class="form-control" required="required" placeholder="Stage" >
+																				</div>
+																			</div><br>
+																		</div>	                                                                
+																		<div class="clearfix"></div>
+																		<div class="modal-footer">
+																			<button type="submit" class="btn btn-default" data-dismiss="modal" id="AddCategory">Add Category</button>	
+																		</div>
+																    </div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</form>												
+												
+												<div class="clearfix"></div>
+												<br>
+
+												<div class="col-md-12">
+													<div class="panel panel-success">
+														<div class="panel-heading">
+															<h3 class="panel-title">Check Categories </h3>
+														</div>
+														<div class="panel-body">
+															<div class="tab-content panel-body" id="CategoriesRows">	
+
+																<table class="table table-striped" id="auditorium">
+																	<thead>
+																		<tr class="filters">
+																			<th>S.No</th>
+																			<th><input type="text" class="form-control" placeholder="Category ID" ></th>
+																			<th><input type="text" class="form-control" placeholder="Category Name" ></th>
+																			<th><input type="text" class="form-control" placeholder="Hierarchy ID" ></th>
+																			<th><input type="text" class="form-control" placeholder="Cycle ID" ></th>
+																			<th><input type="text" class="form-control" placeholder="Stage" ></th>												
+																			<th></th>
+																		</tr>
+																		<!-- <tr class="filters1" style="background-color:#39cccc;">
+																			<th>S.No</th>
+																			<th>Category ID</th>
+																			<th>Category Name</th>
+																			<th>Hierarchy ID</th>
+																			<th>Cycle ID</th>
+																			<th>Stage</th>
+																			<th></th>										
+																		</tr> -->
+																	</thead>
+																	<tbody>
+																		<?php $jk=1; while($Module_row = sqlsrv_fetch_array($Module_result)){ ?>
+																			<tr>
+																				<td><?php echo $jk;?></td>
+																				<td><?php echo $Module_row['MCID']?></td>
+																				<td><?php echo $Module_row['MCName']?></td>
+																				<td><?php echo $Module_row['HierarachyID']; ?></td>
+																			
+																				<td><?php echo $Module_row['CycleID']?></td>
+																				<td><?php echo $Module_row['Stage']; ?></td>
+																				<td><a href="AdminModuleCategory?action=Edit&MCID=<?php echo $Module_row['MCID'];?>" style="cursor:pointer"> <i class="fa fa-edit"data-toggle="tooltip" data-placement="top" title="Click to edit"></i></a></td>
+																			</tr>
+																		<?php $jk++; }?>																						
+																	</tbody>
+																</table>
+
+															</div>
+														</div>
+													</div>
+												</div>
+
+
 											</div>
-										</form>
+										</div>										
 									</div>
+
 								</div>
 							</div>
 						</div>
@@ -158,12 +215,11 @@ $Module_result = sqlsrv_query( $conn, $Module_sql ,array(), array( "Scrollable" 
 									<div class="panel filterable">
 										<div class="panel-heading">											
 											<a href="AdminModuleCategory" class="btn btn-default pull-right">View Module Categories </a>
-											<h3 class="panel-title text-default"><i class="fa fa-pencil fa-lg"></i> Edit Module Categories 
+											<h3 class="panel-title text-default"><!-- <i class="fa fa-pencil fa-lg"></i> Edit Module Categories  -->&nbsp;
 												<!-- <div class="pull-right">
 													<button class="btn btn-xs btn-filter"><span class="glyphicon glyphicon-filter filterbutton"></span> Filter</button>
 												</div> -->
-											</h3>
-											<hr>
+											</h3>											
 										</div>																			
 
 										<!-- Add / Edit Student Instructor -->
@@ -196,7 +252,7 @@ $Module_result = sqlsrv_query( $conn, $Module_sql ,array(), array( "Scrollable" 
 										  	<form name="updatemodule" method="POST" action="">
 											    <div class="modal-content col-md-6 col-md-offset-3">
 											      	<div class="modal-header">									        
-											        	<h3 class="modal-title" id="myModalLabel">Edit ModuleCategory</h3>
+											        	<h3 class="modal-title panel-title" id="myModalLabel"><i class="fa fa-pencil fa-lg"></i> Edit ModuleCategory</h3>
 											      	</div><br>
 											      	<input type="hidden" name="scenario" id="scenario" value="editAdmSchedule">										      	
 													<div class="row">
@@ -206,7 +262,7 @@ $Module_result = sqlsrv_query( $conn, $Module_sql ,array(), array( "Scrollable" 
 														<div class="col-md-8">															
 															<input type="text" id="MCID" name="MCID" placeholder="MCID" class="input" data-toggle="tooltip" data-placement="right" title="MCID" required style="width:100%;" value="<?php echo $EditStud_row['MCID'];?>">
 														</div>
-													</div>
+													</div><br>
 											      	<div class="row">
 														<div class="col-md-3 text-right">
 															MCName<i class="fa fa-star text-danger"></i>
@@ -214,7 +270,7 @@ $Module_result = sqlsrv_query( $conn, $Module_sql ,array(), array( "Scrollable" 
 														<div class="col-md-8">															
 															<input type="text" id="MCName" name="MCName" placeholder="MCName" class="input" data-toggle="tooltip" data-placement="right" title="MCName" required style="width:100%;" value="<?php echo $EditStud_row['MCName'];?>">
 														</div>
-													</div>
+													</div><br>
 													
 													<div class="row">
 														<div class="col-md-3 text-right">
@@ -223,7 +279,7 @@ $Module_result = sqlsrv_query( $conn, $Module_sql ,array(), array( "Scrollable" 
 														<div class="col-md-8">															
 															<input type="text" id="HierarachyID" name="HierarachyID" placeholder="HierarachyID" class="input" data-toggle="tooltip" data-placement="right" title="HierarachyID" required style="width:100%;" value="<?php echo $EditStud_row['HierarachyID'];?>">
 														</div>
-													</div>
+													</div><br>
 													
 													<div class="row">
 														<div class="col-md-3 text-right">
@@ -232,7 +288,7 @@ $Module_result = sqlsrv_query( $conn, $Module_sql ,array(), array( "Scrollable" 
 														<div class="col-md-8">															
 															<input type="text" id="CycleID" name="CycleID" placeholder="CycleID" class="input" data-toggle="tooltip" data-placement="right" title="CycleID" required style="width:100%;" value="<?php echo $EditStud_row['CycleID'];?>">
 														</div>
-													</div>
+													</div><br>
 													<div class="row">
 														<div class="col-md-3 text-right">
 															Stage<i class="fa fa-star text-danger"></i>
@@ -378,7 +434,7 @@ $( document ).ready(function() {
 
 $( document ).ready(function() {		
 	$('#justs').click(function(){				
-	    $('#auditorium_wrapper').fadeToggle("slow","linear");
+	    //$('#auditorium_wrapper').fadeToggle("slow","linear");
 	    $('#myModalss').fadeToggle("fast");
 	    $('#addd').toggle();
 	    $('#vie').toggle();

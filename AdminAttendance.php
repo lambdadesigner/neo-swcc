@@ -14,42 +14,7 @@ $Instresult = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQL
 $Insresults = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
 ?>
 
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>	
-	<script>
-	$(function() {
-	var availableTags = [<?php while($Sturow = sqlsrv_fetch_array($Sturesult)){ ?>
-		<?php echo '"';echo $Sturow['StudentName_en'];echo '"'; echo ","; } ?>
-	  "ActionScript",
-	  "AppleScript",
-	  "Asp",
-	  "BASIC",
-	  "C",
-	  "C++",
-	  "Clojure",
-	  "COBOL",
-	  "ColdFusion",
-	  "Erlang",
-	  "Fortran",
-	  "Groovy",
-	  "Haskell",
-	  "Java",
-	  "JavaScript",
-	  "Lisp",
-	  "Perl",
-	  "PHP",
-	  "Python",
-	  "Ruby",
-	  "Scala",
-	  "Scheme"
-	];
-	$( "#StudeName" ).autocomplete({
-	  source: availableTags
-	});
-	});
-	</script>
-				<!-- Add / Edit Student Instructor -->
+			<!-- Add / Edit Student Instructor -->
 			<style type="text/css">									
 			.col-md-3.text-right{
 				padding-top: 18px;
@@ -79,8 +44,8 @@ $Insresults = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQL
 						<!-- <small></small> -->
 					</h1>
 					<ol class="breadcrumb">
-						<li><a href="#"><i class="fa fa-dashboard text-red"></i> Home</a></li>
-						<li><a href="#"><i class="fa fa-user text-red"></i> Profile</a></li>
+						<li><a href="Admin"><i class="fa fa-dashboard text-red"></i> Home</a></li>
+						<li><a href="#"><i class="fa fa-pencil-square-o"></i> Attendance</a></li>
 					</ol>
 				</section>
 				<!-- Main content -->
@@ -107,13 +72,13 @@ $Insresults = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQL
 		                                    <div class="tab-content">
 		                                        <div role="tabpanel" class="tab-pane active" id="RStudent"><br>
 		                                        	<div class="col-md-9 styled-select">
-		                                        		<input type="text" name="StudeName" id="StudeName" placeholder="Student Name"> &nbsp;&nbsp;
-			                                        	<select name="StudentName" id="StudentName">
+		                                        		<input type="text" name="StudeName" id="StudeName" style="width:300px;" placeholder="Please Enter Student Name" title="Auto Student Name"> &nbsp;&nbsp;
+			                                        	<!-- <select name="StudentName" id="StudentName">
 					                                		<option value="">Select Student Name</option>
 					                                		<?php while($Sturow = sqlsrv_fetch_array($Sturesult)){ ?>
 					                                			<option value="<?php echo $Sturow['StudentID'];?>"><?php echo $Sturow['StudentName_en'];?></option>
 					                                		<?php } ?>
-					                                	</select>
+					                                	</select> -->
 					                                	<input type="text" name="AbsentDate" id="AbsentDate" class="inputpickertext" placeholder="From Date" readonly >
 					                                	<input type="text" name="EndDate" id="EndDate" class="inputpickertext" placeholder="To Date" readonly >
 					                                	<button type="button" class="btn btn-default" name="submit" id="submit">Search</button>
@@ -362,47 +327,47 @@ $Insresults = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQL
 												
 												<!--end popup-->
 												
-												<!---Sc Student Add Attendance --->
+												<!---Sc Student Add Attendance -->
 												
 												<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 												  <div class="modal-dialog" role="document">
 													<div class="modal-content">
-													  <div class="modal-header">
-														<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-														<h4 class="modal-title" id="myModalLabel">Sc Student Attendance</h4>
-													  </div>
-													  <div class="styled-select">
-													  <select name="employeeId" id="employeeId">
-					                                		<option value="">Select Employee ID</option>
-															<?php 
-															$sql = "SELECT EmpID FROM SCAttendance";
-															$result_Instructors = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
-															while($row_Instructors = sqlsrv_fetch_array($result_Instructors)){ ?>
-															<option value="<?php echo $row_Instructors['EmpID']?>"><?php echo $row_Instructors['EmpID']?></option>
-															<?php }?>
-															
-					                                	</select>
-														</div>
-														
-														<select name="ShortCourse" id="ShortCourse">
-					                                		
-															
-					                                	</select>
-														
-													  	
-														<div id="datepicker" class="input-group date" data-date-format="yyyy-mm-dd">
-														    <input class="form-control inputpickertext" type="text" id="ScAttDate"/>
-														    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-														</div>
+													  	<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+															<h4 class="modal-title" id="myModalLabel">Sc Student Attendance</h4>
+													  	</div>
 
-													  <select name="ScStatus" id="ScStatus">
-					                                		<option value="">Select Status</option>
-															<option value="Present">Present</option>
-															<option value="Absent">Absent</option>
-															
-					                                	</select>
-													  <input type="text" id="ScReason" name="ScReason" value="" required="required" class="form-control" placeholder="Please Enter Reason" >
-													  <input type="text" id="SCClass" name="SCClass" value="" required="required" class="form-control" placeholder="Please Enter SCClass" >
+													  	<div class="modal-body">
+														  	<div class="styled-select">
+															  	<select name="employeeId" id="employeeId" style="width:100%;">
+							                                		<option value="">Select Employee ID</option>
+																	<?php 
+																	$sql = "SELECT DISTINCT EmpID FROM SCAttendance";
+																	$result_Instructors = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+																	while($row_Instructors = sqlsrv_fetch_array($result_Instructors)){ ?>
+																	<option value="<?php echo $row_Instructors['EmpID']?>"><?php echo $row_Instructors['EmpID']?></option>
+																	<?php }?>
+																	
+							                                	</select>
+															</div><br>
+															<div class="styled-select">
+																<select name="ShortCourse" id="ShortCourse" style="width:100%;">
+																</select>
+															</div><br>
+															<div id="datepicker" class="input-group date" data-date-format="yyyy-mm-dd">
+															    <input class="form-control inputpickertext" type="text" id="ScAttDate"/>
+															    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+															</div><br>
+															<div class="styled-select">
+																<select name="ScStatus" id="ScStatus" style="width:100%;">
+								                                	<option value="">Select Status</option>
+																	<option value="Present">Present</option>
+																	<option value="Absent">Absent</option>
+																</select>
+															</div><br>
+														    <input type="text" id="ScReason" name="ScReason" value="" required="required" class="form-control" placeholder="Please Enter Reason" ><br>
+														    <input type="text" id="SCClass" name="SCClass" value="" required="required" class="form-control" placeholder="Please Enter SCClass" >
+														</div>
 													  
 													  <div class="modal-footer">
 														<!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
@@ -410,15 +375,10 @@ $Insresults = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQL
 													  </div>
 													</div>
 												  </div>
-												</div>
-												
-												
+												</div>																								
 												<!--end popup-->
 												
-												
-												
-												
-												<!----End Sc Student Add Attendance --->
+												<!--End Sc Student Add Attendance -->
 												
 		                                    </div>
 										</div>
@@ -448,8 +408,23 @@ $Insresults = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQL
 		<script src="assets/dist/js/app.min.js" type="text/javascript"></script>-->
 		<!-- Swcc for demo purposes -->
 		<link href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
-
-			<script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+		<!--<script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>-->
+		<!-- AutoComplete Script -->
+		<?php 
+		$autosql = "SELECT * FROM StudentInfo";
+		$autoresult = sqlsrv_query( $conn, $autosql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));?>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">		
+		<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>	
+		<script>
+		$(function() {
+		var availableTags = [<?php while($autoSturow = sqlsrv_fetch_array($autoresult)){ ?>
+			<?php echo '"'.$autoSturow['StudentName_en'].'"'.','; } ?>		  
+		];
+		$( "#StudeName" ).autocomplete({
+		  source: availableTags
+		});
+		});
+		</script>
 		<!-- Page level javascript -->
 		<script type="text/javascript">
 		/*Please consider that the JS part isn't production ready at all, I just code it to show the concept of merging filters and titles together !*/
@@ -497,10 +472,10 @@ $Insresults = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQL
 			});
 
 			$(document).ready(function() {
-			    $('#marks').DataTable( {
-			    } );
-			    $('#marks1').DataTable( {
-			    } );
+			    // $('#marks').DataTable( {
+			    // } );
+			    // $('#marks1').DataTable( {
+			    // } );
 			} );
 
 			$(function () {
@@ -647,7 +622,7 @@ $Insresults = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQL
 					return false;
 				});
 				
-				<!-- Save Student Attendance-->
+				//  Save Student Attendance
 				$('#saveStuAtt').click(function(){
 					
 					var StudentID = $('#StudentID').val();
@@ -707,9 +682,9 @@ $Insresults = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQL
 						return true;
 					
 				});
-				<!--End Student Attendance--->
+				// End Student Attendance
 				
-				<!-- Save Instructor Attendance-->
+				// Save Instructor Attendance
 				$('#saveIntAtt').click(function(){
 					
 					var OriginalInstructor = $('#OriginalInstructor').val();
@@ -753,11 +728,11 @@ $Insresults = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQL
 						return true;
 					
 				});
-				<!--End Instructor Attendance --->
+				// End Instructor Attendance
 			
 				
 				
-				<!-- Sc Student Attendance Search --->
+				// Sc Student Attendance Search
 				$('#Scsubmit').click(function(){
 					var ScStudentID = $('#ScStudentName').val();
 					var SCStuFromDate = $('#SCStuFromDate').val();
@@ -801,8 +776,8 @@ $Insresults = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQL
 					return false;
 				});
 				
-				<!--End Sc Student Attendance --->
-					<!---SC Student course--->
+				// End Sc Student Attendance
+				// SC Student course
 				
 				$('#employeeId').on('change', function() {
 				var employeeID = this.value;
@@ -819,8 +794,8 @@ $Insresults = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQL
 						return true;
 				
 					});
-				<!---End SC Student course--->
-				<!-- Save Sc Attendance-->
+				// End SC Student course
+				// Save Sc Attendance
 				$('#saveScAtt').click(function(){
 					//alert("asfdsadg");
 					var employeeId = $('#employeeId').val();
@@ -878,17 +853,17 @@ $Insresults = sqlsrv_query( $conn, $Instsql ,array(), array( "Scrollable" => SQL
 						return true;
 					
 				});
-				<!--End Sc Attendance --->
+				// End Sc Attendance
 				
 
 			});
 			
 			$(function () {
-				  $("#datepicker").datepicker({ 
-				        autoclose: true, 
-				        todayHighlight: true
-				  }).datepicker('update', new Date());;
-				});
+				$("#datepicker").datepicker({ 
+				    autoclose: true, 
+				    todayHighlight: true
+				}).datepicker('update', new Date());;
+			});
 			
 			
 			

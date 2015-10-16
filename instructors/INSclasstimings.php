@@ -49,42 +49,45 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 											<!-- <button class="btn btn-xs btn-filter"><span class="glyphicon glyphicon-filter filterbutton"></span> Filter</button> -->
 										</div>
 									</div>
-									<table class="table table-striped" id="classtimings">
-										<thead>
-											<tr class="filters" style="display:none">
-												<th><input type="text" class="form-control" placeholder="Session ID" disabled></th>
-												<th><input type="text" class="form-control" placeholder="Start Time" disabled></th>
-												<th><input type="text" class="form-control" placeholder="End Time" disabled></th>
-												<th><input type="text" class="form-control" placeholder="Group Id" disabled></th>
-												<th><input type="text" class="form-control" placeholder="Module ID" disabled></th>
-												<th><input type="text" class="form-control" placeholder="Class ID" disabled></th>
-											</tr>
-											
-											<tr class="filters1">
-												<th><?php echo $lang['Session ID'];?></th>
-												<th><?php echo $lang['Start Time'];?></th>
-												<th><?php echo $lang['End Time'];?></th>
-												<th><?php echo $lang['Group Id'];?></th>
-												<th><?php echo $lang['Module ID'];?></th>
-												<th><?php echo $lang['Module ID'];?></th>
-											</tr>
-											
-										</thead>
-										<tbody>
-										<?php while($row = sqlsrv_fetch_array($result)){ ?>
-											<tr>
-												<td><?php echo $row['SessionID']?></td>
-												<td><?php $startDate = date_format($row['StartTime'], 'Y-m-d'); echo $startDate; ?></td>
-												<td><?php $EndTime = date_format($row['EndTime'], 'Y-m-d'); echo $startDate; ?></td>
-												<td><?php echo $row['GroupId']?></td>
-												<td><?php echo $row['ModuleID']?></td>
-												<td><?php echo $row['ClassID']?></td>
-											</tr>
-										<?php }?>
-											
-											
-										</tbody>
-									</table>
+
+									<div class="tab-content panel-body border" id="classtimingsRows">									
+										<table class="table table-striped" id="classtimings">
+											<thead>
+												<tr class="filters">
+													<th><input type="text" class="form-control" placeholder="<?php echo $lang['Session ID'];?>" ></th>
+													<th><input type="text" class="form-control" placeholder="<?php echo $lang['Start Time'];?>" ></th>
+													<th><input type="text" class="form-control" placeholder="<?php echo $lang['End Time'];?>" ></th>
+													<th><input type="text" class="form-control" placeholder="<?php echo $lang['Group Id'];?>" ></th>
+													<th><input type="text" class="form-control" placeholder="<?php echo $lang['Module ID'];?>" ></th>
+													<th><input type="text" class="form-control" placeholder="<?php echo $lang['Class ID'];?>" ></th>
+												</tr>
+												
+												<!-- <tr class="filters1" style="display:none">
+													<th><?php echo $lang['Session ID'];?></th>
+													<th><?php echo $lang['Start Time'];?></th>
+													<th><?php echo $lang['End Time'];?></th>
+													<th><?php echo $lang['Group Id'];?></th>
+													<th><?php echo $lang['Module ID'];?></th>
+													<th><?php echo $lang['Module ID'];?></th>
+												</tr> -->
+												
+											</thead>
+											<tbody>
+											<?php while($row = sqlsrv_fetch_array($result)){ ?>
+												<tr>
+													<td><?php echo $row['SessionID']?></td>
+													<td><?php $startDate = date_format($row['StartTime'], 'Y-m-d'); echo $startDate; ?></td>
+													<td><?php $EndTime = date_format($row['EndTime'], 'Y-m-d'); echo $startDate; ?></td>
+													<td><?php echo $row['GroupId']?></td>
+													<td><?php echo $row['ModuleID']?></td>
+													<td><?php echo $row['ClassID']?></td>
+												</tr>
+											<?php }?>
+												
+											</tbody>
+										</table>
+									</div>
+									
 								</div>
 							</div>
 						</div>

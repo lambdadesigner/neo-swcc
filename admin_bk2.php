@@ -17,42 +17,43 @@ WHERE Marks.StudentID = $StudentID";*/
 $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
 ?>
 <!-- Morris chart -->
-	<link href="assets/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
-	<!-- jvectormap -->
-	<link href="assets/plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
-	<!-- Date Picker -->
-	<link href="assets/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
-	<!-- Daterange picker -->
-	<link href="assets/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
-	<!-- bootstrap wysihtml5 - text editor -->
-	<link href="assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
-		<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<link href="assets/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
+<!-- jvectormap -->
+<link href="assets/plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+<!-- Date Picker -->
+<link href="assets/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+<!-- Daterange picker -->
+<link href="assets/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+<!-- bootstrap wysihtml5 - text editor -->
+<link href="assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-	<!-- Font awesome Icons -->
-	<link rel="stylesheet" type="text/css" href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
-	<!-- Housing Css -->
-	<link href="assets/dist/css/Housing.css" rel="stylesheet" type="text/css" />
-			<!-- Content Wrapper. Contains page content -->
-			<div class="content-wrapper">
-				<!-- Content Header (Page header) -->
-				<section class="content-header">
-				  <h1>
-					<?php echo $lang["dashboard"];?>
-					<!-- <small>Control panel</small> -->
-				  </h1>
-				  <ol class="breadcrumb">
-					<li><a href="#"><i class="fa fa-dashboard"></i> <?php echo $lang["Home"];?></a></li>
-					<li class="active"><?php echo $lang["dashboard"];?></li>
-				  </ol>
-				</section>
+<!-- Font awesome Icons -->
+<link rel="stylesheet" type="text/css" href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css">
 
-					<!-- ALert Message -->
-					<!-- <div class="row">
+<!-- Housing Css -->
+<link href="assets/dist/css/Housing.css" rel="stylesheet" type="text/css" />
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1> <?php echo $lang["dashboard"];?> 
+    <!-- <small>Control panel</small> --> 
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> <?php echo $lang["Home"];?></a></li>
+    <li class="active"><?php echo $lang["dashboard"];?></li>
+  </ol>
+</section>
+<hr>
+
+<!-- ALert Message --> 
+<!-- <div class="row">
 						<div class="col-md-10 col-md-offset-1">
 							<?php if($_GET['msg']=="Success"){?>
 								<hr>
@@ -62,66 +63,54 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 								</div>				            
 							<?php } ?>
 						</div>
-					</div> -->
+					</div> --> 
 
-				<!-- Housing Content -->
-				<?php 
+<!-- Housing Content -->
+<?php 
 					$housingSql = "SELECT DISTINCT BuildingNo FROM BachelorAcc";
 					$Housing_result = sqlsrv_query( $conn, $housingSql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
 				?>
-				<section class="container-fluid">
-					<div class="row notifications">
-						<div class="col-md-3">
-							<div class="box box-info">
-								<h2 class="text-blue">
-									10 <i class="fa fa-commenting-o text-blue pull-right"></i>
-								</h2>
-								<div class="value">Today's Complaints</div>
-								<div class="progress">
-									<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">60%</div>
-								</div>
-								<small><span class="pull-left">Progress</span> <span class="pull-right">60%</span> </small>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="box box-success">
-								<h2 class="text-blue">
-									10 <i class="fa fa-commenting-o text-blue pull-right"></i>
-								</h2>
-								<div class="value">Today's Complaints</div>
-								<div class="progress">
-									<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">60%</div>
-								</div>
-								<small><span class="pull-left">Progress</span> <span class="pull-right">60%</span> </small>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="box box-danger">
-								<h2 class="text-blue">
-									10 <i class="fa fa-commenting-o text-blue pull-right"></i>
-								</h2>
-								<div class="value">Today's Complaints</div>
-								<div class="progress">
-									<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">60%</div>
-								</div>
-								<small><span class="pull-left">Progress</span> <span class="pull-right">60%</span> </small>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="box box-primary">
-								<h2 class="text-blue">
-									10 <i class="fa fa-commenting-o text-blue pull-right"></i>
-								</h2>
-								<div class="value">Today's Complaints</div>
-								<div class="progress">
-									<div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">60%</div>
-								</div>
-								<small><span class="pull-left">Progress</span> <span class="pull-right">60%</span> </small>
-							</div>
-						</div>
-					</div>
-					
-					<!-- <div class="col-md-6">
+<section class="container-fluid">
+<div class="row notifications">
+  <div class="col-md-3">
+    <div class="box box-info">
+      <h2 class="text-blue"> 10 <i class="fa fa-commenting-o text-blue pull-right"></i> </h2>
+      <div class="value">Today's Complaints</div>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">60%</div>
+      </div>
+      <small><span class="pull-left">Progress</span> <span class="pull-right">60%</span> </small> </div>
+  </div>
+  <div class="col-md-3">
+    <div class="box box-success">
+      <h2 class="text-blue"> 10 <i class="fa fa-commenting-o text-blue pull-right"></i> </h2>
+      <div class="value">Today's Complaints</div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">60%</div>
+      </div>
+      <small><span class="pull-left">Progress</span> <span class="pull-right">60%</span> </small> </div>
+  </div>
+  <div class="col-md-3">
+    <div class="box box-danger">
+      <h2 class="text-blue"> 10 <i class="fa fa-commenting-o text-blue pull-right"></i> </h2>
+      <div class="value">Today's Complaints</div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">60%</div>
+      </div>
+      <small><span class="pull-left">Progress</span> <span class="pull-right">60%</span> </small> </div>
+  </div>
+  <div class="col-md-3">
+    <div class="box box-primary">
+      <h2 class="text-blue"> 10 <i class="fa fa-commenting-o text-blue pull-right"></i> </h2>
+      <div class="value">Today's Complaints</div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">60%</div>
+      </div>
+      <small><span class="pull-left">Progress</span> <span class="pull-right">60%</span> </small> </div>
+  </div>
+</div>
+
+<!-- <div class="col-md-6">
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h3 class="panel-title">Hostel Management</h3>
@@ -419,16 +408,443 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 							</div>
 						</div>
 					</div> -->
-					<div class="row">
-						<div class="col-md-6">
-						 	<!-- Calendar -->
-							<div class="box box-solid" id="HolCalendar"> <!-- bg-green-gradient -->
-								<div class="box-header">
-								  <i class="fa fa-calendar text-red"></i>
-								  <h3 class="box-title">Holidays Calendar</h3>
-								  <a href="Holidays" class="btn bg-green pull-right"><i class="fa fa-plus"> Add Holiday</i></a><hr>
-								  <!-- tools box -->
-								  <?php /*<div class="pull-right box-tools">
+<div class="row">
+<div class="col-lg-6"> 
+  <!-- Scripts for Attendance Charts -->
+  <style type="text/css">
+								#chartdiv {
+									width: 100%;
+									height: 500px;
+									}
+							</style>
+  <script src="http://www.amcharts.com/lib/3/amcharts.js"></script> 
+  <script src="http://www.amcharts.com/lib/3/serial.js"></script> 
+  <script src="http://www.amcharts.com/lib/3/themes/light.js"></script> 
+  <script type="text/javascript" src="assets/dist/js/attendance.php"></script>
+  <div class="panel box box-info attendanceinstructor">
+    <div class="panel-heading">
+      <h3 class="panel-title">Attendance of Instructor
+        <div class="pull-right"> <i class="fa fa-search"></i>
+          <input id="search-box" type="text" class="search-box" placeholder="Instructor Name" />
+        </div>
+      </h3>
+      <hr>
+    </div>
+    <div class="box-body">
+      <div id="chartdiv"></div>
+    </div>
+  </div>
+</div>
+<div class="col-lg-6 col-md-12">
+<div class="panel box box-danger complaints">
+<div class="panel-heading">
+  <h3 class="panel-title upper">Complaint Box
+    <div class="pull-right complaintsorting">
+      <div class="pull-left"> <a href="#Today" class="btn btn-sort">Today</a> <a href="#Month" class="btn" id="ComplaintMonth">Month</a> <a href="#Year" class="btn" id="ComplaintYear">Year</a> </div>
+      <div class="pull-right">
+        <div class="btn-group"> <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> More <i class="fa fa-angle-down"></i> 
+          <!-- <span class="caret"></span> --> 
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Last Month</a></li>
+            <li><a href="#">Last 3 Months</a></li>
+            <li><a href="#">Last 6 Months</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Last Year</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </h3>
+  <hr>
+</div>
+<div class="panel-body slimScroll">
+<div class="complaintchart">
+  <div class="col-md-12 col-md-offset-0 col-lg-offset-2 col-lg-8 col-sm-offset-0 col-xs-offset-0">
+    <div class="row sparkline">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-6">
+            <?php
+													$sql_Complaints="SELECT * FROM Complaints ";
+													$result_Complaints = sqlsrv_query( $conn, $sql_Complaints ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+													
+													?>
+            <small>Total</small>
+            <h3 class="nomargin">
+              <?php //echo sqlsrv_num_rows($result_Complaints); ?>
+              167</h3>
+          </div>
+          <div class="col-md-6 sparkcontent"> <span id="sparkline">&nbsp;</span> </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-6">
+            <?php
+													$sql_Complaints1= "SELECT * FROM Complaints where Status = 'complete' ";
+													$result_Complaints1 = sqlsrv_query( $conn, $sql_Complaints1 ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+													
+													?>
+            <small>Completed</small>
+            <h3 class="nomargin">
+              <?php //echo sqlsrv_num_rows($result_Complaints1);?>
+              157</h3>
+          </div>
+          <div class="col-md-6 sparkcontent"> <span id="sparkline2"></span> </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+  </div>
+</div>
+<!--Complaint box Queries--> 
+
+<!--End -->
+
+<div class="complaintAdmin">
+<div class="">
+<div class="" id="MonthResult">
+<div class="box-heading">
+  <div class="panel">
+    <div class="panel-heading">
+      <h4 class="panel-title"> <a href="#F">
+        <table>
+          <thead>
+            <!-- <td class="hsino"> S No.</td> -->
+          <td class="hname"> Student Name</td>
+            <td class="hctno">Complaint No.</td>
+            <td class="hbuild">Building</td>
+            <!-- <td class="hblock">Block</td>
+																<td class="hrno">Room No</td> -->
+            <td class="hdep">Department</td>
+            <td class="hstatus">Status</td>
+              </thead>
+        </table>
+        </a> </h4>
+    </div>
+  </div>
+</div>
+<div class="box-body content complaintData">
+<div class="panel-group panel-group-lists" id="accordion2">
+<?php 
+							$sql_Complaints="SELECT * FROM Complaints ";
+							$result_Complaints = sqlsrv_query( $conn, $sql_Complaints ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+							$i=1;
+							while($Complaints = sqlsrv_fetch_array($result_Complaints)){ 
+							$sql_Complaints_building="SELECT BuildingNo,Section,RoomNo FROM BachelorAcc where Candidate_1 ='".$Complaints['Complain_By']."' OR Candidate_2 ='".$Complaints['Complain_By']."' OR Candidate_2 ='".$Complaints['Complain_By']."'";
+							$result_Complaints_building = sqlsrv_query( $conn, $sql_Complaints_building ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+							$Complaints_room = sqlsrv_fetch_array($result_Complaints_building);
+							
+					  
+					  ?>
+<div class="panel <?php echo $Complaints['priority'];?>">
+<div class="panel-heading">
+  <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion2" href="#<?php echo $Complaints['Complaint_ID']?>">
+    <table>
+      <tr> 
+        <!-- <td class="csino"> <?php echo $i++;?></td> -->
+        <td class="cname"><img src="assets/dist/img/student/mb.png"> <?php echo substr($Complaints['Complain_By_Name'],0,12);?>... </td>
+        <td class="cctno"><?php echo strtolower($Complaints['Complaint_No']);?></td>
+        
+        <td class="cbuild"><?php echo  $Complaints_room['BuildingNo'];?></td>
+        <!-- <td class="cblock"> <?php echo $Complaints_room['Section'];?></td>
+																	<td class="crno"> <?php echo $Complaints_room['RoomNo'];?></td> -->
+        <td class="cdep"><?php echo $Complaints['Department'];?></td>
+        <td class="cstatus"><i class="fa fa-hourglass-2"></i> <?php echo $Complaints['Status'];?></td>
+      </tr>
+    </table>
+    </a> </h4>
+</div>
+<div id="<?php echo $Complaints['Complaint_ID']?>" class="panel-collapse collapse">
+<div class="panel-body">
+<!-- <div class="formgroup">
+																	<label>Student Name</label>
+																	<div class="text">some name </div>
+																</div>
+																<div class="formgroup">
+																	<label>Building</label>
+																	<div class="text">some name </div>
+																</div>
+																<div class="formgroup">
+																	<label>Block</label>
+																	<div class="text">some name </div>
+																</div>
+																<div class="formgroup">
+																	<label>Room No.</label>
+																	<div class="text">some name </div>
+																</div>
+																<div class="formgroup">
+																	<label>Bed No.</label>
+																	<div class="text">some name </div>
+																</div>
+																<div class="formgroup">
+																	<label>Department</label>
+																	<div class="text">some name </div>
+																</div>
+																<div class="formgroup">
+																	<label>Priority</label>
+																	<div class="text">some name </div>
+																</div> -->
+<div class="formgroup">
+<label>Message</label>
+<div class="text">
+  <p> <?php echo $Complaints['Message'];?> </p>
+</div>
+<div id="selectStatus<?php echo $Complaints['Complaint_ID'];?>" style="display:none;">
+<select name="UpdateStatus" id="UpdateStatus" onchange="return getComplaintId(this.value,<?php echo $Complaints['Complaint_ID'];?>)" >
+<option value="">Select Status</option>
+<option value="pending">Pending</option>
+<option value="working">Working</option>
+<option value="complete">Complete</option>
+<select>
+<input type="hidden" name="Complaint_No" id="Complaint_No" value="<?php echo $Complaints['Complaint_No']?>">
+</div>
+</div>
+</div>
+<div class="panel-footer">
+<div align="right">
+<button class="btn btn-primary" id="modifyStatus[]" onClick="ShowStatus(<?php echo $Complaints['Complaint_ID'];?>)">
+Modify
+</button>
+<button class="btn btn-warning">
+Reply
+</button>
+<button class="btn btn-danger">
+Delete
+</button>
+</div>
+</div>
+</div>
+</div>
+<?php } ?>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Housing Content End --> 
+
+<!-- Main content -->
+<section class="contentainer-fluid">
+<?php /* <!-- Small boxes (Stat box) -->
+				  <div class="row">
+					<div class="col-lg-3 col-xs-6">
+					  <!-- small box -->
+					  <div class="small-box bg-aqua">
+						<div class="inner">
+						  <h3>150</h3>
+						  <p>New Orders</p>
+						</div>
+						<div class="icon">
+						  <i class="ion ion-bag"></i>
+						</div>
+						<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+					  </div>
+					</div><!-- ./col -->
+					<div class="col-lg-3 col-xs-6">
+					  <!-- small box -->
+					  <div class="small-box bg-green">
+						<div class="inner">
+						  <h3>53<sup style="font-size: 20px">%</sup></h3>
+						  <p>Bounce Rate</p>
+						</div>
+						<div class="icon">
+						  <i class="ion ion-stats-bars"></i>
+						</div>
+						<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+					  </div>
+					</div><!-- ./col -->
+					<div class="col-lg-3 col-xs-6">
+					  <!-- small box -->
+					  <div class="small-box bg-yellow">
+						<div class="inner">
+						  <h3>44</h3>
+						  <p>User Registrations</p>
+						</div>
+						<div class="icon">
+						  <i class="ion ion-person-add"></i>
+						</div>
+						<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+					  </div>
+					</div><!-- ./col -->
+					<div class="col-lg-3 col-xs-6">
+					  <!-- small box -->
+					  <div class="small-box bg-red">
+						<div class="inner">
+						  <h3>65</h3>
+						  <p>Unique Visitors</p>
+						</div>
+						<div class="icon">
+						  <i class="ion ion-pie-graph"></i>
+						</div>
+						<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+					  </div>
+					</div><!-- ./col -->
+				  </div><!-- /.row -->*/?>
+<!-- Main row -->
+<div class="container-fluid">
+<div class="row">
+<!-- Left col -->
+<link rel="stylesheet" type="text/css" href="assets/dist/css/calendar.css">
+
+<!-- right col (We are only adding the ID to make the widgets sortable)-->
+
+<div class="col-lg-6 col-md-12">
+<div class="box box-info notifications">
+<div class="box-heading panel-heading">
+<h3 class="panel-title">
+Notifications
+</h3>
+</div>
+<div class="box-body slimScroll">
+<ul>
+<li class="warning">
+<img src="assets/dist/img/student/mb2.png" class="pull-left"> <strong>Clarine Vassar <small>- 15 mins ago</small></strong>
+<p>
+Sometimes it takes a lifetime to win a battle.
+</p>
+</li>
+<li class="info">
+<img src="assets/dist/img/student/mb2.png" class="pull-left"> <strong>Clarine Vassar <small>- 15 mins ago</small></strong>
+<p>
+Sometimes it takes a lifetime to win a battle.
+</p>
+</li>
+<li class="success">
+<img src="assets/dist/img/student/mb2.png" class="pull-left"> <strong>Clarine Vassar <small>- 15 mins ago</small></strong>
+<p>
+Sometimes it takes a lifetime to win a battle.
+</p>
+</li>
+<li class="danger">
+<img src="assets/dist/img/student/mb2.png" class="pull-left"> <strong>Clarine Vassar <small>- 15 mins ago</small></strong>
+<p>
+Sometimes it takes a lifetime to win a battle.
+</p>
+</li>
+<li class="warning">
+<img src="assets/dist/img/student/mb2.png" class="pull-left"> <strong>Clarine Vassar <small>- 15 mins ago</small></strong>
+<p>
+Sometimes it takes a lifetime to win a battle.
+</p>
+</li>
+<li class="info">
+<img src="assets/dist/img/student/mb2.png" class="pull-left"> <strong>Clarine Vassar <small>- 15 mins ago</small></strong>
+<p>
+Sometimes it takes a lifetime to win a battle.
+</p>
+</li>
+<li class="success">
+<img src="assets/dist/img/student/mb2.png" class="pull-left"> <strong>Clarine Vassar <small>- 15 mins ago</small></strong>
+<p>
+Sometimes it takes a lifetime to win a battle.
+</p>
+</li>
+<li class="danger">
+<img src="assets/dist/img/student/mb2.png" class="pull-left"> <strong>Clarine Vassar <small>- 15 mins ago</small></strong>
+<p>
+Sometimes it takes a lifetime to win a battle.
+</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-lg-6 col-md-12 col-sm-6 col-xs-12">
+<div class="ultra-widget ultra-todo-task bg-primary">
+<div class="wid-task-header">
+<div class="wid-icon">
+<i class="fa fa-tasks"></i>
+</div>
+<div class="wid-text">
+<h4>
+To do Tasks
+</h4>
+<span>Wed, <small>11<sup>th</sup> March 2015</small></span>
+</div>
+</div>
+<div class="wid-all-tasks">
+<ul class="list-unstyled ps-container">
+<li class="checked">
+<div class="icheckbox_minimal-white checked">
+<ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+</div>
+<label class="icheck-label form-label" for="task-1">
+Meeting the Faculty
+</label>
+</li>
+<li>
+<div class="icheckbox_minimal-white">
+<ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+</div>
+<label class="icheck-label form-label" for="task-2">
+Generate PDF form
+</label>
+</li>
+<li>
+<div class="icheckbox_minimal-white">
+<ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+</div>
+<label class="icheck-label form-label" for="task-3">
+College Jump
+</label>
+</li>
+<li>
+<div class="icheckbox_minimal-white">
+<ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+</div>
+<label class="icheck-label form-label" for="task-4">
+Burn the Campus
+</label>
+</li>
+<li>
+<div class="icheckbox_minimal-white">
+<ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+</div>
+<label class="icheck-label form-label" for="task-5">
+Ask&nbsp;Beg money from students
+</label>
+</li>
+<div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;">
+<div class="ps-scrollbar-x" style="left: 0px; width: 0px;">
+</div>
+</div>
+<div class="ps-scrollbar-y-rail" style="top: 0px; right: 3px;">
+<div class="ps-scrollbar-y" style="top: 0px; height: 0px;">
+</div>
+</div>
+</ul>
+</div>
+<div class="wid-add-task row">
+<div class="col-md-10">
+<input type="text" class="form-control" placeholder="Add task">
+</div>
+<div class="col-md-2">
+<a href="#AddTask" class="btn btn-success form-control">Add Task </a>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-6">
+<!-- Calendar -->
+<div class="box box-solid" id="HolCalendar">
+<!-- bg-green-gradient -->
+<div class="box-header">
+<i class="fa fa-calendar text-red"></i>
+<h3 class="box-title">
+Holidays Calendar
+</h3>
+<a href="Holidays" class="btn bg-green pull-right"><i class="fa fa-plus"> Add Holiday</i></a>
+<hr>
+<!-- tools box -->
+<?php /*<div class="pull-right box-tools">
 									<!-- button with a dropdown -->
 									<div class="btn-group">
 									  <button class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i></button>
@@ -442,36 +858,57 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 									<button class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
 									<button class="btn btn-success btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
 								  </div><!-- /. tools -->*/?>
-								</div><!-- /.box-header -->
-								<div class="box-body">
-								  <div class="row">
-								  <div class="col-md-3">
-								  	<ul>
-								  		<li>holiday one</li>
-								  		<li>holiday one</li>
-								  		<li>holiday one</li>
-								  		<li>holiday one</li>
-								  		<li>holiday one</li>
-								  		<li>holiday one</li>
-								  		<li>holiday one</li>
-								  		<li>holiday one</li>
-								  		<li>holiday one</li>
-								  	</ul>
-								  </div>
-									<div class="col-md-9">
-									  <p class="text-center">							
-									  </p>
-									  <div class="chart">
-										<div id="holder" class="row" ></div>							
-									  </div>
-									  <p class="text-center">							
-									  </p>
-									</div>
-								  </div>
-								</div>		                
-							</div><!-- /.box -->
+</div>
+<!-- /.box-header -->
+<div class="box-body">
+<div class="row">
+<div class="col-md-3">
+<ul>
+<li>
+holiday one
+</li>
+<li>
+holiday one
+</li>
+<li>
+holiday one
+</li>
+<li>
+holiday one
+</li>
+<li>
+holiday one
+</li>
+<li>
+holiday one
+</li>
+<li>
+holiday one
+</li>
+<li>
+holiday one
+</li>
+<li>
+holiday one
+</li>
+</ul>
+</div>
+<div class="col-md-9">
+<p class="text-center">
+</p>
+<div class="chart">
+<div id="holder" class="row" >
+</div>
+</div>
+<p class="text-center">
+</p>
+</div>
+</div>
+</div>
+</div>
+<!-- /.box --> 
 
-							<script type="text/tmpl" id="tmpl">
+<script type="text/tmpl" id="tmpl">
 							  {{ 
 							  var date = date || new Date(),
 								  month = date.getMonth(), 
@@ -621,11 +1058,11 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 								</tbody>
 								{{ } }}
 							  </table>
-							</script>
-							<script src='http://assets.codepen.io/assets/common/stopExecutionOnTimeout.js?t=1'></script>
-							<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
-							<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
-							<script>
+							</script> 
+<script src='http://assets.codepen.io/assets/common/stopExecutionOnTimeout.js?t=1'></script> 
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script> 
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script> 
+<script>
 							/*var $currentPopover = null;
 							  $(document).on('shown.bs.popover', function (ev) {
 								var $target = $(ev.target);
@@ -928,369 +1365,148 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 							  data: data
 							});
 							//@ sourceURL=pen.js
-							</script>
+							</script> 
 
-							<!-- Calendar Ends -->
-						</div>
-						<div class="col-md-6">
-						<div class="panel box-info complaints">
-							<div class="panel-heading">
-								<h3 class="panel-title upper">Complaint Box
-								<div class="pull-right complaintsorting"><a href="#Today" class="btn btn-sort">Today</a><a class="btn" id="ComplaintMonth">Month</a><a href="#Year" class="btn" id="ComplaintYear">Year</a></div>
-								</h3>
-								<hr>
-							</div>
-							<div class="panel-body slimScroll">
-								<div class="complaintchart">
-									<div class="col-md-6 col-md-offset-3">
-										<div class="row sparkline">
-											<div class="col-md-6">
-												<div class="row">
-													<div class="col-md-6">
-													<?php
-													$sql_Complaints="SELECT * FROM Complaints ";
-													$result_Complaints = sqlsrv_query( $conn, $sql_Complaints ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
-													
-													?>
-														<small>Total</small>
+<!-- Calendar Ends -->
+</div>
+<div class="col-lg-6 connectedSortable">
+<!-- Map box -->
+<div class="box box-info" id="quicEmail">
+<div class="box-header">
+<i class="fa fa-envelope"></i>
+<h3 class="box-title">
+Quick Email
+</h3>
+<hr>
+<!-- tools box -->
+<div class="pull-right box-tools">
+<!-- <button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button> -->
+</div>
+<!-- /. tools -->
+</div>
+<form name="mails" action="sendingmails.php" method="post">
+<div class="box-body">
+<div class="form-group">
+<!-- <input type="email" class="form-control" name="emailto" placeholder="Email to:" /> -->
+<div class=" col-md-6">
+<div class="roundedOne">
+<input type="checkbox" id="RegStudent" name="RegStudent" />
+<label for="RegStudent">
+</label>
+<div class="checkbox-text">
+All Reg. Students
+</div>
+</div>
+</div>
+<div class=" col-md-6">
+<div class="roundedOne">
+<input type="checkbox" id="ScStudent" name="ScStudent" />
+<label for="ScStudent">
+</label>
+<div class="checkbox-text">
+All Reg. Students
+</div>
+</div>
+</div>
+<div class=" col-md-6">
+<div class="roundedOne">
+<input type="checkbox" id="RegInstuctors" name="RegInstuctors" />
+<label for="RegInstuctors">
+</label>
+<div class="checkbox-text">
+All Reg. Students
+</div>
+</div>
+</div>
+<div class=" col-md-6">
+<div class="roundedOne">
+<input type="checkbox" id="ItdInstructor" name="ItdInstructor" />
+<label for="ItdInstructor">
+</label>
+<div class="checkbox-text">
+All Reg. Students
+</div>
+</div>
+</div>
+<!-- <input type="checkbox" id="RegStudent" name="RegStudent">All Reg. Students<br> --> 
+<!-- <input type="checkbox" id="ScStudent" name="ScStudent">All Short Course Students<br> --> 
+<!-- <input type="checkbox" id="RegInstuctors" name="RegInstuctors">All Reg. Instructors<br> --> 
+<!-- <input type="checkbox" id="ItdInstructor" name="ItdInstructor">All ITD Instuctors		<br>							 -->
+</div>
+<div class="form-group">
+<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" />
+</div>
+<div>
+<textarea class="textarea" name="message" id="message" placeholder="Message" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+</textarea>
+</div>
+<input type="hidden" class="form-control" name="adminID" id="adminID" value="Admin" />
+<!-- value="<?php echo $_SESSION['adminID'];?>" -->
+</div>
+<div class="box-footer clearfix">
+<input type="submit" class="pull-right btn btn-default fa fa-arrow-circle-right" id="sendEmail" name="Send" value="Send" />
+</div>
+</form>
+</div>
+<!-- /.box -->
+<div class="modal fade" id="myModal">
+<div class="modal-dialog" role="document">
+<div class="modal-content" style="background-color:#18D4E4; border-radius:10px;">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+<h4 class="modal-title" id="myModalLabel" style="color:#fff;">
+Oops Sorry..!
+</h4>
+</div>
+<div class="modal-body" align="center">
 
-														<h3 class="nomargin"><?php //echo sqlsrv_num_rows($result_Complaints); ?>167</h3>	
-													</div>
-													<div class="col-md-6 sparkcontent">
-														<span id="sparkline">&nbsp;</span>
-													</div>
-												</div>
+									No Data Available
+								  
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #C3942E;border-radius: 7px;">
+Close
+</button>
+<!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- right col -->
+</div>
+<!-- /.row (main row) -->
+</div>
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
 
-											</div>
-											<div class="col-md-6">
-												<div class="row">
-													<div class="col-md-6">
-													<?php
-													$sql_Complaints1= "SELECT * FROM Complaints where Status = 'complete' ";
-													$result_Complaints1 = sqlsrv_query( $conn, $sql_Complaints1 ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
-													
-													?>
-														<small>Completed</small>
-														<h3 class="nomargin"><?php //echo sqlsrv_num_rows($result_Complaints1);?>157</h3>	
-													</div>
-													<div class="col-md-6 sparkcontent">
-														<span id="sparkline2"></span>
-													</div>
-												</div>
-
-											</div>
-										</div>
-										<br>
-										<br>
-									</div>
-								</div>
-								<!--Complaint box Queries-->
-								
-								
-								
-								<!--End -->
-								
-								<div class="complaintAdmin">
-									<div class="">
-										<div class="">
-											<div class="box-heading">
-											<div class="panel">
-												<div class="panel-heading">
-													  <h4 class="panel-title">
-														<a href="#F">
-														 <table>
-															<thead>
-																<td class="hsino"> S No.</td>
-																<td class="hname"> Student Name</td>
-																<td class="hctno">Complaint No.</td>
-																
-																<td class="hbuild">Building</td>
-																<td class="hblock">Block</td>
-																<td class="hrno">Room No</td>
-																<td class="hdep">Department</td>
-																<td class="hstatus">Status</td>
-															</thead>
-														 </table>
-														</a>
-													  </h4>
-													</div>
-											</div>
-											</div>
-											<div class="box-body content complaintData">
-												<div class="panel-group panel-group-lists" id="accordion2">
-													<?php 
-							$sql_Complaints="SELECT * FROM Complaints ";
-							$result_Complaints = sqlsrv_query( $conn, $sql_Complaints ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
-							$i=1;
-							while($Complaints = sqlsrv_fetch_array($result_Complaints)){ 
-							
-							$sql_Complaints_building="SELECT BuildingNo,Section,RoomNo FROM BachelorAcc where Candidate_1 ='".$Complaints['Complain_By']."' OR Candidate_2 ='".$Complaints['Complain_By']."' OR Candidate_2 ='".$Complaints['Complain_By']."'";
-							$result_Complaints_building = sqlsrv_query( $conn, $sql_Complaints_building ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
-							$Complaints_room = sqlsrv_fetch_array($result_Complaints_building);
-							
-					  
-					  ?>
-
-
-													<div class="panel <?php echo $Complaints['priority'];?>">
-														<div class="panel-heading">
-														  <h4 class="panel-title">
-															<a data-toggle="collapse" data-parent="#accordion2" href="#<?php echo $Complaints['Complaint_ID']?>">
-															 <table>
-																<thead>
-																	<td class="csino"> <?php echo $i++;?></td>
-																	<td class="cname"><?php echo substr($Complaints['Complain_By_Name'],0,12);?>...</td>
-																	<td class="cctno"><?php echo $Complaints['Complaint_No']?></td>
-																	
-																	<td class="cbuild"><?php echo  $Complaints_room['BuildingNo'];?></td>
-																	<td class="cblock"> <?php echo $Complaints_room['Section'];?></td>
-																	<td class="crno"> <?php echo $Complaints_room['RoomNo'];?></td>
-																	<td class="cdep"><?php echo $Complaints['Department'];?></td>
-																	<td class="cstatus"><i class="fa fa-hourglass-2"></i> <?php echo $Complaints['priority'];?></td>
-
-																</thead>
-															 </table>
-															</a>
-														  </h4>
-														</div>
-														<div id="<?php echo $Complaints['Complaint_ID']?>" class="panel-collapse collapse">
-														  <div class="panel-body">
-																<!-- <div class="formgroup">
-																	<label>Student Name</label>
-																	<div class="text">some name </div>
-																</div>
-																<div class="formgroup">
-																	<label>Building</label>
-																	<div class="text">some name </div>
-																</div>
-																<div class="formgroup">
-																	<label>Block</label>
-																	<div class="text">some name </div>
-																</div>
-																<div class="formgroup">
-																	<label>Room No.</label>
-																	<div class="text">some name </div>
-																</div>
-																<div class="formgroup">
-																	<label>Bed No.</label>
-																	<div class="text">some name </div>
-																</div>
-																<div class="formgroup">
-																	<label>Department</label>
-																	<div class="text">some name </div>
-																</div>
-																<div class="formgroup">
-																	<label>Priority</label>
-																	<div class="text">some name </div>
-																</div> -->
-															<div class="formgroup">
-																<label>Message</label>
-																<div class="text">
-																	<p>
-																	<?php echo $Complaints['Message'];?>
-																		
-																	</p> 
-																</div>
-															</div>
-														  </div>
-														  <div class="panel-footer">
-																<div align="right">
-																	<button class="btn btn-primary">Modify</button>
-																	<button class="btn btn-warning">Okay</button>
-																	<button class="btn btn-danger">Delete</button>
-																</div>
-														  </div>
-														</div>
-													</div>
-
-													<?php } ?>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					</div>
-					
-				</section>
-				<!-- Housing Content End -->
+<footer class="main-footer">
+<div class="pull-right hidden-xs">
+<b>Version</b> 2.2.0
 				
-				<!-- Main content -->
-				<section class="contentainer-fluid">
-				 <?php /* <!-- Small boxes (Stat box) -->
-				  <div class="row">
-					<div class="col-lg-3 col-xs-6">
-					  <!-- small box -->
-					  <div class="small-box bg-aqua">
-						<div class="inner">
-						  <h3>150</h3>
-						  <p>New Orders</p>
-						</div>
-						<div class="icon">
-						  <i class="ion ion-bag"></i>
-						</div>
-						<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-					  </div>
-					</div><!-- ./col -->
-					<div class="col-lg-3 col-xs-6">
-					  <!-- small box -->
-					  <div class="small-box bg-green">
-						<div class="inner">
-						  <h3>53<sup style="font-size: 20px">%</sup></h3>
-						  <p>Bounce Rate</p>
-						</div>
-						<div class="icon">
-						  <i class="ion ion-stats-bars"></i>
-						</div>
-						<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-					  </div>
-					</div><!-- ./col -->
-					<div class="col-lg-3 col-xs-6">
-					  <!-- small box -->
-					  <div class="small-box bg-yellow">
-						<div class="inner">
-						  <h3>44</h3>
-						  <p>User Registrations</p>
-						</div>
-						<div class="icon">
-						  <i class="ion ion-person-add"></i>
-						</div>
-						<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-					  </div>
-					</div><!-- ./col -->
-					<div class="col-lg-3 col-xs-6">
-					  <!-- small box -->
-					  <div class="small-box bg-red">
-						<div class="inner">
-						  <h3>65</h3>
-						  <p>Unique Visitors</p>
-						</div>
-						<div class="icon">
-						  <i class="ion ion-pie-graph"></i>
-						</div>
-						<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-					  </div>
-					</div><!-- ./col -->
-				  </div><!-- /.row -->*/?>
-				  <!-- Main row -->
-				  <div class="row">
-					<!-- Left col -->
-					
-						<link rel='stylesheet prefetch' href='assets/bootstrap/css/bootstrap-theme.min.css'>
-						<link rel="stylesheet" type="text/css" href="assets/dist/css/calendar.css">
-
-					<!-- right col (We are only adding the ID to make the widgets sortable)-->
-					<section class="col-lg-6 connectedSortable">
-										
-					
-
-
-					<!-- Map box -->
-					<div class="box box-info" id="quicEmail">
-						<div class="box-header">
-							<i class="fa fa-envelope"></i>
-							<h3 class="box-title">Quick Email</h3><hr>
-							<!-- tools box -->
-							<div class="pull-right box-tools">
-								<!-- <button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button> -->
-							</div><!-- /. tools -->
-						</div>
-						<form name="mails" action="sendingmails.php" method="post">
-							<div class="box-body">							
-								<div class="form-group">
-									<!-- <input type="email" class="form-control" name="emailto" placeholder="Email to:" /> -->
-									<div class=" col-md-6">
-										<div class="roundedOne">
-										  <input type="checkbox" id="RegStudent" name="RegStudent" />
-										  <label for="RegStudent"></label><div class="checkbox-text">All Reg. Students</div>
-										</div>
-									</div>
-									<div class=" col-md-6">
-									<div class="roundedOne">
-										  <input type="checkbox" id="ScStudent" name="ScStudent" />
-										  <label for="ScStudent"></label><div class="checkbox-text">All Reg. Students</div>
-										</div>
-									</div>
-									<div class=" col-md-6">
-									<div class="roundedOne">
-										  <input type="checkbox" id="RegInstuctors" name="RegInstuctors" />
-										  <label for="RegInstuctors"></label><div class="checkbox-text">All Reg. Students</div>
-										</div>
-									</div>
-									<div class=" col-md-6">
-									<div class="roundedOne">
-										  <input type="checkbox" id="ItdInstructor" name="ItdInstructor" />
-										  <label for="ItdInstructor"></label><div class="checkbox-text">All Reg. Students</div>
-										</div>
-									</div>
-									<!-- <input type="checkbox" id="RegStudent" name="RegStudent">All Reg. Students<br> -->
-									<!-- <input type="checkbox" id="ScStudent" name="ScStudent">All Short Course Students<br> -->
-									<!-- <input type="checkbox" id="RegInstuctors" name="RegInstuctors">All Reg. Instructors<br> -->
-									<!-- <input type="checkbox" id="ItdInstructor" name="ItdInstructor">All ITD Instuctors		<br>							 -->
-								</div>
-								<div class="form-group">
-									<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" />
-								</div>
-								<div>
-									<textarea class="textarea" name="message" id="message" placeholder="Message" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-								</div>								
-								<input type="hidden" class="form-control" name="adminID" id="adminID" value="Admin" /><!-- value="<?php echo $_SESSION['adminID'];?>" -->
-							</div>
-							<div class="box-footer clearfix">
-								<input type="submit" class="pull-right btn btn-default fa fa-arrow-circle-right" id="sendEmail" name="Send" value="Send" />
-							</div>
-						</form>
-					</div>
-					<!-- /.box -->
-
-					<div class="modal fade" id="myModal">
-					  <div class="modal-dialog" role="document">
-						<div class="modal-content" style="background-color:#18D4E4; border-radius:10px;">
-						  <div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="myModalLabel" style="color:#fff;">Oops Sorry..!</h4>
-						  </div>
-						  <div class="modal-body" align="center">
-							No Data Available
-						  </div>
-						  <div class="modal-footer">
-							<button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #C3942E;border-radius: 7px;">Close</button>
-							<!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-						  </div>
-						</div>
-					  </div>
-					</div>
-
-					 
-					</section><!-- right col -->
-				  </div><!-- /.row (main row) -->
-
-				</section><!-- /.content -->
-			  </div><!-- /.content-wrapper -->
-
-			<footer class="main-footer">
-				<div class="pull-right hidden-xs">
-					<b>Version</b> 2.2.0
-				</div>
-				<strong>Copyright &copy; 2014-2015 <a href="#"></a>.</strong> All rights reserved.
-			</footer>
+</div>
+<strong>Copyright &copy; 2014-2015 <a href="#"></a>.</strong> All rights reserved.
 			
-			<div class="control-sidebar-bg"></div>
-		</div><!-- ./wrapper -->
-		
+</footer>
+<div class="control-sidebar-bg">
+</div>
+</div>
+<!-- ./wrapper --> 
 
-		<!-- jQuery 2.1.4
-		<script src="assets/plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script> -->
-		<!-- Bootstrap 3.3.2 JS 
-		<script src="assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>-->
-		<!-- Swcc App 
-		<script src="assets/dist/js/app.min.js" type="text/javascript"></script>-->
-		<!-- Swcc for demo purposes -->
+<!-- jQuery 2.1.4
+		<script src="assets/plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script> --> 
+<!-- Bootstrap 3.3.2 JS 
+		<script src="assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>--> 
+<!-- Swcc App 
+		<script src="assets/dist/js/app.min.js" type="text/javascript"></script>--> 
+<!-- Swcc for demo purposes --> 
 
-		<!-- Page level javascript -->
-		<script type="text/javascript">
+<!-- Page level javascript --> 
+<script type="text/javascript">
 		/*Please consider that the JS part isn't production ready at all, I just code it to show the concept of merging filters and titles together !*/
 			$(document).ready(function(){
 				$('.filterable .btn-filter').click(function(){
@@ -1334,22 +1550,22 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 					}
 				});
 			});
-		</script>
+		</script> 
 
-		<!--<script src="assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>-->
-	<!-- jQuery UI 1.11.4 -->
-	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
-	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-	<script type="text/javascript">
+<!--<script src="assets/plugins/jQuery/jQuery-2.1.4.min.js"></script>--> 
+<!-- jQuery UI 1.11.4 --> 
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" type="text/javascript"></script> 
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip --> 
+<script type="text/javascript">
 	  $.widget.bridge('uibutton', $.ui.button);
-	</script>
+	</script> 
 
-	<!-- DatePicker -->
-	<link href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
-	<script src="assets/dist/js/datepicker.js"></script>
-		
-	<!-- Bootstrap 3.3.2 JS -->
-	<script type="text/javascript">
+<!-- DatePicker -->
+<link href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
+<script src="assets/dist/js/datepicker.js"></script> 
+
+<!-- Bootstrap 3.3.2 JS --> 
+<script type="text/javascript">
 	$(function () {
 	  $("#datepicker").datepicker({ 
 			autoclose: true, 
@@ -1428,20 +1644,12 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 		})
 
 		
-	</script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<!-- Housing Scripts -->
-		<script type="text/javascript" src="assets/dist/js/Housing-min.js"></script>
-		<script type="text/javascript" src="assets/dist/js/Housing.js"></script>		
-	<!-- Housing Scripts End -->
-
-
-
-
-
-
-
-
+	</script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
+<!-- Housing Scripts --> 
+<script type="text/javascript" src="assets/dist/js/Housing-min.js"></script> 
+<script type="text/javascript" src="assets/dist/js/Housing.js"></script> 
+<!-- Housing Scripts End --> 
 
 <script type="text/javascript">
 
@@ -1467,23 +1675,57 @@ $result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURS
 		$('.cedit').css('width', vedit + 'px');
 	})
 
-</script>
+</script> 
 
+<?php
+$stesql = "SELECT * FROM StudentInfo";
+$steresult = sqlsrv_query( $conn, $stesql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+?>
+<!-- Chart Search AutoComplete -->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script> 
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
+<script>
+	$(function() {
+var availableTags = [<?php while($steSturow = sqlsrv_fetch_array($steresult)){ ?>
+<?php echo '"'.$steSturow['StudentName_en'].'"'.','; } ?>
+	  /*"ActionScript",
+	  "AppleScript",
+	  "Asp",
+	  "BASIC",
+	  "C",
+	  "C++",
+	  "Clojure",
+	  "COBOL",
+	  "ColdFusion",
+	  "Erlang",
+	  "Fortran",
+	  "Groovy",
+	  "Haskell",
+	  "Java",
+	  "JavaScript",
+	  "Lisp",
+	  "Perl",
+	  "PHP",
+	  "Python",
+	  "Ruby",
+	  "Scala",
+	  "Scheme"*/
+	];
+	$( "#search-box" ).autocomplete({
+	  source: availableTags
+	});
+	});
+	</script> 
+<!-- Chart Search AutoComplete End --> 
 
-
-
-
-
-
-
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
-
+<!--Jquery Conflict-
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>-->
 
 <?php
 	include('Admin_files/includes/footer.php');
 ?>
-
-<script type="text/javascript" src="assets/dist/js/donut.js"></script>
+<script type="text/javascript" src="assets/dist/js/donut.js"></script> 
 <script type="text/javascript">
 	// jsfiddle configured to load jQuery Sparkline 2.1
 // http://omnipotent.net/jquery.sparkline/
@@ -1664,10 +1906,10 @@ $year = date("Y");
 
 
 
-var HolidayCal = $('#HolCalendar').height();
+var HolidayCal = $('.attendanceinstructor').height();
 $(window).load(function(){
 	// alert(HolidayCal);
-	$('.complaints').css('height' , 'HolidayCal' + 'px');
+	$('.complaints').css('height' , HolidayCal + 'px');
 })
 $(window).load(function(){
 
@@ -1676,26 +1918,78 @@ $(window).load(function(){
 		$('.complaintsorting').find('a').removeClass('btn-sort');
 		$(this).addClass('btn-sort');
 	})
+	$('.complaintsorting .btn-group .dropdown-menu').css('left' , -70 + 'px');
 	// $('.btn-group.btn-group-lg').find('.popover.fade.bottom.in').addClass('poppp');
+})
+
+
+
+// Slims scroll for complaint box
+$(window).load(function() {
+  $('complaints .slimScroll')
+	.slimscroll({ height: '550px' })
+	// .text(text);
+
+  $('.inputpickertext').on('focus click',function(){
+		// alert('dasd')
+		$('.datepicker').addClass('inputpicker');
+	})
 	
-					$('#ComplaintMonth').click(function() { 
+	$('#ComplaintMonth').click(function() { 
 					
 					var currentMonth = (new Date).getMonth()+1;
 					if(currentMonth < 10){
 						currentMonth = '0'+currentMonth;	
 					}
-					alert(currentMonth);
+					//alert(currentMonth);
 					
 						$.ajax({
 						   type: "GET",
 						   url: "Admin_files/Admin_Complains.php",
 						   data: {"currentMonth": currentMonth,"type":"Month"},
 						   success: function(msg){						   	
-							 $('.complaintData').html(msg);
+							 $('#MonthResult').html(msg);
 						   }
 						});
 						return true;
 					});
-})
+					
+					$('#ComplaintYear').click(function() { 
+					
+					var currentYear = new Date().getFullYear();
+						$.ajax({
+						   type: "GET",
+						   url: "Admin_files/Admin_Complains.php",
+						   data: {"currentYear": currentYear,"type":"Year"},
+						   success: function(msg){						   	
+							 $('#MonthResult').html(msg);
+						   }
+						});
+						return true;
+					});
+										
+															
+});
+
+					function getComplaintId(statu,CID){
+					//$("#UpdateStatus").change(function() {
+							
+							$.ajax({
+								
+								url: "Admin_files/Admin_Complains.php",
+								type: "GET",
+								data: {"Status": statu, "Complaint_No": CID,"type":"ComplaintStatus"},
+								success: function() {
+									//console.log("Data sent!");
+									alert("Status Successfully Updated");
+								}
+							});
+					//});
+					}		
+		function ShowStatus(a)
+		{
+			$('#selectStatus'+a).show();
+		}
+		
 
 </script>

@@ -138,3 +138,22 @@ function loadUrl()
 	var stripped_url1 = addParameter(url1,param1,value1);
 		top.location.href = stripped_url1;
 }
+
+
+// Quick mail Code
+
+$(window).load(function(){
+	$('.wysihtml5-sandbox').on('focus',function(){
+		alert('Caoptain');
+	});
+});
+
+
+
+
+
+
+
+
+
+

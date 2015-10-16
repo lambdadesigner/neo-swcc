@@ -17,17 +17,23 @@ if($_GET['action']=="delete" && $_GET['ModId']!="")
 
 ?>
 			<style>
-				.filterbutton {
-					float: right;
-					margin-top: 3px;
-					padding-left: 10px;
-				}
-				button.btn-filter {
-					padding: 5px 10px;
-					font-size: 15px;
-					background: #1caf9a;
-					color: white;
-				}
+			.filterbutton {
+				float: right;
+				margin-top: 3px;
+				padding-left: 10px;
+			}
+			button.btn-filter {
+				padding: 5px 10px;
+				font-size: 15px;
+				background: #1caf9a;
+				color: white;
+			}
+			.dataTable tr{
+			  background: #57A2CE;			  
+			}
+			table{
+				border:1px solid #57A2CE !important;
+			}
 			</style>
 			<link rel="stylesheet" type="text/css" href="assets/dist/css/bootstrap-clockpicker.min.css">
 			<!-- Content Wrapper. Contains page content -->
@@ -39,8 +45,8 @@ if($_GET['action']=="delete" && $_GET['ModId']!="")
 						<small></small>
 					</h1>
 					<ol class="breadcrumb">
-						<li><a href="#"><i class="fa fa-dashboard text-red"></i> Home</a></li>
-						<li><a href="#"><i class="fa fa-user text-red"></i> Profile</a></li>
+						<li><a href="Admin"><i class="fa fa-dashboard text-red"></i> Home</a></li>
+						<li><a href="#"><i class="fa fa-tasks"></i> Regular Modules</a></li>
 					</ol>
 				</section>
 					<?php if($_GET['action']=="" && $_GET['ModId']==""){?>
@@ -62,15 +68,15 @@ if($_GET['action']=="delete" && $_GET['ModId']!="")
 										<?php } ?>
 										<div class="pull-right">
 											<!-- <button class="btn btn-xs btn-filter"><span class="glyphicon glyphicon-filter filterbutton"></span> Filter</button> -->
-											<button type="button" class="btn btn-default" id="justs">
+											<button type="button" class="btn btn-primary" id="justs">
 		  										<span id="addd"><i class="fa fa-plus"></i> Add</span><span id="vie" style="display:none"><i class="fa fa-eye"></i> View</span> Modules
 											</button>											
 										</div>
 										<br><br>
 										<div id="myElem" class="alert alert-success" role="alert" style="display:none;" align="center">Modules Category</div>	
 									</div>
-									<div class="tab-content panel-body border" >
-										<table class="table table-striped" id="Modules">
+									<div class="tab-content panel-body">
+										<table class="table table-striped border" id="Modules">
 											<thead>
 												<tr class="filters">
 													<th>S.No</th>
@@ -161,7 +167,7 @@ if($_GET['action']=="delete" && $_GET['ModId']!="")
 													    <div class="modal-content">
 													      	<div class="modal-header">									        
 													        	<h3 class="modal-title" id="myModalLabel">Add Module</h3>
-													      	</div>
+													      	</div><br>
 													      	<input type="hidden" name="scenario" id="scenario" value="addAdmModule">										      	
 															<div class="row">
 																<div class="col-md-3 text-right">
@@ -170,13 +176,13 @@ if($_GET['action']=="delete" && $_GET['ModId']!="")
 																<div class="col-md-8">															
 																	<input type="text" id="ModuleId" name="ModuleId" placeholder="Module Id" class="input" data-toggle="tooltip" data-placement="right" title="Module Id" required style="width:100%;">
 																</div>
-															</div>
+															</div><br>
 													      	<div class="row">
 																<div class="col-md-3 text-right">
 																	MCID<i class="fa fa-star text-danger"></i>
 																</div>
 																<div class="col-md-8 styled-select">										
-																	<select name="MCID" id="MCID" style="width:500px;">
+																	<select name="MCID" id="MCID" style="width:100%;">
 																	<option value="">Select MCName</option>
 																	<?php
 																	$sql_Module_Category="SELECT MCID,MCName FROM Module_Category";
@@ -196,7 +202,7 @@ if($_GET['action']=="delete" && $_GET['ModId']!="")
 																<div class="col-md-8">															
 																	<input type="text" id="ModuleName" name="ModuleName" placeholder="Module Name" class="input" data-toggle="tooltip" data-placement="right" title="Module Name"  required style="width:100%;">														
 																</div>
-															</div>
+															</div><br>
 															<div class="row">
 																<div class="col-md-3 text-right">
 																	Duration<i class="fa fa-star text-danger"></i>
@@ -204,7 +210,7 @@ if($_GET['action']=="delete" && $_GET['ModId']!="")
 																<div class="col-md-8">															
 																	<input type="text" id="Duration" name="Duration" placeholder="Duration" class="input" data-toggle="tooltip" data-placement="right" title="Duration"  required style="width:100%;">														
 																</div>
-															</div>
+															</div><br>
 															
 															<div class="row">
 																<div class="col-md-3 text-right">
@@ -213,7 +219,7 @@ if($_GET['action']=="delete" && $_GET['ModId']!="")
 																<div class="col-md-8">															
 																	<input type="number" id="Weight" name="Weight" placeholder="Weight" class="input" data-toggle="tooltip" data-placement="right" title="Weight"  required style="width:100%;">														
 																</div>
-															</div>
+															</div><br>
 															<div class="row">
 																<div class="col-md-3 text-right">
 																	Abbrevation<i class="fa fa-star text-danger"></i>
@@ -221,7 +227,7 @@ if($_GET['action']=="delete" && $_GET['ModId']!="")
 																<div class="col-md-8">															
 																	<input type="text" id="Abbrevation" name="Abbrevation" placeholder="Abbrevation" class="input" data-toggle="tooltip" data-placement="right" title="Abbrevation"  required style="width:100%;">														
 																</div>
-															</div>
+															</div><br>
 															
 															<div class="row">
 																<div class="col-md-3 text-right">
@@ -230,7 +236,7 @@ if($_GET['action']=="delete" && $_GET['ModId']!="")
 																<div class="col-md-8">															
 																	<input type="text" id="InstructorID" name="InstructorID" placeholder="InstructorID" class="input" data-toggle="tooltip" data-placement="right" title="InstructorID"  required style="width:100%;">														
 																</div>
-															</div>
+															</div><br>
 															
 															<div class="row">
 																<div class="col-md-3 text-right">
@@ -239,7 +245,7 @@ if($_GET['action']=="delete" && $_GET['ModId']!="")
 																<div class="col-md-8">															
 																	<input type="text" id="TestTypeID" name="TestTypeID" placeholder="TestTypeID" class="input" data-toggle="tooltip" data-placement="right" title="TestTypeID" required style="width:100%;">														
 																</div>
-															</div>
+															</div><br>
 															
 															
 															<div class="row">
@@ -250,14 +256,14 @@ if($_GET['action']=="delete" && $_GET['ModId']!="")
 																	<?php 
 																		$grpIdsql = "SELECT * FROM SGroup";
 																		$grpIdresult = sqlsrv_query( $conn, $grpIdsql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));?>
-																	<select name="GroupId" id="GroupId" style="width:500px;">
+																	<select name="GroupId" id="GroupId" style="width:100%;">
 																		<option value="">Select Group Name</option>
 																		<?php while($groupId_row = sqlsrv_fetch_array($grpIdresult)){?>
 																			<option value="<?php echo $groupId_row['GroupID'];?>"><?php echo $groupId_row['GroupName'];?></option>
 																		<?php } ?>
 																	</select>
 																</div>
-															</div>	
+															</div>	<br>
 															
 															<div class="modal-footer">
 																<input type="submit" class="btn btn-default"  data-dismiss="modal" id="AddModule" name="AddModule">

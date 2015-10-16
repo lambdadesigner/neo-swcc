@@ -47,7 +47,7 @@ $url = basename($_SERVER['REQUEST_URI']);
 
 			<header class="main-header">
 				<!-- Logo -->
-				<a href="#" class="logo">
+				<a href="dashboard" class="logo">
 					<!-- mini logo for sidebar mini 50x50 pixels -->
 					<span class="logo-mini"><b>Stu.</b></span>
 					<!-- logo for regular state and mobile devices -->
@@ -82,7 +82,8 @@ $url = basename($_SERVER['REQUEST_URI']);
 						      <option value="ar" <?php if ($_GET['lang']==ar) echo 'selected="selected"';?>>Arabic</option>
 						    </select>  -->
 						</li>
-							<!-- Notifications: style can be found in dropdown.less -->
+
+		<!-- Notifications: style can be found in dropdown.less 
 							<li class="dropdown notifications-menu">
 								<a class="dropdown-toggle" data-toggle="dropdsown" id="bells" style="cursor:pointer">
 									<i class="fa fa-bell-o"></i>
@@ -105,7 +106,6 @@ $url = basename($_SERVER['REQUEST_URI']);
 								<ul class="dropdown-menu" id="alertdrop">
 									<li class="header">You have <?php echo $idd;?> notifications</li>
 									<li>
-										<!-- inner menu: contains the actual data -->
 										<ul class="menu">											
 											<?php $idssa = 1;
 												$noti_sql1 = "SELECT * FROM AllNotifications";
@@ -128,7 +128,7 @@ $url = basename($_SERVER['REQUEST_URI']);
 									</li>
 									<li class="footer"><a href="#">View all</a></li>
 								</ul>
-							</li>							
+							</li>	-->						
 							<!-- User Account: style can be found in dropdown.less -->
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdowns" id="userpanel">
@@ -190,8 +190,8 @@ $url = basename($_SERVER['REQUEST_URI']);
 					<!-- sidebar menu: : style can be found in sidebar.less -->
 					<ul class="sidebar-menu">
 						 <!-- <li class="header">MAIN NAVIGATION</li> -->
-						<li <?php if($url=="dashboard_c"){?>class="active"<?php } ?>>
-							<a href="dashboard_c">
+						<li <?php if($url=="dashboard"){?>class="active"<?php } ?>>
+							<a href="dashboard">
 								<i class="fa fa-dashboard"></i> <span><?php echo $lang["dashboard"];?></span>
 							</a>
 						</li>

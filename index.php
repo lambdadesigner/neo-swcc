@@ -1,6 +1,26 @@
 <?php
 session_start();
+error_reporting(0);
 include('includes/database.php');	
+
+// If Session is Created redirection to pages
+if($_SESSION['StudentID']!="")
+{
+	header("Location: dashboard");
+}
+if($_SESSION['EmpID']!="")
+{
+	header("Location: SCdashboard");
+}
+if($_SESSION['InstructorID']!="")
+{
+	header("Location: instructors");
+}
+if($_SESSION['AdminId']!="")
+{
+	header("Location: Admin");
+}
+
 
 if(isset($_POST['submit'])){
  $studentId = $_POST['studentId'];
@@ -39,7 +59,7 @@ if ($row_count > 0){
        $_SESSION['DoB'] = $row['DoB'];
     }
   
-   header("Location: dashboard_c");
+   header("Location: dashboard");
 }
 elseif($row_count1 > 0)
 {

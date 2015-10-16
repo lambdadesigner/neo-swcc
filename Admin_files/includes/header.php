@@ -39,17 +39,17 @@ $url = basename($_SERVER['REQUEST_URI']);
 		<![endif]-->
 	</head>
 
-	<body class="skin-blue sidebar-mini sidebar-collapse">
+	<body class="skin-blue sidebar-mini"><!-- sidebar-collapse -->
 		<!-- Site wrapper -->
 		<div class="wrapper">
 
 			<header class="main-header">
 				<!-- Logo -->
-				<a href="#" class="logo">
+				<a href="Admin" class="logo">
 					<!-- mini logo for sidebar mini 50x50 pixels -->
-					<span class="logo-mini"><b>Stu.</b></span>
+					<span class="logo-mini"><img src="assets/dist/img/swcc-logo.png"></span>
 					<!-- logo for regular state and mobile devices -->
-					<span class="logo-lg"><b>SWCC Student</b> </span>
+					<span class="logo-lg"><b><img src="assets/dist/img/swcc-logo.png"> SWCC Student</b> </span>
 				</a>
 				<!-- Header Navbar: style can be found in header.less -->
 				<nav class="navbar navbar-static-top" role="navigation">
@@ -62,7 +62,7 @@ $url = basename($_SERVER['REQUEST_URI']);
 					</a>
 					<div class="navbar-custom-menu">
 						<ul class="nav navbar-nav">
-						<li>
+						<li style="padding-top:10px;">
 							<!-- <div class="dropdown">
 								<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 									<?php if($_SESSION['language']=="en"){?>English<?php }elseif($_SESSION['language']=="ar"){?>Arabic<?php }else{?>Select Language<?php } ?>
@@ -80,7 +80,7 @@ $url = basename($_SERVER['REQUEST_URI']);
 						      <option value="ar" <?php if ($_SESSION['language']==ar) echo 'selected="selected"';?>>Arabic</option>
 						    </select>
 						</li>
-							<!-- Notifications: style can be found in dropdown.less -->
+							<!-- Notifications: style can be found in dropdown.less 
 							<li class="dropdown notifications-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdsown" id="bells">
 									<i class="fa fa-bell-o"></i>
@@ -88,8 +88,7 @@ $url = basename($_SERVER['REQUEST_URI']);
 								</a>
 								<ul class="dropdown-menu" id="alertdrop">
 									<li class="header">You have 10 notifications</li>
-									<li>
-										<!-- inner menu: contains the actual data -->
+									<li>										
 										<ul class="menu">
 											<li>
 												<a href="#">
@@ -100,7 +99,7 @@ $url = basename($_SERVER['REQUEST_URI']);
 									</li>
 									<li class="footer"><a href="#">View all</a></li>
 								</ul>
-							</li>							
+							</li>	-->						
 							<!-- User Account: style can be found in dropdown.less -->
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdowns" id="userpanel">
@@ -169,11 +168,11 @@ $url = basename($_SERVER['REQUEST_URI']);
 						</li>
 						<li class="treeview <?php if(false !== strpos($url,AllProfiles)){?>active<?php } ?>">
 							<a href="#">
-								<i class="fa fa-user"></i> <span><?php echo $lang["profile"];?></span> <i class="fa fa-angle-left pull-right"></i>
+								<i class="fa fa-user"></i> <span><?php //echo $lang["profile"];?>Profiles</span> <i class="fa fa-angle-left pull-right"></i>
 							</a>
 							<ul class="treeview-menu">								
-								<li class="active"><a href="AllProfiles"><i class="fa fa-user"></i><?php echo "Student "; echo $lang["profile"];?></a></li>
-								<li><a href="AllProfilesInst"><i class="fa fa-user"></i><?php echo $lang["Instructors"]." "; echo $lang["profile"];?></a></li>
+								<li <?php if($url=="AllProfiles"){?>class="active"<?php } ?>><a href="AllProfiles"><i class="fa fa-user"></i><?php echo "Student "; echo $lang["profile"];?></a></li>
+								<li <?php if($url=="AllProfilesInst"){?>class="active"<?php } ?>><a href="AllProfilesInst"><i class="fa fa-user"></i><?php echo $lang["Instructors"]." "; echo $lang["profile"];?></a></li>
 							</ul>
 						</li>
 						<li class="treeview <?php if($url=="AdminAuditorium" || $url=="AdminClassroom"){?>active<?php } ?>">
@@ -190,7 +189,7 @@ $url = basename($_SERVER['REQUEST_URI']);
 								<i class="fa fa-list-ul"></i> <span><?php echo $lang["schedules"];?></span>
 							</a>
 						</li>
-						<li <?php if($url=="AdminExams"){?>class="active"<?php } ?>>
+						<li <?php if(false !== strpos($url,AdminExams)){?>class="active"<?php } ?>>
 							<a href="AdminExams">
 								<i class="fa fa-pencil-square-o"></i> <span><?php echo $lang["examinations"];?></span>
 							</a>
@@ -210,21 +209,44 @@ $url = basename($_SERVER['REQUEST_URI']);
 								<i class="fa fa-bars"></i> <span><?php echo $lang["marks"];?></span> <i class="fa fa-angle-left pull-right"></i>
 							</a>
 							<ul class="treeview-menu">
-								<li <?php if($url=="AdminMarks"){?>class="active"<?php } ?>><a href="AdminMarks"><i class="fa fa-university"></i><?php echo $lang["marks"];?></a></li>
-								<li <?php if($url=="AdminSCMarks"){?>class="active"<?php } ?>><a href="AdminSCMarks"><i class="fa fa-university"></i><?php echo $lang["Short Course Marks"];?></a></li>
-								<!--<li <?php if($url==""){?>class="active"<?php } ?>><a href="#"><i class="fa fa-leaf"></i>Marks Courses</a></li>-->
+								<li <?php if($url=="AdminMarks"){?>class="active"<?php } ?>><a href="AdminMarks"><i class="fa fa-university"></i>Regular Course</a></li>
+								<li <?php if($url=="AdminSCMarks"){?>class="active"<?php } ?>><a href="AdminSCMarks"><i class="fa fa-university"></i><?php echo $lang["Short Course"];?></a></li>
 							</ul>
 						</li>		
 						<li <?php if($url=="AdminAttendance"){?>class="active"<?php } ?>>
 							<a href="AdminAttendance">
-								<i class="fa fa-pencil-square-o"></i> <span><?php echo $lang["attendance"];?></span>
+								<i class="fa fa-book"></i> <span><?php echo $lang["attendance"];?></span>
 							</a>
 						</li>
 						<li <?php if(false !== strpos($url,Holidays)){?>class="active"<?php } ?>>
 							<a href="Holidays">
 								<i class="fa fa-pencil-square-o"></i> <span>Holidays</span>
 							</a>
+						</li>
+                        <li <?php if(false !== strpos($url,Holidays)){?>class="active"<?php } ?>>
+							<a href="Groups">
+								<i class="fa fa-pencil-square-o"></i> <span>Groups</span>
+							</a>
+						</li>
+						<li <?php if(false !== strpos($url,Announcements)){?>class="active"<?php } ?>>
+							<a href="Announcements">
+								<i class="fa fa-bullhorn"></i> <span>Announcements</span>
+							</a>
+						</li>	                        
+                        <li <?php if(false !== strpos($url,AdminBuildings)){?>class="active"<?php } ?>>
+							<a href="AdminBuildings?building=B1">
+								<i class="fa fa-dashboard"></i> <span> Room Availability<?php //echo $lang["dashboard"];?></span>
+							</a>
 						</li>				
+						<li class="treeview <?php if($url=="AdminBuildings" || $url=="AdminBuildings"){?>active<?php } ?>">
+							<a href="#">
+								<i class="fa fa-tag"></i> <span>Maintenance</span> <i class="fa fa-angle-left pull-right"></i>
+							</a>
+							<ul class="treeview-menu">
+								<li <?php if($url=="AdminBuildings"){?>class="active"<?php } ?>><a href="AdminBuildings?building=B1"><i class="fa fa-building"></i>Buildings</span></a></li>
+								<li><a href=""><i class="fa fa-building-o"></i>Apartments</a></li>								
+							</ul>
+						</li>	
 					</ul>
 				</section>
 				<!-- /.sidebar -->

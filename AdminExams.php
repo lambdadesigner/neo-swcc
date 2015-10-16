@@ -38,6 +38,34 @@ if($_GET['action']=="delete")
 			    line-height: 1;
 			    border: 0;
 			}
+
+			/*Tables Design*/
+			table.dataTable.no-footer{
+			  border: 0px;
+			}
+
+			div.dataTables_filter,div.dataTables_length { 
+			  display: none !important;
+			}
+			table.dataTable thead th, table.dataTable thead td {
+			  border-bottom: 3px solid #d9d9d9 ;
+			}
+			.dataTable tr{
+			  background: #a6e1ec;			  
+			}
+			.dataTable tbody tr td{
+			  padding: 18px;
+			}
+			.border table {
+				border: 1px solid #ccc;
+				margin-bottom: 20px;
+			} 
+			.dataTable tr td{
+			  border: 1px solid #f9f9f9;
+			}
+			table{
+				border:1px solid #a6e1ec !important;
+			}
 			</style>
 
 			<!-- Content Wrapper. Contains page content -->
@@ -49,30 +77,30 @@ if($_GET['action']=="delete")
 						<small></small>
 					</h1>
 					<ol class="breadcrumb">
-						<li><a href="#"><i class="fa fa-dashboard text-red"></i> Home</a></li>
-						<li><a href="#"><i class="fa fa-user text-red"></i> Profile</a></li>
+						<li><a href="dashboard"><i class="fa fa-dashboard text-red"></i> Home</a></li>
+						<li><a href=""><i class="fa fa-edit text-red"></i> Examinations</a></li>
 					</ol>
 				</section>
 
 				<!-- Main content -->
 				<section class="content">
 					<div class="panel box box-info">
-						<div class="panel-body border">
+						<div class="panel-body">
 							<div class="row">
 								<div class="panel filterable">
 									<!-- Showing Classrooms -->
 									<?php if($_GET['action']=="" && $_GET['ModId']==""){?>
 										<div class="panel-heading">
-											<h3 class="panel-title text-red"><i class="fa fa-pencil fa-lg"></i> Examinations
+											<h3 class="panel-title text-red"><!-- <i class="fa fa-pencil fa-lg"></i> Examinations -->
 												<div class="pull-right">
-													<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal1">
-														<span class="glyphicon glyphicon-plus"></span> Add
+													<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal1" style="margin-top:-13px;">
+														<span class="glyphicon glyphicon-plus"></span> Add Exam
 													</button>
 												</div>
 											</h3>
 											<hr>
 										</div>
-										<div class="panel-body border">
+										<div class="panel-body">
 											<table class="table table-striped" id="examinations">
 												<thead>												
 													<tr class="filters1">
@@ -83,8 +111,8 @@ if($_GET['action']=="delete")
 														<th><input type="text" class="form-control" placeholder="Test Type" ></th>
 														<th><input type="text" class="form-control" placeholder="Test Weight" ></th>	
 														<th><input type="text" class="form-control" placeholder="Max Marks" ></th>	
-														<th>Edit</th>
-														<th>Delete</th>	
+														<th></th>
+														<th></th>	
 													</tr>
 												</thead>
 												<tbody>
@@ -136,7 +164,7 @@ if($_GET['action']=="delete")
 																		<div class="col-md-8">															
 																			<input type="text" id="TestID" name="TestID" placeholder="Test Id" class="input" data-toggle="tooltip" data-placement="right" title="Test Id" required style="width:100%;" value="<?php echo $EditExam_row['TestID'];?>">
 																		</div>
-																	</div>
+																	</div><br>
 																	<div class="row">
 																		<div class="col-md-3 text-right">
 																			Test Name
@@ -153,7 +181,7 @@ if($_GET['action']=="delete")
 																			<?php 
 																			$ModuleN_sql = "SELECT Distinct ModuleID,ModuleName FROM Module";
 																			$ModuleN_result = sqlsrv_query( $conn, $ModuleN_sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));?>										
-																			<select name="ModuleName" id="ModuleName" style="width:580px;">
+																			<select name="ModuleName" id="ModuleName" style="width:100%;">
 																				<option value="">Select Module Name</option>
 																				<?php while($ModN_row = sqlsrv_fetch_array($ModuleN_result)){?>
 																		  	  		<option value="<?php echo $ModN_row['ModuleID'];?>"><?php echo $ModN_row['ModuleName'];?></option>
@@ -169,7 +197,7 @@ if($_GET['action']=="delete")
 												                            }		
 																			</script>
 																		</div>
-																	</div>
+																	</div><br>
 															      	<div class="row">
 																		<div class="col-md-3 text-right">
 																			Cycle Id
@@ -177,7 +205,7 @@ if($_GET['action']=="delete")
 																		<div class="col-md-8">															
 																			<input type="text" id="CycleId" name="CycleId" placeholder="Cycle Id" class="input" data-toggle="tooltip" data-placement="right" title="Cycle Id" required style="width:100%;" value="<?php echo $EditExam_row['CycleID'];?>">
 																		</div>
-																	</div>
+																	</div><br>
 																	<div class="row">
 																		<div class="col-md-3 text-right">
 																			Test Type
@@ -193,7 +221,7 @@ if($_GET['action']=="delete")
 																		<div class="col-md-8">															
 																			<input type="text" id="TestWeight" name="TestWeight" placeholder="Test Weight" class="input inputpickertext" data-toggle="tooltip" data-placement="right"title="Test Weight" required style="width:100%;" value="<?php echo $EditExam_row['TestWeight'];?>">
 																		</div>
-																	</div>
+																	</div><br>
 																	<div class="row">
 																		<div class="col-md-3 text-right">
 																			Max Marks

@@ -42,6 +42,34 @@ if($_POST['scenario']=="editAdmClassroom")
 			    line-height: 1;
 			    border: 0;
 			}
+
+			/*Tables Design*/
+			table.dataTable.no-footer{
+			  border: 0px;
+			}
+
+			div.dataTables_filter,div.dataTables_length { 
+			  display: none !important;
+			}
+			table.dataTable thead th, table.dataTable thead td {
+			  border-bottom: 3px solid #d9d9d9 ;
+			}
+			.dataTable tr{
+			  background: #F7F5D9;			  
+			}
+			.dataTable tbody tr td{
+			  padding: 10px;
+			}
+			.border table {
+				border: 1px solid #ccc;
+				margin-bottom: 20px;
+			} 
+			table{
+				border:1px solid #F7F5D9 !important;
+			}
+			.dataTable tr td{
+			  border: 1px solid #f9f9f9;
+			}
 			</style>
 			<!-- Page Level CSS -->
 			<link rel="stylesheet" type="text/css" href="instructors/css/classbooking.css">
@@ -54,8 +82,8 @@ if($_POST['scenario']=="editAdmClassroom")
 						<small></small>
 					</h1>
 					<ol class="breadcrumb">
-						<li><a href="#"><i class="fa fa-dashboard text-red"></i> Home</a></li>
-						<li><a href="#"><i class="fa fa-user text-red"></i> Profile</a></li>
+						<li><a href="Admin"><i class="fa fa-dashboard text-red"></i> Home</a></li>
+						<li><a href="#"><i class="fa fa-leaf"></i> Class Room </a></li>
 					</ol>
 				</section>
 
@@ -67,11 +95,13 @@ if($_POST['scenario']=="editAdmClassroom")
 								<div class="panel filterable">
 									<!-- Showing Classrooms -->
 									<?php if($_GET['action']=="" && $_GET['ModId']==""){?>
+
 										<script type="text/javascript">
 										$(document).ready(function() {
 											$('#classroom').DataTable( {
 											} );
-										} );</script>
+										});
+										</script>
 										<div class="panel-heading">
 											<!-- <h3 class="panel-title">Users</h3> -->
 											<div class="pull-right">
@@ -80,8 +110,8 @@ if($_POST['scenario']=="editAdmClassroom")
 											</div><br><br>
 										</div>
 
-										<div class="tab-content panel-body border" id="auditoriumRows">	
-											<table class="table table-striped" id="classroom">
+										<div class="tab-content panel-body" id="auditoriumRows">	
+											<table class="table" id="classroom">
 												<thead>
 													<tr class="filters">
 														<th>S.No</th>
@@ -114,7 +144,7 @@ if($_POST['scenario']=="editAdmClassroom")
 														<td><?php echo $row['OccString']?></td>
 														<td><a href="AdminClassroom?action=Edit&ModId=<?php echo $row['ClassNum'];?>&date=<?php echo date_format($row['BookedDate'],"Y-m-d");?>" style="cursor:pointer"><i class="fa fa-edit fa-lg" data-toggle="tooltip" data-placement="top" title="Click to edit"></i></a></td>
 															
-														<td><a onClick="var q = confirm('Are you sure you want to delete selected record?'); if (q) { window.location = 'AdminClassroom?action=delete&Classid=<?php echo $row['ClassNum'];?>&date=<?php echo date_format($row['BookedDate'],"Y-m-d");?>'; return false;}" style="cursor:pointer"><i class="fa fa-close text-danger"></i></a> </td>
+														<td><a onClick="var q = confirm('Are you sure you want to delete selected record?'); if (q) { window.location = 'AdminClassroom?action=delete&Classid=<?php echo $row['ClassNum'];?>&date=<?php echo date_format($row['BookedDate'],"Y-m-d");?>'; return false;}" style="cursor:pointer"><i class="fa fa-close text-danger" data-toggle="tooltip" data-placement="top" title="Click to delete"></i></a> </td>
 													</tr>
 												<?php $jk++;}?>												
 												</tbody>
@@ -227,14 +257,13 @@ if($_POST['scenario']=="editAdmClassroom")
 												<div class="modal-body">
 													<div class="col-md-12 classroombooking">
 														<div class="row">
-															<div class="col-md-7 row">
-																<div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
-																    <input class="form-control inputpickertext" type="text" name="BookDate" id="BookDate" />
-																    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-																</div>
+															<div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
+															    <input class="form-control inputpickertext" type="text" name="BookDate" id="BookDate" required="required"/>
+															    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
 															</div>
-															<div class="col-md-5 styled-select">
-																<select name="classroom col-md-6 col-sm-6" id="classroom">
+															<br>
+															<div class="styled-select">
+																<select name="classroom col-md-6 col-sm-6" id="classroom" required="required" style="width:100%;">
 																	<option value="">Select Class Room</option>
 																	<?php
 																		$sql_classroom = "SELECT DISTINCT ClassNum FROM ClassroomBookingStatus";
@@ -245,11 +274,11 @@ if($_POST['scenario']=="editAdmClassroom")
 																</select>
 															</div><br>
 															<div class="">
-																<input maxlength="100" type="text" id="bookedby" required name="bookedby" value="Admin" class="form-control" placeholder="Booked By" />													
+																<input maxlength="100" type="text" id="bookedby" required name="bookedby" class="form-control" placeholder="Booked By" required="required"/>													
 															</div>
 															<div class="">
 
-																<input maxlength="100" type="text" id="OccString" required="required" name="OccString" class="form-control" placeholder="Occ String" />
+																<input maxlength="100" type="text" id="OccString" required="required" name="OccString" class="form-control" placeholder="Occ String" required="required"/>
 															</div>
 														</div>
 													</div>												  
@@ -348,15 +377,40 @@ if($_POST['scenario']=="editAdmClassroom")
 				        todayHighlight: true,
 				        format:'yyyy-mm-dd'
 				  }).datepicker('', new Date());;
+
+				  $("#BookDate").datepicker({ 
+				        autoclose: true, 
+				        todayHighlight: true,
+				        format:'yyyy-mm-dd'
+				  }).datepicker('', new Date());;
 				});
 				
 		$(document).ready(function(){
 			$('#classroomsave').click(function(){
 				//var classroom = $('#classroom').val();
-				var classroom = $('select#classroom option:selected').val();
+			
+				 
 				var BookDate = $('#BookDate').val();
+				if(BookDate ==""){
+					alert("Please enter date");
+					BookDate.focus();
+					}
+				var classroom = $('select#classroom option:selected').val();
+				 
+				 if(classroom == ""){
+					 alert("Please Select Classroom");
+					 classroom.focus();
+					 }
 				var bookedby = $('#bookedby').val();
+					if(bookedby==""){
+						alert('please enter bookedby');
+						bookedby.focus();
+						}
 				var OccString = $('#OccString').val();
+				if(OccString==""){
+						alert('please enter OccString');
+						OccString.focus();
+						}
 				
 				$.ajax({
 				   type: "GET",

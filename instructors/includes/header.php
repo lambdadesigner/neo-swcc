@@ -83,7 +83,7 @@ $url = basename($_SERVER['REQUEST_URI']);
 						      <option value="ar" <?php if ($_GET['lang']==ar) echo 'selected="selected"';?>>Arabic</option>
 						    </select><?php */?>
 						</li>
-							<!-- Notifications: style can be found in dropdown.less -->
+							<!-- Notifications: style can be found in dropdown.less 
 							<li class="dropdown notifications-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdsown" id="bells">
 									<i class="fa fa-bell-o"></i>
@@ -92,7 +92,6 @@ $url = basename($_SERVER['REQUEST_URI']);
 								<ul class="dropdown-menu" id="alertdrop">
 									<li class="header">You have 10 notifications</li>
 									<li>
-										<!-- inner menu: contains the actual data -->
 										<ul class="menu">
 											<li>
 												<a href="#">
@@ -103,7 +102,7 @@ $url = basename($_SERVER['REQUEST_URI']);
 									</li>
 									<li class="footer"><a href="#">View all</a></li>
 								</ul>
-							</li>							
+							</li>	-->						
 							<!-- User Account: style can be found in dropdown.less -->
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdowns" id="userpanel">

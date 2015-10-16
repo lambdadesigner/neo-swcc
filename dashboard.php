@@ -25,79 +25,90 @@ $studentId = $_SESSION['StudentID'];
 				<section class="content">
 					<div class="row">
 						<div class="col-md-6">
-						  <!-- Attendance Calendar/Chart Starts-->
+
+							<!-- ANimation Chart -->
 							<div class="attendance-chart">
+								<div class="box box-danger">
+									<div class="box-header with-border">
+									  <h3 class="box-title">Attendance Report Of <small> <?php echo $_SESSION['StudentName_en']?></small></h3>
+									  <!-- <div class="box-tools pull-right">
+										<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+										<div class="btn-group">
+										  <button class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown"><i class="fa fa-wrench"></i></button>
+										  <ul class="dropdown-menu" role="menu">
+											<li><a href="#">Action</a></li>
+											<li><a href="#">Another action</a></li>
+											<li><a href="#">Something else here</a></li>
+											<li class="divider"></li>
+											<li><a href="#">Separated link</a></li>
+										  </ul>
+										</div>
+										<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+									  </div> -->
+									</div><!-- /.box-header -->
+									<div class="box-body gradient-blue">
+									  <div class="row">
+										<div class="col-md-12">
+										  <p class="text-center">
+											<strong>Attendance: 1 Jan, 2015 - 30 Jul, 2015</strong>
+										  </p>
+										  <div class="chart">
+											<!-- Sales Chart Canvas -->
+											<canvas id="salesChart" height="180"></canvas>
+										  </div><!-- /.chart-responsive -->
+										</div><!-- /.col -->
+									  </div><!-- /.row -->
+									</div><!-- ./box-body -->
+									<div class="box-footer">
+									  <div class="row">
+										<div class="col-sm-3 col-xs-6">
+										  <div class="description-block border-right">
+											<!-- <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i> 0%</span> -->
+											<span class="description-header">58.5%</span><br>
+											<span class="description-text">TOTAL ATTENDANCE</span>
+										  </div><!-- /.description-block -->
+										</div><!-- /.col -->
+										<div class="col-sm-3 col-xs-6">
+										  <div class="description-block border-right">
+											<!-- <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 17%</span> -->
+											<span class="description-header">75%</span><br>
+											<span class="description-text">REQUIRED ATTENDENCE</span>
+										  </div><!-- /.description-block -->
+										</div><!-- /.col -->
+										<div class="col-sm-3 col-xs-6">
+										  <div class="description-block border-right">
+											<!-- <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 18%</span> -->
+											<span class="description-header">10%</span><br>
+											<span class="description-text">ABSENTIES</span>
+										  </div><!-- /.description-block -->
+										</div><!-- /.col -->
+										<div class="col-sm-3 col-xs-6">
+										  <div class="description-block">
+											<!-- <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 20%</span> -->
+											<span class="description-header">16.5%</span><br>
+											<span class="description-text">REQUIRED</span>
+										  </div><!-- /.description-block -->
+										</div>
+									  </div><!-- /.row -->
+									</div><!-- /.box-footer -->
+								</div>
+							</div>
+							<!-- Animation Chart Ends -->
+
+
+
+						  <!-- Attendance Calendar/Chart Starts-->
+							<div class="attendance-chart1">
 							  <div class="box box-danger">
-								<?php ?><div class="box-header with-border">
-								  <h3 class="box-title">Monthly Recap Report</h3>
-								  <div class="box-tools pull-right">
-									<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-									<div class="btn-group">
-									  <button class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown"><i class="fa fa-wrench"></i></button>
-									  <ul class="dropdown-menu" role="menu">
-										<li><a href="#">Action</a></li>
-										<li><a href="#">Another action</a></li>
-										<li><a href="#">Something else here</a></li>
-										<li class="divider"></li>
-										<li><a href="#">Separated link</a></li>
-									  </ul>
-									</div>
-									<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-								  </div>
-								</div><!-- /.box-header -->
-								<div class="box-body">
-								  <div class="row">
-									<div class="col-md-12">
-									  <p class="text-center">
-										<strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
-									  </p>
-									  <div class="chart">
-										<!-- Sales Chart Canvas -->
-										<canvas id="salesChart" height="180"></canvas>
-									  </div><!-- /.chart-responsive -->
-									</div><!-- /.col -->
-								  </div><!-- /.row -->
-								</div><!-- ./box-body -->
-								<div class="box-footer">
-								  <div class="row">
-									<div class="col-sm-3 col-xs-6">
-									  <div class="description-block border-right">
-										<span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i> 0%</span>
-										<h5 class="description-header">58.5%</h5>
-										<span class="description-text">TOTAL ATTENDANCE</span>
-									  </div><!-- /.description-block -->
-									</div><!-- /.col -->
-									<div class="col-sm-3 col-xs-6">
-									  <div class="description-block border-right">
-										<span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 17%</span>
-										<h5 class="description-header">75%</h5>
-										<span class="description-text">REQUIRED ATTENDENCE</span>
-									  </div><!-- /.description-block -->
-									</div><!-- /.col -->
-									<div class="col-sm-3 col-xs-6">
-									  <div class="description-block border-right">
-										<span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 18%</span>
-										<h5 class="description-header">$10%</h5>
-										<span class="description-text">ABSENTIES</span>
-									  </div><!-- /.description-block -->
-									</div><!-- /.col -->
-									<div class="col-sm-3 col-xs-6">
-									  <div class="description-block">
-										<span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 20%</span>
-										<h5 class="description-header">16.5%</h5>
-										<span class="description-text">REQUIRED</span>
-									  </div><!-- /.description-block -->
-									</div>
-								  </div><!-- /.row -->
-								</div><!-- /.box-footer --><?php ?>
+								
 
 			<!-- Calendar Starts -->
 				<!-- <link rel='stylesheet prefetch' href='assets/bootstrap/css/bootstrap.min.css'> -->
 				<link rel='stylesheet prefetch' href='assets/bootstrap/css/bootstrap-theme.min.css'>
 				<link rel="stylesheet" type="text/css" href="assets/dist/css/calendar.css">
-
+				<div class="clearfix"></div>
 					<div class="box-header with-border">
-					  <h3 class="box-title">Monthly Attendance Report </h3><i class="fa fa-calendar text-red pull-right"></i> 
+					  <h3 class="box-title">Monthly Attendance Report <small> <?php echo $_SESSION['StudentName_en']?></small></h3><i class="fa fa-calendar text-red pull-right"></i> 
 					  <!-- <div class="box-tools pull-right">
 						<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 						<div class="btn-group">
@@ -590,7 +601,8 @@ $studentId = $_SESSION['StudentID'];
 					</div><!-- /.col -->
 						<!-- Attendance Calendar/Chart Ends -->
 
-							<div class="">
+
+							<?php /*?><div class="">
 			                  <!-- DIRECT CHAT -->
 			                  <div class="box box-warning direct-chat direct-chat-warning">
 			                    <div class="box-header with-border">
@@ -694,7 +706,7 @@ $studentId = $_SESSION['StudentID'];
 			                      </form>
 			                    </div><!-- /.box-footer-->
 			                  </div><!--/.direct-chat -->
-			                </div><!-- /.col -->
+			                </div><!-- /.col --><?php */?>
 			                
 						</div>
 						
@@ -703,7 +715,7 @@ $studentId = $_SESSION['StudentID'];
 							<div class="marks-chart">
 								<div class="box box-success">
 									<div class="box-header with-border">
-									  <h3 class="box-title">Marks</h3><i class="fa fa-bar-chart text-green pull-right"></i>
+									  <h3 class="box-title">Marks <small> <?php echo $_SESSION['StudentName_en']?></small></h3><i class="fa fa-bar-chart text-green pull-right"></i>
 									  <div class="box-tools pull-right">
 										<!-- <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 										<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> -->
@@ -711,20 +723,30 @@ $studentId = $_SESSION['StudentID'];
 									</div>
 									<div class="box-body">
 										<!-- <canvas id="barChart" height="230"></canvas> -->
-										<section id="skills" style="overflow-y:scroll; height:420px;" class="slimScroll">
+										<section id="skills" class="slimScroll">
 										 <?php
-										 	$marks_query = "SELECT * FROM MarksModule where StudentID=$studentId";
+										 	$marks_query = "SELECT * FROM MarksModule where StudentID='$studentId'";
 										 	$marks_result = sqlsrv_query( $conn, $marks_query ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));	
 
 										 	while($marks_row = sqlsrv_fetch_array($marks_result)){										 	 
 										 ?>
-											<div class="zero"><progress value="<?php echo $marks_row['S1_Marks'];?>" data-toggle="tooltip" data-placement="top" title="dsasd" max="<?php echo $marks_row['S1_Weight'];?>" ></progress><span><?php echo $marks_row['S1_ModuleID'];?></span><div class="marks pull-right"><strong><?php echo $marks_row['S1_Marks']; ?></strong> /100 </div></div>
+											<div class="zero"><progress value="<?php echo $marks_row['S1_Marks'];?>" data-toggle="tooltip" data-placement="top" max="<?php echo $marks_row['S1_Weight'];?>" ></progress><span><?php echo $marks_row['S1_ModuleID'];?></span><div class="marks pull-right"><strong><?php echo $marks_row['S1_Marks']; ?></strong> /100 </div></div>
 											<div class="one"><progress value="<?php echo $marks_row['S2_Marks'];?>" max="<?php echo $marks_row['S2_Weight'];?>"></progress><span><?php echo $marks_row['S2_ModuleID'];?></span><div class="marks pull-right"><strong><?php echo $marks_row['S2_Marks']; ?></strong> /100 </div></div>
 											<div class="two"><progress value="<?php echo $marks_row['S3_Marks'];?>" max="<?php echo $marks_row['S3_Weight'];?>"></progress><span><?php echo $marks_row['S3_ModuleID'];?></span><div class="marks pull-right"><strong><?php echo $marks_row['S3_Marks']; ?></strong> /100 </div></div>
 											<div class="four"><progress value="<?php echo $marks_row['S4_Marks'];?>" max="<?php echo $marks_row['S4_Weight'];?>"></progress><span><?php echo $marks_row['S4_ModuleID'];?></span><div class="marks pull-right"><strong><?php echo $marks_row['S4_Marks']; ?></strong> /100 </div></div>
 											<div class="three"><progress value="<?php echo $marks_row['S5_Marks'];?>" max="<?php echo $marks_row['S5_Weight'];?>"></progress><span><?php echo $marks_row['S5_ModuleID'];?></span><div class="marks pull-right"><strong><?php echo $marks_row['S5_Marks']; ?></strong> /100 </div></div>
 											<div class="four"><progress value="<?php echo $marks_row['S2_Marks'];?>" max="<?php echo $marks_row['S2_Weight'];?>"></progress><span><?php echo $marks_row['S2_ModuleID'];?></span><div class="marks pull-right"><strong><?php echo $marks_row['S2_Marks']; ?></strong> /100 </div></div>
 											<div class="three"><progress value="<?php echo $marks_row['S6_Marks'];?>" max="<?php echo $marks_row['S6_Weight'];?>"></progress><span><?php echo $marks_row['S6_ModuleID'];?></span><div class="marks pull-right"><strong><?php echo $marks_row['S6_Marks']; ?></strong> /100 </div></div>
+											<div class="four"><progress value="<?php echo $marks_row['S7_Marks'];?>" max="<?php echo $marks_row['S7_Weight'];?>"></progress><span><?php echo $marks_row['S7_ModuleID'];?></span><div class="marks pull-right"><strong><?php echo $marks_row['S7_Marks']; ?></strong> /100 </div></div>
+											<div class="five"><progress value="<?php echo $marks_row['S1_Marks'];?>" max="<?php echo $marks_row['S1_Weight'];?>"></progress><span><?php echo $marks_row['S1_ModuleID'];?></span><div class="marks pull-right"><strong><?php echo $marks_row['S1_Marks']; ?></strong> /100 </div></div>
+											<div class="six"><progress value="<?php echo $marks_row['S8_Marks'];?>" max="<?php echo $marks_row['S8_Weight'];?>"></progress><span><?php echo $marks_row['S8_ModuleID'];?></span><div class="marks pull-right"><strong><?php echo $marks_row['S8_Marks']; ?></strong> /100 </div></div>											
+											<div class="eight"><progress value="<?php echo $marks_row['S2_Marks'];?>" max="<?php echo $marks_row['S2_Weight'];?>"></progress><span><?php echo $marks_row['S2_ModuleID'];?></span><div class="marks pull-right"><strong><?php echo $marks_row['S2_Marks']; ?></strong> /100 </div></div>
+											<div class="nine"><progress value="<?php echo $marks_row['S4_Marks'];?>" max="<?php echo $marks_row['S4_Weight'];?>"></progress><span><?php echo $marks_row['S4_ModuleID'];?></span><div class="marks pull-right"><strong><?php echo $marks_row['S4_Marks']; ?></strong> /100 </div></div>
+											<div class="four"><progress value="<?php echo $marks_row['S7_Marks'];?>" max="<?php echo $marks_row['S7_Weight'];?>"></progress><span><?php echo $marks_row['S7_ModuleID'];?></span><div class="marks pull-right"><strong><?php echo $marks_row['S7_Marks']; ?></strong> /100 </div></div>
+											<div class="five"><progress value="<?php echo $marks_row['S1_Marks'];?>" max="<?php echo $marks_row['S1_Weight'];?>"></progress><span><?php echo $marks_row['S1_ModuleID'];?></span><div class="marks pull-right"><strong><?php echo $marks_row['S1_Marks']; ?></strong> /100 </div></div>
+											<div class="six"><progress value="<?php echo $marks_row['S8_Marks'];?>" max="<?php echo $marks_row['S8_Weight'];?>"></progress><span><?php echo $marks_row['S8_ModuleID'];?></span><div class="marks pull-right"><strong><?php echo $marks_row['S8_Marks']; ?></strong> /100 </div></div>											
+											<div class="eight"><progress value="<?php echo $marks_row['S2_Marks'];?>" max="<?php echo $marks_row['S2_Weight'];?>"></progress><span><?php echo $marks_row['S2_ModuleID'];?></span><div class="marks pull-right"><strong><?php echo $marks_row['S2_Marks']; ?></strong> /100 </div></div>
+											<div class="nine"><progress value="<?php echo $marks_row['S4_Marks'];?>" max="<?php echo $marks_row['S4_Weight'];?>"></progress><span><?php echo $marks_row['S4_ModuleID'];?></span><div class="marks pull-right"><strong><?php echo $marks_row['S4_Marks']; ?></strong> /100 </div></div>
 											<div class="four"><progress value="<?php echo $marks_row['S7_Marks'];?>" max="<?php echo $marks_row['S7_Weight'];?>"></progress><span><?php echo $marks_row['S7_ModuleID'];?></span><div class="marks pull-right"><strong><?php echo $marks_row['S7_Marks']; ?></strong> /100 </div></div>
 											<div class="five"><progress value="<?php echo $marks_row['S1_Marks'];?>" max="<?php echo $marks_row['S1_Weight'];?>"></progress><span><?php echo $marks_row['S1_ModuleID'];?></span><div class="marks pull-right"><strong><?php echo $marks_row['S1_Marks']; ?></strong> /100 </div></div>
 											<div class="six"><progress value="<?php echo $marks_row['S8_Marks'];?>" max="<?php echo $marks_row['S8_Weight'];?>"></progress><span><?php echo $marks_row['S8_ModuleID'];?></span><div class="marks pull-right"><strong><?php echo $marks_row['S8_Marks']; ?></strong> /100 </div></div>											
@@ -747,9 +769,9 @@ $studentId = $_SESSION['StudentID'];
 								?>
 			                  <div class="box box-danger">
 			                    <div class="box-header with-border">
-			                      <h3 class="box-title">Instructors</h3>
+			                      <h3 class="box-title">Instructors </h3>
 			                      <div class="box-tools pull-right">
-			                        <span class="label label-danger"><?php echo $row_count;?> Members</span>
+			                        <!-- <span class="label label-danger"><?php echo $row_count;?> Members</span> -->
 			                        <i class="fa fa-users pull-right text-red"></i>
 			                        <!-- <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 			                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> -->
@@ -820,7 +842,7 @@ $studentId = $_SESSION['StudentID'];
 						<div class="col-md-12">
 							 <div class="box box-info">
 								<div class="box-header with-border">
-								  <h3 class="box-title">Programs</h3>
+								  <h3 class="box-title">Programs for <small> <?php echo $_SESSION['StudentName_en']?></small></h3>
 								  <i class="fa fa-tasks pull-right text-info"></i>
 								  <!-- <div class="box-tools pull-right">
 									<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
@@ -850,10 +872,11 @@ $studentId = $_SESSION['StudentID'];
 									  </thead>
 									  <tbody>
 									  <?php 
-											$querys =	"SELECT * FROM ITD_Programs where ProgramID !=0";
+											$querys =	"SELECT * FROM ITD_Programs";
 											$result = sqlsrv_query( $conn, $querys ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
 											$row_count = sqlsrv_num_rows($result);
 												while($row = sqlsrv_fetch_array($result)){?>
+										
 										<tr>
 										  <td><a href="#fakelink"><?php echo $row['ProgramID']?></a></td>
 										  <td><span class="text-warning"><?php echo $row['ProgramName']?></span></td>
@@ -874,120 +897,144 @@ $studentId = $_SESSION['StudentID'];
 										  </td>
 										  <td><span href="#fakelink"><?php  if($row['IsPublished'] == 0){ echo 'Not Published';}else{ echo 'Published'; }?></span></td>
 										</tr>
-										<tr>
-										  <td><a href="#fakelink"><?php echo $row['ProgramID']?></a></td>
-										  <td><span class="text-warning"><?php echo $row['ProgramName']?></span></td>
-										  <td><span class="text-disabled"><?php echo $row['ParentProgram']?></span>
-										  <td><span class="text-default"><?php echo $row['HourPerDay']?></span></td>
-										  <td><span href="#fakelink"><?php echo $row['NumberOfBreaks']?></span></td>
-										  <td><span class="text-danger"><?php echo $row['BreakDuration']?>Mins</span></td>
-										  <td><span class="text-info"> <?php  $startDate = date_format($row['StartDate'], 'Y-m-d'); echo $startDate;?> </span></td>
-										  <td><span class="text-danger"><?php  $endDate = date_format($row['EndDate'], 'Y-m-d'); echo $endDate;?></span></td>
-										  <td><span class="text-disabled"><?php echo $row['ClassDuration']?></span>
-										  <td><?php if($row['OffDay_Sun']==1){ echo '<span class="text-success">S,</span>';}else { echo '<span class="text-danger">S,</span>';} ?>
-											  <?php if($row['OffDay_Mon']==1){ echo '<span class="text-success">M,</span>';}else { echo '<span class="text-danger">M,</span>';} ?>
-											  <?php if($row['OffDay_Tue']==1){ echo '<span class="text-success">T,</span>';}else { echo '<span class="text-danger">T,</span>';} ?>
-											  <?php if($row['OffDay_Wed']==1){ echo '<span class="text-success">W,</span>';}else { echo '<span class="text-danger">W,</span>';} ?>
-											  <?php if($row['OffDay_Thu']==1){ echo '<span class="text-success">Th,</span>';}else { echo '<span class="text-danger">Th,</span>';} ?>
-											  <?php if($row['OffDay_Fri']==1){ echo '<span class="text-success">F,</span>';}else { echo '<span class="text-danger">F,</span>';} ?>
-											  <?php if($row['OffDay_Sat']==1){ echo '<span class="text-success">S</span>';}else { echo '<span class="text-danger">S</span>';} ?>
-										  </td>
-										  <td><span href="#fakelink"><?php  if($row['IsPublished'] == 0){ echo 'Not Published';}else{ echo 'Published'; }?></span></td>
-										</tr>
-										<tr>
-										  <td><a href="#fakelink"><?php echo $row['ProgramID']?></a></td>
-										  <td><span class="text-warning"><?php echo $row['ProgramName']?></span></td>
-										  <td><span class="text-disabled"><?php echo $row['ParentProgram']?></span>
-										  <td><span class="text-default"><?php echo $row['HourPerDay']?></span></td>
-										  <td><span href="#fakelink"><?php echo $row['NumberOfBreaks']?></span></td>
-										  <td><span class="text-danger"><?php echo $row['BreakDuration']?>Mins</span></td>
-										  <td><span class="text-info"> <?php  $startDate = date_format($row['StartDate'], 'Y-m-d'); echo $startDate;?> </span></td>
-										  <td><span class="text-danger"><?php  $endDate = date_format($row['EndDate'], 'Y-m-d'); echo $endDate;?></span></td>
-										  <td><span class="text-disabled"><?php echo $row['ClassDuration']?></span>
-										  <td><?php if($row['OffDay_Sun']==1){ echo '<span class="text-success">S,</span>';}else { echo '<span class="text-danger">S,</span>';} ?>
-											  <?php if($row['OffDay_Mon']==1){ echo '<span class="text-success">M,</span>';}else { echo '<span class="text-danger">M,</span>';} ?>
-											  <?php if($row['OffDay_Tue']==1){ echo '<span class="text-success">T,</span>';}else { echo '<span class="text-danger">T,</span>';} ?>
-											  <?php if($row['OffDay_Wed']==1){ echo '<span class="text-success">W,</span>';}else { echo '<span class="text-danger">W,</span>';} ?>
-											  <?php if($row['OffDay_Thu']==1){ echo '<span class="text-success">Th,</span>';}else { echo '<span class="text-danger">Th,</span>';} ?>
-											  <?php if($row['OffDay_Fri']==1){ echo '<span class="text-success">F,</span>';}else { echo '<span class="text-danger">F,</span>';} ?>
-											  <?php if($row['OffDay_Sat']==1){ echo '<span class="text-success">S</span>';}else { echo '<span class="text-danger">S</span>';} ?>
-										  </td>
-										  <td><span href="#fakelink"><?php  if($row['IsPublished'] == 0){ echo 'Not Published';}else{ echo 'Published'; }?></span></td>
-										</tr>
-										<tr>
-										  <td><a href="#fakelink"><?php echo $row['ProgramID']?></a></td>
-										  <td><span class="text-warning"><?php echo $row['ProgramName']?></span></td>
-										  <td><span class="text-disabled"><?php echo $row['ParentProgram']?></span>
-										  <td><span class="text-default"><?php echo $row['HourPerDay']?></span></td>
-										  <td><span href="#fakelink"><?php echo $row['NumberOfBreaks']?></span></td>
-										  <td><span class="text-danger"><?php echo $row['BreakDuration']?>Mins</span></td>
-										  <td><span class="text-info"> <?php  $startDate = date_format($row['StartDate'], 'Y-m-d'); echo $startDate;?> </span></td>
-										  <td><span class="text-danger"><?php  $endDate = date_format($row['EndDate'], 'Y-m-d'); echo $endDate;?></span></td>
-										  <td><span class="text-disabled"><?php echo $row['ClassDuration']?></span>
-										  <td><?php if($row['OffDay_Sun']==1){ echo '<span class="text-success">S,</span>';}else { echo '<span class="text-danger">S,</span>';} ?>
-											  <?php if($row['OffDay_Mon']==1){ echo '<span class="text-success">M,</span>';}else { echo '<span class="text-danger">M,</span>';} ?>
-											  <?php if($row['OffDay_Tue']==1){ echo '<span class="text-success">T,</span>';}else { echo '<span class="text-danger">T,</span>';} ?>
-											  <?php if($row['OffDay_Wed']==1){ echo '<span class="text-success">W,</span>';}else { echo '<span class="text-danger">W,</span>';} ?>
-											  <?php if($row['OffDay_Thu']==1){ echo '<span class="text-success">Th,</span>';}else { echo '<span class="text-danger">Th,</span>';} ?>
-											  <?php if($row['OffDay_Fri']==1){ echo '<span class="text-success">F,</span>';}else { echo '<span class="text-danger">F,</span>';} ?>
-											  <?php if($row['OffDay_Sat']==1){ echo '<span class="text-success">S</span>';}else { echo '<span class="text-danger">S</span>';} ?>
-										  </td>
-										  <td><span href="#fakelink"><?php  if($row['IsPublished'] == 0){ echo 'Not Published';}else{ echo 'Published'; }?></span></td>
-										</tr>
-										<tr>
-										  <td><a href="#fakelink"><?php echo $row['ProgramID']?></a></td>
-										  <td><span class="text-warning"><?php echo $row['ProgramName']?></span></td>
-										  <td><span class="text-disabled"><?php echo $row['ParentProgram']?></span>
-										  <td><span class="text-default"><?php echo $row['HourPerDay']?></span></td>
-										  <td><span href="#fakelink"><?php echo $row['NumberOfBreaks']?></span></td>
-										  <td><span class="text-danger"><?php echo $row['BreakDuration']?>Mins</span></td>
-										  <td><span class="text-info"> <?php  $startDate = date_format($row['StartDate'], 'Y-m-d'); echo $startDate;?> </span></td>
-										  <td><span class="text-danger"><?php  $endDate = date_format($row['EndDate'], 'Y-m-d'); echo $endDate;?></span></td>
-										  <td><span class="text-disabled"><?php echo $row['ClassDuration']?></span>
-										  <td><?php if($row['OffDay_Sun']==1){ echo '<span class="text-success">S,</span>';}else { echo '<span class="text-danger">S,</span>';} ?>
-											  <?php if($row['OffDay_Mon']==1){ echo '<span class="text-success">M,</span>';}else { echo '<span class="text-danger">M,</span>';} ?>
-											  <?php if($row['OffDay_Tue']==1){ echo '<span class="text-success">T,</span>';}else { echo '<span class="text-danger">T,</span>';} ?>
-											  <?php if($row['OffDay_Wed']==1){ echo '<span class="text-success">W,</span>';}else { echo '<span class="text-danger">W,</span>';} ?>
-											  <?php if($row['OffDay_Thu']==1){ echo '<span class="text-success">Th,</span>';}else { echo '<span class="text-danger">Th,</span>';} ?>
-											  <?php if($row['OffDay_Fri']==1){ echo '<span class="text-success">F,</span>';}else { echo '<span class="text-danger">F,</span>';} ?>
-											  <?php if($row['OffDay_Sat']==1){ echo '<span class="text-success">S</span>';}else { echo '<span class="text-danger">S</span>';} ?>
-										  </td>
-										  <td><span href="#fakelink"><?php  if($row['IsPublished'] == 0){ echo 'Not Published';}else{ echo 'Published'; }?></span></td>
-										</tr>
-										<tr>
-										  <td><a href="#fakelink"><?php echo $row['ProgramID']?></a></td>
-										  <td><span class="text-warning"><?php echo $row['ProgramName']?></span></td>
-										  <td><span class="text-disabled"><?php echo $row['ParentProgram']?></span>
-										  <td><span class="text-default"><?php echo $row['HourPerDay']?></span></td>
-										  <td><span href="#fakelink"><?php echo $row['NumberOfBreaks']?></span></td>
-										  <td><span class="text-danger"><?php echo $row['BreakDuration']?>Mins</span></td>
-										  <td><span class="text-info"> <?php  $startDate = date_format($row['StartDate'], 'Y-m-d'); echo $startDate;?> </span></td>
-										  <td><span class="text-danger"><?php  $endDate = date_format($row['EndDate'], 'Y-m-d'); echo $endDate;?></span></td>
-										  <td><span class="text-disabled"><?php echo $row['ClassDuration']?></span>
-										  <td><?php if($row['OffDay_Sun']==1){ echo '<span class="text-success">S,</span>';}else { echo '<span class="text-danger">S,</span>';} ?>
-											  <?php if($row['OffDay_Mon']==1){ echo '<span class="text-success">M,</span>';}else { echo '<span class="text-danger">M,</span>';} ?>
-											  <?php if($row['OffDay_Tue']==1){ echo '<span class="text-success">T,</span>';}else { echo '<span class="text-danger">T,</span>';} ?>
-											  <?php if($row['OffDay_Wed']==1){ echo '<span class="text-success">W,</span>';}else { echo '<span class="text-danger">W,</span>';} ?>
-											  <?php if($row['OffDay_Thu']==1){ echo '<span class="text-success">Th,</span>';}else { echo '<span class="text-danger">Th,</span>';} ?>
-											  <?php if($row['OffDay_Fri']==1){ echo '<span class="text-success">F,</span>';}else { echo '<span class="text-danger">F,</span>';} ?>
-											  <?php if($row['OffDay_Sat']==1){ echo '<span class="text-success">S</span>';}else { echo '<span class="text-danger">S</span>';} ?>
-										  </td>
-										  <td><span href="#fakelink"><?php  if($row['IsPublished'] == 0){ echo 'Not Published';}else{ echo 'Published'; }?></span></td>
-										</tr>
+
 										<?php } ?>
 									  </tbody>
 									</table>
 								  </div><!-- /.table-responsive -->
 								</div><!-- /.box-body -->
 								<div class="box-footer clearfix">
-								  <!-- <a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a> -->
-								  <a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-right">View All Programs</a>
+								  <!-- <a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
+								  <a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-right">View All Programs</a> -->
 								</div><!-- /.box-footer -->
 							  </div><!-- /.box -->
 						</div>
 					</div>
-				</section><!-- /.content -->
+					<?php
+						if(isset($_POST['submit'])){
+
+							$Cousql = "SELECT * FROM Complaints";
+							$Couresult = sqlsrv_query( $conn, $Cousql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+							$CouValue = sqlsrv_num_rows($Couresult);
+							$RCouVal = $CouValue + 1;
+
+							$StCousql = "SELECT * FROM Complaints WHERE Complain_By=".$_SESSION['StudentID']."";
+							$StCouresult = sqlsrv_query( $conn, $StCousql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+							$StCouValue = sqlsrv_num_rows($StCouresult);
+
+							$studentId = $_SESSION['StudentID'];
+							$name = $_SESSION['StudentName_en'];
+							$complain_No = "ST-".$_SESSION['StudentID']."-CMP-".$StCouValue."-".$RCouVal; exit;
+							//$subject = $_POST['subject'];
+							$Department = $_POST['Department'];
+							$Priority = $_POST['Priority'];
+							$message = $_POST['message'];
+							$Status = 'Pending';
+							$today = date("Y-m-d"); 
+
+							$sql = "INSERT INTO Complaints(Message,Complain_By,Complain_By_Name,priority,Department,Complain_on,Status,Complaint_No) VALUES('".$message."','".$studentId."','".$name."','".$Priority."','".$Department."','".$today."','".$Status."','".$complain_No."')";
+							$result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+
+						}
+
+					?>
+					
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="panel box box-warning">
+								<div class="panel-heading">
+									<h3 class="panel-title"> Complaint Box</h3>
+								</div>
+								<form class="form-horizontal" id="complains" action="" method="POST">
+									<div class="panel-body">
+										
+												  <?php
+												  $sql_Complaints_building="SELECT BuildingNo,Section,RoomNo FROM BachelorAcc where Candidate_1 ='".$_SESSION['StudentID']."' OR Candidate_2 ='".$_SESSION['StudentID']."' OR Candidate_2 ='".$_SESSION['StudentID']."'";
+												$result_Complaints_building = sqlsrv_query( $conn, $sql_Complaints_building ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+												$Complaints_room = sqlsrv_fetch_array($result_Complaints_building);
+												//echo $Complaints_room['BuildingNo'];
+												//echo $Complaints_room['Section'];
+												//echo $Complaints_room['RoomNo'];
+												?>
+											<div class="form-group">
+												<label for="inputEmail3" class="col-sm-2 control-label">Complaint Name</label>
+												<div class="col-sm-10">
+													<input type="text" name="name" id="name" class="form-control" placeholder="Full Name" value="<?php echo $_SESSION['StudentName_en'];?>" disabled>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="inputEmail3" class="col-sm-2 control-label"></label>
+												<div class="col-sm-3">
+													<input type="text" name="name" id="name" class="form-control" placeholder="Full Name" value="<?php echo 'Building No : '.$Complaints_room['BuildingNo']?>" disabled>
+												</div>
+												<div class="col-sm-3">
+													<input type="text" name="name" id="name" class="form-control" placeholder="Full Name" value="<?php echo 'Block No : '.$Complaints_room['Section'];?>" disabled>
+												</div>
+												<div class="col-sm-3">
+													<input type="text" name="name" id="name" class="form-control" placeholder="Full Name" value="<?php echo 'Room No : '.$Complaints_room['RoomNo'];?>" disabled>
+												</div>
+											</div>
+											
+											<!--<div class="form-group">
+												<label for="inputEmail3" class="col-sm-2 control-label">Subject</label>
+												<div class="col-sm-10">
+													<input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
+												</div>
+											</div>-->
+											<div class="row">
+												<div class="col-md-5 col-md-offset-1">
+													<div class="form-group">
+														<label for="inputEmail3" class="col-sm-2 control-label">Department</label>
+														<div class="col-sm-10 col-sm-offset-1" style="margin-left:0px;">
+															<div class="col-sm-1"></div>
+															<select class="form-control" id="Department" name="Department" required>
+																<option>Select Department</option>
+																<option>Food</option>
+																<option>Building</option>
+																<option>Bathroom</option>
+																<option>Other</option>
+															</select>											
+														</div>
+													</div>
+												</div>
+												<div class="col-md-5 col-md-offset-1">
+													<div class="form-group">
+														<label for="inputEmail3" class="col-sm-2 control-label">Priority</label>
+														<div class="col-sm-9 col-sm-offset-1">
+															<select class="form-control" id="Priority" name="Priority" required>
+																<option>Select Priority</option>
+																<option value="low">Low</option>
+																<option value="medium">Medium</option>
+																<option value="high">High</option>
+															</select>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="inputEmail3" class="col-sm-2 control-label">Complaint</label>
+												<div class="col-sm-10">
+													<textarea class="textarea col-md-12" name="message" id="message" placeholder="Type your Complaint here" style="height:200px; border:1px solid #ccc; border-radius:5px !important; padding:15px; font-size:16px; letter-spacing:1px;" rows="20" cols="90" required></textarea>
+												</div>
+											</div>
+											
+									</div>
+									<div class="panel-footer">
+										<div class="form-group">
+											<div class="col-sm-offset-2 col-sm-10">
+												<input type="submit" class="btn btn-lg btn-warning pull-right" value="Submit" name="submit">
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					</section><!-- /.content -->
 			</div><!-- /.content-wrapper -->
+
+			
 
 			<footer class="main-footer">
 				<div class="pull-right hidden-xs">
@@ -996,6 +1043,7 @@ $studentId = $_SESSION['StudentID'];
 				<strong>Copyright &copy; 2014-2015 <a href="#fakelink"> SWCC Student Dashboard</a>.</strong> All rights reserved.
 			</footer>
 			
+			
 			<!-- Add the sidebar's background. This div must be placed
 					 immediately after the control sidebar -->
 			<div class="control-sidebar-bg"></div>
@@ -1003,8 +1051,8 @@ $studentId = $_SESSION['StudentID'];
 		
 		<!-- jQuery 2.1.4 -->
 		<script src="assets/plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
-		<!-- Bootstrap 3.3.2 JS -->
-		<script src="assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+		<!-- Bootstrap 3.3.2 JS 
+		<script src="assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>-->
 		<!-- SlimScroll -->
 		<script src="assets/plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
 		<!-- FastClick -->
@@ -1036,27 +1084,27 @@ $studentId = $_SESSION['StudentID'];
   var salesChart = new Chart(salesChartCanvas);
 
   var salesChartData = {
-	labels: ["January", "February", "March", "April", "May", "June", "July"],
+	labels: ["January", "February", "March", "April", "May", "June", "July", "August" , "Spetember" , "October" , "November" , "December" ],
 	datasets: [
 	  {
-		label: "Electronics",
-		fillColor: "rgb(143, 210, 210)",
-		strokeColor: "rgb(210, 214, 222)",
-		pointColor: "rgb(210, 214, 222)",
+		label: "Total Days",
+		fillColor: "rgba(180, 191, 81, 0.5)",
+		strokeColor: "rgba(130,160,30,1)",
+		pointColor: "rgba(180, 191, 81, 0.5)",
 		pointStrokeColor: "#c1c7d1",
 		pointHighlightFill: "#fff",
 		pointHighlightStroke: "rgb(220,220,220)",
-		data: [65, 59, 80, 81, 56, 55, 40]
+		data: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 	  },
 	  {
-		label: "Digital Goods",
-		fillColor: "rgba(60,141,188,0.9)",
-		strokeColor: "rgba(60,141,188,0.8)",
-		pointColor: "#3b8bba",
+		label: "Present Days",
+		fillColor: "rgba(250,80,160,0.4)",
+		strokeColor: "rgba(160,30,90,1)",
+		pointColor: "rgba(250,80,160,0.4)",
 		pointStrokeColor: "rgba(60,141,188,1)",
 		pointHighlightFill: "#fff",
 		pointHighlightStroke: "rgba(60,141,188,1)",
-		data: [28, 48, 40, 19, 86, 27, 90]
+		data: [22, 25, 20, 18, 24, 22, 15, 18, 25, 24, 5, 10]
 	  }
 	]
   };
@@ -1098,13 +1146,13 @@ $studentId = $_SESSION['StudentID'];
       ]
     };
 
-  /*var salesChartOptions = {
+  var salesChartOptions = {
 	//Boolean - If we should show the scale at all
 	showScale: true,
 	//Boolean - Whether grid lines are shown across the chart
 	scaleShowGridLines: false,
 	//String - Colour of the grid lines
-	scaleGridLineColor: "rgba(0,0,0,.05)",
+	scaleGridLineColor: "rgba(0,0,0,1)",
 	//Number - Width of the grid lines
 	scaleGridLineWidth: 1,
 	//Boolean - Whether to show horizontal lines (except X axis)
@@ -1138,7 +1186,7 @@ $studentId = $_SESSION['StudentID'];
   };
 
   //Create the line chart
-  salesChart.Line(salesChartData, salesChartOptions);*/
+  salesChart.Line(salesChartData, salesChartOptions);
 
   //---------------------------
   //- END MONTHLY SALES CHART -
@@ -1147,53 +1195,61 @@ $studentId = $_SESSION['StudentID'];
         //-------------
         //- BAR CHART -
         //-------------
-        /*var barChartCanvas = $("#barChart").get(0).getContext("2d");
-        var barChart = new Chart(barChartCanvas);
-        var barChartData = areaChartData;
-        barChartData.datasets[1].fillColor = "rgba(253, 100, 100, 0.7)";
-        barChartData.datasets[1].strokeColor = "rgba(253, 100, 100, 0.7)";
-        barChartData.datasets[1].pointColor = "rgba(253, 100, 100, 0.7)";
-        var barChartOptions = {
-          //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-          scaleBeginAtZero: true,
-          //Boolean - Whether grid lines are shown across the chart
-          scaleShowGridLines: true,
-          //String - Colour of the grid lines
-          scaleGridLineColor: "rgba(0,0,0,.05)",
-          //Number - Width of the grid lines
-          scaleGridLineWidth: 1,
-          //Boolean - Whether to show horizontal lines (except X axis)
-          scaleShowHorizontalLines: true,
-          //Boolean - Whether to show vertical lines (except Y axis)
-          scaleShowVerticalLines: true,
-          //Boolean - If there is a stroke on each bar
-          barShowStroke: true,
-          //Number - Pixel width of the bar stroke
-          barStrokeWidth: 2,
-          //Number - Spacing between each of the X value sets
-          barValueSpacing: 5,
-          //Number - Spacing between data sets within X values
-          barDatasetSpacing: 1,
-          //String - A legend template
-          legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
-          //Boolean - whether to make the chart responsive
-          responsive: true,
-          maintainAspectRatio: false
-        };
+        // var barChartCanvas = $("#barChart").get(0).getContext("2d");
+        // var barChart = new Chart(barChartCanvas);
+        // var barChartData = areaChartData;
+        // barChartData.datasets[1].fillColor = "rgba(253, 100, 100, 0.7)";
+        // barChartData.datasets[1].strokeColor = "rgba(253, 100, 100, 0.7)";
+        // barChartData.datasets[1].pointColor = "rgba(253, 100, 100, 0.7)";
+        // var barChartOptions = {
+        //   //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+        //   scaleBeginAtZero: true,
+        //   //Boolean - Whether grid lines are shown across the chart
+        //   scaleShowGridLines: true,
+        //   //String - Colour of the grid lines
+        //   scaleGridLineColor: "rgba(0,0,0,.05)",
+        //   //Number - Width of the grid lines
+        //   scaleGridLineWidth: 1,
+        //   //Boolean - Whether to show horizontal lines (except X axis)
+        //   scaleShowHorizontalLines: true,
+        //   //Boolean - Whether to show vertical lines (except Y axis)
+        //   scaleShowVerticalLines: true,
+        //   //Boolean - If there is a stroke on each bar
+        //   barShowStroke: true,
+        //   //Number - Pixel width of the bar stroke
+        //   barStrokeWidth: 2,
+        //   //Number - Spacing between each of the X value sets
+        //   barValueSpacing: 5,
+        //   //Number - Spacing between data sets within X values
+        //   barDatasetSpacing: 1,
+        //   //String - A legend template
+        //   legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
+        //   //Boolean - whether to make the chart responsive
+        //   responsive: true,
+        //   maintainAspectRatio: false
+        // };
 
-        barChartOptions.datasetFill = false;
-        barChart.Bar(barChartData, barChartOptions);
-*/
+        // barChartOptions.datasetFill = false;
+        // barChart.Bar(barChartData, barChartOptions);
+
 		})		
 		</script>
 		<script>
-			$(document).on('ready', function(){
-				var attend = $('.marks-chart').height();
+			$(window).on('load resize', function(e){								
+				var attend = $('.attendance-chart').height() - 66;
 				//alert(attend);
-				$('.attendance-chart .box').css('height', attend +'px');
+				$('.marks-chart .slimScroll').css('height', attend +'px');
+				// $('#skills').css('height', attend +'px');
+				// $('.slimScroll').css('height', attend +'px');				
+
+				$('#skills.slimScroll').slimscroll({ height: attend + 'px' })
 				if($(window).height() < 800){
 				  // $('.attendance-chart .box-body').css('padding-top', attend / 8  +'px');
 				}
+
+				var attend = $('.attendance-chart1').height();
+				$('.teachers .box').css('height', attend +'px');
+
 
 				var teach = $('.teachers .box-body').height();
 				$('.direct-chat-messages').css('height', teach - 12 +'px');
@@ -1256,15 +1312,15 @@ $studentId = $_SESSION['StudentID'];
 		</script>	
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<!-- Latest compiled and minified JavaScript 
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+		<!-- Marks Chart Animation JS -->
 		<script src="assets/dist/js/barchart.js"></script>
 		<script src="assets/dist/js/slimscroll.js"></script>
-
-			<?php 
-//session_start();
-include('includes/footer.php');
-?>
+		<?php 
+			//session_start();
+			include('includes/footer.php');
+		?>
 
 
 <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.3/jquery.slimscroll.min.js"></script> -->

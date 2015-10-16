@@ -21,7 +21,7 @@ if($_SESSION['AdminId']==''){
 						<small></small>
 					</h1>
 					<ol class="breadcrumb">
-						<li><a href="#"><i class="fa fa-dashboard text-red"></i><?php echo $lang['Home']?> </a></li>
+						<li><a href="Admin"><i class="fa fa-dashboard text-red"></i><?php echo $lang['Home']?> </a></li>
 						<li><a href="#"><i class="fa fa-user text-red"></i> <?php echo $lang['profile'];?></a></li>
 					</ol>
 				</section>

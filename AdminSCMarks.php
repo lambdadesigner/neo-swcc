@@ -15,25 +15,34 @@ if($_GET['action']=="delete")
 }
 ?>
 			<style>
-				.filterbutton {
-					float: right;
-					margin-top: 3px;
-					padding-left: 10px;
-				}
-				button.btn-filter {
-					padding: 5px 10px;
-					font-size: 15px;
-					background: #1caf9a;
-					color: white;
-				}
-				.styled-select select {
-					color:#ffffff;
-				    background: #12C3AA;
-				    padding: 10px;										    
-				    font-size: 16px;
-				    line-height: 1;
-				    border: 0;
-				}
+			.filterbutton {
+				float: right;
+				margin-top: 3px;
+				padding-left: 10px;
+			}
+			button.btn-filter {
+				padding: 5px 10px;
+				font-size: 15px;
+				background: #1caf9a;
+				color: white;
+			}
+			.styled-select select {
+				color:#ffffff;
+			    background: #12C3AA;
+			    padding: 10px;										    
+			    font-size: 16px;
+			    line-height: 1;
+			    border: 0;
+			}
+			.dataTable tr{
+			  background: #C9F3E5;			  
+			}
+			#justs{
+				background-color: #C9F3E5;
+			}
+			#justs:hover{
+				background-color: #6DEAB1 !important;
+			}
 
 			</style>
 
@@ -42,12 +51,12 @@ if($_GET['action']=="delete")
 				<!-- Content Header (Page header) -->
 				<section class="content-header">
 					<h1>
-						<!-- Schedules -->
+						Short Course Marks
 						<small></small>
 					</h1>
 					<ol class="breadcrumb">
-						<li><a href="#"><i class="fa fa-dashboard text-default"></i> Home</a></li>
-						<li><a href="#"><i class="fa fa-user text-default"></i> Profile</a></li>
+						<li><a href="Admin"><i class="fa fa-dashboard text-default"></i> Home</a></li>
+						<li><a href="#"><i class="fa fa-university"></i> Short Course</a></li>
 					</ol>
 				</section>
 
@@ -69,10 +78,10 @@ if($_GET['action']=="delete")
 												</script>
 											<?php } ?>
 											
-												<button type="button" class="btn btn-default pull-right" id="justs">
+											<button type="button" class="btn btn-default pull-right" id="justs">
 		  										<span id="addd"><i class="fa fa-plus"></i> Add</span><span id="vie" style="display:none"><i class="fa fa-eye"></i> View</span> Marks
 											</button>
-											<h3 class="panel-title text-default"><i class="fa fa-pencil fa-lg"></i> Marks
+											<h3 class="panel-title text-default"><!-- <i class="fa fa-pencil fa-lg"></i> Marks -->&nbsp;
 												<!-- <div class="pull-right">
 													<button class="btn btn-xs btn-filter"><span class="glyphicon glyphicon-filter filterbutton"></span> Filter</button>&nbsp;&nbsp;&nbsp;
 												</div> -->
@@ -80,8 +89,8 @@ if($_GET['action']=="delete")
 											<br>
 										</div>
 										
-										<div class="tab-content panel-body border" id="ScheduleRows">									
-											<table class="table table-striped" id="schedules">
+										<div class="tab-content panel-body" id="ScheduleRows">									
+											<table class="table table-striped border" id="Scmarks">
 												<thead>
 													<tr class="filters">
 														<th><!-- <input type="text" class="form-control" placeholder="S.No" > -->S.No</th>
@@ -117,7 +126,7 @@ if($_GET['action']=="delete")
 												
 												
 												
-													<tr><td><?php echo $jkl++;?></td>
+													<tr><td><?php echo $jkl;?></td>
 														<td><?php echo $row['SCID']?></td>
 														<td><?php echo $row['EmpID']?></td>
 														<td><?php echo $row['Attendance']?></td>
@@ -125,8 +134,8 @@ if($_GET['action']=="delete")
 														<td><?php echo $row['Participation']?></td>
 														<td><?php echo $row['Exam']?></td>
 														<!-- <td><a data-toggle="modal" data-target="#myModal<?php echo $jkl;?>" style="cursor:pointer">Edit</a> </td> -->
-														<td><a href="AdminSCMarks?action=Edit&EmpID=<?php echo $row['EmpID'];?>&SCID=<?php echo $row['SCID'];?>" style="cursor:pointer"> <i class="fa fa-edit fa-lg" data-toggle="tooltip" data-placement="top" title="Click to edit"></i></a> </td>
-														<td><a onClick="var q = confirm('Are you sure you want to delete selected record?'); if (q) { window.location = 'AdminSCMarks?action=Edit&EmpID=<?php echo $row['EmpID'];?>&SCID=<?php echo $row['SCID'];?>'; return false;}" style="cursor:pointer"><i class="fa fa-close text-danger"></i></a> </td>
+														<td><a href="AdminSCMarks?action=Edit&EmpID=<?php echo $row['EmpID'];?>&SCID=<?php echo $row['SCID'];?>" style="cursor:pointer"> <i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Click to edit"></i></a> </td>
+														<td><a onClick="var q = confirm('Are you sure you want to delete selected record?'); if (q) { window.location = 'AdminSCMarks?action=Edit&EmpID=<?php echo $row['EmpID'];?>&SCID=<?php echo $row['SCID'];?>'; return false;}" style="cursor:pointer"><i class="fa fa-close text-danger" data-toggle="tooltip" data-placement="top" title="Click to delete"></i></a> </td>
 													</tr>
 												<?php $jkl++; }?>											
 													
@@ -164,30 +173,30 @@ if($_GET['action']=="delete")
 													    <div class="modal-content">
 													      	<div class="modal-header">									        
 													        	<h3 class="modal-title" id="myModalLabel">Add Marks</h3>
-													      	</div>
+													      	</div><br>
 													      	<input type="hidden" name="scenario" id="scenario" value="addAdmSchedule">										      	
 															<div class="row">
 																<div class="col-md-3 text-right">
 																	Short Course ID*<i class="fa fa-star text-danger"></i>
 																</div>
 																<div class="col-md-8">															
-																	<input type="text" id="SCID" name="SCID" placeholder="SCID" class="input" data-toggle="tooltip" data-placement="right" title="SCID" required style="width:100%;">
+																	<input type="text" id="SCID" name="SCID" placeholder="SCID" class="form-control" data-toggle="tooltip" data-placement="right" title="SCID" required style="width:100%;">
 																</div>
-															</div>
+															</div><br>
 													      	<div class="row">
 																<div class="col-md-3 text-right">
 																	Employee ID*<i class="fa fa-star text-danger"></i>
 																</div>
 																<div class="col-md-8">															
-																	<input type="text" id="EmpID" name="EmpID" placeholder="EmpID" class="input" data-toggle="tooltip" data-placement="right" title="EmpID" required style="width:100%;" onchange="showDay(this.value);">														
+																	<input type="text" id="EmpID" name="EmpID" placeholder="EmpID" class="form-control" data-toggle="tooltip" data-placement="right" title="EmpID" required style="width:100%;" onchange="showDay(this.value);">														
 																</div>
-															</div>
+															</div><br>
 															<div class="row">
 																<div class="col-md-3 text-right">
 																	Attendance*<i class="fa fa-star text-danger"></i>
 																</div>
 																<div class="col-md-8">															
-																	<input type="text" id="Attendance" name="Attendance" placeholder="Schedule Day" class="input" data-toggle="tooltip" data-placement="right" title="Attendance"  required style="width:100%;">														
+																	<input type="text" id="Attendance" name="Attendance" placeholder="Schedule Day" class="form-control" data-toggle="tooltip" data-placement="right" title="Attendance"  required style="width:100%;">														
 																</div>
 															</div><br>
 															<div class="row">
@@ -195,7 +204,7 @@ if($_GET['action']=="delete")
 																	Activities*<i class="fa fa-star text-danger"></i>
 																</div>
 																<div class="col-md-8">															
-																	<input type="text" id="Activities" name="Activities" placeholder="Activities" class="input" data-toggle="tooltip" data-placement="right" title="Activities" required style="width:100%;">														
+																	<input type="text" id="Activities" name="Activities" placeholder="Activities" class="form-control" data-toggle="tooltip" data-placement="right" title="Activities" required style="width:100%;">														
 																</div>
 															</div><br>
 															<div class="row">
@@ -203,7 +212,7 @@ if($_GET['action']=="delete")
 																	Participation*<i class="fa fa-star text-danger"></i>
 																</div>
 																<div class="col-md-8">															
-																	<input type="text" id="Participation" name="Participation" placeholder="Participation" class="input" data-toggle="tooltip" data-placement="right" title="Participation"  required style="width:100%;">														
+																	<input type="text" id="Participation" name="Participation" placeholder="Participation" class="form-control" data-toggle="tooltip" data-placement="right" title="Participation"  required style="width:100%;">														
 																</div>
 															</div><br>
 															<div class="row">
@@ -211,15 +220,9 @@ if($_GET['action']=="delete")
 																	Exam*<i class="fa fa-star text-danger"></i>
 																</div>
 																<div class="col-md-8">															
-																	<input type="text" id="Exam" name="Exam" placeholder="Exam" class="input" data-toggle="tooltip" data-placement="right" title="Exam"  required style="width:100%;">														
+																	<input type="text" id="Exam" name="Exam" placeholder="Exam" class="form-control" data-toggle="tooltip" data-placement="right" title="Exam"  required style="width:100%;">														
 																</div>
 															</div><br>
-															
-															
-															
-															
-															
-															<br>
 															<div class="modal-footer">
 																<input type="submit" class="btn btn-default"  data-dismiss="modal" id="AddMarks" name="AddMarks">
 															</div>
@@ -258,7 +261,7 @@ if($_GET['action']=="delete")
 											if(isset($_POST['editMarks'])){
 											$sql="UPDATE SCMarks SET SCID ='".$_POST['SCID']."',EmpID ='".$_POST['EmpID']."',Attendance ='".$_POST['Attendance']."',Activities ='".$_POST['Activities']."',Participation ='".$_POST['Participation']."',Exam='".$_POST['Exam']."' WHERE SCID='".$_GET['SCID']."' AND EmpID='".$_GET['EmpID']."'";	
 											$result = sqlsrv_query( $conn, $sql ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
-											header('location:AdminSCMarks')
+											header('location:AdminSCMarks');
 											}
 										?>
 										<!-- Add / Edit Student Instructor -->
@@ -572,7 +575,17 @@ if($_GET['action']=="delete")
 			        }
 			    });
 			});
-			
+			$(document).ready(function() {
+			    $('#Scmarks').DataTable( {
+			    } );
+			   
+			} );
+			 $('#justs').click(function(){				
+				    $('#ScheduleRows').fadeToggle("slow","linear");				    
+				    $('#myModalss').fadeToggle("fast");
+				    $('#addd').toggle();
+				    $('#vie').toggle();
+				});
 			
 		</script>
 
