@@ -44,6 +44,7 @@
 	border-bottom-left-radius: 4px !important;
 	width:100%;
 	background-color: #E06D5F;
+	margin-left: 10px !important;
 }
 .event.end {
 	/*border-right: 1px solid #FC8181;*/
@@ -52,6 +53,7 @@
 	border-bottom-right-radius: 4px !important;
 	width:100%;
 	background-color: #E06D5F;
+	margin-left: -10px !important;
 }
 /*.event.begin {
     border-left: 1px solid #FC8181 !important;

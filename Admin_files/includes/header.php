@@ -223,7 +223,7 @@ $url = basename($_SERVER['REQUEST_URI']);
 								<i class="fa fa-pencil-square-o"></i> <span>Holidays</span>
 							</a>
 						</li>
-                        <li <?php if(false !== strpos($url,Holidays)){?>class="active"<?php } ?>>
+                        <li <?php if(false !== strpos($url,Groups)){?>class="active"<?php } ?>>
 							<a href="Groups">
 								<i class="fa fa-pencil-square-o"></i> <span>Groups</span>
 							</a>
@@ -232,19 +232,14 @@ $url = basename($_SERVER['REQUEST_URI']);
 							<a href="Announcements">
 								<i class="fa fa-bullhorn"></i> <span>Announcements</span>
 							</a>
-						</li>	                        
-                        <li <?php if(false !== strpos($url,AdminBuildings)){?>class="active"<?php } ?>>
-							<a href="AdminBuildings?building=B1">
-								<i class="fa fa-dashboard"></i> <span> Room Availability<?php //echo $lang["dashboard"];?></span>
-							</a>
-						</li>				
-						<li class="treeview <?php if($url=="AdminBuildings" || $url=="AdminBuildings"){?>active<?php } ?>">
+						</li>	                                                			
+						<li class="treeview <?php if(false !== strpos($url,AdminBuildings) || false !== strpos($url,AdminApartments)){?>active<?php } ?>">
 							<a href="#">
 								<i class="fa fa-tag"></i> <span>Maintenance</span> <i class="fa fa-angle-left pull-right"></i>
 							</a>
 							<ul class="treeview-menu">
-								<li <?php if($url=="AdminBuildings"){?>class="active"<?php } ?>><a href="AdminBuildings?building=B1"><i class="fa fa-building"></i>Buildings</span></a></li>
-								<li><a href=""><i class="fa fa-building-o"></i>Apartments</a></li>								
+								<li <?php if(false !== strpos($url,AdminBuildings)){?>class="active"<?php } ?>><a href="AdminBuildings?building=B1"><i class="fa fa-building"></i>Buildings</span></a></li>
+								<li <?php if(false !== strpos($url,AdminApartments)){?>class="active"<?php } ?>><a href="AdminApartments?Apartment=746"><i class="fa fa-building-o"></i>Apartments</a></li>								
 							</ul>
 						</li>	
 					</ul>

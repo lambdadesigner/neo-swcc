@@ -1225,76 +1225,70 @@ ul.icons-list.pull-right {
 	<div class="col-md-6">
 	<!-- Calendar -->
 	<div class="box box-solid" id="HolCalendar">
-	<!-- bg-green-gradient -->
-	<div class="box-header">
-	<i class="fa fa-calendar text-red"></i>
-	<h3 class="box-title">
-	Holidays Calendar
-	</h3>
-	<a href="Holidays" class="btn bg-green pull-right"><i class="fa fa-plus"> Add Holiday</i></a>
-	<hr>
-	<!-- tools box -->
-	<?php /*<div class="pull-right box-tools">
-										<!-- button with a dropdown -->
-										<div class="btn-group">
-										  <button class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i></button>
-										  <ul class="dropdown-menu pull-right" role="menu">
-											<li><a href="#">Add new event</a></li>
-											<li><a href="#">Clear events</a></li>
-											<li class="divider"></li>
-											<li><a href="#">View calendar</a></li>
-										  </ul>
-										</div>
-										<button class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
-										<button class="btn btn-success btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
-									  </div><!-- /. tools -->*/?>
-	</div>
-	<!-- /.box-header -->
-	<div class="box-body">
-	<div class="row">
-	<div class="col-md-3">
-	<ul>
-	<li>
-	holiday one
-	</li>
-	<li>
-	holiday one
-	</li>
-	<li>
-	holiday one
-	</li>
-	<li>
-	holiday one
-	</li>
-	<li>
-	holiday one
-	</li>
-	<li>
-	holiday one
-	</li>
-	<li>
-	holiday one
-	</li>
-	<li>
-	holiday one
-	</li>
-	<li>
-	holiday one
-	</li>
-	</ul>
-	</div>
-	<div class="col-md-9">
-	<p class="text-center">
-	</p>
-	<div class="chart">
-	<div id="holder" class="row" >
-	</div>
-	</div>
-	<p class="text-center">
-	</p>
-	</div>
-	</div>
-	</div>
+		<!-- bg-green-gradient -->
+		<div class="box-header">
+		<i class="fa fa-calendar text-red"></i>
+		<h3 class="box-title">
+		Holidays Calendar
+		</h3>
+		<a href="Holidays" class="btn bg-green pull-right"><i class="fa fa-plus"> Add Holiday</i></a>
+		<hr>
+		<!-- tools box -->
+		<?php /*<div class="pull-right box-tools">
+											<!-- button with a dropdown -->
+											<div class="btn-group">
+											  <button class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i></button>
+											  <ul class="dropdown-menu pull-right" role="menu">
+												<li><a href="#">Add new event</a></li>
+												<li><a href="#">Clear events</a></li>
+												<li class="divider"></li>
+												<li><a href="#">View calendar</a></li>
+											  </ul>
+											</div>
+											<button class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
+											<button class="btn btn-success btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
+										  </div><!-- /. tools -->*/?>
+		</div>
+		<!-- /.box-header -->
+		<div class="box-body">
+			<div class="row">
+				<div class="col-md-3">					
+					<ul>
+						<?php 
+						 	$holiday_query="SELECT * FROM ITD_Holidays";
+							$holiday_result = sqlsrv_query( $conn, $holiday_query ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
+							while($Holi_row = sqlsrv_fetch_array($holiday_result)){
+						?>
+						<li data-toggle="tooltip" data-placement="top" title="<?php echo date_format($Holi_row['FromDate'],"d-m-Y")." - ".date_format($Holi_row['ToDate'],"d-m-Y"); ?>">
+							<?php echo $Holi_row['HolidayName'];?>
+						</li>
+						<?php } ?>
+						<li>
+							holiday one
+						</li>
+						<li>
+							holiday one
+						</li>
+						<li>
+							holiday one
+						</li>
+						<li>
+							holiday one
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-9">
+					<p class="text-center">
+					</p>
+					<div class="chart">
+						<div id="holder" class="row" >
+						</div>
+					</div>
+					<p class="text-center">
+					</p>
+				</div>
+			</div>
+		</div>
 	</div>
 	<!-- /.box --> 
 	
@@ -1728,7 +1722,7 @@ ul.icons-list.pull-right {
 									//data.push({ title: "Testing", start: new Date(2015, 07, 24, 8, 35), end: new Date(2015, 07, 26, 18, 35), allDay:0/*, text: slipsum[ slipsum.length ]*/  });
 	
 									<?php  	
-									$attend_query = "SELECT DISTINCT FromDate,ToDate FROM ITD_Holidays";
+									$attend_query = "SELECT DISTINCT FromDate,ToDate,HolidayName FROM ITD_Holidays";
 									$attend_result = sqlsrv_query( $conn, $attend_query ,array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));	
 								  
 									while($attend_row = sqlsrv_fetch_array($attend_result)){
@@ -1741,7 +1735,7 @@ ul.icons-list.pull-right {
 										$end_mondecr = $end_ab_year['1'] - 1;
 										?>
 	
-									  data.push({ title:"testing",start: new Date(<?php echo $ab_year['0'];?>,<?php echo $mondecr;?>, <?php echo $ab_year['2'];?>), end: new Date(<?php echo $end_ab_year['0'];?>,<?php echo $end_mondecr;?>, <?php echo $end_ab_year['2'];?>) });
+									  data.push({ title:"<?php echo $attend_row['HolidayName'];?>",start: new Date(<?php echo $ab_year['0'];?>,<?php echo $mondecr;?>, <?php echo $ab_year['2'];?>), end: new Date(<?php echo $end_ab_year['0'];?>,<?php echo $end_mondecr;?>, <?php echo $end_ab_year['2'];?>) });
 									  //data.push({ title: "Testing", start: new Date(2015, 07, 24, 8, 35), end: new Date(2015, 07, 26, 18, 35), allDay:0/*, text: slipsum[ slipsum.length ]*/  });
 	
 									<?php }?>
